@@ -1,0 +1,1121 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APILayer</name>
+    </assembly>
+    <members>
+        <member name="M:APILayer.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,APILayer.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:APILayer.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:APILayer.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:APILayer.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:APILayer.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:APILayer.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:APILayer.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:APILayer.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:APILayer.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:APILayer.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,APILayer.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,APILayer.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:APILayer.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:APILayer.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(APILayer.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:APILayer.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:APILayer.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},APILayer.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:APILayer.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:APILayer.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleKey.#ctor(APILayer.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:APILayer.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:APILayer.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:APILayer.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,APILayer.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:APILayer.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:APILayer.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:APILayer.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:APILayer.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:APILayer.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:APILayer.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:APILayer.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:APILayer.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:APILayer.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:APILayer.Controllers.Auth.Authentication.OSIAuthenticationFilter">
+            <summary>
+            Authorization filter class used to validate tokens generated on login. if a token is valid pass. if not set httpstatus code to Unauthorized. created because DRY principle
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.Auth.Authentication.OSIAuthenticationFilter.OnAuthorizationAsync(System.Web.Http.Controllers.HttpActionContext,System.Threading.CancellationToken)">
+            <summary>
+            Executed before action is called when [OSIAuthenticationFilter] is used in a controller action
+            </summary>
+            <param name="actionContext"> http context of action</param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="T:APILayer.Controllers.Auth.Authorization.OSIInternalAuthorization">
+            <summary>
+            auhtorization filter to validate if user is internal
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.Auth.Authorization.OSIInternalAuthorization.OnAuthorizationAsync(System.Web.Http.Controllers.HttpActionContext,System.Threading.CancellationToken)">
+            <summary>
+            Executed before action is called when [OSIAuthenticationFilter] is used in a controller action
+            </summary>
+            <param name="actionContext"> http context of action</param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="T:APILayer.Controllers.Auth.SwaggerFilters.OSITokenHeader">
+            <summary>
+            swagger operation filter to enable entering in an authorization token
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.Auth.SwaggerFilters.OSITokenHeader.Apply(Swashbuckle.Swagger.Operation,Swashbuckle.Swagger.SchemaRegistry,System.Web.Http.Description.ApiDescription)">
+            <summary>
+            apply the operation filter
+            </summary>
+            <param name="operation"></param>
+            <param name="schemaRegistry"></param>
+            <param name="apiDescription"></param>
+        </member>
+        <member name="T:APILayer.Controllers.BillingController">
+            <summary>
+            Controller for bills unrelated to claims 
+            </summary>
+        </member>
+        <member name="F:APILayer.Controllers.BillingController.con">
+            <summary>
+            orgsys data context
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.BillingController.AddBillingItem(System.String,System.String)">
+            <summary>
+            Add a billing item that is not related to a claim
+            </summary>
+            <param name="billDetails"> Bill item DTO</param>
+            <param name="token"> session token</param>
+        </member>
+        <member name="M:APILayer.Controllers.BillingController.UpdateBillingItem(System.String,System.String)">
+            <summary>
+            Updated an existsing bill item
+            </summary>
+            <param name="billDetails"> Bill item DTO </param>
+            <param name="token"> Session token </param>
+        </member>
+        <member name="M:APILayer.Controllers.BillingController.GetBillingItem_ByUser(System.String)">
+            <summary>
+            Get existing billable items that the user submited by token
+            </summary>
+            <param name="token"> Session token</param>
+        </member>
+        <member name="M:APILayer.Controllers.BillingController.GetNonBillingItem_ByUser(System.String)">
+            <summary>
+            Get existing non billable items that the user submited by token
+            </summary>
+            <param name="token"> Session token</param>
+        </member>
+        <member name="M:APILayer.Controllers.BillingController.GetBillingMethod">
+            <summary>
+            Get billing method types
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.BillingController.GetBillingReason(System.Int32)">
+            <summary>
+            Get billing reasons by billing method ID
+            </summary>
+            <param name="BillingMethodID"> billing method ID</param>
+        </member>
+        <member name="M:APILayer.Controllers.BillingController.GetBillingItem_ByID(System.String,System.String)">
+            <summary>
+            Get a single billing item by the bill ID
+            </summary>
+            <param name="BillID"> Bill ID</param>
+            <param name="token"> Session token</param>
+        </member>
+        <member name="T:APILayer.Controllers.ClaimController">
+            <summary>
+            API controler for CRUD opperations on claims and relational data
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.ClaimController.GetClaimBenefitsDefaultDates(System.Int32)">
+            <summary>
+            Returns the default dates for claim benefit dates
+            </summary>
+            <remarks>
+            Consumed in: Claim_Dates.html
+            </remarks>
+            <param name="ClaimID">Id of Claim</param>
+        </member>
+        <member name="T:APILayer.Controllers.CMRController">
+            <summary>
+            Created 4/1/2019 by John VanGeemen
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.CMRController.GetCMRDefaults(System.Int32)">
+            <summary>
+            Returns the CMR Defaults when a claim update is completed to populate a cmr form
+            </summary>
+            <param name="ClaimID"></param>
+        </member>
+        <member name="F:APILayer.Controllers.LibraryResourceController.context">
+            <summary>
+            Database Context for orgsoln umbrella
+            </summary>
+        </member>
+        <member name="F:APILayer.Controllers.LibraryResourceController.path">
+            <summary>
+            drive for claim documents and library resources
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.LibraryResourceController.GetLibraryResources(System.String)">
+            <summary>
+            Returns library resourced based on what the user is allowed to view. 
+            </summary>
+            <param name="token">Session Token</param>
+        </member>
+        <member name="M:APILayer.Controllers.LibraryResourceController.GetLibraryResourcesInternal(System.String,System.Int32)">
+            <summary>
+            Returns the library resources for internal users to view and edit. 
+            </summary>
+            <param name="token">Session Token</param>
+        </member>
+        <member name="M:APILayer.Controllers.LibraryResourceController.GetLibraryResourceTypes">
+            <summary>
+            Returns the library resource types with theit respective ID
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.LibraryResourceController.UploadLibraryResource(System.String,APILayer.Models.DTOS.Library_Resource_DTO)">
+            <summary>
+            Endpoint to upload a generic library resource or a client specific resource.
+            </summary>
+            <param name="token"></param>
+            <param name="resource"></param>
+        </member>
+        <member name="M:APILayer.Controllers.LibraryResourceController.DownloadLibraryResource(System.String,System.Int32)">
+            <summary>
+            Endpoint for downloading library resources
+            </summary>
+            <param name="token"></param>
+            <param name="documentId"></param>
+        </member>
+        <member name="T:APILayer.Controllers.PdfModel">
+            <summary>
+            this is the PDF Model used in pdf generation 
+            </summary>
+        </member>
+        <member name="P:APILayer.Controllers.PdfModel.CountEmployeesYear1">
+            <summary>
+            count of eligible employees year 1
+            </summary>
+        </member>
+        <member name="P:APILayer.Controllers.PdfModel.CountEmployeesYear2">
+            <summary>
+            count of eligible employees year 2
+            </summary>
+        </member>
+        <member name="P:APILayer.Controllers.PdfModel.CountEmployeesYear3">
+            <summary>
+            count of eligible employees year 3
+            </summary>
+        </member>
+        <member name="P:APILayer.Controllers.PdfModel.CountEmployeesYear4">
+            <summary>
+            count of eligible employees year 4
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.ExecuteSqlQueryHelper(APILayer.Controllers.ExecutiveSummaryReportController.QueryParameters,System.Int32,System.Action{System.Data.SqlClient.SqlDataReader,System.Int32})">
+            <summary>
+            loop for a specified number of years and execute the sql query on each iteration.
+            </summary>
+            <param name="queryParameters"></param>
+            <param name="numYears"></param>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GroupClaimCategories(System.Collections.Generic.List{APILayer.Models.ExecutiveSummary.IClaimsByCategory},System.Int32,System.Int32,System.Func{System.Collections.Generic.List{APILayer.Models.ExecutiveSummary.IClaimsByCategory},APILayer.Models.ExecutiveSummary.IClaimsByCategory})">
+            <summary>
+            groups the list such that:
+            - If the list contains more items than maxItemsBeforeOther, the excess items are added to an "Other" item
+            - If any item contains less claims than minCategorySize, it is removed and grouped into the "Other" item
+            </summary>
+            <param name="items"></param>
+            <param name="minCategorySize"></param>
+            <param name="maxItemsBeforeOther"></param>
+            <param name="otherItemCreator">function to generate a new OTher claim category when necessary</param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetBenchmarkIndicators(APILayer.Controllers.PdfModel)">
+            <summary>
+            return hard-coded ericsson benchmarks
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GeneratePdf(APILayer.Controllers.PdfModel)">
+            <summary>
+            convert the whole view html into pdf 
+            </summary>
+            <param name="pdfModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.ResetCustomizationsForUser(System.Int32)">
+            <summary>
+            Deletes all the customizations that the user has previously set
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GenerateChartImage(System.String)">
+            <summary>
+            these methods used to generate the images only 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsbySite(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get data for claims by site table
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsbyProvince(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get data for claims by province table
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForReferralByMonthClaims(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get data for bar chart of claims referral by month
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByGenderAndAge(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get data for bar chart of new STD Claims By Gender and age
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByGenderYearOverYear(APILayer.Controllers.PdfModel)">
+            <summary>
+            get a table of data for claims by gender for a period of 4 years 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByAgeYearOverYear(APILayer.Controllers.PdfModel)">
+            <summary>
+            get a table of data for claims by age for a period of 4 years
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsBySeniority(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get data for bar chart by seniority
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByMedicalCondition(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get image url of pie chart by medical condition
+            </summary>
+            <param name="fromDate"></param>
+            <param name="toDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByMedicalConditionYearOverYear(APILayer.Controllers.PdfModel)">
+            <summary>
+            GetDataForClaimsByMedicalConditionYearOverYear
+            </summary>
+            <param name="fromDate"></param>
+            <param name="toDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByDiagnosisMusculoskeletal(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get image url of pie chart by diagnosis by medical condition musculoskeletal
+            </summary>
+            <param name="fromDate"></param>
+            <param name="toDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByDiagnosisMentalHealth(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get image url of pie chart by diagnosis by medical condition Mental Health
+            </summary>
+            <param name="fromDate"></param>
+            <param name="toDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetMedicalConditionAnalysisTable(APILayer.Controllers.PdfModel)">
+            <summary>
+            GetDataMedicalConditionAnalysis
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByClosureReason(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get image url of pie chart by Closure Reason
+            </summary>
+            <param name="fromDate"></param>
+            <param name="toDate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByClosureReasonYearOverYear(APILayer.Controllers.PdfModel)">
+            <summary>
+            GetDataForClaimsByClosureReasonYearOverYear
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByLagReferralTime(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get data of bar chart for claims by lag refrral time
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByLagApsTime(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get data of bar chart for claims by lag aps time
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetDataForClaimsByTdoVsDdg(APILayer.Controllers.PdfModel)">
+            <summary>
+            Get data of bar chart for claims by lag aps time
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.SaveFormStateBasedOnControlId(APILayer.Models.FormViewModel)">
+            <summary>
+             save form element state
+            </summary>
+            <param name="pdfModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.DeleteSlideById(APILayer.Models.FormViewModel)">
+            <summary>
+            Soft delete the child and parent slide by their respective id's
+            </summary>
+            <param name="formViewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ExecutiveSummaryReportController.GetFormElementState(System.Int32)">
+            <summary>
+            fetch all the form element status based on userId
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:APILayer.Controllers.SessionController">
+            <summary>
+            API endpoint for controling session timeout
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.SessionController.SessionTracker(System.String,System.Boolean)">
+            <summary>
+            Returns true if session state is valid
+            </summary>
+            <param name="token">session token window.token</param>
+        </member>
+        <member name="M:APILayer.Controllers.SessionController.RemoveSessionByToken(System.String)">
+            <summary>
+            Remove the Session
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.ClientController.CreateNewClient(APILayer.Controllers.ClientServiceModel)">
+             Route: api/Client/create
+             Discription: This endpoint handles creating a new client or division for a client.
+             
+            *
+        </member>
+        <member name="M:APILayer.Controllers.ClientController.GetClientIDByClaimRefNo(System.String)">
+            <summary>
+            Gets the lient id by claim reference number
+            </summary>
+            <param name="ClaimRefNo"></param>
+        </member>
+        <member name="M:APILayer.Controllers.ClientController.GetClientIDBySession(System.String)">
+            <summary>
+            Gets the lient id by claim reference number
+            </summary>
+            <param name="ClaimRefNo"></param>
+        </member>
+        <member name="M:APILayer.Controllers.DynamicController.GetPortalClaimManagerData(System.String,System.String,APILayer.Controllers.ClaimManagerFieldList)">
+            <summary>
+            Gets the data for claim manager page tables
+            </summary>
+            <param name="Token"></param>
+            <param name="StatusString"></param>
+            <param name="Fields"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.IncidentController.WeatherConditions(System.Int32)">
+            <summary>
+            Returns a list of weather conditions associated with a claims cause section
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.IncidentController.EnvironmentFactors(System.Int32)">
+            <summary>
+            Returns a list of environment factors associated with a claims cause section
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.IncidentController.EquipmentInvolved(System.Int32)">
+            <summary>
+            Returns a list of the equipment involved associated with a claims cause section
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.IncidentController.HumanFactors(System.Int32)">
+            <summary>
+            Returns a list of human factors associated with a claims cause section
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.IncidentController.InjuryLocations(System.Int32)">
+            <summary>
+            Returns a list of injury locations associated with a claims cause section
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.LoginController.CheckIfLoggedIn(System.String)">
+            <summary>
+            Checks if user is logged in. if they are return their session information.
+            </summary>
+            <param name="Username"></param>
+        </member>
+        <member name="M:APILayer.Controllers.PopulateController.GetList_AppealStatus">
+            <summary>
+            It gets the values to be populate the Appeal status
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.PopulateController.GetList_WeatherConditions">
+            <summary>
+            Gets a list of useable weather conditions in portal
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.PopulateController.GetList_EnvironmentFactors">
+            <summary>
+            Gets a list of useable environmental factors for dropdowns
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.PopulateController.GetList_EquipmentInvolved">
+            <summary>
+            Gets a list of useable equipment that could be involved in an incident cause
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.PopulateController.GetList_InjuryIllnessLocation">
+            <summary>
+            Gets a list of useable equipment that could be involved in an incident cause
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.PopulateController.GetList_HumanFactor">
+            <summary>
+            Gets a list of useable human factors that can be used for the incident cause section
+            </summary>
+        </member>
+        <member name="T:APILayer.Controllers.ReportsController">
+            <summary>
+            Reports controller for 
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.ReportsController.Report_NewReferralsAggregateByMonth(System.String,APILayer.Controllers.ReportRequestModel)">
+            <summary>
+             Gets new referrals aggregate by month and year filtered by the provided request properties
+            </summary>
+            <param name="token">token to verify the users session</param>
+            <param name="request">object that contains dateFrom, dateTo, and clientId for filtering data</param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ReportsController.Report_ClosedReferralsAggregateByMonth(System.String,APILayer.Controllers.ReportRequestModel)">
+            <summary>
+             Gets closed referrals aggregate by month and year filtered by the provided request properties
+            </summary>
+            <param name="token">token to verify the users session</param>
+            <param name="request">object that contains dateFrom, dateTo, and clientId for filtering data</param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.ReportsController.getDivisionsForUser(System.String,System.String)">
+            <summary>
+            A helper function that takes in a token and basicClientId. If the user is a manager it gets all divisions for root, if the
+            user is a basic user it returns basicClientId (which is the users clientId)
+            </summary>
+            <param name="token"></param>
+            <param name="basicClientId"></param>
+            <returns>a comma delimited string of the divisions associated with the user</returns>
+        </member>
+        <member name="T:APILayer.Controllers.ReportRequestModel">
+            <summary>
+            Report request model
+            </summary>
+        </member>
+        <member name="M:APILayer.Controllers.ClaimUpdatesController.ArchiveUpdate(System.String,System.Int32)">
+            <summary>
+            If the user creates a claim update they can delete it within 2 hours of creation if they make a mistake 
+            </summary>
+            <param name="token"></param>
+            <param name="updateID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Controllers.SaveClaimController.CheckIfDuplicateClaim(APILayer.Controllers.DuplicateEmpCheck)">
+            <summary>
+            Checks if the claim employe has any open records and return a result with two integers. # of open claims and # of historical claims
+            </summary>
+            <param name="Employee"> DTO of employee</param>
+            <returns></returns>
+        </member>
+        <member name="P:APILayer.Models.ExecutiveSummary.ExecutiveSummaryStatsByYear.ClaimsIncidentRate">
+            <summary>
+            incident rate (STD Claims/ Total Eligible Employees)
+            </summary>
+        </member>
+        <member name="P:APILayer.Models.ExecutiveSummary.ExecutiveSummaryStatsByYear.PercentLtdTransferOnClosed">
+            <summary>
+            % ltd transfers on closed std claims
+            </summary>
+        </member>
+        <member name="M:APILayer.Models.PortalQuery.AddParameter(System.String,System.Object)">
+            <summary>
+            Adds a parameter to this query.
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:APILayer.Models.PortalQuery.GetCommandText">
+            <summary>
+            Returns insert statement with column names and value placeholders.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Models.PortalQuery.ConcatenateParameters(System.String,System.String)">
+            <summary>
+            Concatenates parameters that save into a particular column with a delimiter.
+            </summary>
+            <param name="column"></param>
+            <param name="delimiter"></param>
+        </member>
+        <member name="M:APILayer.Services.OldOrgsysServices.EncryptString(System.String)">
+            <summary>
+            Calls database function to encrypt a string.
+            </summary>
+            <param name="cleartext"></param>
+        </member>
+        <member name="M:APILayer.Services.OldOrgsysServices.GetEmployeeID(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Returns EmployeedID of record that matches parameters, 0 if no record found.
+            </summary>
+            <param name="importId"></param>
+            <param name="firstName"></param>
+            <param name="lastName"></param>
+            <param name="dob"></param>
+        </member>
+        <member name="M:APILayer.Services.OldOrgsysServices.GetClaimIndexByEmployeeID(System.Int32)">
+            <summary>
+            Returns the claims index value of the claim to be submitted.
+            </summary>
+            <param name="employeeId"></param>
+        </member>
+        <member name="M:APILayer.Services.OldOrgsysServices.GetLastInsertID">
+            <summary>
+            Return the id value of the last inserted record for the connection passed.
+            </summary>
+        </member>
+        <member name="M:APILayer.Services.OldOrgsysServices.ExecuteInsert(APILayer.Models.PortalQuery)">
+            <summary>
+            Builds and executes the query.
+            </summary>
+            <param name="query"></param>
+        </member>
+        <member name="M:APILayer.Services.QueryService.BuildQuery(System.Collections.Generic.List{DataLayer.GetPortalPortalDataViewResult},System.Collections.Generic.List{DataLayer.GetFilteredDataResult})">
+            <summary>
+            Returns an SQL query as a string, where this query only returns the data which the user has permissions to view.
+            </summary>
+            <param name="fields"></param>
+            <param name="permissions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Services.QueryService.BuildQueryFromPermissions(System.Collections.Generic.List{DataLayer.GetPortalPortalDataViewResult},System.Collections.Generic.List{DataLayer.GetFilteredDataResult})">
+            <summary>
+            Returns an SQL query as a string, where this query only returns the data which the user has permissions to view.
+            </summary>
+            <param name="fields"></param>
+            <param name="permissions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:APILayer.Services.QueryService.ResolveFilterValue(DataLayer.GetFilteredDataResult,DataLayer.OrgSys2017DataContext,System.String)">
+            <summary>
+            Resolves the filter value to that of what will be used in the query.
+            </summary>
+            <param name="filterValue"></param>
+            <param name="context"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BusinessLayer.BusinessObjectBase`1.#ctor">
+            <summary>
+             /// Constructor 
+            </summary>
+            
+        </member>
+        <member name="M:BusinessLayer.BusinessObjectBase`1.GetTableData(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Retrieves the filtered data of the table
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BusinessLayer.BusinessObjectBase`1.GetAll">
+            <summary>
+            Retrieves all the data of the table
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BusinessLayer.BusinessObjectBase`1.SaveTableData(`0)">
+            <summary>
+            
+            </summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:BusinessLayer.BusinessObjectBase`1.SaveChanges">
+            <summary>
+            Save Changes to database
+            </summary>
+        </member>
+    </members>
+</doc>

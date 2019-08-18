@@ -1,0 +1,11 @@
+<packages>
+
+  <package name="global" type="js">
+    <add path="/Scripts/global.js" />
+  </package>
+
+  <package name="search" type="js">
+    <add path="/Scripts/search.js" />
+  </package>
+
+</packages>

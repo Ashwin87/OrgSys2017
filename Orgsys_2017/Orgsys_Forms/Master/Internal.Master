@@ -1,0 +1,616 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Internal.master.cs" Inherits="Orgsys_2017.Orgsys_Forms.Master.Internal" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <script>
+        //
+        //updated: astgermain
+        //changed message to be an option instead of concatenation in case someone logs an object type
+        function DEBUG(message, prefix, level) {
+            level ? level : "log";
+            <% #if DEBUG %> //ONLY ALLOW MESSAGES WHILE DEBUGGING
+            if (level == 'warn') { //Console Warning
+                console.warn(prefix + ':: ', message);
+            } else if (level == 'info') { //Console Info
+                console.info(prefix + ':: ', message);
+            } else if (level == 'error') { //Console Error
+                console.error(prefix + ':: ', message);
+            } else if (level == 'alert') {
+                alert(message);
+            } else { //Default to Log
+                console.log(prefix + ':: ', message);
+            }
+            <% #else %>
+            console.info('Debugging supressed while not in debug mode.');
+            <% #endif %>
+        }
+    </script>
+
+    <title></title>
+    <!-- jQuery References-->
+    <script src="/Assets/js/jquery-3.1.1.js"></script>
+    <script src="/Assets/js/jquery.validate.min.js"></script>
+    <script src="/Assets/js/purl.js"></script>
+    <script src="/Assets/js/jquery-ui.js"></script>
+    <script src="/Assets/js/underscore.js"></script>
+    <!-- easy autocomplete references -->
+    <script src="../../Assets/js/jquery.easy-autocomplete.min.js"></script>
+    <link href="../../Assets/css/easy-autocomplete.min.css" rel="stylesheet" />
+<%--    <script src="../../Assets/js/pdfobject.js"></script>--%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+    <!-- Bootstrap References -->
+    <link href="/Assets/css/bootstrap.css" rel="stylesheet" />
+    <script src="/Assets/bs/bootstrap.js"></script>
+    <script src="/Assets/bs/bootstrap-slider.js"></script>
+    <script src="/Assets/bs/bootstrap-notify.min.js"></script>
+    <!-- Moment reference -->
+     <script src="/Assets/js/moment.js"></script>
+    <!-- DataTables References-->
+    <link rel="stylesheet" type="text/css" href="../../Assets/DataTables/datatables.min.css" />
+    <script type="text/javascript" src="../../Assets/DataTables/datatables.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.19/sorting/date-de.js" type="text/javascript"></script>
+    <!-- Chart.js References-->
+    <script src="/Assets/js/Chart.js"></script>
+    <script src="/Assets/js/Chart.bundle.js"></script>
+    <!-- Select2 References -->
+    <script src="/Assets/js/select2.min.js"></script>
+    <link href="/Assets/css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/Assets/css/select2-bootstrap.css" rel="stylesheet" type="text/css"/>
+    <!-- Sweet Alerts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.3/sweetalert2.js"></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.3/sweetalert2.css' rel='stylesheet' type='text/css' />
+    <!-- FONTAWESOME STYLES-->
+    <link href="/Assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- MORRIS CHART STYLES-->
+    <link href="/Assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- SWEET ALERT 2 -->
+    <script src="../../Assets/js/sweetalert.js"></script>
+    <link rel="stylesheet" href="../../Assets/css/sweetalert.css" />
+    <script src="../../Assets/js/orgsysNavbar.js"></script>
+    <!-- GOOGLE FONTS-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css' />
+    <!-- Style Sheet References-->
+    <link href="/Assets/css/slider.css" rel="stylesheet" />
+    <link href="/Assets/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="/Assets/css/RolesTemplate.css" rel="stylesheet" />
+    <!-- CUSTOM STYLES-->
+    <%--<link href="/Assets/css/custom.css" rel="stylesheet" />--%>
+    <link rel="stylesheet" type="text/css" href="/Assets/css/orgsys.css" />
+    <link rel="stylesheet" type="text/css" href="/Assets/css/new-orgsys.css" />
+    <link type="text/css" href="/Assets/css/orgsys-Internal.css" rel="stylesheet" />
+    <!-- CUSTOM SCRIPTS-->
+    <script src="/Assets/js/userExperience.js"></script>
+    <script src="/Assets/js/custom.js"></script>
+    <script src="/Assets/js/common/OrgsysUtilities.js"></script>
+    <script src="../../Scripts/bowser.min.js"></script>
+    <script src="../../Assets/js/common/SessionValidation.js"></script>
+
+    <script src="/Assets/js/common/DTUtilities.js"></script>
+    <script src="/Assets/js/common/DateInput.js"></script>
+    <!-- Calendar References -->
+    <link rel="stylesheet" type="text/css" href="../../Assets/css/fullcalendar.css" />
+    <script src="/Assets/js/fullcalendar.js"></script>
+    <!-- VUEJS Reference 
+    <script src="/Scripts/vue.js"></script>-->
+    <script>
+        window.getApi = '<%= page.get_api%>';
+        window.token = '<%= page.token%>';
+        //temporary code until multilingual is set up on internal side
+        $.ajax({
+            type: "GET",
+            beforeSend: function(xhr) { xhr.setRequestHeader('Language', 'en-ca'); },
+            async: false,
+            url: window.getApi +
+                "/api/Multilingual/GetMultilingualObject/" +
+                window.getPage +
+                "/" +
+                window.getMaster,
+            success: function(data) {
+                var data = JSON.parse(data);
+                //window.ControlsData = data.Controls;
+                window.MessagesData = data.Messages;
+            },
+            error: function(data) {
+
+            }
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script>
+        $(document).ready(function () {
+            //Defaults for data tables jquery plug in
+            $.fn.dataTable.ext.errMode = 'throw';
+            //Defaults for jquery select2 plug in
+            $.fn.select2.defaults.set("theme", "bootstrap");
+            //Dynamic event handler for handling clicks on buttons and tabs to update the users session
+            <%-- $(document).on("click", "a", function () {
+                 updateSessionLastValidDate("<%=page.get_api%>", "<%= page.token%>");
+            });
+            $(document).on("blur", ".form-control", function () {
+                 updateSessionLastValidDate("<%=page.get_api%>", "<%= page.token%>");
+            });--%>
+
+            $.ajax({
+                url: "<%= page.get_api %>/api/<%= token %>/Users/user",
+                 beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+                async: false,
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    $('#dropdownName').append(result[0]["Username"]);
+                }
+            });
+<% #if DEBUG %>
+            //get and set client logo for each page
+            $.ajax({
+                type: 'GET',
+                beforeSend: function (xhr) { xhr.setRequestHeader('Authentication',"<%= token %>"); },
+                url: "<%= api %>/api/Client/GetClientLogo/<%= token %>",
+                success: function (data) {
+                    
+                     window.logoBase64 = JSON.parse(data).imageBase64;
+                },
+                error: function (jqXHR, textStatus, errorThrown) { 
+                     window.logoBase64 = '/Assets/img/CRS Demo Logo.JPG';
+                }
+            }).then(function(){
+                 $('#logo-container').append('<img id="client-logo" src="' + window.logoBase64 + '" alt="Your Logo Here" />');
+            })
+
+            //Marie did it, so I beleive Marie would add comments
+            $("#Logout").click(function () {
+                $.ajax({
+                    url: "<%= page.get_api %>/api/Session/RemoveSessionByToken/" + '<%= token%>',
+                    type: 'POST',
+                    success: function (result) {
+                        window.location.replace("/Orgsys_Forms/Orgsys_Login.aspx?track=internal");
+                        window.history.forward();
+                    }
+                });
+                //Temporary until we implement session clearing in API
+            });
+            <% #else %>
+            //Logout button for top right dashboard
+            $("#Logout").click(function () {
+                $.ajax({
+                    url: "<%= page.get_api %>/api/Session/RemoveSessionByToken/" + '<%= token%>',
+                    type: 'POST',
+                    success: function (result) {
+                        window.location.replace("/Orgsys_Forms/Orgsys_Login.aspx");
+                        window.history.forward();
+                    }
+                });
+                //Temporary until we implement session clearing in API
+            });
+
+<% #endif %> 
+                <%--$.getJSON("<%= page.get_api %>/api/DataManagement/GetUsername/" + '<%= page.token %>', function (data) {
+                    var results = JSON.parse(data);
+                    $('#dropdownName').append(results[0]["Username"]);
+                });--%>
+
+            //Updated by: Marie Gougeon - Revised 2017-09-25
+            //service type for form modal
+            $(".serviceType").click(function () {
+                $('#error-selectClient').remove();
+                $('#selectForm').modal({ show: true });
+            });
+            //Grabs the clients for the list before entering the form
+            var tblClients;
+
+            $.ajax({
+                type: 'GET',
+                beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', '<%= token%>'); },
+                url: "<%= page.get_api %>/api/<%= token%>/Users/user/clients",
+                success: function (data) {
+                     var results = JSON.parse(data);
+                tblClients = $('#tblClients').DataTable({
+                    select: true,
+                    style: 'single',
+                    data: results,
+                    "sPaginationType": "full_numbers",
+                    "rowId": "ClientID",
+                    "columns": [{ "data": "ClientName" }]
+                })
+                }
+            });
+
+            var tblClientsid;
+            $('#tblClients').on( 'click', 'tr', function () {
+                 tblClientsid = tblClients.row( this ).id();
+            } );
+            //load the services and clients for form modal
+            $(document).on("click", ".loadServices", function (e) {
+                if (tblClientsid != null && $('#serviceType').val() != 0) {
+                    window.location.href = "/OrgSys_Forms/Internal_Forms/WC.aspx" +"?FormName=" +$('#serviceType').val() +"&ClientID=" +tblClientsid;
+                } else {
+                    $("#formClienError").show();
+                }    
+            });
+
+            //View Client Portal Dilog box
+            // Updated by: Richa Patel - 30/05/2019
+            $(document).on('click', '.client-portal-link', function () {
+                $('#error-selectClient').remove();
+                $('#client_portal_view').modal({ show: true });
+            });
+            //Grabs the clients for the list before entering the portal
+            var ClientPortal;
+            $.ajax({
+                type: 'GET',
+                beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', '<%= token%>'); },
+                url: "<%= page.get_api %>/api/<%= token%>/Users/user/clients",
+                success: function (data) {
+                    var results = JSON.parse(data);
+                var options = '<td id="client-list"></td>';
+                for (var i = 0; i < results.length; i++) 
+                options += '<td>' + results[i]["ClientName"] + '</td>'
+                ClientPortal = $('#client_portal_view_table').DataTable({
+                    select: true,
+                    style: 'single',
+                    data: results,
+                    "sPaginationType": "full_numbers",
+                    "rowId": "ClientID",
+                    "columns": [{ "data": "ClientName" }]
+                })
+                $('#client-list').append(options);
+                }
+            });
+
+       
+            $('#client_portal_view_table').on('click', 'tr', function () {
+                 ClientPortalid = ClientPortal.row( this ).id();
+            });
+            $(document).on("click", ".client_portal_loadServices", function (e) {
+                alert("Test");
+                //var ClientPotalValue = $('.client-portal-link').val();
+                if (ClientPortalid != null) {
+                    alert("check");
+                    window.location.href = '/OrgSys_Forms/Generic_Forms/PortalHome.aspx';
+                }
+                else {
+                    $("#form_portal_error").show();
+                }    
+            });
+
+            <%-- Old Code for client portal dilog box
+            $(document).on('click', '.client-portal-link', function () { // dead code? .client-portal-link not found in soln
+                $.getJSON("<%= page.get_api %>/api/<%= token%>/Users/user/clients", function (data) {
+                    var results = JSON.parse(data);
+                    var options = '<option value="">Select</option>'
+                    for (var i = 0; i < results.length; i++) 
+                        options += '<option value="' + results[i]["ClientID"] + '">' + results[i]["ClientName"] + '</option>'
+
+                    $('#client-list').append(options);
+                });
+
+                swal({
+                    title: 'View Client Portal',
+                    showCancelButton: true,
+                    confirmButtonText: 'Go to portal',
+                    html: `
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="client-list">Select a client</label>
+                            <select id="client-list"></select>
+                        </div>
+                    </div>`
+                }).then(
+                    function () {
+                        var clientId = $('#client-list').val();
+                        if (clientId) {
+                            $.ajax({
+                                url: "<%= page.get_api%>/api/session/client/<%= token%>/" + clientId
+                            })
+                            .then(
+                                () => window.location.href = '/OrgSys_Forms/Generic_Forms/PortalHome.aspx',
+                                () => swal('', 'Your request could not be completed at the moment. Please report this issue to support@orgsoln.com.', 'error')
+                            );
+                        }
+                    },
+                    function () { }
+                );
+            });--%>
+
+            function filterFunction() {
+                var input, filter, ul, li, a, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                div = document.getElementById("dashDrop");
+                a = div.getElementsByClassName("a");
+                for (i = 0; i < a.length; i++) {
+                    if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        a[i].style.display = "";
+                    } else {
+                        a[i].style.display = "none";
+                    }
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="hidden"></div>
+        <div id="ClaimInfoHeader" class="navbar_top_right"> 
+        </div>
+    </nav>
+    <nav id="portal-navbar" class="navbar navbar-default" role="navigation">
+        <div class="logo_container" >
+            <a href="/OrgSys_Forms/Internal_Forms/InternalDashboard.aspx">
+                <img class="img_setter" src="../../Assets/img/osilogohorizontal.png"/>
+            </a>
+            <div class="menu_img_small_img">
+                <img class="menu_img_setter" src="../../Assets/img/osilogonotrans.png" />
+            </div>
+            <div class="navbar_top_left">
+                <button id="menu_button" href="#" class="menu-button" onclick="myFunction()">
+                    <img class="menu_img_setter" src="../../Assets/img/menu_icon.png" />
+                </button>
+            </div>
+        </div>
+        <div class="navbar-right internal_master_menu">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link" href="/OrgSys_Forms/Internal_Forms/InternalDashBoard.aspx">
+                        <span aria-hidden="true" class="icon_setter icon-home"></span>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="nav-item nav_item_forms">
+                    <a class="serviceType nav-link internal_nav_link" href="#selectForm">
+                        <span aria-hidden="true" class="serviceType icon_setter icon-profile"></span>
+                        <p>Forms</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link" href="/OrgSys_Forms/ExecutiveSummaryReport.aspx">
+                        <span aria-hidden="true" class="icon_setter icon-file-text"></span>
+                        <p>Reports</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link" href="/OrgSys_Forms/Internal_Forms/ClientProfile.aspx">
+                        <span aria-hidden="true" class="icon_setter icon-address-book"></span>
+                        <p>Client Profile</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link" href="/OrgSys_Forms/BillingManager.aspx">
+                        <span aria-hidden="true" class="icon_setter icon-coin-dollar"></span>
+                        <p>Billing Manager</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link" href="../Internal_Forms/PeerReview.aspx">
+                        <span aria-hidden="true" class="icon_setter icon-clipboard"></span>
+                        <p>Peer Review</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link" href="/OrgSys_Forms/UserRoles.aspx">
+                        <span aria-hidden="true" class="icon_setter icon-users"></span>
+                        <p>Users</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link" href="/OrgSys_Forms/TaskManager.aspx">
+                        <span aria-hidden="true" class="icon_setter icon-user-tie"></span>
+                        <p>Tasks Manager</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link" href="/OrgSys_Forms/ClaimsManager.aspx">
+                        <span aria-hidden="true" class="icon_setter icon-drawer"></span>
+                        <p>Claims</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link client-portal-link" href="#client_portal_view">
+                        <span aria-hidden="true" class="icon_setter icon-newspaper"></span>
+                        <p>Client Portal</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link internal_nav_link" href="/OrgSys_Forms/Orgsys_Wiki.aspx">
+                        <span aria-hidden="true" class="icon_setter icon-wikipedia"></span>
+                        <p>Wiki</p>
+                    </a>
+                </li>
+                <li id="osi_user_profile" class="dropdown my-account nav-item logout_setter">
+                    <a href="#" class="dropdown-toggle nav-link internal_nav_link" data-toggle="dropdown">
+                        <span aria-hidden="true" class="icon_setter icon-user"></span>
+                        <p id="dropdownName"></p>
+                        <i class="icon-plus profile_icon_plus submenu_icon_setter"></i>
+                        <i class="icon-minus profile_icon_minus submenu_icon_setter" style="display:none;"></i>
+                        <%--<i class="icon-circle-down short_menu_icon_setter"></i>--%>
+                    </a>
+                    <ul class="dropdown-menu internal_dropdown" style="right: 50px;">
+                        <li class="nav-item">
+                             <a href="#" class="btn-Logout dropdown-item">
+                             <span aria-hidden="true" class="icon_setter"></span>
+                                 <p>Settings</p>
+                             </a>
+                        </li>
+                        <li class="nav-item">
+                             <a type="submit" id="Logout" class="btn-Logout dropdown-item" onserverclick="Logout_Click">
+                                 <span aria-hidden="true" class="icon_setter"></span>
+                                 <p>Logout</p>
+                             </a>
+                         </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="divider">
+    </div>
+    <%-- Place Holder for content pages --%>
+    <div id="master-wrapper" class="container">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div id="client_portal_view" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">View Client Portal</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <p class="bg-danger" id="form_portal_error" style="display: none">Please select a client </p>
+                        </div>
+                        <div class="form-group">
+                            <div class="client_portal_header">
+                                <span> Please select a client</span>
+                            </div>
+                            <table style="width:100%;" id="client_portal_view_table" class="table table-bordered table-hover dataTable no-footer">
+                                <thead>
+                                    <tr>
+                                        <th style="width:20px">Client Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="client-list"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="swal2-confirm btn-info swal2-styled client_portal_loadServices" style="background-color: rgb(48, 133, 214); border-left-color: rgb(48, 133, 214); border-right-color: rgb(48, 133, 214);">Go to portal</button>
+                    <button type="button" class="swal2-cancel swal2-styled client_portal_cancel_button" data-dismiss="modal" aria-hidden="true" style="display: inline-block; background-color: rgb(170, 170, 170);">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%--Created by Sam Khan
+    It does the Client and Service Selection--%>
+    <div id="selectForm" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Client and Services Selection</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group"><p class="bg-danger" id="formClienError" style="display: none">Please select a client and a service type</p></div>
+                        
+                        <div class="form-group">
+                            <table style="width:100%;" id="tblClients" class="table table-bordered table-hover dataTable no-footer">
+                                <thead>
+                                <tr>
+                                    <th style="width:20px">Client Name</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Service Type</label>
+                            <select id="serviceType">
+                                <option value="0">--</option>
+                                <option value="WC">WC</option>
+                                <option value="STD">STD</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="form_continue_button" class="swal2-confirm btn-info swal2-styled loadServices" style="background-color: rgb(48, 133, 214); border-left-color: rgb(48, 133, 214); border-right-color: rgb(48, 133, 214);">Continue</button>
+                    <button type="button" class="swal2-cancel swal2-styled form_cancel_button" data-dismiss="modal" aria-hidden="true" style="display: inline-block; background-color: rgb(170, 170, 170);">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-- <div id="footer masterfoot">
+        <div id="footer" class="container" style="text-align:center; background-color:#202020; color:whitesmoke;position: relative;right: 0;bottom: 0;left: 0;">
+            <p class="text-muted">All Rights Reserved, Organizational Solutions Inc. © 2017 - Email: info@orgsoln.com</p>
+        </div>
+    </div>--%>
+    <script>
+        //    $(window).load(function () {
+        //        var windowhref = window.location.href.split(/^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/)[5];//rfc2396 official regex to split URLs
+        //$($('.navbar-right').find("a[href='" + windowhref + "']")[0]).parent().addClass('nav-item-active');
+        //        $('#form_continue_button').on('click', function (e) { 
+        //            $(window).load(function () {
+        //                $('.nav_item_forms').addClass("nav-item-active");
+        //            });
+        //  $(this).addClass('nav-item-active');
+        //         if (!$(this).hasClass('dropdown-toggle')) {
+        //    window.location.href = $(this).attr("href");
+        //}
+        //});
+        //$("#form_continue_button").click(function () {
+        //    $(".nav_item_forms").addClass("nav-item-active");
+        //});
+        //});
+        $(function () {
+            $('#osi_user_profile').click(function () {
+                $('.internal_dropdown').toggleClass('visible',200);
+                $('.profile_icon_plus').slideToggle();
+                $('.profile_icon_minus').slideToggle();
+            });
+            $('.short_menu').mouseover(function () {
+                $("#osi_user_profile").off('click');
+                $('.internal_dropdown').toggleClass('visible',200);
+            });
+            $('.form_cancel_button').click(function () {
+                $('.serviceType').parent().removeClass('nav-item-active');
+            });
+            $('.client_portal_cancel_button').click(function () {
+                $('.client-portal-link').parent().removeClass('nav-item-active');
+            });
+        });
+        function myFunction() {
+            $('#portal-navbar').toggleClass("short_menu internal_short_menu",200);
+            $('#osi_user_profile').toggleClass("short_menu_account",200);
+            $("#master-wrapper").toggleClass("padding_50",200);
+            $(".menu_img_small_img").toggleClass("visible",200);
+            $(".img_setter").toggleClass("visible_none",200);
+            $("#footer2").toggleClass("padding_50",200);
+            $(".claim-form").toggleClass("height_setter", 200);
+            $(".short_menu_icon_setter").slideToggle();
+            $(".submenu_icon_setter").slideToggle();
+            $("#client-services").toggleClass("short_menu_class", 200);
+            $(".internal_dropdown").removeClass("visible");
+            //$('#client-services .dropdown-item span').toggleClass('icon-tree');
+            //$('.logout_setter .dropdown-menu a span').toggleClass('icon-tree');
+            $(".left ul").toggleClass("padding_left_25", 10);
+            $('#client-services .dropdown-item p').hover(function () {
+                $(this).addClass("menu_hover");
+            });
+            if ($(window).width() <= 550) {
+                $('#portal-navbar').toggleClass("hidden", 200);
+                $('#portal-navbar').removeClass("short_menu internal_short_menu", 10);
+                $("#main-container").removeClass("padding_50", 10);
+                $(".claim-form").removeClass("height_setter", 10);
+                $("#client-services").removeClass("short_menu_class", 10);
+                //$('#client-services .dropdown-item span').removeClass('icon-tree');
+                //$('.logout_setter .dropdown-menu a span').removeClass('icon-tree');
+            };
+            if ($(".profile_icon_plus").is(":visible")) {
+                if ($(".profile_icon_minus").is(":visible")) {
+                    $(".profile_icon_minus").css("display","block");
+                    $(".profile_icon_plus").css("display","none");
+                }
+            }  
+        };
+        if ($(window).width() <= 550) {
+            $('#portal-navbar').addClass("hidden");
+            $(".navbar-fixed-top .hidden").addClass("mobile_menu", 10);
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="Footer" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿<!--Html section for Absence dates-->
+<div class="row margin_bottom">
+    <div class="col-md-4">
+        <label for="firstDayOff">First Day Off</label>
+        <input type="date" class="form-control col-md-3" name="firstDayOff" id="firstDayOff" />
+    </div>
+    <div class="col-md-4">
+        <label for="lastDayWorked">Last Day Worked</label>
+        <input type="date" class="form-control col-md-3" name="lastDayWorked" id="lastDayWorked" />
+    </div>
+    <div class="col-md-4">
+        <label for="rtwAuth">RTW Auth</label>
+        <input type="date" class="form-control col-md-3" name="rtwAuth" id="rtwAuth" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-4">
+        <label for="OSIRTM">RTWM</label> <!--Changed label-->
+        <input type="date" class="form-control col-md-3" name="OSIRTM" id="OSIRTM" />
+    </div>
+    <div class="col-md-4">
+        <label for="OSIRTF">RTWF</label><!--Changed label-->
+        <input type="date" class="form-control col-md-3" name="OSIRTF" id="OSIRTF" />
+    </div>
+</div>
+<label class="checkbox-inline">
+    <input class="form-check-input" type="checkbox" name="gradRTW" id="GradualRTW">Gradual RTW
+</label>
+<label class="checkbox-inline">
+    <input class="form-check-input" type="checkbox" name="absRecurred" id="AbsenceRecurred">Transitional continued or absence recurred?
+</label>
+<div class="row margin_bottom">
+    <div class="col-md-5">
+        <label>Absence Vacation RTM/RTW Status</label>
+        <select class="form-control" name="Status" id="sch1">
+            <option selected label="Select"></option>
+            <option label="modified duties" value="modifiedduties"></option>
+            <option label="modified hours" value="modifiedhours"></option>
+            <option label="modified hours and duties" value="modified"></option>
+            <option label="reduced" value="reduced"></option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label>Hours</label>
+        <input type="text" class="form-control col-md-3" name="hours" id="sch2" />
+    </div>
+</div>
+<div>
+    <label>Date Range for Absence Status</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">From Date</label>
+    <div class="col-md-3">
+        <input type="date" class="form-control" name="absFromDate" id="sch3">
+    </div>
+
+    <label class="col-md-2 col-form-label">To Date</label>
+    <div class="col-md-3">
+        <input type="date" class="form-control" name="absToDate" id="sch4">
+    </div>
+    <input type="button" value="Add" id="addAbsDates" />
+</div>
+<div>
+    <table id="dateAbsList" name="dateAbsList" class="table table-bordered"></table>
+    <input type="text" name="absCounter" id="absCounter" value=0 hidden="hidden" />
+</div>
+

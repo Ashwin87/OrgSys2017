@@ -1,0 +1,785 @@
+﻿
+<script type="text/javascript">
+
+    function LoadClaimDatesDT() {
+
+        InitializeClaimDatesDT();
+
+        GetDataGeneric('Claim', 'GetCpp_AppDetails', ClaimID).then(function (cpp) {
+            SetDataDT('#tbl_AppCpp', ReplaceDFValues(cpp));
+        });
+
+        GetDataGeneric('Claim', 'GetGRTWSchedule', ClaimID).then(function (grtw) {
+            SetDataDT('#tblGRTW', ReplaceDFValues(grtw));
+        });
+
+        GetDataGeneric('Claim', 'GetRehabilitation', ClaimID).then(function (rehab) {
+            SetDataDT('#tblRehab', ReplaceDFValues(rehab));
+            console.log(rehab)
+        });
+
+    }
+
+    function InitializeClaimDatesDT() {
+        InitializeDT('#tbl_AppCpp', CPPDTC);
+        InitializeDT('#tblGRTW', GRTWDTC);
+        InitializeDT('#tblRehab', REHABDTC);
+    }
+
+    //CPP ACTIONS ----------
+
+    //It creates CPP Application Status Data Table
+    function CreateApp_CPP() {
+        var table = $('#tbl_AppCpp').DataTable();
+
+        PopulateGenericList("CPPStatus", "populateAppStatus", "ListText", "ListValue");
+
+        swal({
+            title: "Add CPP Application",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Add CPP Application',
+            html: cppTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker()
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                var cpp = GetCPPSwalObject();
+
+                table.row.add(cpp).draw();
+                swal("", "Cpp has been added", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not Added", "error");
+        });
+    }
+
+    $(document).on('click', '.editCPP', function () {
+        var table = $('#tbl_AppCpp').DataTable();
+        var index = table.row($(this).closest('tr')).index();
+        var data = table.row(index).data();
+
+        swal({
+            title: "Edit CPP Application",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Update CPP Application',
+            html: cppTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker()
+                PopulateGenericList("CPPStatus", "populateAppStatus", "ListText", "ListValue").then(function () {
+                    SetCPPSwalObject(data);
+                });
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                var cpp = GetCPPSwalObject();
+
+                table.row(index).data(cpp).draw();
+                swal("", "Cpp has been updated!", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not updated.", "error");
+        });
+
+    });
+
+    $(document).on('click', '.deleteCPP', function () {
+        DeleteRecordSwalDT('#tbl_AppCpp', 'CPP Application', $(this));
+    });
+
+    function GetCPPSwalObject() {
+        return {
+            App_Status: $("#App_Status").val(),
+            App_FollowUp: $("#App_FollowUp").data('iso-date'),
+            App_SentDate: $("#App_SentDate").data('iso-date'),
+            App_DecisionDate: $('#App_DecisionDate').data('iso-date')
+        }
+    }
+
+    function SetCPPSwalObject(cpp) {
+        $("#App_Status").val(cpp.App_Status);
+        SetIsoDateFormat('#App_FollowUp', cpp.App_FollowUp);
+        SetIsoDateFormat('#App_SentDate', cpp.App_SentDate);
+        SetIsoDateFormat('#App_DecisionDate', cpp.App_DecisionDate);
+    }
+
+
+
+
+    function CreateRehab() {
+        var table = $('#tblRehab').DataTable();
+
+
+        swal({
+            title: "Add Rehabilitation",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Add Rehabilitation',
+            html: rehabSwalTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker()
+                MaskInputs(this);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                UnMaskInputs(this);
+                var rehab = GetRehabSwalObject();
+
+                table.row.add(rehab).draw();
+                swal("", "Rehabilitation has been added", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not Added", "error");
+        });
+    }
+
+    function SetRehabSwalObject(rehab) {
+        SetIsoDateFormat('#dpRehabAssessment', rehab.Rehab_Assessment);
+        SetIsoDateFormat('#dpRehabReferral', rehab.Rehab_Referral);
+        SetIsoDateFormat('#dpRehabCommenced', rehab.Rehab_Commenced);
+        SetIsoDateFormat('#dpRehabclosed', rehab.Rehab_Closed);
+        $('#txtCost').val(rehab.Rehab_Cost);
+    }
+
+    function GetRehabSwalObject() {
+        return {
+            Rehab_Assessment: $("#dpRehabAssessment").data('iso-date'),
+            Rehab_Referral: $("#dpRehabReferral").data('iso-date'),
+            Rehab_Commenced: $("#dpRehabCommenced").data('iso-date'),
+            Rehab_Closed: $("#dpRehabclosed").data('iso-date'),
+            Rehab_Cost: $('#txtCost').val()
+        }
+    }
+
+    $(document).on('click', '.editRehab', function () {
+        var table = $('#tblRehab').DataTable();
+        var index = table.row($(this).closest('tr')).index();
+        var data = table.row(index).data();
+
+        swal({
+            title: "Edit Rehabilitation",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Edit Rehabilitation',
+            html: rehabSwalTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker();
+                SetRehabSwalObject(data);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                var rehab = GetRehabSwalObject();
+
+                table.row(index).data(rehab).draw();
+                swal("", "Rehabilitation record has been updated!", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not updated.", "error");
+        });
+
+    });
+
+    $(document).on('click', '.deleteRehab', function () {
+        DeleteRecordSwalDT('#tblRehab', 'Rehab Record', $(this));
+    });
+
+
+    //GRTW ACTIONS ----------
+
+    //It creates GRTW Schedule Data Table
+    function CreateGTRWSch() {
+        var table = $('#tblGRTW').DataTable();
+
+        PopulateGenericList("YesNo", "populateIncomeVerified", "ListText", "ListValue");
+        GetList("GetList_ReturnWorkType", "populateGRTWType", "WorkType_EN");
+
+        swal({
+            title: "Add GRTW Schedule",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Add GRTW',
+            html: grtwTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker()
+                MaskInputs(this);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                UnMaskInputs(this);
+                var grtw = GetGRTWSwalObject();
+
+                table.row.add(grtw).draw();
+                swal("", "GRTW has been added", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not Added", "error");
+        });
+    }
+
+    $(document).on('click', '.editGRTW', function () {
+
+        var table = $('#tblGRTW').DataTable();
+        var index = table.row($(this).closest('tr')).index();
+        var data = table.row(index).data();
+
+        swal({
+            title: "Edit GRTW Schedule",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Update GRTW',
+            html: grtwTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker()
+                $.when(
+                    PopulateGenericList("YesNo", "populateIncomeVerified", "ListText", "ListValue"),
+                    GetList("GetList_ReturnWorkType", "populateGRTWType", "WorkType_EN")
+                ).done(function () {
+                    SetGRTWSwalObject(data);
+                })
+                MaskInputs(this);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                UnMaskInputs(this);
+                var grtw = GetGRTWSwalObject();
+
+                table.row(index).data(grtw).draw();
+                swal("", "GRTW has been added", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not Added", "error");
+        });
+
+    });
+
+    $(document).on('click', '.deleteGRTW', function () {
+        DeleteRecordSwalDT('#tblGRTW', 'GRTW', $(this));
+    });
+
+    function GetGRTWSwalObject() {
+        return {
+            GRTW_Type: $("#GRTW_Type").val(),
+            GRTW_From: $("#GRTW_From").data('iso-date'),
+            GRTW_To: $("#GRTW_To").data('iso-date'),
+            GRTW_Hours: $("#GRTW_Hours").val(),
+            GRTW_Days: $('#GRTW_Days').val(),
+            GRTW_Gross: $('#GRTW_Gross').val(),
+            GRTW_Net: $('#GRTW_Net').val(),
+            IncomeVerified: $('#IncomeVerified').val()
+        }
+    }
+
+    function SetGRTWSwalObject(grtw) {
+        $("#GRTW_Type").val(grtw.GRTW_Type);
+        SetIsoDateFormat('#GRTW_From', grtw.GRTW_From);
+        SetIsoDateFormat('#GRTW_To', grtw.GRTW_To);
+        $("#GRTW_Hours").val(grtw.GRTW_Hours);
+        $('#GRTW_Days').val(grtw.GRTW_Days);
+        $('#GRTW_Gross').val(grtw.GRTW_Gross);
+        $('#GRTW_Net').val(grtw.GRTW_Net);
+        $('#IncomeVerified').val(grtw.IncomeVerified);
+    }
+
+    //DATATABLE CONFIGURATIONS
+
+    var CPPDTC = {
+        select: true,
+        "columns": [
+            { "data": "App_Status" },
+            {
+                "data": "App_FollowUp",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": "App_SentDate",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": "App_DecisionDate",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": null,
+                render: function () {
+                    return '<a class="editCPP btn btn-default edit_button"><i class="icon icon-pencil"></i></a>';
+                }
+            },
+            {
+                "data": null,
+                render: function () {
+                    return '<a class="deleteCPP btn btn-default btn-danger"><i class="icon icon-bin"></i></a>';
+                }
+            }
+        ]
+    }
+
+    var GRTWDTC = {
+        select: true,
+        "columns": [
+            { "data": "GRTW_Type" },
+            {
+                "data": "GRTW_From",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": "GRTW_To",
+                render: ConvertDateIsoToCustom
+            },
+            { "data": "GRTW_Hours" }, { "data": "GRTW_Days" },
+            { "data": "GRTW_Gross" }, { "data": "GRTW_Net" },
+            {
+                "data": "IncomeVerified",
+                render: function (data) {
+                    return (data == 1) ? 'Yes' : 'No';
+                }
+            },
+            {
+                "data": null,
+                render: function () {
+                    return '<a class="editGRTW btn btn-default edit_button"><i class="icon icon-pencil"></i></a>';
+                }
+            },
+            {
+                "data": null,
+                render: function () {
+                    return '<a class="deleteGRTW btn btn-default btn-danger"><i class="icon icon-bin"></i></a>';
+                }
+            }
+        ]
+    }
+
+    var REHABDTC = {
+        select: true,
+        "columns": [
+            {
+                "data": null,
+                render: function () {
+                    return `<a class="deleteRehab btn btn-default btn-danger"><i class="icon icon-bin"></i></a>
+                        <a class="editRehab btn btn-default edit_button" > <i class="icon icon-pencil"></i></a >`;
+                }
+            },
+            {
+                "data": "Rehab_Assessment",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": "Rehab_Referral",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": "Rehab_Commenced",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": "Rehab_Closed",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": "Rehab_Cost",
+                render: function (data) { return "$" + data }
+            }
+        ]
+    }
+
+
+    //SWAL TEMPLATES
+
+    var cppTemplate = `
+    <div class="row margin_bottom">
+        <div class="col-sm-3">
+            <label>App Status</label>
+            <select class ="form-control populateAppStatus" name="app_Status"  id="App_Status"></select>
+        </div>
+        <div class="col-sm-3">
+            <label>Follow Up</label>
+            <input type="date" class ="form-control" name="app_FollowUp"  id="App_FollowUp" />
+        </div>
+        <div class="col-sm-3">
+            <label>Sent Date</label>
+            <input type="date" class ="form-control" name="app_SentDate" id="App_SentDate"></select>
+        </div>
+        <div class ="col-sm-3">
+            <label>Decision Date</label>
+            <input type="date" class ="form-control" name="app_DecisionDate" id="App_DecisionDate"></select>
+        </div>
+    </div>`
+
+    var grtwTemplate = `
+    <div class="row margin_bottom">
+        <div class="col-sm-3">
+            <label>GRTW Type</label>
+            <select class ="form-control populateGRTWType" name="GRTW_Type"  id="GRTW_Type"></select>
+        </div>
+        <div class="col-sm-3">
+            <label>GRTW From </label>
+            <input type="date" class ="form-control" name="GRTW_From"  id="GRTW_From" />
+        </div>
+        <div class="col-sm-3">
+            <label>GRTW To</label>
+            <input type="date" class ="form-control" name="GRTW_To" id="GRTW_To"></select>
+        </div>
+         <div class ="col-sm-3">
+            <label>GRTW Hours</label>
+            <input type="text" class ="form-control" name="GRTW_Hours" id="GRTW_Hours"></select>
+        </div>
+         </div>
+         <div class ="row margin_bottom">
+        <div class ="col-sm-3">
+            <label>GRTW Days</label>
+            <input type="text" class ="form-control" name="GRTW_Days" id="GRTW_Days"></select>
+        </div>
+        <div class ="col-sm-3">
+            <label>GRTW Gross Amount</label>
+            <input type="text" class ="form-control vld-currency" id="GRTW_Gross"></select>
+        </div>
+         <div class ="col-sm-3">
+            <label>GRTW Net Amount</label>
+            <input type="text" class ="form-control vld-currency" name="GRTW_Net" id="GRTW_Net"></select>
+        </div>
+         <div class ="col-sm-3">
+            <label>Income Verified</label>
+            <select class ="form-control populateIncomeVerified" name="incomeVerified" id="IncomeVerified"></select>
+        </div>
+    </div>`
+
+    var rehabSwalTemplate = `
+    <div class="row margin_bottom">
+        <div class="col-sm-3">
+            <label>Rehab Assessment</label>
+            <input type="date" class ="form-control" name="dpRehabAssessment" id="dpRehabAssessment"/>
+        </div>
+        <div class="col-sm-3">
+            <label>Rehab Referral </label>
+            <input type="date" class ="form-control" name="dpRehabReferral" id="dpRehabReferral"/>
+        </div>
+        <div class="col-sm-3">
+            <label>Rehab Commenced</label>
+            <input type="date" class ="form-control" name="dpRehabCommenced" id="dpRehabCommenced"/>
+        </div>
+         <div class ="col-sm-3">
+            <label>Rehab closed</label>
+            <input type="date" class ="form-control" name="dpRehabclosed" id="dpRehabclosed"/>
+        </div>
+         </div>
+         <div class ="row margin_bottom">
+        <div class ="col-sm-3">
+            <label>Cost</label>
+            <input type="text" class ="form-control" name="txtCost" id="txtCost"/>
+        </div>
+    </div>`
+
+</script>
+<script>
+    $(document).ready(function () {
+        if (!$("#stdStart").val() && !$("#stdEnd").val() && !$("#ltdStart").val()) {
+            $.ajax({
+                url: getApi + "/api/Claim/GetClaimBenefitsDefaultDates/" + window.ClaimID,
+                beforeSend: function (request) {
+                    request.setRequestHeader("Authentication", window.token);
+                },
+                async: false,
+                success: function (data) {
+                    $("#stdStart").val(ConvertDateIsoToCustom(data.STDStartDate));
+                    $("#stdEnd").val(ConvertDateIsoToCustom(data.STDEndDate));
+                    $("#ltdStart").val(ConvertDateIsoToCustom(data.LTDStartDate));
+                }
+            });
+
+        }
+
+        
+        $("#LTDCoverage").change(function () {
+            var item = $(this);
+           // alert(item);
+            if (item.val() === '1' || item.val() === "") {
+                $("#ltdStart").removeAttr('disabled');
+                $("#ltdEnd").removeAttr('disabled');
+                $('#ltdStart').removeClass('required');
+                $('#ltdStart').addClass('required');
+            }
+
+            if (item.val() === '0')
+            {
+                $("#ltdStart").attr('disabled', 'disabled');
+                $("#ltdEnd").attr('disabled', 'disabled');
+                $('#ltdStart').removeClass('required');
+            }
+
+        });
+
+    });
+</script>
+<ul class="nav nav-tabs faq-cat-tabs">
+    <li class="nav-item">
+        <a href="#mainDatesTab" data-toggle="tab" role="tab">Main Dates </a>
+    </li>
+    <li class="nav-item">
+        <a href="#GRTWTab" data-toggle="tab" role="tab">GRTW Dates</a>
+    </li>
+    <li>
+        <a href="#benefitTab" data-toggle="tab" role="tab">Benefit Dates</a>
+    </li>
+    <li>
+        <a href="#rehabTab" data-toggle="tab" role="tab">Rehabilitation</a>
+    </li>
+</ul>
+<div class="tab-content faq-cat-content">
+    <div class="tab-pane active" id="mainDatesTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Main Dates</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body">
+                    <!--Main Dates-->
+                    <div class="row margin_bottom">
+                        <div class="col-sm-3">
+                            <label>Date EE Reported to ER</label>
+                            <input type="date" class="form-control col-md-3" id="EEReported" name="EEReported" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>MMAR</label>
+                            <input type="date" class="form-control" id="MMAR" name="MMAR" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>COD</label>
+                            <input type="date" class="form-control" id="COD" name="COD" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Insured Ltd</label>
+                            <input type="text" class="form-control" id="InsuredLTD" name="insuredLTD" />
+                        </div>
+
+                        <div class="col-sm-2">
+                            <label>Wait Period Days</label>
+                            <input type="text" class="form-control" id="WaitPeriod_Days" name="waitPeriod_Days" />
+                        </div>
+                    </div>
+                    <!--<div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label>STD Service End Date</label>
+                            <input type="date" class="form-control" id="STDServiceEndDate" name="stdServiceEndDate" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="stdPeriod">LTD Period Weeks</label>
+                            <input type="text" class="form-control" name="LTDPeriod_Weeks" id="LTDPeriod_Weeks" />
+                        </div>
+                    </div>-->
+
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label>Wait Period Type</label>
+                            <select class="form-control" id="WaitPeriod_Type" name="waitPeriod_Type"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Est Date Closed</label>
+                            <input type="date" class="form-control" id="EstDateClosed" name="estDateClosed" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="DateFirstOff">Date First Off</label>
+                            <input type="date" class="form-control" id="DateFirstOff" name="DateFirstOff" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="dateOfDeath">Date of Death</label>
+                            <input type="date" class="form-control" name="dateOfDeath" id="dateOfDeath" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="dateOfRetire">Date of Retirement</label>
+                            <input type="date" class="form-control" name="dateOfRetire" id="dateOfRetire" />
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label for="codFirstWarn">COD First Warn</label>
+                            <input type="date" class="form-control" name="codFirstWarn" id="codFirstWarn" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="codSecondWarn">COD Second Warn</label>
+                            <input type="date" class="form-control" name="codSecondWarn" id="codSecondWarn" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="IncidentDate">Accident Date</label>
+                            <input type="date" class="form-control" name="IncidentDate" id="IncidentDate" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="DateCreation">Referral Date</label>
+                            <input type="date" class="form-control" name="DateCreation" id="DateCreation" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="DateLastWorked">Date Last Worked</label>
+                            <input type="date" class="form-control" name="DateLastWorked" id="DateLastWorked" />
+                        </div>
+                    </div>
+                    <!--<div class="row margin_bottom">
+
+                    </div>-->
+                    <hr />
+                    <div class="row margin_bottom">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col col-xs-6">
+                                    <h3 class="panel-title">CPP Application Status</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin_bottom">
+                            <button type="button" id="AddCPP" onclick="CreateApp_CPP()" class="btn btn-default add-client"><i class="icon-plus"></i></button>
+                        </div>
+                        <table style="width:100%;" class="table table-bordered table-striped table-hover dataTable no-footer" id="tbl_AppCpp">
+                            <thead>
+                                <tr>
+                                    <th class="col-sm-2">Status</th>
+                                    <th class="col-sm-2">Follow Up</th>
+                                    <th class="col-sm-2">Application Sent Date</th>
+                                    <th class="col-sm-2">Application Decision Date</th>
+                                    <th class="col-sm-2"></th>
+                                    <th class="col-sm-2"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Employee GRTW Schedule Details-->
+    <div class="tab-pane" id="GRTWTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">GRTW Schedule</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body">
+                    <div class="row margin_bottom">
+                        <button type="button" id="AddGRTW" onclick="CreateGTRWSch()" class="btn btn-default add-client"><i class="icon-plus"></i></button>
+                    </div>
+                    <table style="width:100%;" class="table table-bordered table-striped table-hover dataTable no-footer" id="tblGRTW">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-2">Type:</th>
+                                <th class="col-sm-2">From:</th>
+                                <th class="col-sm-2">To:</th>
+                                <th class="col-sm-2">Hrs:</th>
+                                <th class="col-sm-2">Days:</th>
+                                <th class="col-sm-3">Gross Amount:</th>
+                                <th class="col-sm-3">Net Amount:</th>
+                                <th class="col-sm-3">Client Confirmed</th>
+                                <th class="col-sm-2"></th>
+                                <th class="col-sm-2"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Benefits Dates-->
+    <div class="tab-pane" id="benefitTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Benefit Dates</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body">
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label for="stdPeriod">LTD Period Weeks</label>
+                            <input type="text" class="form-control" name="LTDPeriod_Weeks" id="LTDPeriod_Weeks" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="stdPeriod">STD Period Weeks</label>
+                            <input type="text" class="form-control" name="stdPeriod_Weeks" id="STDPeriod_Weeks" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Std Start Date</label>
+                            <input type="date" class="form-control col-md-3" id="stdStart" name="stdStart" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Std End Date</label>
+                            <input type="date" class="form-control  col-md-3" id="stdEnd" name="stdEnd" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>EI Start Date</label>
+                            <input type="date" class="form-control col-md-3" id="eiStart" name="eiStart" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>EI End Date</label>
+                            <input type="date" class="form-control col-md-3" id="eiEnd" name="eiEnd" />
+                        </div>
+
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label>LTD Target Date</label>
+                            <input type="date" class="form-control" id="LTDTargetDate" name="ltdTargetDate" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="ltdCoverage">LTD Coverage</label>
+                            <select class="form-control populateModWork" id="LTDCoverage" name="ltdCoverage"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label>LTD Start Date</label>
+                            <input type="date" class="form-control col-md-3 required" id="ltdStart" name="ltdStart" required />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>LTD End Date</label>
+                            <input type="date" class="form-control col-md-3" id="ltdEnd" name="ltdEnd" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Rehabilitation-->
+    <div class="tab-pane" id="rehabTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <div class="panel-body">
+                    <div class="row margin_bottom">
+                        <div class="col-md-12">
+                            <button type="button" id="AddRehab" onclick="CreateRehab()" class="btn btn-default add-client"><i class="icon-plus"></i></button>
+                            <table style="width:100%;" class="table table-bordered table-striped table-hover dataTable no-footer" id="tblRehab">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-2"></th>
+                                        <th class="col-sm-2">Rehab Assessment</th>
+                                        <th class="col-sm-2">Rehab Referral</th>
+                                        <th class="col-sm-2">Rehab Commenced</th>
+                                        <th class="col-sm-2">Rehab Closed</th>
+                                        <th class="col-sm-3">Cost</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

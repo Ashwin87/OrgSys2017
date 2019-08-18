@@ -1,0 +1,468 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Portal.master.cs" Inherits="Orgsys_2017.Orgsys_Forms.Master.Portal" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<script>
+    function DEBUG(message, prefix, level) {
+        if (level == null)
+            level = 'log';
+        if (prefix == null)
+            prefix = 'debug';
+        <% #if DEBUG %> //ONLY ALLOW MESSAGES WHILE DEBUGGING
+        if (level == 'warn') { //Console Warning
+            console.warn(prefix + '::' + message);
+        } else if (level == 'info') { //Console Info
+            console.info(prefix + '::' + message);
+        } else if (level == 'error') { //Console Error
+            console.error(prefix + '::' + message);
+        } else if (level == 'alert') {
+            alert(message);
+        } else { //Default to Log
+            console.log(prefix + '::' + message);
+        }
+        <% #else %>
+        console.info('Debugging supressed while not in debug mode.');
+        <% #endif %>
+    }
+     window.token = '<%= token%>';
+     window.getApi = '<%= api%>';
+</script>
+    <title></title>
+    <!-- jQuery References-->
+    <script src="/Assets/js/jquery-3.1.1.js"></script>
+    <script src="/Assets/js/jquery.validate.min.js"></script>
+    <script src="/Assets/js/purl.js"></script>
+    <script src="/Assets/js/jquery-ui.js"></script>
+    <script src="/Assets/js/underscore.js"></script>
+    <script src="../../Assets/js/pdfobject.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+    <!-- Bootstrap References -->
+    <link href="/Assets/css/bootstrap.css" rel="stylesheet" />
+    <script src="/Assets/bs/bootstrap.js"></script>
+    <script src="/Assets/bs/bootstrap-slider.js"></script>
+    <script src="/Assets/bs/bootstrap-notify.min.js"></script>
+    <!-- Moment reference -->
+     <script src="/Assets/js/moment.js"></script>
+    <!-- DataTables References-->
+    <link rel="stylesheet" type="text/css" href="../../Assets/DataTables/datatables.min.css" />
+    <script type="text/javascript" src="../../Assets/DataTables/datatables.min.js">
+    </script>
+    <!-- Chart.js References-->
+    <script src="/Assets/js/Chart.js"></script>
+    <script src="/Assets/js/Chart.bundle.js"></script>
+    <!-- Select2 References -->
+    <script src="/Assets/js/select2.min.js"></script>
+    <link href="/Assets/css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/Assets/css/select2-bootstrap.css" rel="stylesheet" type="text/css"/>
+    <!-- Sweet Alerts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.3/sweetalert2.js"></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.3/sweetalert2.css' rel='stylesheet' type='text/css' />
+    <!-- FONTAWESOME STYLES-->
+    <link href="/Assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- MORRIS CHART STYLES-->
+    <link href="/Assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- SWEET ALERT 2 -->
+    <script src="../../Assets/js/sweetalert.js"></script>
+    <link rel="stylesheet" href="../../Assets/css/sweetalert.css" />
+    <script src="../../Assets/js/orgsysNavbar.js"></script>
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css' />
+    <!-- Style Sheet References-->
+    <link href="/Assets/css/slider.css" rel="stylesheet" />
+    <link href="/Assets/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="/Assets/css/RolesTemplate.css" rel="stylesheet" />
+    <!-- CUSTOM SCRIPTS-->
+    <!--<script src="/Assets/js/userExperience.js"></script>-->
+    <script src="../../Scripts/bowser.min.js"></script>
+    <script src="../../Assets/js/common/SessionValidation.js"></script>
+    <script src="../../Assets/js/orgsysNavbar.js"></script>
+    <script src="../../Scripts/Cookie.js"></script>
+    <%-- Ladda loader --%>
+    <link href="../../Assets/ladda/ladda-themeless.min.css" rel="stylesheet" />
+    <%-- Toaster Notifications --%>
+    <link href="../../Assets/toastr/toastr.min.css" rel="stylesheet" />
+    <!-- OrgSys Styles-->
+    <%--<link href="/Assets/css/custom.css" rel="stylesheet" />--%>
+    <link href="/Assets/css/new-orgsys.css" rel="stylesheet" />
+    <link href="/Assets/css/orgsys.css" type="text/css" rel="stylesheet" />
+    <link href="/Assets/css/orgsys-external.css" rel="stylesheet" />
+    <style> /*---TEMPORARY STYLE FOR PRESENTATION JUNE 2018---*/
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }   
+        .dropdown a {
+            color: black;
+            padding: 10px 12px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+    <script>        
+        function ErrorSwal_Basic() {
+                swal('', 'Your request could no be completed at this time. Please contact support@orgsoln.com for more information.', 'error');
+            }
+        var language = "en-ca"; //default
+        var PrefLanguage = getCookie("Language");//get language from cookie
+        window.Language = PrefLanguage;
+        //http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/
+        //set language of datatables and datepicker globaly
+        if (PrefLanguage == "fr-ca") {
+            $.extend(true,
+                $.fn.dataTable.defaults,
+                {
+                    "language": {
+                        "sProcessing": "Traitement en cours...",
+                        "emptyTable": "Aucune donnée disponible dans cette section",
+                        "sSearch": "Rechercher&nbsp;:",
+                        "sSearchPlaceholder": "Rechercher...",
+                        "sLengthMenu": "Afficher _MENU_ &eacute;l&eacute;ments",
+                        "sInfo":
+                            "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                        "sInfoEmpty": "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                        "sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                        "sInfoPostFix": "",
+                        "sLoadingRecords": "Chargement en cours...",
+                        "sZeroRecords": "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                        "sEmptyTable": "Aucune donn&eacute;e disponible dans le tableau",
+                        "oPaginate": {
+                            "sFirst": "Premier",
+                            "sPrevious": "Pr&eacute;c&eacute;dent",
+                            "sNext": "Suivant",
+                            "sLast": "Dernier"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": activer pour trier la colonne par ordre croissant",
+                            "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+                        }
+                    }
+                });
+                $.datepicker.regional['fr'] = {
+                clearText: 'Effacer',
+                closeText: 'Fermer', closeStatus: 'Fermer sans modifier',
+                prevText: '&lt;Préc', prevStatus: 'Voir le mois précédent',
+                nextText: 'Suiv&gt;', nextStatus: 'Voir le mois suivant',
+                currentText: 'Courant', currentStatus: 'Voir le mois courant',
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+                    'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                monthNamesShort: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun',
+                    'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+                monthStatus: 'Voir un autre mois', yearStatus: 'Voir un autre année',
+                weekHeader: 'Sm',
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+                dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+                dayStatus: 'Utiliser DD comme premier jour de la semaine', dateStatus: 'Choisir le DD, MM d',
+                initStatus: 'Choisir la date'};
+                $.datepicker.setDefaults($.datepicker.regional['fr']);
+
+            swal.setDefaults({ confirmButtonText: 'Envoyer' });
+            swal.setDefaults({ cancelButtonText: 'Annuler' });
+        }
+        else {
+            $.extend(true,
+                $.fn.dataTable.defaults,
+                {
+                    language: { search: '', searchPlaceholder: "Search for..." }
+                });
+        }
+        window.getPage = '<%=Page.ToString().Replace("ASP.","").Replace("_",".") %>'
+        window.getMaster = 'Portal';
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script>
+        $(document).ready(function () {
+            $("#Logout").click(function () {
+                $.ajax({
+                    url: "<%=api %>/api/Session/RemoveSessionByToken/" + '<%=token%>',
+                    type: 'POST',
+                    success: function (result) {
+                        window.location.replace("/Orgsys_Forms/Orgsys_Login.aspx");
+                        window.history.forward();
+                    }
+                });
+            });
+            $.ajax({
+                type: "GET",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Language', window.Language);
+                    xhr.setRequestHeader('Authentication', "<%= token %>");
+                },
+                async: false,
+                url: "<%= api%>/api/Client/GetClientServices_V2/" + '<%= token %>',
+                success: function (data) {
+                    var services = JSON.parse(data);
+                    var target = $('#client-services');
+                    services.forEach(function (svc) {
+                        target.append('<a class="dropdown-item" href="/Orgsys_Forms/Generic_Forms/Form7.aspx?FormID=' + svc['ServiceID'] + '"><p  data-toggle="tooltip" data-placement="right" value="test">' + svc['ServiceDescription'] + '</p><span></span></a>');
+                    });
+                },
+                error: function (data) {
+                }
+            });
+            //get and set client logo for each page
+            $.ajax({
+                type: 'GET',
+                beforeSend: function (xhr) { xhr.setRequestHeader('Authentication',"<%= token %>"); },
+                url:"<%= api %>/api/Client/GetClientLogo/<%= token %>"
+            }).then(
+                function (data) {
+                    window.logoBase64 = JSON.parse(data).imageBase64;
+                },
+                function () {
+                    window.logoBase64 = '/Assets/img/CRS Demo Logo.JPG'; //fall onto default image
+                }
+                ).done(function () {
+                    $('#logo-container').append('<img id="client-logo" src="' + window.logoBase64 + '" alt="Your Logo Here" />');
+                });
+
+            $.when(
+                $.ajax({
+                    type: 'GET',
+                    beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+                    url: "<%= api%>/api/<%= token%>/Users/user"
+                }).then(JSON.parse),
+                $.ajax({
+                    type: 'GET',
+                    beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+                    url: "<%= api%>/api/Roles/GetRolesByUser/<%= token%>",
+                }).then(JSON.parse)
+            )
+                .then(function (user, roles) {
+                    if (!user[0])
+                        return;
+                    $('#userName').append(user[0].Username);
+
+                var isManager = roles.map(function (r) { return r.Role_ID }).indexOf(2) >= 0
+                if (isManager)
+                    AppendLinkToPortalAdministration();
+                if (user[0].UserType !== 1)
+                    return;
+                AppendLinkToInternalDashboard();                  
+            })
+            function AppendLinkToInternalDashboard() {
+                var link = $('<li class="internal-dash nav-item"><a class="nav-link" href="#"><span class="icon-circle-left icon_setter"></span><p>Return to Internal Dashboard</p></a></li>')
+                    .on('click', function () {
+                        $.ajax({
+                            url: "<%= api%>/api/session/client/<%= token%>/0"
+                        })
+                        .then(
+                            function () {
+                                window.location.href = '/OrgSys_Forms/Internal_Forms/InternalDashBoard.aspx' 
+                            },
+                            function () {
+                                swal('', 'Your request could not be completed at the moment. Please report this issue to support@orgsoln.com.', 'error')
+                            }
+                        );
+                    });
+                $(link).insertAfter('.reports');          
+            }
+            if (PrefLanguage == "fr-ca") {
+                $('.langtxt').html('Langue');
+            } else {
+                $('.langtxt').html('Language');
+            }
+            function AppendLinkToPortalAdministration() {
+                $('<li class="portal-admin nav-item"><a class="nav-link" href="/OrgSys_Forms/Generic_Forms/PortalAdministration.aspx"><span class="icon-tree icon_setter"></span> <p>Administration</p></a></li>').insertAfter('.reports'); 
+            }
+        });
+    </script>
+</head>
+<body>
+    <%--<nav class="navbar " id="HideLanguage">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="Language">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="langtxt" style="display:-webkit-inline-box;"></div> <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="Language" href="#">en-ca</a></li>
+                    <li><a class="Language" href="#">fr-ca</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>--%>
+    <nav id="portal-navbar" class="navbar navbar-default" role="navigation">
+        <div class="logo_container" >
+            <a href="/OrgSys_Forms/Generic_Forms/PortalHome.aspx">
+                <img class="img_setter" src="../../Assets/img/osilogohorizontal.png"/>
+            </a>
+            <div class="menu_img_small_img">
+                <img class="menu_img_setter" src="../../Assets/img/osilogonotrans.png" />
+            </div>
+            <div class="navbar_top_left">
+                <button id="menu_button" href="#" class="menu-button" onclick="myFunction()">
+                    <img class="menu_img_setter" src="../../Assets/img/menu_icon.png" />
+                </button>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="home nav-item">
+                    <a class="nav-link" href="/OrgSys_Forms/Generic_Forms/PortalHome.aspx">
+                        <span aria-hidden="true" class="icon-home icon_setter"></span>
+                        <p id="pHome">Home</p>
+                    </a>
+                </li>
+                <li class="claim-manager nav-item">
+                    <a class="nav-link" href="/OrgSys_Forms/Generic_Forms/PortalClaimManager.aspx">
+                        <span aria-hidden="true" class="icon-user-tie icon_setter"></span>
+                        <p id="pClaimMangaer">Claim Manager</p>
+                    </a>
+                </li>
+                <li class="doc-viewer nav-item">
+                    <a class="nav-link" href="/OrgSys_Forms/PortalDocumentViewer.aspx">
+                        <span aria-hidden="true" class="icon-folder-open icon_setter"></span>
+                        <p id="pDocumentViewer">Document Viewer</p>
+                    </a>
+                </li>
+                <li id="absence_container" class="dropdown claim-form nav-item">
+                    <a href="/Orgsys_Forms/Generic_Forms/Form7.aspx" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <span aria-hidden="true" class="icon-clipboard icon_setter"></span>
+                        <p id="pReportAbsence">Report an Absence</p>
+                        <i class="icon-plus submenu_icon_setter plus_icon_absence"></i>
+                        <i class="icon-minus submenu_icon_setter minus_icon_absence" style="display:none;"></i>
+                    </a>
+                    <div id="client-services" class="dropdown-menu">
+                    </div>
+                </li>
+                <li class="library nav-item">
+                    <a class="nav-link" href="/OrgSys_Forms/Generic_Forms/PortalLibrary.aspx" >
+                        <span class="icon-stack icon_setter"></span>
+                        <p id="pLibraryResources">Library Resources</p>
+                    </a>
+                </li>
+                <li class="reports nav-item">
+                    <a class="nav-link" href="/OrgSys_Forms/ReportingTool.aspx" >
+                        <span class="icon-clipboard-edit icon_setter"></span>
+                        <p id="pReportingTool">Reporting Tool</p>
+                    </a>
+                </li>
+                <li id="my-account-setter" class="dropdown my-account nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <span class="icon-user icon_setter"></span>
+                        <p id="userName"></p>
+                        <i class="icon-plus submenu_icon_setter icon_plus_account_setter"></i>
+                        <i class="icon-minus submenu_icon_setter icon_minus_account_setter" style="display:none;"></i>
+                    </a>
+                    <div class="dropdown-menu my_account_dropdown short_menu_class">
+                        <a href="#" class="btn-Logout dropdown-item" id="Logout" onserverclick="Logout_Click">
+                            <span></span>
+                            <p data-toggle="tooltip" data-placement="right" id="pLogout">Logout</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="divider">
+    </div>    
+    <%-- Place Holder for content pages --%>
+    <div id="main-container" class="container">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div id="footer2">
+        <div class="container">
+            <p class="text-muted">All Rights Reserved, Organizational Solutions Inc. © 2019 - Email: info@orgsoln.com</p>
+        </div>
+        <div class="language_selector" id="HideLanguage">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="Language">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="langtxt" style="display:-webkit-inline-box;"></div> <span class="icon-circle-up" style="vertical-align:middle;"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="Language" href="#">en-ca</a></li>
+                        <li><a class="Language" href="#">fr-ca</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <%-- This is for loading sinner  --%>
+    <script src="../../Assets/ladda/spin.min.js"></script>
+    <script src="../../Assets/ladda/ladda.min.js"></script>
+    <script src="../../Assets/ladda/ladda.jquery.min.js"></script>
+    <script src="../../Assets/toastr/toastr.min.js"></script>
+    <script src="../../Assets/js/common.js"></script>
+    <asp:ContentPlaceHolder ID="Footer" runat="server">
+    </asp:ContentPlaceHolder>
+    <script>
+        $(document).ready(function () {
+            $('.nav-item').on('click', function () {
+                $(this).siblings().removeClass('nav-item-active');
+                $(this).addClass('nav-item-active');
+            });
+        });
+        $(function() {
+            $('#absence_container').click(function(){
+                $('#client-services').slideToggle();
+                $('.minus_icon_absence').slideToggle();
+                $('.plus_icon_absence').slideToggle();
+            });
+            $('#my-account-setter').click(function () {
+                $('.my_account_dropdown').slideToggle();
+                $('.icon_minus_account_setter').slideToggle();
+                $('.icon_plus_account_setter').slideToggle();
+            });
+        });
+        function myFunction() {
+            $('#portal-navbar').toggleClass("short_menu",200);
+            $("#main-container").toggleClass("padding_50",200);
+            $("#footer2").toggleClass("padding_50",200);
+            $("#client-services").toggleClass("short_menu_class", 200);
+            $(".short_menu_icon_setter").slideToggle();
+            $(".submenu_icon_setter").slideToggle();
+            $(".menu_img_small_img").toggleClass("visible",200);
+            $(".img_setter").toggleClass("visible_none",200);
+            $('#client-services .dropdown-item span').toggleClass('icon-tree');
+            $('.my-account .dropdown-menu a span').toggleClass('icon-tree');
+            $('#absence_container').toggleClass('short_menu_absence');
+            $('#client-services .dropdown-item p').hover(function () {
+                $(this).addClass("menu_hover");
+            });
+            if ($(window).width() <= 550) {
+                $('.navbar-right').slideToggle();
+                $('#portal-navbar').removeClass("short_menu", 10);
+                $('#portal-navbar').removeClass("hidden", 10);
+                $(".menu_img_small_img").removeClass("visible",0);
+                $(".img_setter").removeClass("visible_none",0);
+                $("#main-container").removeClass("padding_50", 10);
+                $("#client-services").removeClass("short_menu_class", 10);
+                $('#client-services .dropdown-item span').removeClass('icon-tree');
+                $('.logout_setter .dropdown-menu a span').removeClass('icon-tree');
+            };
+            if ($(".plus_icon_absence").is(":visible")) {
+                if ($(".minus_icon_absence").is(":visible")) {
+                    $(".minus_icon_absence").css("display","inline");
+                    $(".plus_icon_absence").css("display","none");
+                }
+            }
+            if ($(".icon_plus_account_setter").is(":visible")) {
+                if ($(".icon_minus_account_setter").is(":visible")) {
+                    $(".icon_minus_account_setter").css("display","block");
+                    $(".icon_plus_account_setter").css("display","none");
+                }
+            }    
+        };
+        if ($(window).width() <= 550) {
+            $(".navbar-fixed-top .hidden").addClass("mobile_menu", 10);
+        }
+    </script>
+    <script src="../../Scripts/Orgsysmultilingual.js"></script>
+</body>
+</html>

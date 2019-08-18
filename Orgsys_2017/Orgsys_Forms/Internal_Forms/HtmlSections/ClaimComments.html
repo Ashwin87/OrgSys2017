@@ -1,0 +1,105 @@
+﻿<!--Claim Comments HTML-->
+<div class="row margin_bottom">
+    <div class="col-md-4">
+        <label>Comments To</label>
+        <select class="form-control" name="commentType" id="comm1">
+            <option selected label="Select"></option>
+            <option label="Internal" value="Internal"></option>
+            <option label="Employee" value="Employee"></option>
+            <option label="Employer" value="Employer"></option>
+        </select>
+    </div>
+    <input type="button" value="Add" id="addComment" />
+</div>
+<div>
+    <table id="commentList" name="commentList" class="table table-bordered"></table>
+    <input type="text" name="commentCounter" id="commentCounter" value=0 hidden="hidden" />
+</div>
+<div class="row margin_bottom">
+    <div class="form-group col-md-12">
+        <label>Comments Description</label>
+        <textarea class="form-control" name="commentsDes" id="comm2" rows="4"></textarea>
+    </div>
+</div>
+<div>
+    <div class="row margin_bottom">
+        <div class="col-md-4">
+            <label>Provider</label>
+            <input type="text" class="form-control col-md-3" name="provider" id="comm3" />
+        </div>
+        <div class="col-md-4">
+            <label>Source</label>
+            <input type="text" class="form-control col-md-3" name="Source" id="comm4" />
+        </div>
+        <div class="col-md-4">
+            <label>Code</label>
+            <input type="text" class="form-control col-md-3" name="Code" id="comm5" />
+        </div>
+        <div class="col-md-4">
+            <label>Action Taken</label>
+            <input type="text" class="form-control col-md-3" name="actionTaken" id="comm6" />
+        </div>
+    </div>
+</div>
+<div class="margin_bottom">
+    <label class="checkbox-inline">
+        <input class="form-check-input" type="checkbox" name="billable" id="comm7">Billable
+    </label>
+</div>
+<div id="billingDiv">
+    <div class="row margin_bottom">
+        <div class="col-md-4">
+            <label>Date</label>
+            <input type="date" class="form-control col-md-3" name="billDate" id="comm8" />
+        </div>
+        <div class="col-md-4">
+            <label>Time</label>
+            <input type="text" class="form-control col-md-3" name="billTime" id="comm9" />
+        </div>
+    </div>
+    <div>
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" name="completed" id="comm10">Completed
+        </label>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-4">
+            <label>Completion Date</label>
+            <input type="date" class="form-control col-md-3" name="dateBillingComp" id="comm11" />
+        </div>
+        <div class="col-md-4">
+            <label>Duration</label>
+            <input type="text" class="form-control col-md-3" name="billDuration" id="comm12" />
+        </div>
+        <div class="col-md-4">
+            <label>Billed By</label>
+            <input type="text" class="form-control col-md-3" name="billedBy" id="comm13" />
+        </div>
+    </div>
+    <div>
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" name="directContact" id="comm14">Direct Contact
+        </label>
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" name="postage" id="comm15">Postage
+        </label>
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" name="courier" id="comm16">Courier
+        </label>
+    </div>
+    <div class="row margin_bottom">
+        
+        <div class="col-md-4">
+            <label>Method</label>
+            <select class="form-control col-md-3" name="method" id="comm17"></select>
+        </div>
+        <div class="col-md-4">
+            <label>Reason</label>
+            <select class="form-control col-md-3" name="reason" id="comm18"></select>
+        </div>
+        <div class="pull-right">
+            <button type="button" class="btn btn-info">Previous</button>
+            <button type="button" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+</div>

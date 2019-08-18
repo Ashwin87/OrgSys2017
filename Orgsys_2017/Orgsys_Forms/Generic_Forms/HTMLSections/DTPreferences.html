@@ -1,0 +1,30 @@
+﻿
+<div class="dt-preferences">
+
+    <div class="dt-pref-tabs">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item active"><a data-toggle="tab" role="tab" href="#ColumnVisibility" id="aColumnVisibility">Column Visibility</a></li>
+            <li class="nav-item"><a data-toggle="tab" role="tab" href="#ColumnOrder" id="aColumnOrder">Column Order</a></li>
+        </ul>
+
+        <div id="pref-content" class="tab-content">
+
+            <div id="ColumnVisibility" class="tab-pane active" role="tabpanel">
+                <div class="column-tiles"></div>
+            </div>
+            <div id="ColumnOrder" class="tab-pane" role="tabpanel">
+                <div><p id="pDragAndDrop">Drag and drop the column headings in the table below to the desired position and save when done.</p></div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="dt-pref-btns">
+        <input type="button" id="save-preferences" class="btn btn-default" value="Save Table Settings" />
+        <input type="button" id="close-preferences" class="btn btn-default" value="Close" />
+    </div>
+
+</div>
+<script>
+    InjectData();
+</script>

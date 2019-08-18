@@ -1,0 +1,172 @@
+﻿td, th {
+    border: solid 1px black;
+    text-align: center;
+}
+
+td {
+    height: 50px;
+    position: relative;
+}
+
+textarea {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    resize: none;
+}
+
+    textarea:hover,   
+    textarea:active,   
+    textarea:focus,    
+    button:focus,
+    button:active,
+    button:hover,
+    label:focus,
+    .btn:active,
+    .btn.active {
+        outline: 0px !important;
+        -webkit-appearance: none;
+    }
+
+.row {
+    margin-left: 5px !important;
+}
+
+input[type=text] {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+
+.col-lg {
+    background: white !important;
+    color: black !important;
+}
+
+#page-wrapper {
+    background: white !important;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    font-size: 13px;
+    margin-bottom: 0px;
+    padding-top: 8px;
+}
+
+.col-lg {
+    background: #151a4c;
+    text-align: center;
+    color: white;
+}
+
+.panel > .bluePanel {
+    background-color: #151a4c;
+    text-align: center;
+    color: white;
+    padding: 5px;
+}
+
+.panel > .beigePanel {
+    background-color: #f2aa4d;
+    text-align: center;
+    padding: 5px;
+}
+
+#CoLabel, #GoLabel {
+    float: left;
+    margin-left: 20px;
+    padding: 5px;
+    text-align: center;
+    background-color: #151a4c;
+    color: white;
+}
+
+label {
+    float:left;
+    margin-left:20px;
+    padding:5px;
+}
+
+.widthlabel {
+     min-width:300px;
+}
+
+.radio {
+    margin-top:0px;
+}
+
+.biggerheading {
+    padding-top:10px;
+    padding-bottom:10px;
+    color: white;
+}
+
+input.FAChk {
+    visibility: hidden;
+}
+
+input.FAChk:checked:after, input.FAChk:after {
+    visibility: visible;
+    font-family: FontAwesome;
+    font-size: 19px;
+    height: 17px;
+    width: 17px;
+    position: relative;
+    top: -1px;
+    left: 0px;
+    background-color: #FFF;
+    display: inline-block;
+}
+
+input.FAChk:checked:after {
+    content: "\f046";
+}
+
+input.FAChk:after {
+    content: "\f096";
+}
+
+
+input.FARadio {
+    visibility: hidden;
+}
+
+input.FARadio:checked:after, input.FARadio:after {
+    visibility: visible;
+    font-family: FontAwesome;
+    font-size: 15px;
+    height: 17px;
+    width: 17px;
+    position: relative;
+    top: -3px;
+    left: 0px;
+    background-color: #FFF;
+    display: inline-block;
+}
+
+input.FARadio:checked:after {
+    content: "\f192";
+    /*content: "\f111";*/
+}
+
+input.FARadio:after {
+    content: "\f10c";
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        margin: 0px !important;
+        min-height: 1200px;
+    }
+}
+
+.lines {
+    border: 1px solid black;
+}

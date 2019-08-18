@@ -1,0 +1,89 @@
+﻿<div class="CMRTemplate">
+    <div class="row margin_bottom" style="margin-bottom: 30px;">
+        <div class="col-md-12">
+            <h3>Current Claim Status</h3>
+           
+                {{ClaimStatus}}
+           
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label >Date of Report</label>
+                {{DateOfReport}}
+            </div>
+            <div class="form-group">
+                <label >Employee Name</label>
+                {{EmployeeName}}
+            </div>
+            <div class="form-group">
+                <label >Employee Email</label>
+                {{EmployeeEmail}}
+            </div>
+            <div class="form-group">
+                <label>Employee ID</label>
+                {{EmployeeID}}
+            </div>
+            <div class="form-group">
+                <label>Referal Date</label>
+                {{ReferalDate}}
+            </div>
+
+        </div>
+        <div class="col-md-6 ">
+            <div class="form-group">
+                <label for="Location">Location</label>
+                {{Location}}
+            </div>
+            <div class="form-group">
+                <label for="DateofAbsence">Date of Absence</label>
+                {{AbsenceDate}}
+            </div>
+            <div class="form-group">
+                <label for="EmployerContact">Employer Contact</label>
+                {{EmployerContact}}
+            </div>
+            <div class="form-group">
+                <label for="OSIContact">OSI Contact</label>
+                {{OSIContact}}
+            </div>
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-12">
+            <div class="form-group margin_bottom">
+                <label for="ClaimHistoryInformation">Claim History Information</label>
+                <textarea maxlength="500" class="form-control" name="ClaimHistoryInformation" id="ClaimHistoryInformation" rows="4">{{HistoryInformation}}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-6">
+            <div class="form-group margin_bottom">
+                <label for="AbsenceAuthorization">Absence Authorization</label>
+                <textarea maxlength="500" class="form-control" name="AbsenceAuthorization" id="AbsenceAuthorization" rows="4">{{AbsenceAuthorization}}</textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group margin_bottom">
+                <label for="TreatmentPlan">Treatment Plan</label>
+                <textarea maxlength="500" class="form-control" name="TreatmentPlan" id="TreatmentPlan" rows="4">{{TreatmentPlan}}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-6">
+            <div class="form-group margin_bottom">
+                <label for="ReturntoWorkRecommendations">Return to Work Recommendations</label>
+                <textarea maxlength="500" class="form-control" name="ReturntoWorkRecommendations" id="ReturntoWorkRecommendations" rows="4">{{Recommendations}}</textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group margin_bottom">
+                <label for="NextSteps">Next Steps</label>
+                <textarea maxlength="500" class="form-control" name="NextSteps" id="NextSteps" rows="4">{{NextSteps}}</textarea>
+            </div>
+        </div>
+    </div>
+</div>

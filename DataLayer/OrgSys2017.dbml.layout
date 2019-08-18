@@ -1,0 +1,1766 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 46.375, 167.25" name="OrgSys2017">
+  <DataContextMoniker Name="/OrgSys2017DataContext" />
+  <nestedChildShapes>
+    <classShape Id="3bf05bac-204d-4a6f-9b8f-29a6eca0624c" absoluteBounds="21.5, 8.5, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Bus_Rule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="532a20df-4733-43b9-b6ab-8cee8d672196" absoluteBounds="21.515, 8.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0aa80a5a-6fb9-4e75-aee9-c2daa08365f9" absoluteBounds="3.5, 12.375, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_AbsenceDate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fb44014e-bc6c-4d87-8103-9f488868ad16" absoluteBounds="3.515, 12.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f704fe43-da00-42ba-8cca-47dd881dad65" absoluteBounds="3.5, 100.5, 2, 4.0785139973958451">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Absence" />
+      <nestedChildShapes>
+        <elementListCompartment Id="23441b9e-c7a2-4747-9d6d-8591c5fb1352" absoluteBounds="3.515, 100.96, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e40d0e2b-8a5b-47e3-ac5e-38a8512abf65" absoluteBounds="3.5, 110.125, 2, 4.2708154296875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_AdditionalDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c47da25c-f6a0-4063-bebe-ad4afb32ca39" absoluteBounds="3.515, 110.585, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8ef79b17-571a-4ebb-b7a0-358ec9ae3516" absoluteBounds="3.5, 68.75, 2, 2.7324039713541595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Benefit" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2b18a9f7-4b46-476c-bd6d-1f38e7f17a60" absoluteBounds="3.515, 69.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7769cf91-2391-4a38-bed6-e63c64008e32" absoluteBounds="3.5, 96, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Contact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1ec54f16-6c3e-4fa4-b18c-88ca608c8b3e" absoluteBounds="3.515, 96.46, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0e5ea8c2-d1ae-4302-9bbf-90f393f190d7" absoluteBounds="3.5, 15.125, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_CPP_Application" />
+      <nestedChildShapes>
+        <elementListCompartment Id="767c351d-5e0b-44f0-94ae-b6d85e59e57c" absoluteBounds="3.515, 15.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f9db71c4-7b21-4825-8b50-204d8b2061b8" absoluteBounds="3.5, 17.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Date" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2b2e7d95-4d30-400d-80ad-1ce48e6981c5" absoluteBounds="3.515, 18.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fd51ed3b-5ee9-40ee-afbb-26dcc7f98713" absoluteBounds="6.25, 126.125, 2, 2.5401025390625165">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_ContactTypeDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6564468d-3de3-4a8f-ba6b-8f47dfaca34d" absoluteBounds="6.265, 126.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9f1d8a4c-4f7c-401b-b95c-cd6c478ddb97" absoluteBounds="6.25, 120.125, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_IrregSchedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7d9aca8b-1460-481f-b56e-aab0c2ec632c" absoluteBounds="6.265, 120.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="74da933e-d4bf-43ec-a204-ac7e8d06ec60" absoluteBounds="6.25, 161, 2, 6.0015283203125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_JobDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2eeec408-1cc8-4e16-ae7c-b1b9f3aa938e" absoluteBounds="6.265, 161.46, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="07b43045-9a17-4472-8797-27cfa816fcc4" absoluteBounds="6.25, 145.375, 2, 3.8862125651041879">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_JobTypeDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d47f1e54-a970-4e90-8dfa-ac115029d4a0" absoluteBounds="6.265, 145.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3771fd1e-187f-4a14-831f-0fef5559e9aa" absoluteBounds="8.75, 22.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_OtherEarning" />
+      <nestedChildShapes>
+        <elementListCompartment Id="57ca5790-fe35-4485-a882-2e268c7a45c9" absoluteBounds="8.765, 22.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f77493a8-b1c4-4a79-baa2-3f716bfea573" absoluteBounds="6.25, 154.75, 2, 5.4246240234375023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_PayDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b1c1a22e-0743-49eb-b9e4-c78e99782f3c" absoluteBounds="6.265, 155.21, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c0e8961e-b8e1-4f97-a332-b68872532910" absoluteBounds="9, 137.75, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_Payroll_Earning" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1d89e399-d581-418d-9699-c7ba0285f1c1" absoluteBounds="9.015, 138.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="741b5162-6841-43b0-9cc5-7f2626f6c2d8" absoluteBounds="9, 129.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_Payroll_Insurance" />
+      <nestedChildShapes>
+        <elementListCompartment Id="af2d03a5-da57-465a-ad93-491295978e94" absoluteBounds="9.015, 129.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2623e4a0-47c1-40d0-9a41-7ac5a8884b47" absoluteBounds="9, 131.625, 2, 2.3478011067708167">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_Payroll_Offset" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9e7fb862-de9f-45bb-a64c-b64a0c92db9d" absoluteBounds="9.015, 132.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ac93037c-167c-46b3-9133-3b304c1b036e" absoluteBounds="9, 134.75, 2, 2.3478011067708167">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_Payroll_PreDi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b0f8d36-af6e-47d0-b3c5-b043bb6e10ec" absoluteBounds="9.015, 135.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6c84ca1d-c369-4acd-98fe-898ffc8f11d9" absoluteBounds="6.25, 141.625, 2, 2.9247054036458167">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_RegSchedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="13063590-fb12-4b73-b42b-0776fafbc006" absoluteBounds="6.265, 142.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="74f30062-9186-4bfd-b20d-333f35d4b628" absoluteBounds="6.25, 123.125, 2, 2.3478011067708451">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_RotSchedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2cea73f7-fcf1-4eff-9ee3-0d0d22dc4701" absoluteBounds="6.265, 123.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="957eea11-22c3-4077-9da5-8261f5213c88" absoluteBounds="6.25, 150, 2, 4.0785139973958167">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Emp_Schedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54b7efa0-a689-4ca2-acdb-a55013b59c27" absoluteBounds="6.265, 150.46, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" absoluteBounds="3.5, 140, 2, 7.5399397786458451">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90bad6a4-516f-4655-8651-ef9e469921ef" absoluteBounds="3.515, 140.46, 1.9700000000000002, 6.979939778645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5613288a-084d-4719-97af-292d8c69847d" absoluteBounds="6.25, 133.875, 2, 2.7324039713541879">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Employee_PayRoll" />
+      <nestedChildShapes>
+        <elementListCompartment Id="691ab745-2ec9-4aa7-bc5c-d4245f4c722b" absoluteBounds="6.265, 134.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="45d53743-e13f-4379-ba8e-11b090e790a3" absoluteBounds="3.5, 79.375, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_FirstAidDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6774ac04-1b43-498f-be8b-32514ca52de8" absoluteBounds="3.515, 79.835, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1387818e-b768-487c-bfd7-48d6966978bb" absoluteBounds="3.5, 72.25, 2, 2.7324039713541595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_GRTW_Schedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9c29a286-df4b-4380-9bae-7402e6c935e4" absoluteBounds="3.515, 72.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f55f596b-7615-4537-a993-8c6ca465bab8" absoluteBounds="3.5, 41.375, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_ICDCM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0c23f6bc-16d4-4c8a-bba5-1b0649fa5223" absoluteBounds="3.515, 41.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="23062a1d-ea09-44fa-b38e-a54cfa23496f" absoluteBounds="9, 25.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_ICDCM_Collateral_Animal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="848b665e-25d3-4e65-b53b-c1fa48a6ba69" absoluteBounds="9.015, 26.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="66ae61cd-3efd-46be-8ce6-a6ce27780887" absoluteBounds="9, 28.625, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_ICDCM_Collateral_Property" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8c0a6881-ce8f-4ffc-a433-a24650f5c052" absoluteBounds="9.015, 29.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="21c3b90d-9457-4446-884d-e4fc147e85c3" absoluteBounds="6.25, 27.625, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_ICDCM_CollateralDamage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c1617979-c9a4-4971-93cb-3c216d24cbae" absoluteBounds="6.265, 28.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b1b08464-1cec-4497-8b62-e0308fbd4e84" absoluteBounds="6.25, 23.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_ICDCM_Limitation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d5db826-3303-4601-8f08-181f4aa619ba" absoluteBounds="6.265, 23.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0d6b470e-cc24-49c3-96b4-1a86f64f29c5" absoluteBounds="6.25, 34.625, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_ICDCM_Witness" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc4bb5dd-3052-43e3-8f93-448f77908361" absoluteBounds="6.265, 35.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5ad9abc8-67ee-4060-b3f2-734a28a161b2" absoluteBounds="6.25, 48.375, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_ICDCMCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="077b69dd-68e1-454f-a09d-eb3d5f6149d9" absoluteBounds="6.265, 48.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1a78f351-6c38-4407-9c9a-188d6ce72504" absoluteBounds="9, 37.75, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Activity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="727bf283-e54a-43b3-bf55-dc4d759973ef" absoluteBounds="9.015, 38.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="776256e8-8282-444c-8323-0cf12f5832aa" absoluteBounds="9, 44.75, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_BodyPart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9e38022b-b931-46ba-9fbc-de76d18ad4cc" absoluteBounds="9.015, 45.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a12828dd-5608-4925-acec-523ba84f86b3" absoluteBounds="9, 53, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65629c84-0777-4be2-89a7-123e0b889656" absoluteBounds="9.015, 53.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="25c79eb7-ab03-4b50-8bfc-e56e56438e20" absoluteBounds="11.75, 49.75, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause_EnvironmentFactor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a98035fb-6e3d-448d-91dc-bc37f5870740" absoluteBounds="11.765, 50.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="922dcd77-cb49-4a6f-8081-9bd0f7d58640" absoluteBounds="11.75, 52.25, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause_EquipmentInvolved" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b6eb58ec-2dff-4597-aa4b-dd09aa130071" absoluteBounds="11.765, 52.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fcd77459-dbb7-4e8a-a1fd-41e6ceaae30f" absoluteBounds="11.75, 54.875, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause_HumanFactor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="600e01d0-67f9-47f1-99b4-d9f1ccf1fe00" absoluteBounds="11.765, 55.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="12888467-f58f-47ef-a2b5-2575da1c5576" absoluteBounds="11.75, 47.5, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause_IncidentType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="57c25c9b-1665-481c-96f6-8ab3ba9ab074" absoluteBounds="11.765, 47.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e8240ecc-1e07-4a50-875e-c3353d52767c" absoluteBounds="11.75, 57.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause_InjuryLocation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="beb401bd-17f1-4d16-96e3-26677158fe12" absoluteBounds="11.765, 57.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5c551a3e-72f5-47ba-9caf-a7cf98298117" absoluteBounds="11.75, 59.875, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause_WeatherCondition" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e14e2798-3403-4056-8871-3185a2e48a3c" absoluteBounds="11.765, 60.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="63fc916b-b2a0-4eeb-ae6d-d31550b42932" absoluteBounds="6.25, 31.875, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_CorrAction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="02767d98-5843-4874-9dd2-bf5b0c3e2efd" absoluteBounds="6.265, 32.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="51ccc134-ede4-4ea8-bf8b-8bde20b7368a" absoluteBounds="9, 40.125, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Diagnosi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1805a5ce-355f-487f-aa16-90e459c4c994" absoluteBounds="9.015, 40.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="11c81ecd-ca65-45d0-aeb6-bd5b85df49b4" absoluteBounds="9, 42.375, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Injury_Medication" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6e1a014d-2152-4ff0-9fa3-b5a8723ae0bb" absoluteBounds="9.015, 42.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b7eeb322-e5f0-4c08-a6c4-2e0ef8ae8402" absoluteBounds="3.5, 115.125, 2, 4.2708154296875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_InsuranceDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fea27b0b-e998-4332-894c-223ba97a7b12" absoluteBounds="3.515, 115.585, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="162fe9a9-e124-483e-949c-f2db1bb12f8d" absoluteBounds="20.75, 17.375, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_LNLTimeDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf23d92d-a86e-41bb-b3e3-1a6686ae78e5" absoluteBounds="20.765, 17.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6da98137-fa25-4344-9b77-292ec1265404" absoluteBounds="3.5, 20.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_LocationDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe0e5917-a491-4144-937a-d6231b5c54ea" absoluteBounds="3.515, 20.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bf1038c8-c64b-473b-8f45-01e9dcf46ebf" absoluteBounds="3.5, 87.375, 2, 3.5016097005208451">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_MedicalAttDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="02ab1884-eefc-45b7-8371-7c2c047770ff" absoluteBounds="3.515, 87.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ca21e541-2f92-49d9-bf87-fd77c0583f44" absoluteBounds="3.5, 65.5, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_ModifiedWorkSchedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5f581fc0-0c17-4af8-afca-35aaee8c9206" absoluteBounds="3.515, 65.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2f1fbb8d-2bd4-4dd0-9ea8-bf0664fe90c6" absoluteBounds="3.5, 10.75, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_NurseDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="982648d1-3299-45db-8d55-056e1f34ded9" absoluteBounds="3.515, 11.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e780b8c5-e742-4b9e-9a89-ed55c3e43225" absoluteBounds="3.75, 6.375, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_PaymentDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1a06af75-6c9f-48e3-a663-fb56ab60e4cf" absoluteBounds="3.765, 6.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="147fa304-81ca-461a-8774-cc8902763908" absoluteBounds="3.5, 75.75, 2, 2.9247054036458451">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_RTM_Detail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="20b98bec-bcd2-4406-b3f3-8d3d4a3af6d7" absoluteBounds="3.515, 76.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="66680358-9224-4627-8d6f-523f4c8881b5" absoluteBounds="3.5, 105.25, 2, 4.0785139973958451">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_RTW" />
+      <nestedChildShapes>
+        <elementListCompartment Id="efa60397-6dd8-462f-8d25-368082994654" absoluteBounds="3.515, 105.71, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="27ea5085-20ab-4856-8012-c6a0d38e75d3" absoluteBounds="17.5, 13.25, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_RTW_Plan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2d24b231-07ed-4bad-9ec5-107404bc4671" absoluteBounds="17.515, 13.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8f90e479-34c3-42bd-a25b-18c0e71e256c" absoluteBounds="20.25, 12.875, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_RTW_Schedule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f63728dd-a0fa-4994-a507-49e903599b89" absoluteBounds="20.265, 13.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="034309e8-ab94-4cd4-a198-442f3e6cef4e" absoluteBounds="3.5, 62.375, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_SpecialistDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="db8eddcf-d89c-4bc8-bfd8-c1b2c6f9e733" absoluteBounds="3.515, 62.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d0698fe8-af09-4c3f-8837-82b87d9c4689" absoluteBounds="14.75, 16.5, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Update" />
+      <nestedChildShapes>
+        <elementListCompartment Id="61a8f408-9b2a-4327-89c5-a2afe65f05d4" absoluteBounds="14.765, 16.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4992d25e-080d-47bc-b373-10ccb80348bf" absoluteBounds="17.5, 19.875, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Updates_Billing" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d1c0a69c-f265-4800-a387-597bc3b02b96" absoluteBounds="17.515, 20.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b20a68a3-08b3-4c00-8495-57009536b48e" absoluteBounds="17.5, 16.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Updates_Document" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dc09948e-256f-4895-8a25-e349d808d56c" absoluteBounds="17.515, 17.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f1614260-451d-4acc-a369-343a5ade4a52" absoluteBounds="20.75, 22.375, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_UserAssigned" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f7dd0c21-8e3d-4819-82ca-caf3a91ab3dc" absoluteBounds="20.765, 22.835, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" absoluteBounds="0.75, 81.375, 2, 14.462791341145845">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a44b653a-8f77-4ebd-8a32-672d8689d43f" absoluteBounds="0.765, 81.835, 1.9700000000000002, 13.902791341145832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a2391b31-8f85-49f0-8b3b-e6dbd6b767ef" absoluteBounds="15.75, 2.75, 2, 6.5784326171875">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Client" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a0a07da7-dae5-4568-9cf1-338662296391" absoluteBounds="15.765, 3.21, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7161b340-48c9-43ea-81ff-87c7aafe370b" absoluteBounds="21.75, 2.375, 2, 3.886212565104167">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Client_Contact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0225eebb-520c-4db0-a449-54026deb3fb1" absoluteBounds="21.765, 2.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9370028d-d2d9-498b-aa97-8e6811a0e975" absoluteBounds="22.75, 12.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Client_Notification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="45c7398f-b374-4253-bb1c-2442fe3f6563" absoluteBounds="22.765, 12.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d9b1da34-3145-485f-9e89-f2a26ba701ef" absoluteBounds="6.75, 2.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Client_Service" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0bc5ecd3-7f75-4f64-ba37-14d615dbef29" absoluteBounds="6.765, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f34048fa-62c9-45ec-bf79-c007b9a22dca" absoluteBounds="15.75, 24.375, 2, 21.577944335937502">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Client_SOP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a3e8efc8-62bc-432c-8c27-4e2f099d26c6" absoluteBounds="15.765, 24.835, 1.9700000000000002, 21.0179443359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="579a7983-27a9-498f-9ae6-04666d2e8747" absoluteBounds="23.75, 15.375, 2, 5.0400211588541666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Demographic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="30103ed3-da45-450e-b444-a1cad8eb3fcc" absoluteBounds="23.765, 15.835, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6adb39e5-0364-494b-b6fa-1fca4a3d10e5" absoluteBounds="23.75, 21.375, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/ELMAH_Error" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a90f3f6-ee87-417e-afdf-d16acf6b8c3a" absoluteBounds="23.765, 21.835, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="578bb7f6-863b-4988-aed3-a646c518a292" absoluteBounds="23.75, 25.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/ErrorLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1b27accd-8fee-4044-842a-9365395523ae" absoluteBounds="23.765, 25.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="adf2ff2d-562c-4dd4-a0db-1119e93f8283" absoluteBounds="24.75, 2.375, 2, 4.8477197265625">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Form" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dcd98f3b-9cb7-497e-8a31-bc1c31d13be9" absoluteBounds="24.765, 2.835, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="206f7ba1-8afe-45de-a1a7-2039c232a8a1" absoluteBounds="9.75, 2.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Form_Label" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2dde1da0-b7a7-4634-aef0-4e0775a1ea2a" absoluteBounds="9.765, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="60eccc70-b5a6-4458-bb1d-b9d1bc017d83" absoluteBounds="24.75, 8.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Form_PlaceHolder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b69df0b-c522-4160-b8b7-1709de2be08d" absoluteBounds="24.765, 8.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bbcc4980-8e4c-4512-9355-8aece40cc023" absoluteBounds="11.75, 26.375, 2, 4.8477197265625023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Form_V2" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1265e939-1eaf-4494-83c7-8ef58959a642" absoluteBounds="11.765, 26.835, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5601c2be-ca5f-4492-8850-80a70e7d47fe" absoluteBounds="18.75, 26.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Form_Value" />
+      <nestedChildShapes>
+        <elementListCompartment Id="08b092fd-86a5-4a95-b404-d36902f653b3" absoluteBounds="18.765, 26.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="97b47bcd-be33-4696-9f5c-0afc33e0ccef" absoluteBounds="25.75, 11.375, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/FormState" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6dd2fd14-0d41-44c9-b025-da3124e09332" absoluteBounds="25.765, 11.835, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2671d199-10ab-4009-ad21-d7f189b69d2c" absoluteBounds="26.75, 15.375, 2, 4.2708154296875005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/FormStructure_Copy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8811002-c2e7-45b9-9c70-8481ba04486a" absoluteBounds="26.765, 15.835, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a18dea13-3c6b-4314-9226-52515c45bcc2" absoluteBounds="26.75, 21.375, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Geo_Region" />
+      <nestedChildShapes>
+        <elementListCompartment Id="003e57b5-fbb2-4ea7-bdba-45a7bba087fc" absoluteBounds="26.765, 21.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cc6de969-3d3f-4cdf-b88e-0bad26029bd4" absoluteBounds="21.75, 28.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Info_PageType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90556740-a791-48dc-a282-992876f6815a" absoluteBounds="21.765, 28.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="967948ad-6e7b-4bf2-a8e4-8297b0173944" absoluteBounds="26.75, 25.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Info_PermissionLevel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="74a3e4e2-bd7e-4e5a-a9d8-d522d86a92be" absoluteBounds="26.765, 25.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c5da53ac-dc19-4f2d-b63c-0a1813d61a22" absoluteBounds="24.75, 28.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Info_Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c60e20c4-1f60-4cbd-920a-6d220552b03d" absoluteBounds="24.765, 28.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cd38be12-0b13-4f43-b367-f52173f8811d" absoluteBounds="12.75, 12.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Info_UserType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="725b6b47-e8df-4e82-8e89-ebc26a08eaf9" absoluteBounds="12.765, 12.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b457c277-2986-457c-ad58-8678a0fd1c04" absoluteBounds="0.75, 3.875, 2, 1.3862939453124992">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Language" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8ef606f8-354c-45c4-a440-5c2ee3f59ff0" absoluteBounds="0.765, 4.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a9505963-906c-4e9c-91f4-cc59e8df58a3" absoluteBounds="0.75, 9.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Language_Control" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8e5102d5-da5c-4d05-925f-873848da6de7" absoluteBounds="0.765, 10.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="36d30c6a-99a1-44c0-a968-cbedd06f4727" absoluteBounds="3.5, 3.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Language_Control_Data" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1695ce34-5878-4ece-ad24-d520f3eba33e" absoluteBounds="3.515, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dea6ebf1-a87b-4541-a34f-9900cfc93940" absoluteBounds="1.5, 26.875, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Language_Control_Type" />
+      <nestedChildShapes>
+        <elementListCompartment Id="13542bd0-cc8c-42bc-bee1-91a65d60c20d" absoluteBounds="1.5150000000000001, 27.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="447c5ffa-1443-4e4b-9610-319a242f138d" absoluteBounds="0.75, 7, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Language_Message" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b5c4bed0-1c9f-43ba-8c69-d979d782b3f6" absoluteBounds="0.765, 7.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0eb9b239-3085-4e68-9f03-d1dae85b796c" absoluteBounds="3.5, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Language_Message_Data" />
+      <nestedChildShapes>
+        <elementListCompartment Id="97893469-689f-466e-a13e-1052d20150dc" absoluteBounds="3.515, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1c9cb018-19fd-45b6-9d9b-e4b72c541977" absoluteBounds="1.5, 24.125, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Language_Message_Type" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d472e25-416a-4a00-8ece-e4512538ecd3" absoluteBounds="1.5150000000000001, 24.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d331b0f8-347f-4616-aaf0-14cd27f49b94" absoluteBounds="27.75, 2.375, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_AccidentCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="48a70980-fbf0-4d72-a602-f27f3a7577f8" absoluteBounds="27.765, 2.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7937f171-90bf-45bd-b674-3df24be0f8b9" absoluteBounds="0.75, 29.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_AccidentCause" />
+      <nestedChildShapes>
+        <elementListCompartment Id="356b7361-a4c8-4128-97c0-106dad56c513" absoluteBounds="0.765, 29.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d542ae7b-fef6-4855-8aee-ce53a9362c50" absoluteBounds="27.75, 5.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_ActivityLevel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2614bcf9-9504-4bd4-9c4c-6c8dc5cdb4fa" absoluteBounds="27.765, 5.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eb71e0f3-30c4-4f3d-8d41-8776cacd0977" absoluteBounds="27.75, 8.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_AppealStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce59ed61-2ecd-4d3e-ac50-d131cb3e3966" absoluteBounds="27.765, 8.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68f339eb-7cab-4a4c-a3cc-bcf27338f8a8" absoluteBounds="27.75, 28.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Benefit_Code" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3be62035-190f-4b2b-8aa6-3fd27cc35db1" absoluteBounds="27.765, 28.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9250d7f7-0eac-4c4b-ad48-f59e2923c7ad" absoluteBounds="28.75, 11.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_BillingMethod" />
+      <nestedChildShapes>
+        <elementListCompartment Id="39fb9da1-cc07-4a83-a5af-c3fb71cfff6a" absoluteBounds="28.765, 11.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="25603c38-9d74-449d-907f-927fcf6aa3dd" absoluteBounds="29.75, 14.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_BillingReason" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2fac20b-8def-4cd7-94c5-99af46209263" absoluteBounds="29.765, 14.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6ce5f1b4-9f69-4615-a134-2cf44c1d18a3" absoluteBounds="29.75, 17.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Claim_Document_Type" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b843e1e-73e6-498a-afd2-58d3161a05fe" absoluteBounds="29.765, 17.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1fe797e8-26ce-4c8e-9ee2-e5b30df1524b" absoluteBounds="29.75, 20.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_ClaimActivity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ddfc88a6-0cac-4dbd-93d0-269324669c1f" absoluteBounds="29.765, 20.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a004b39b-7f37-484c-ae78-58b3083e3fbc" absoluteBounds="18.75, 31.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_ClaimStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d91dd769-3868-4691-a649-cb92dff83dda" absoluteBounds="18.765, 31.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="91da0bbf-79da-4be4-9e44-eb2737c23607" absoluteBounds="29.75, 23.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_ClaimTask" />
+      <nestedChildShapes>
+        <elementListCompartment Id="40fd2973-1095-48a6-98ae-78d257234da0" absoluteBounds="29.765, 23.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c5031c7f-7c09-4c94-940c-34a73002db51" absoluteBounds="21.75, 31.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_ClaimType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27630977-1115-4b11-8eb0-4227228ebdac" absoluteBounds="21.765, 31.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8465c67a-263c-486b-85c7-eeca4b041df9" absoluteBounds="24.75, 31.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_CloseReason" />
+      <nestedChildShapes>
+        <elementListCompartment Id="19512055-cbdd-4b5f-88bc-03dbae14937f" absoluteBounds="24.765, 31.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="806e1cfe-b33b-4daf-927d-9880b36dc98c" absoluteBounds="27.75, 31.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_ContactType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="319834f8-1f4c-46d0-acaa-1395bc1d0d6e" absoluteBounds="27.765, 31.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="25f02434-e7f5-4d02-855e-4258b22d41b4" absoluteBounds="30.75, 2.375, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_ContributingFactor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="13a4f4b3-4b51-4f22-b102-f9a018fdf792" absoluteBounds="30.765, 2.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c16efbbd-6a61-4b05-9f16-d44bcc01f537" absoluteBounds="0.75, 32.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_CorrectiveMeasure" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ef3d0094-489d-427b-bf11-146863517860" absoluteBounds="0.765, 32.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="baf9595a-9759-4275-95d5-b89e03d51a27" absoluteBounds="30.75, 5.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Diagnosi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fffb9982-47bd-4615-9136-7e4b18a2c8e4" absoluteBounds="30.765, 5.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="81de8f51-4aa9-418a-bbac-333489f4d0b2" absoluteBounds="30.75, 8.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Earning" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2ab5ac5e-d156-400a-bfd0-d6d8d164f46d" absoluteBounds="30.765, 8.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4908b235-a8b5-4ae2-8c36-dcae2b045653" absoluteBounds="8.75, 32.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_EmployeeActivity" />
+      <nestedChildShapes>
+        <elementListCompartment Id="97f7c634-31e4-42f8-a8a6-4166f76a03f9" absoluteBounds="8.765, 32.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="849cc2b6-8649-4f66-b6ad-447c07c07646" absoluteBounds="11.75, 32.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_EmployeeClass" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58e09d96-d8a1-47d2-bb80-7ae28916f734" absoluteBounds="11.765, 32.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d7ee4a2f-4689-494a-8451-c81a80621e0c" absoluteBounds="30.75, 26.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_EnvironmentalFactor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="98a1143d-1bb9-4988-a9db-5884b12fe231" absoluteBounds="30.765, 26.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0fb501cf-059d-4eb6-be59-a32c51d6a14e" absoluteBounds="30.75, 29.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_EquipmentInvolved" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8784520c-c039-470b-99c6-54c7035b31c9" absoluteBounds="30.765, 29.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="656e01c6-276a-4dc0-a129-681ed09e18ba" absoluteBounds="30.75, 32.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_EventLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8cf0ab36-b4de-4a6d-99e4-d6dda954b335" absoluteBounds="30.765, 32.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="053e5054-2a57-470e-88ec-d7ff39ad7c89" absoluteBounds="31.75, 11.375, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_FamilyCareRelationship" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82263565-2b7f-47f2-9340-260b1a9562f9" absoluteBounds="31.765, 11.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="60656ae7-ad09-4f9d-9f80-09e35f11163b" absoluteBounds="32.75, 14.375, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Frequency" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c1871bc2-8367-4243-88c1-32857c11f36c" absoluteBounds="32.765, 14.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dc123d09-6d5c-4d67-8621-fbcd2bc6164e" absoluteBounds="32.75, 17.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Gender" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dc5f2cb1-4edb-4745-9601-84152dea1841" absoluteBounds="32.765, 17.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7de6a1c1-e6b7-4b1f-b1ab-d94702696ef3" absoluteBounds="32.75, 20.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Generic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6cdb565a-72b4-477e-a10b-92b26214c41f" absoluteBounds="32.765, 20.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="306b0de5-3637-4da1-8588-5e1caab9c500" absoluteBounds="18.75, 34.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_HumanFactor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d6b8b8f9-15c6-44a5-95a9-ee3e5b299e1a" absoluteBounds="18.765, 34.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a1797a93-747f-478f-9d3b-f3f70a2c1953" absoluteBounds="32.75, 23.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_InjuryCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5cb18aad-88a8-408f-815c-481115775d2d" absoluteBounds="32.765, 23.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f30ae9ce-97e8-4ed1-8d8b-5bbd43d78d81" absoluteBounds="21.75, 34.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_InjuryIllnessArea" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2b92e6ae-d884-4eba-88ca-97a9a98adc24" absoluteBounds="21.765, 34.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="48294172-a0bd-4855-bd62-3c711d2d8ffe" absoluteBounds="24.75, 34.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_InjuryIllnessCause" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aef39ff6-bb81-45e6-9bfd-375691b0eaad" absoluteBounds="24.765, 34.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="97160d20-97c9-4509-8863-f0f6f51ceb91" absoluteBounds="33.75, 2.375, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_InjuryIllnessLocation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8f38f371-c99c-4d75-aaa9-fa2a1308ab35" absoluteBounds="33.765, 2.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d5547150-8af7-4503-aa1e-4d17001fb467" absoluteBounds="0.75, 35.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_InjuryIllnessNature" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1bddde7d-3f9c-4b07-872b-08fad4f81326" absoluteBounds="0.765, 35.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="24933f69-dbd0-4e62-b198-cd3e7b1af4ed" absoluteBounds="33.75, 5.375, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_InjuryOutcome" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b4a9782e-3ab3-41d6-9bcc-a0eb3799f760" absoluteBounds="33.765, 5.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2347542c-f5cc-46d1-a6e9-127c3f637ff5" absoluteBounds="33.75, 8.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_InsuranceOption" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d78f3626-b2c9-4f3e-9f9b-0ef1e447f8f1" absoluteBounds="33.765, 8.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3eb0ce5d-afd4-4076-bfb7-5474566483f2" absoluteBounds="11.75, 35.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_JobClassification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="10279c2b-e4d6-4873-8a7e-3775b89aae44" absoluteBounds="11.765, 35.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="70f1e6e4-7cee-493e-a279-f397bf844fa7" absoluteBounds="33.75, 26.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_JobStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ecdb47d1-d41c-4a02-aae2-afcd4ca64bd2" absoluteBounds="33.765, 26.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7a37c95c-8691-469c-a4ef-13c77b98f44a" absoluteBounds="33.75, 29.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_JobType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7004f33a-42f9-43d3-913f-4d944d0000cd" absoluteBounds="33.765, 29.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ab161ca3-4a5f-43eb-ba2c-45885df90880" absoluteBounds="27.75, 35.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Language" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bba45c3b-ba93-497c-87a2-cf3a88f674ad" absoluteBounds="27.765, 35.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f94d4ba6-541b-4bd1-9e7a-9767aa8d2e47" absoluteBounds="33.75, 32.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_LOAType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3457852c-e0ca-4935-8c4f-1e19a6b9cfff" absoluteBounds="33.765, 32.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e1479f69-153c-4562-b6ff-f56f6aaefafc" absoluteBounds="30.75, 35.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Offset_Type" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6563347c-e522-458e-ba13-137122cb2077" absoluteBounds="30.765, 35.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cece9db7-a032-477d-838d-066728ea0393" absoluteBounds="33.75, 35.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d440e7ad-6d2c-45bb-92b1-70f7d2540c4e" absoluteBounds="33.765, 35.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="65838d10-fb9d-4e19-8e37-25e144db053e" absoluteBounds="34.75, 11.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_OSHA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58f92df8-ba9f-4e33-ba63-74e23dbc7db8" absoluteBounds="34.765, 11.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a3058381-f315-4bf7-a9a2-c055120fd69a" absoluteBounds="35.75, 14.375, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_PhysicianType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54ab14c3-6bcd-44af-b5ff-126e51c2077a" absoluteBounds="35.765, 14.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c9158ff5-5a89-4dd2-8ba0-46219bad962c" absoluteBounds="35.75, 17.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_RateType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32f06302-3748-4457-83f1-836140bf345e" absoluteBounds="35.765, 17.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="16c9a804-25da-407f-999e-1c07a5e3e573" absoluteBounds="35.75, 20.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_ReturnWorkType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ddeac5b-f81c-4c55-84dd-c82032dc6d70" absoluteBounds="35.765, 20.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="451521de-4d23-4bc3-9d16-9d0cac7f20af" absoluteBounds="18.75, 37.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_RoleType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1bf194c7-3b56-4770-b905-a42b812db97f" absoluteBounds="18.765, 37.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d8fc3b77-366e-4f7e-ac07-1f661cd23f1a" absoluteBounds="35.75, 23.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_RTW" />
+      <nestedChildShapes>
+        <elementListCompartment Id="76299351-929f-40ed-b29c-5d180b75419a" absoluteBounds="35.765, 23.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3ffc3007-cbfb-4abd-9b72-ce3345f24fe5" absoluteBounds="21.75, 37.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_SchType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="de093996-5d78-4f54-9747-1dbfc8a9f488" absoluteBounds="21.765, 37.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9ea52668-08d5-4288-b628-0d1e6f45abee" absoluteBounds="36.75, 2.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_TaskType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3ad40bf-b550-4e4d-b3b8-d98f39b09dc8" absoluteBounds="36.765, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="47f7055a-0096-42ec-b043-e9674e436a32" absoluteBounds="0.75, 38.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Training" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f91824f1-b0b8-4b0e-bf8e-853bff777271" absoluteBounds="0.765, 38.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="99215d25-0b7c-4117-8808-fe8dc7a35549" absoluteBounds="36.75, 5.375, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_TreatmentLocation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3eafaec2-0ab9-473a-881e-6919d4d226b8" absoluteBounds="36.765, 5.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8aa9b7e5-6e87-48ab-b853-3e26dd974d54" absoluteBounds="3.75, 38.375, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Union" />
+      <nestedChildShapes>
+        <elementListCompartment Id="977c8a44-c4c1-4c7a-84b7-90c8c05a30f1" absoluteBounds="3.765, 38.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="339033cc-2086-4f4b-839c-c31e797d4c2e" absoluteBounds="36.75, 8.375, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_WCStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7e9dcbcb-6edd-45bc-8509-3024d3639694" absoluteBounds="36.765, 8.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a73e98d5-9755-4cc1-91ba-4e73e5adf443" absoluteBounds="11.75, 38.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_WeatherCondition" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe13b7bc-f4b7-4ea9-b134-75c75934bace" absoluteBounds="11.765, 38.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="432ce5c0-3349-4382-a72c-2f022d85ec5e" absoluteBounds="36.75, 26.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Log" />
+      <nestedChildShapes>
+        <elementListCompartment Id="85195d92-ea43-47ad-8c8b-07d5a5dbf6c7" absoluteBounds="36.765, 26.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1875edae-b26b-432c-909a-44890b6ecf03" absoluteBounds="24.75, 38.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Lookup_Diagnosis_InjuryCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fefea5f1-02fc-429c-baf2-b3dca8a5dd42" absoluteBounds="24.765, 38.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="87e02cd0-45d6-46b1-ba8f-92440e78267f" absoluteBounds="36.75, 29.375, 2, 4.8477197265625023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Messages_Queue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="064cc3bd-bb71-4a17-9d7f-28d6f34c3738" absoluteBounds="36.765, 29.835, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f58bbca7-2c65-49cb-98a2-3ca040a95756" absoluteBounds="27.75, 38.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/OrgsysClaimType_Form" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d0545f19-2dc2-4c57-babe-1beeb4684d00" absoluteBounds="27.765, 38.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ca23cc7a-2790-4325-befe-e285e244bacc" absoluteBounds="30.75, 38.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/os_city" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e3014ce7-5a80-48f0-9f2c-caebe4826bbe" absoluteBounds="30.765, 38.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="db3f15e1-fbb5-4a04-906a-4ef42aa3f6e6" absoluteBounds="36.75, 35.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/PasswordRecovery" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e9c3e436-7743-42fc-bab9-ced9b50514ea" absoluteBounds="36.765, 35.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ef29d2fc-7dfe-474a-9859-e61d0438e04d" absoluteBounds="6.75, 12.625, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5cf087a3-91dd-41ea-a05b-1114a0cab6a5" absoluteBounds="6.765, 13.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9bd821cc-6317-4cd8-90a7-63e3ece3e44b" absoluteBounds="33.75, 38.375, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Permission_Type" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4fa7a6d4-92e0-4cba-a482-2ec130f19b70" absoluteBounds="33.765, 38.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="276ce72d-ff65-4046-a7a6-a4e772e39803" absoluteBounds="9.5, 13.875, 2, 2.7324039713541648">
+      <DataClassMoniker Name="/OrgSys2017DataContext/PermissionDataFilter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="85bfd049-799e-49de-8885-62f75b54eab8" absoluteBounds="9.515, 14.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6152e87f-eaf0-479f-8798-4df0e635be8b" absoluteBounds="36.75, 38.375, 2, 3.3093082682291595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Portal_Data_View" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91165fca-fb03-436a-bf51-b22b7e8fea15" absoluteBounds="36.765, 38.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3ffcb686-3be3-44bc-82d7-aaf955dc1059" absoluteBounds="38.75, 11.375, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/PortalClaimManagerField" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1b5ff9e7-06c3-4eb4-b3d9-329098d5ceaf" absoluteBounds="38.765, 11.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6e3b0a71-1ff6-4e5d-94c9-b8d5fce95c79" absoluteBounds="38.75, 15.375, 2, 1.3862939453124969">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Rel_Diagnosis_InjuryCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="14650ea5-efce-49c7-970c-001d127a0314" absoluteBounds="38.765, 15.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7c11c0bb-c303-4227-a187-78e23db23cd9" absoluteBounds="9.75, 4.625, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80650b45-8af3-4cb3-9bb7-abc87bcb7705" absoluteBounds="9.765, 5.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="895c3649-c795-4c04-ba52-bb7b1721c777" absoluteBounds="12.5, 6.625, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Role_Permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d585da33-e82a-4521-a653-478cf63d6ba1" absoluteBounds="12.515, 7.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbeff2bf-d3c7-41b9-a7fb-0e15fd00b8c6" absoluteBounds="38.75, 18.375, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Role1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ac0eb2a6-01ef-4b35-9069-fb8c087a61c7" absoluteBounds="38.765, 18.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3b7bda3d-4e4a-43b3-872e-5e01b1bbb0d0" absoluteBounds="18.75, 8.875, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Services_LookUp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dacc9494-54cf-4ddd-bedb-af6238a2c5aa" absoluteBounds="18.765, 9.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13cf70c3-8f76-4ab7-a317-394781431ac3" absoluteBounds="18.75, 40.375, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Services_Rule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3567eaab-e292-4fd0-b777-a9d339569bb7" absoluteBounds="18.765, 40.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8ea9ac12-99af-4972-8d55-853c3a07cc1b" absoluteBounds="39.75, 2.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Session_Transfer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="72846e6c-76c2-4a29-b635-1c9d1134afe3" absoluteBounds="39.765, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a27a0a56-99b1-4439-9ea4-fdc8449d0460" absoluteBounds="39.75, 5.375, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Sys_Notification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="920b87bf-02f0-4c12-9122-54506b14e2ad" absoluteBounds="39.765, 5.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="810689bb-0f04-4857-b103-136a870664b2" absoluteBounds="11.75, 41.375, 2, 1.7708968098958309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Sys_Task" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2443c095-574a-4ac0-a81b-e975f639785b" absoluteBounds="11.765, 41.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="79166749-ba67-4b66-bfe6-10ff4460ec30" absoluteBounds="21.75, 41.375, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Table_Order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f43d5218-96b7-4f74-b5c5-cd092c903db2" absoluteBounds="21.765, 41.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f21927d-1bd7-4e21-a290-6ae3bc436daf" absoluteBounds="39.75, 25.375, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Table_Order_OldOrgsy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="39e95e31-4b24-41c8-887a-e8a137c5d4e4" absoluteBounds="39.765, 25.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e776b434-e181-410c-bef8-94d4c3916689" absoluteBounds="24.75, 41.375, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Test" />
+      <nestedChildShapes>
+        <elementListCompartment Id="456225ba-f665-4c6e-8b13-961c42fa54fc" absoluteBounds="24.765, 41.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="57844de4-480d-4e4c-98f4-d7f262a81a74" absoluteBounds="39.75, 28.375, 2, 13.885887044270831">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Transitional_RTW" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ffebdf94-2c1d-4af9-bb6e-c20627c0b58f" absoluteBounds="39.765, 28.835, 1.9700000000000002, 13.325887044270832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3e65ea3a-c3d2-4246-8353-e79a5ed32d2a" absoluteBounds="6.75, 9.125, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9ed4af60-3dea-4ccd-bc51-8e34c046cd50" absoluteBounds="6.765, 9.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1b634fdc-2871-4c10-abb2-5e56acfb55dc" absoluteBounds="18.5, 5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_Group" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6750b933-012c-4939-b3bd-465f413d3cf9" absoluteBounds="18.515, 5.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0acf7d13-a602-4aad-ba26-b5ee6cbae4aa" absoluteBounds="27.75, 41.375, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_PasswordReset" />
+      <nestedChildShapes>
+        <elementListCompartment Id="622d43e1-4e60-4cb4-a553-11bd8b75666e" absoluteBounds="27.765, 41.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0d7f00ce-99e3-448f-b474-4769cc2b5c73" absoluteBounds="9.5, 10.25, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_Permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95b03d5c-1ba5-49fb-bdaa-96167ab217e5" absoluteBounds="9.515, 10.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ea04e45a-2129-4096-ab4a-8f58557905e5" absoluteBounds="30.75, 41.375, 2, 7.9245426432291666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_Profile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cc412e7c-05a0-4370-a9f9-a4dd37b93ddc" absoluteBounds="30.765, 41.835, 1.9700000000000002, 7.3645426432291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68b23a9e-2346-4735-ac57-5c5050d055c4" absoluteBounds="41.75, 10.375, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_Registration" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e4f8d35c-a1f5-4f59-b768-f191926b8511" absoluteBounds="41.765, 10.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0cd93f9c-ba14-4388-a514-1fc430d14046" absoluteBounds="12.5, 9.25, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8e1ce88f-07a0-4bd8-af88-eb04f0809012" absoluteBounds="12.515, 9.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4d906db1-4f59-4bee-866b-401f943fe9a5" absoluteBounds="12.25, 14.375, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_TaskComment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d39306c-6d45-4b54-9478-50e0f49a24ae" absoluteBounds="12.265, 14.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a21a80c7-da23-44e3-9729-e5a3bf8a916d" absoluteBounds="9.5, 17.5, 2, 4.0785139973958344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_Task" />
+      <nestedChildShapes>
+        <elementListCompartment Id="893b7fe1-81c0-4a01-8e06-9a56165b41d0" absoluteBounds="9.515, 17.96, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f3f1f319-b14a-46dc-8cfa-7947c5effd78" absoluteBounds="41.75, 13.375, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Wiki" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be5c2d71-41c9-451d-98df-a0ba5d2f9477" absoluteBounds="41.765, 13.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.296878 : 140); (5.296878 : 127.395051269531); (5.91666666666667 : 127.395051269531 : JumpStart); (6.08333333333333 : 127.395051269531 : JumpEnd); (6.25 : 127.395051269531)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Emp_ContactTypeDetail" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="fd51ed3b-5ee9-40ee-afbb-26dcc7f98713" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.968748 : 140); (3.968748 : 121.20274983724); (6.25 : 121.20274983724)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Emp_IrregSchedule" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="9f1d8a4c-4f7c-401b-b95c-cd6c478ddb97" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 147.155336914063); (4.5 : 164.000764160156); (6.25 : 164.000764160156)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Emp_JobDetail" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="74da933e-d4bf-43ec-a204-ac7e8d06ec60" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 146.265168457031); (6.25 : 146.265168457031)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Emp_JobTypeDetail" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="07b43045-9a17-4472-8797-27cfa816fcc4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.0312525 : 147.155336914063); (5.0312525 : 157.462312011719); (6.25 : 157.462312011719)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Emp_PayDetail" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="f77493a8-b1c4-4a79-baa2-3f716bfea573" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 143.087352701823); (6.25 : 143.087352701823)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Emp_RegSchedule" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="6c84ca1d-c369-4acd-98fe-898ffc8f11d9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.031252 : 140); (5.031252 : 124.298900553385); (5.91666666666667 : 124.298900553385 : JumpStart); (6.08333333333333 : 124.298900553385 : JumpEnd); (6.25 : 124.298900553385)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Emp_RotSchedule" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="74f30062-9186-4bfd-b20d-333f35d4b628" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.9687475 : 147.155336914063); (3.9687475 : 152.039256998698); (4.41666666666667 : 152.039256998698 : JumpStart); (4.58333333333333 : 152.039256998698 : JumpEnd); (4.94791916666667 : 152.039256998698 : JumpStart); (5.11458583333333 : 152.039256998698 : JumpEnd); (6.25 : 152.039256998698)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Emp_Schedule" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="957eea11-22c3-4077-9da5-8261f5213c88" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 136.607403971354); (7.25 : 139.308503417969); (9 : 139.308503417969)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee_PayRoll/Claim_Employee_PayRoll_Claim_Emp_Payroll_Earning" />
+      <nodes>
+        <classShapeMoniker Id="5613288a-084d-4719-97af-292d8c69847d" />
+        <classShapeMoniker Id="c0e8961e-b8e1-4f97-a332-b68872532910" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 133.875); (7.25 : 130.193146972656); (9 : 130.193146972656)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee_PayRoll/Claim_Employee_PayRoll_Claim_Emp_Payroll_Insurance" />
+      <nodes>
+        <classShapeMoniker Id="5613288a-084d-4719-97af-292d8c69847d" />
+        <classShapeMoniker Id="741b5162-6841-43b0-9cc5-7f2626f6c2d8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.7812525 : 133.875); (7.7812525 : 132.7187475); (9 : 132.7187475)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee_PayRoll/Claim_Employee_PayRoll_Claim_Emp_Payroll_Offset" />
+      <nodes>
+        <classShapeMoniker Id="5613288a-084d-4719-97af-292d8c69847d" />
+        <classShapeMoniker Id="2623e4a0-47c1-40d0-9a41-7ac5a8884b47" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 135.678701985677); (9 : 135.678701985677)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee_PayRoll/Claim_Employee_PayRoll_Claim_Emp_Payroll_PreDi" />
+      <nodes>
+        <classShapeMoniker Id="5613288a-084d-4719-97af-292d8c69847d" />
+        <classShapeMoniker Id="ac93037c-167c-46b3-9133-3b304c1b036e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 140); (4.5 : 135.241201985677); (6.25 : 135.241201985677)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Employee_PayRoll" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="5613288a-084d-4719-97af-292d8c69847d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 27.625); (7.25 : 26.6874995); (9 : 26.6874995)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCM_CollateralDamage/Claim_ICDCM_CollateralDamage_Claim_ICDCM_Collateral_Animal" />
+      <nodes>
+        <classShapeMoniker Id="21c3b90d-9457-4446-884d-e4fc147e85c3" />
+        <classShapeMoniker Id="23062a1d-ea09-44fa-b38e-a54cfa23496f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 29.0104484049479); (8.41666666666667 : 29.0104484049479 : JumpStart); (8.58333333333333 : 29.0104484049479 : JumpEnd); (9 : 29.0104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCM_CollateralDamage/Claim_ICDCM_CollateralDamage_Claim_ICDCM_Collateral_Property" />
+      <nodes>
+        <classShapeMoniker Id="21c3b90d-9457-4446-884d-e4fc147e85c3" />
+        <classShapeMoniker Id="66ae61cd-3efd-46be-8ce6-a6ce27780887" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.625 : 41.375); (3.625 : 28.5104484049479); (5.79166666666667 : 28.5104484049479 : JumpStart); (5.95833333333333 : 28.5104484049479 : JumpEnd); (6.25 : 28.5104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCM/Claim_ICDCM_Claim_ICDCM_CollateralDamage" />
+      <nodes>
+        <classShapeMoniker Id="f55f596b-7615-4537-a993-8c6ca465bab8" />
+        <classShapeMoniker Id="21c3b90d-9457-4446-884d-e4fc147e85c3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.65625 : 41.375); (3.65625 : 24.1642976888021); (3.91666666666667 : 24.1642976888021 : JumpStart); (4.20833333333333 : 24.1642976888021 : JumpEnd); (5.79166666666667 : 24.1642976888021 : JumpStart); (5.95833333333333 : 24.1642976888021 : JumpEnd); (6.25 : 24.1642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCM/Claim_ICDCM_Claim_ICDCM_Limitation" />
+      <nodes>
+        <classShapeMoniker Id="f55f596b-7615-4537-a993-8c6ca465bab8" />
+        <classShapeMoniker Id="b1b08464-1cec-4497-8b62-e0308fbd4e84" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.5937475 : 41.375); (3.5937475 : 35.7989005533854); (5.79166666666667 : 35.7989005533854 : JumpStart); (6.08333333333333 : 35.7989005533854 : JumpEnd); (6.25 : 35.7989005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCM/Claim_ICDCM_Claim_ICDCM_Witness" />
+      <nodes>
+        <classShapeMoniker Id="f55f596b-7615-4537-a993-8c6ca465bab8" />
+        <classShapeMoniker Id="0d6b470e-cc24-49c3-96b4-1a86f64f29c5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 43.7228011067708); (4.5 : 49.6450512695313); (5.79166666666667 : 49.6450512695313 : JumpStart); (6.08333333333333 : 49.6450512695313 : JumpEnd); (6.25 : 49.6450512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCM/Claim_ICDCM_Claim_ICDCMCategory" />
+      <nodes>
+        <classShapeMoniker Id="f55f596b-7615-4537-a993-8c6ca465bab8" />
+        <classShapeMoniker Id="5ad9abc8-67ee-4060-b3f2-734a28a161b2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 48.375); (7.25 : 38.5392976888021); (9 : 38.5392976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCMCategory/Claim_ICDCMCategory_Claim_Injury_Activity" />
+      <nodes>
+        <classShapeMoniker Id="5ad9abc8-67ee-4060-b3f2-734a28a161b2" />
+        <classShapeMoniker Id="1a78f351-6c38-4407-9c9a-188d6ce72504" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.7812525 : 48.375); (7.7812525 : 45.7315991210938); (9 : 45.7315991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCMCategory/Claim_ICDCMCategory_Claim_Injury_BodyPart" />
+      <nodes>
+        <classShapeMoniker Id="5ad9abc8-67ee-4060-b3f2-734a28a161b2" />
+        <classShapeMoniker Id="776256e8-8282-444c-8323-0cf12f5832aa" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 50.9151025390625); (7.25 : 54.5585034179688); (9 : 54.5585034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCMCategory/Claim_ICDCMCategory_Claim_Injury_Cause" />
+      <nodes>
+        <classShapeMoniker Id="5ad9abc8-67ee-4060-b3f2-734a28a161b2" />
+        <classShapeMoniker Id="a12828dd-5608-4925-acec-523ba84f86b3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10 : 53); (10 : 50.6354484049479); (10.4479191666667 : 50.6354484049479 : JumpStart); (10.6145858333333 : 50.6354484049479 : JumpEnd); (11.75 : 50.6354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause/Claim_Injury_Cause_Claim_Injury_Cause_EnvironmentFactor" />
+      <nodes>
+        <classShapeMoniker Id="a12828dd-5608-4925-acec-523ba84f86b3" />
+        <classShapeMoniker Id="25c79eb7-ab03-4b50-8bfc-e56e56438e20" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 53.5104484049479); (11.75 : 53.5104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause/Claim_Injury_Cause_Claim_Injury_Cause_EquipmentInvolved" />
+      <nodes>
+        <classShapeMoniker Id="a12828dd-5608-4925-acec-523ba84f86b3" />
+        <classShapeMoniker Id="922dcd77-cb49-4a6f-8081-9bd0f7d58640" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 55.4960034179688); (11.75 : 55.4960034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause/Claim_Injury_Cause_Claim_Injury_Cause_HumanFactor" />
+      <nodes>
+        <classShapeMoniker Id="a12828dd-5608-4925-acec-523ba84f86b3" />
+        <classShapeMoniker Id="fcd77459-dbb7-4e8a-a1fd-41e6ceaae30f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.5312525 : 53); (10.5312525 : 48.2892976888021); (11.75 : 48.2892976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause/Claim_Injury_Cause_Claim_Injury_Cause_IncidentType" />
+      <nodes>
+        <classShapeMoniker Id="a12828dd-5608-4925-acec-523ba84f86b3" />
+        <classShapeMoniker Id="12888467-f58f-47ef-a2b5-2575da1c5576" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10 : 56.1170068359375); (10 : 58.2604484049479); (11.75 : 58.2604484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause/Claim_Injury_Cause_Claim_Injury_Cause_InjuryLocation" />
+      <nodes>
+        <classShapeMoniker Id="a12828dd-5608-4925-acec-523ba84f86b3" />
+        <classShapeMoniker Id="e8240ecc-1e07-4a50-875e-c3353d52767c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.5312525 : 56.1170068359375); (10.5312525 : 60.7604484049479); (11.75 : 60.7604484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Injury_Cause/Claim_Injury_Cause_Claim_Injury_Cause_WeatherCondition" />
+      <nodes>
+        <classShapeMoniker Id="a12828dd-5608-4925-acec-523ba84f86b3" />
+        <classShapeMoniker Id="5c551a3e-72f5-47ba-9caf-a7cf98298117" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.562495 : 41.375); (3.562495 : 32.8565991210938); (5.79166666666667 : 32.8565991210938 : JumpStart); (5.95833333333333 : 32.8565991210938 : JumpEnd); (6.25 : 32.8565991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCM/Claim_ICDCM_Claim_Injury_CorrAction" />
+      <nodes>
+        <classShapeMoniker Id="f55f596b-7615-4537-a993-8c6ca465bab8" />
+        <classShapeMoniker Id="63fc916b-b2a0-4eeb-ae6d-d31550b42932" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.7187475 : 48.375); (6.7187475 : 40.9142976888021); (9 : 40.9142976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCMCategory/Claim_ICDCMCategory_Claim_Injury_Diagnosi" />
+      <nodes>
+        <classShapeMoniker Id="5ad9abc8-67ee-4060-b3f2-734a28a161b2" />
+        <classShapeMoniker Id="51ccc134-ede4-4ea8-bf8b-8bde20b7368a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.04687875 : 48.375); (8.04687875 : 43.1642976888021); (9 : 43.1642976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_ICDCMCategory/Claim_ICDCMCategory_Claim_Injury_Medication" />
+      <nodes>
+        <classShapeMoniker Id="5ad9abc8-67ee-4060-b3f2-734a28a161b2" />
+        <classShapeMoniker Id="11c81ecd-ca65-45d0-aeb6-bd5b85df49b4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(19.5 : 14.4239005533854); (20.25 : 14.4239005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_RTW_Plan/Claim_RTW_Plan_Claim_RTW_Schedule" />
+      <nodes>
+        <classShapeMoniker Id="27ea5085-20ab-4856-8012-c6a0d38e75d3" />
+        <classShapeMoniker Id="8f90e479-34c3-42bd-a25b-18c0e71e256c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(15.1875 : 16.5); (15.1875 : 14.936708984375); (15.3229191666667 : 14.936708984375 : JumpStart); (15.4895858333333 : 14.936708984375 : JumpEnd); (17.5 : 14.936708984375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Update/Claim_Update_Claim_RTW_Plan" />
+      <nodes>
+        <classShapeMoniker Id="d0698fe8-af09-4c3f-8837-82b87d9c4689" />
+        <classShapeMoniker Id="27ea5085-20ab-4856-8012-c6a0d38e75d3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(15.96875 : 19.6170068359375); (15.96875 : 20.28125); (17.5 : 20.28125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Update/Claim_Update_Claim_Updates_Billing" />
+      <nodes>
+        <classShapeMoniker Id="d0698fe8-af09-4c3f-8837-82b87d9c4689" />
+        <classShapeMoniker Id="4992d25e-080d-47bc-b373-10ccb80348bf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(16.75 : 17.9239005533854); (17.5 : 17.9239005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Update/Claim_Update_Claim_Updates_Document" />
+      <nodes>
+        <classShapeMoniker Id="d0698fe8-af09-4c3f-8837-82b87d9c4689" />
+        <classShapeMoniker Id="b20a68a3-08b3-4c00-8495-57009536b48e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 81.375); (1.75 : 40.6458968098958); (2.46354466666667 : 40.6458968098958 : JumpStart); (2.63021133333333 : 40.6458968098958 : JumpEnd); (3.25 : 40.6458968098958); (3.25 : 29.0112939453125); (3.29166666666667 : 29.0112939453125 : JumpStart); (3.45833333333333 : 29.0112939453125 : JumpEnd); (3.54166666666667 : 29.0112939453125 : JumpStart); (3.83333333333333 : 29.0112939453125 : JumpEnd); (4.25 : 29.0112939453125); (4.25 : 23.4054996744792); (4.20833333333333 : 23.4054996744792 : JumpStart); (3.66666666666667 : 23.4054996744792 : JumpEnd); (3.33333333333333 : 23.4054996744792 : JumpStart); (3.16666666666667 : 23.4054996744792 : JumpEnd); (2.75 : 23.4054996744792); (2.75 : 13.3565991210937); (2.79166666666667 : 13.3565991210937 : JumpStart); (3.08333333333333 : 13.3565991210937 : JumpEnd); (3.16666666666667 : 13.3565991210937 : JumpStart); (3.33333333333333 : 13.3565991210937 : JumpEnd); (3.5 : 13.3565991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_AbsenceDate" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="0aa80a5a-6fb9-4e75-aee9-c2daa08365f9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 95.8377913411458); (1.75 : 102.539256998698); (1.93229291666667 : 102.539256998698 : JumpStart); (2.09895958333333 : 102.539256998698 : JumpEnd); (2.19791916666667 : 102.539256998698 : JumpStart); (2.36458583333333 : 102.539256998698 : JumpEnd); (2.46354541666667 : 102.539256998698 : JumpStart); (2.63021208333333 : 102.539256998698 : JumpEnd); (3.5 : 102.539256998698)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_Absence" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="f704fe43-da00-42ba-8cca-47dd881dad65" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 95.8377913411458); (2.2812525 : 112.260407714844); (2.46354541666667 : 112.260407714844 : JumpStart); (2.63021208333333 : 112.260407714844 : JumpEnd); (3.5 : 112.260407714844)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_AdditionalDetail" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="e40d0e2b-8a5b-47e3-ac5e-38a8512abf65" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.414065 : 81.375); (2.414065 : 70.1162019856771); (3.5 : 70.1162019856771)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_Benefit" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="8ef79b17-571a-4ebb-b7a0-358ec9ae3516" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.2187475 : 95.8377913411458); (1.2187475 : 97.8469555664063); (2.46354541666667 : 97.8469555664063 : JumpStart); (2.63021208333333 : 97.8469555664063 : JumpEnd); (3.5 : 97.8469555664063)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_Contact" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="7769cf91-2391-4a38-bed6-e63c64008e32" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.679691 : 81.375); (2.679691 : 40.7708968098958); (3.375 : 40.7708968098958); (3.375 : 28.6362939453125); (3.54166666666667 : 28.6362939453125 : JumpStart); (3.83333333333333 : 28.6362939453125 : JumpEnd); (3.875 : 28.6362939453125); (3.875 : 23.0304996744792); (3.83333333333333 : 23.0304996744792 : JumpStart); (3.66666666666667 : 23.0304996744792 : JumpEnd); (3.33333333333333 : 23.0304996744792 : JumpStart); (3.16666666666667 : 23.0304996744792 : JumpEnd); (2.95833333333333 : 23.0304996744792 : JumpStart); (2.79166666666667 : 23.0304996744792 : JumpEnd); (2.625 : 23.0304996744792); (2.625 : 16.1065991210938); (2.79166666666667 : 16.1065991210938 : JumpStart); (3.08333333333333 : 16.1065991210938 : JumpEnd); (3.16666666666667 : 16.1065991210938 : JumpStart); (3.33333333333333 : 16.1065991210938 : JumpEnd); (3.5 : 16.1065991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_CPP_Application" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="0e5ea8c2-d1ae-4302-9bbf-90f393f190d7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.953122 : 81.375); (0.953122 : 40.5208968098958); (1.66666666666667 : 40.5208968098958 : JumpStart); (1.83333333333333 : 40.5208968098958 : JumpEnd); (2.46354466666667 : 40.5208968098958 : JumpStart); (2.63021133333333 : 40.5208968098958 : JumpEnd); (3.125 : 40.5208968098958); (3.125 : 28.3862939453125); (3.57291666666667 : 28.3862939453125 : JumpStart); (4.08333333333333 : 28.3862939453125 : JumpEnd); (4.16666666666667 : 28.3862939453125 : JumpStart); (4.33333333333333 : 28.3862939453125 : JumpEnd); (4.625 : 28.3862939453125); (4.625 : 23.1554996744792); (4.08333333333333 : 23.1554996744792 : JumpStart); (3.66666666666667 : 23.1554996744792 : JumpEnd); (3.33333333333333 : 23.1554996744792 : JumpStart); (3.16666666666667 : 23.1554996744792 : JumpEnd); (3.125 : 23.1554996744792); (3.125 : 18.7315991210938); (3.16666666666667 : 18.7315991210938 : JumpStart); (3.33333333333333 : 18.7315991210938 : JumpEnd); (3.5 : 18.7315991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_Date" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="f9db71c4-7b21-4825-8b50-204d8b2061b8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.54687875 : 95.8377913411458); (2.54687875 : 143.577668457031); (3.5 : 143.577668457031)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_Employee" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 81.9335034179688); (3.5 : 81.9335034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_FirstAidDetail" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="45d53743-e13f-4379-ba8e-11b090e790a3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.218748 : 81.375); (1.218748 : 73.6162019856771); (1.40104066666667 : 73.6162019856771 : JumpStart); (1.56770733333333 : 73.6162019856771 : JumpEnd); (1.66666666666667 : 73.6162019856771 : JumpStart); (1.83333333333333 : 73.6162019856771 : JumpEnd); (1.93229266666667 : 73.6162019856771 : JumpStart); (2.09895933333333 : 73.6162019856771 : JumpEnd); (2.19791866666667 : 73.6162019856771 : JumpStart); (2.49739833333333 : 73.6162019856771 : JumpEnd); (3.5 : 73.6162019856771)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_GRTW_Schedule" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="1387818e-b768-487c-bfd7-48d6966978bb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.281252 : 81.375); (2.281252 : 42.5489005533854); (3.5 : 42.5489005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_ICDCM" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="f55f596b-7615-4537-a993-8c6ca465bab8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.01562625 : 95.8377913411458); (2.01562625 : 117.260407714844); (2.46354541666667 : 117.260407714844 : JumpStart); (2.63021208333333 : 117.260407714844 : JumpEnd); (3.5 : 117.260407714844)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_InsuranceDetail" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="b7eeb322-e5f0-4c08-a6c4-2e0ef8ae8402" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.546878 : 81.375); (2.546878 : 40.2708968098958); (2.875 : 40.2708968098958); (2.875 : 29.1362939453125); (2.91666666666667 : 29.1362939453125 : JumpStart); (3.08333333333333 : 29.1362939453125 : JumpEnd); (3.54166666666667 : 29.1362939453125 : JumpStart); (3.73958333333333 : 29.1362939453125 : JumpEnd); (3.75 : 29.1362939453125); (3.75 : 22.7804996744792); (3.375 : 22.7804996744792); (3.375 : 21.5777498372396); (3.5 : 21.5777498372396)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_LocationDetail" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="6da98137-fa25-4344-9b77-292ec1265404" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 89.1258048502604); (3.5 : 89.1258048502604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_MedicalAttDetail" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="bf1038c8-c64b-473b-8f45-01e9dcf46ebf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.484374 : 81.375); (1.484374 : 66.7700512695313); (3.5 : 66.7700512695313)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_ModifiedWorkSchedule" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="ca21e541-2f92-49d9-bf87-fd77c0583f44" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 81.375); (1.75 : 40.3958968098958); (3 : 40.3958968098958); (3 : 28.7612939453125); (3.54166666666667 : 28.7612939453125 : JumpStart); (3.70833333333333 : 28.7612939453125 : JumpEnd); (4 : 28.7612939453125); (4 : 22.9054996744792); (3 : 22.9054996744792); (3 : 11.4431469726562); (3.5 : 11.4431469726562)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_NurseDetail" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="2f1fbb8d-2bd4-4dd0-9ea8-bf0664fe90c6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.148439 : 81.375); (2.148439 : 77.2123527018229); (3.5 : 77.2123527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_RTM_Detail" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="147fa304-81ca-461a-8774-cc8902763908" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.48437375 : 95.8377913411458); (1.48437375 : 107.289256998698); (1.93229291666667 : 107.289256998698 : JumpStart); (2.09895958333333 : 107.289256998698 : JumpEnd); (2.19791916666667 : 107.289256998698 : JumpStart); (2.36458583333333 : 107.289256998698 : JumpEnd); (2.46354541666667 : 107.289256998698 : JumpStart); (2.63021208333333 : 107.289256998698 : JumpEnd); (3.5 : 107.289256998698)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_RTW" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="66680358-9224-4627-8d6f-523f4c8881b5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.015626 : 81.375); (2.015626 : 63.5489005533854); (2.19791866666667 : 63.5489005533854 : JumpStart); (2.36458533333333 : 63.5489005533854 : JumpEnd); (3.5 : 63.5489005533854)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_SpecialistDetail" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="034309e8-ab94-4cd4-a198-442f3e6cef4e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 9.75121330413662); (3.125 : 9.37621330413662); (3.125 : 4.53929768880208); (3.22916666666667 : 4.53929768880208 : JumpStart); (3.39583333333333 : 4.53929768880208 : JumpEnd); (3.5 : 4.53929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Language_Control/Language_Control_Language_Control_Data" />
+      <nodes>
+        <classShapeMoniker Id="a9505963-906c-4e9c-91f4-cc59e8df58a3" />
+        <classShapeMoniker Id="36d30c6a-99a1-44c0-a968-cbedd06f4727" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.96279581705729); (3.22916666666667 : 4.96279581705729 : JumpStart); (3.39583333333333 : 4.96279581705729 : JumpEnd); (3.5 : 4.96279581705729)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Language/Language_Language_Control_Data" />
+      <nodes>
+        <classShapeMoniker Id="b457c277-2986-457c-ad58-8678a0fd1c04" />
+        <classShapeMoniker Id="36d30c6a-99a1-44c0-a968-cbedd06f4727" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 26.875); (2.5 : 25.5689925130208); (4.125 : 25.5689925130208); (4.125 : 23.2804996744792); (2.875 : 23.2804996744792); (2.875 : 10.5392976888021); (2.75 : 10.5392976888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Language_Control_Type/Language_Control_Type_Language_Control" />
+      <nodes>
+        <classShapeMoniker Id="dea6ebf1-a87b-4541-a34f-9900cfc93940" />
+        <classShapeMoniker Id="a9505963-906c-4e9c-91f4-cc59e8df58a3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.65625 : 3.875); (2.65625 : 2.13869466145833); (3.5 : 2.13869466145833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Language/Language_Language_Message_Data" />
+      <nodes>
+        <classShapeMoniker Id="b457c277-2986-457c-ad58-8678a0fd1c04" />
+        <classShapeMoniker Id="0eb9b239-3085-4e68-9f03-d1dae85b796c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 7.06314281510417); (3.3125 : 6.50064281510417); (3.3125 : 1.53929768880208); (3.5 : 1.53929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Language_Message/Language_Message_Language_Message_Data" />
+      <nodes>
+        <classShapeMoniker Id="447c5ffa-1443-4e4b-9610-319a242f138d" />
+        <classShapeMoniker Id="0eb9b239-3085-4e68-9f03-d1dae85b796c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.25 : 24.125); (3.25 : 7.85212159635417); (2.75 : 7.85212159635417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Language_Message_Type/Language_Message_Type_Language_Message" />
+      <nodes>
+        <classShapeMoniker Id="1c9cb018-19fd-45b6-9d9b-e4b72c541977" />
+        <classShapeMoniker Id="447c5ffa-1443-4e4b-9610-319a242f138d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.44931705603966 : 14.0112939453125); (7.44931705603966 : 14.2612939453125); (8.06500117938702 : 14.2612939453125); (8.06500117938702 : 14.0112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Permission/Permission_Permission" />
+      <nodes>
+        <classShapeMoniker Id="ef29d2fc-7dfe-474a-9859-e61d0438e04d" />
+        <classShapeMoniker Id="ef29d2fc-7dfe-474a-9859-e61d0438e04d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 13.2812515); (8.91666666666667 : 13.2812515 : JumpStart); (9.08333333333333 : 13.2812515 : JumpEnd); (9.22916666666667 : 13.2812515 : JumpStart); (9.39583333333333 : 13.2812515 : JumpEnd); (10.5 : 13.2812515); (10.5 : 13.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Permission/Permission_PermissionDataFilter" />
+      <nodes>
+        <classShapeMoniker Id="ef29d2fc-7dfe-474a-9859-e61d0438e04d" />
+        <classShapeMoniker Id="276ce72d-ff65-4046-a7a6-a4e772e39803" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 12.95312575); (8.91666666666667 : 12.95312575 : JumpStart); (9.08333333333333 : 12.95312575 : JumpEnd); (9.22916666666667 : 12.95312575 : JumpStart); (9.39583333333333 : 12.95312575 : JumpEnd); (11.7916666666667 : 12.95312575 : JumpStart); (11.9583333333333 : 12.95312575 : JumpEnd); (12.25 : 12.95312575); (12.25 : 8.3862939453125); (13.5 : 8.3862939453125); (13.5 : 8.0112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Permission/Permission_Role_Permission" />
+      <nodes>
+        <classShapeMoniker Id="ef29d2fc-7dfe-474a-9859-e61d0438e04d" />
+        <classShapeMoniker Id="895c3649-c795-4c04-ba52-bb7b1721c777" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.75 : 5.31814697265625); (13.5 : 5.31814697265625); (13.5 : 6.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Role/Role_Role_Permission" />
+      <nodes>
+        <classShapeMoniker Id="7c11c0bb-c303-4227-a187-78e23db23cd9" />
+        <classShapeMoniker Id="895c3649-c795-4c04-ba52-bb7b1721c777" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(20.75 : 9.76044840494792); (21.5 : 9.76044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Services_LookUp/Services_LookUp_Bus_Rule" />
+      <nodes>
+        <classShapeMoniker Id="3b7bda3d-4e4a-43b3-872e-5e01b1bbb0d0" />
+        <classShapeMoniker Id="3bf05bac-204d-4a6f-9b8f-29a6eca0624c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(17.75 : 5.98159912109375); (18.5 : 5.98159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Client/Client_User_Group" />
+      <nodes>
+        <classShapeMoniker Id="a2391b31-8f85-49f0-8b3b-e6dbd6b767ef" />
+        <classShapeMoniker Id="1b634fdc-2871-4c10-abb2-5e56acfb55dc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 12.625); (8.94107443490112 : 12.4339255650989 : JumpStart); (9.05892556509888 : 12.3160744349011 : JumpEnd); (9.125 : 12.25); (9.125 : 12.5881982421875); (9.12857443490112 : 12.5846238072864 : JumpStart); (9.24642556509888 : 12.4667726770886 : JumpEnd); (9.25357443490112 : 12.4596238072864 : JumpStart); (9.37142556509888 : 12.3417726770886 : JumpEnd); (9.5 : 12.2131982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Permission/Permission_User_Permission" />
+      <nodes>
+        <classShapeMoniker Id="ef29d2fc-7dfe-474a-9859-e61d0438e04d" />
+        <classShapeMoniker Id="0d7f00ce-99e3-448f-b474-4769cc2b5c73" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 11.032900390625); (8.91666666666667 : 11.032900390625 : JumpStart); (9.08333333333333 : 11.032900390625 : JumpEnd); (9.5 : 11.032900390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/User/User_User_Permission" />
+      <nodes>
+        <classShapeMoniker Id="3e65ea3a-c3d2-4246-8353-e79a5ed32d2a" />
+        <classShapeMoniker Id="0d7f00ce-99e3-448f-b474-4769cc2b5c73" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.65625 : 6.0112939453125); (11.65625 : 10.2315991210938); (12.5 : 10.2315991210938)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Role/Role_User_Role" />
+      <nodes>
+        <classShapeMoniker Id="7c11c0bb-c303-4227-a187-78e23db23cd9" />
+        <classShapeMoniker Id="0cd93f9c-ba14-4388-a514-1fc430d14046" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 9.82095011393229); (8.91666666666667 : 9.82095011393229 : JumpStart); (9.08333333333333 : 9.82095011393229 : JumpEnd); (11.5729166666667 : 9.82095011393229 : JumpStart); (11.7395833333333 : 9.82095011393229 : JumpEnd); (12.5 : 9.82095011393229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/User/User_User_Role" />
+      <nodes>
+        <classShapeMoniker Id="3e65ea3a-c3d2-4246-8353-e79a5ed32d2a" />
+        <classShapeMoniker Id="0cd93f9c-ba14-4388-a514-1fc430d14046" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.281252 : 11.4728011067708); (8.281252 : 12.375); (8.91666666666667 : 12.375 : JumpStart); (9.08333333333333 : 12.375 : JumpEnd); (9.22916666666667 : 12.375 : JumpStart); (9.39583333333333 : 12.375 : JumpEnd); (11.875 : 12.375); (11.875 : 15.2604484049479); (12.25 : 15.2604484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/User/User_User_TaskComment" />
+      <nodes>
+        <classShapeMoniker Id="3e65ea3a-c3d2-4246-8353-e79a5ed32d2a" />
+        <classShapeMoniker Id="4d906db1-4f59-4bee-866b-401f943fe9a5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.5 : 18.488376499349); (12.46875 : 18.488376499349); (12.46875 : 16.1458968098958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/User_Task/User_Task_User_TaskComment" />
+      <nodes>
+        <classShapeMoniker Id="a21a80c7-da23-44e3-9729-e5a3bf8a916d" />
+        <classShapeMoniker Id="4d906db1-4f59-4bee-866b-401f943fe9a5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.45923076923077 : 11.4728011067708); (9.3125 : 12.0676087990785); (9.3125 : 19.5392569986979); (9.5 : 19.5392569986979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/User/User_User_Task" />
+      <nodes>
+        <classShapeMoniker Id="3e65ea3a-c3d2-4246-8353-e79a5ed32d2a" />
+        <classShapeMoniker Id="a21a80c7-da23-44e3-9729-e5a3bf8a916d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 11.4112616452324); (8.94107443490112 : 11.6023360801335 : JumpStart); (9.05892556509888 : 11.7201872103313 : JumpEnd); (9.1875 : 11.8487616452324); (9.1875 : 19.5392569986979); (9.5 : 19.5392569986979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/User/User_User_Task1" />
+      <nodes>
+        <classShapeMoniker Id="3e65ea3a-c3d2-4246-8353-e79a5ed32d2a" />
+        <classShapeMoniker Id="a21a80c7-da23-44e3-9729-e5a3bf8a916d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="20888cda-711d-4797-abc1-9706ab64bbf4" absoluteBounds="12.875, 1.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/OrgSys2017DataContext/ClientDivisionUserView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5efc3a35-15db-4d0c-b3ee-5f6cc8c05cc1" absoluteBounds="12.89, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3214dc05-5467-4afe-86cf-539109b51688" absoluteBounds="15.625, 9.75, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Update_Cmr_Archive" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eee100fb-8da7-4148-942d-dd817437ff26" absoluteBounds="15.64, 10.21, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="89b5c86a-b422-4df0-8a03-d806fc07fac5" absoluteBounds="0.5, 12.125, 2, 5.8092268880208344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Updates_Billing_PR_Archive" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9215a164-b377-4764-a18d-e930abee0f7e" absoluteBounds="0.515, 12.585, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0fe3ac5c-599d-434e-a70d-ed603b44ebf9" absoluteBounds="6, 15.125, 2, 4.2708154296875023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Update_Cmr" />
+      <nestedChildShapes>
+        <elementListCompartment Id="111d17e3-1a5a-4ae1-8eab-80440d421201" absoluteBounds="6.015, 15.585, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e5c06def-8f8e-463c-ac4b-0dd00a2bbafb" absoluteBounds="6.375, 4.5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Updates_Documents_Archive" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e332612c-fb33-4933-8846-9b81198382a2" absoluteBounds="6.39, 4.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="71d9b439-85ff-4038-aaaa-0f3d6e71d109" absoluteBounds="7.625, 0.5, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Peer_Review" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ae355a18-9fe1-4ca4-a199-a0659a36bc04" absoluteBounds="7.64, 0.96, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(15.75 : 4.13064697265625); (15.4895858333333 : 4.13064697265625 : JumpStart); (15.3229191666667 : 4.13064697265625 : JumpEnd); (9.40625325 : 4.13064697265625); (9.40625325 : 3.42470540364583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Client/Client_Claim_Peer_Review" />
+      <nodes>
+        <classShapeMoniker Id="a2391b31-8f85-49f0-8b3b-e6dbd6b767ef" />
+        <classShapeMoniker Id="71d9b439-85ff-4038-aaaa-0f3d6e71d109" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 143.769969889323); (6 : 143.769969889323); (6 : 34.3958968098958); (8.5 : 34.3958968098958); (8.5 : 14.2612939453125); (9 : 14.2612939453125); (9 : 3.79970540364583); (9.2187495 : 3.79970540364583); (9.2187495 : 3.42470540364583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Employee/Claim_Employee_Claim_Peer_Review" />
+      <nodes>
+        <classShapeMoniker Id="c7af1930-1f78-44c1-9c10-325d5bb70e06" />
+        <classShapeMoniker Id="71d9b439-85ff-4038-aaaa-0f3d6e71d109" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 10.0354775569661); (8.91666666666667 : 10.0354775569661 : JumpStart); (9.08333333333333 : 10.0354775569661 : JumpEnd); (9.1250025 : 10.0354775569661); (9.1250025 : 3.42470540364583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/User/User_Claim_Peer_Review" />
+      <nodes>
+        <classShapeMoniker Id="3e65ea3a-c3d2-4246-8353-e79a5ed32d2a" />
+        <classShapeMoniker Id="71d9b439-85ff-4038-aaaa-0f3d6e71d109" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(15.4062525 : 16.5); (15.4062525 : 0.78125); (9.625 : 0.78125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim_Update/Claim_Update_Claim_Peer_Review" />
+      <nodes>
+        <classShapeMoniker Id="d0698fe8-af09-4c3f-8837-82b87d9c4689" />
+        <classShapeMoniker Id="71d9b439-85ff-4038-aaaa-0f3d6e71d109" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(37.75 : 3.7612939453125); (37.75 : 5.125); (36.5 : 5.125); (36.5 : 11.125); (34.5 : 11.125); (34.5 : 14.125); (29.7708333333333 : 14.125 : JumpStart); (29.6041666666667 : 14.125 : JumpEnd); (29.3333333333333 : 14.125 : JumpStart); (29.1666666666667 : 14.125 : JumpEnd); (29 : 14.125); (29 : 21.1266097005208); (20.0833333333333 : 21.1266097005208 : JumpStart); (19.9166666666667 : 21.1266097005208 : JumpEnd); (19.75 : 21.1266097005208); (19.75 : 19.6747054036458); (11.875 : 19.6747054036458); (11.875 : 19.5392569986979); (11.5 : 19.5392569986979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/List_TaskType/List_TaskType_User_Task" />
+      <nodes>
+        <classShapeMoniker Id="9ea52668-08d5-4288-b628-0d1e6f45abee" />
+        <classShapeMoniker Id="a21a80c7-da23-44e3-9729-e5a3bf8a916d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(37.218748 : 3.7612939453125); (37.218748 : 4.875); (36.25 : 4.875); (36.25 : 10.875); (34.25 : 10.875); (34.25 : 13.875); (29.25 : 13.875); (29.25 : 21.2516097005208); (20 : 21.2516097005208); (20 : 19.7372054036458); (12.125 : 19.7372054036458); (12.125 : 18.488376499349); (11.5 : 18.488376499349)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/List_TaskType/List_TaskType_User_Task1" />
+      <nodes>
+        <classShapeMoniker Id="9ea52668-08d5-4288-b628-0d1e6f45abee" />
+        <classShapeMoniker Id="a21a80c7-da23-44e3-9729-e5a3bf8a916d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(38.281252 : 3.7612939453125); (38.281252 : 5.25); (36.625 : 5.25); (36.625 : 11.25); (34.625 : 11.25); (34.625 : 14.25); (29.3333333333333 : 14.25 : JumpStart); (29.1666666666667 : 14.25 : JumpEnd); (29.125 : 14.25); (29.125 : 21.0016097005208); (20.0833333333333 : 21.0016097005208 : JumpStart); (19.9166666666667 : 21.0016097005208 : JumpEnd); (19.875 : 21.0016097005208); (19.875 : 19.6122054036458); (12.2083333333333 : 19.6122054036458 : JumpStart); (12.0416666666667 : 19.6122054036458 : JumpEnd); (12 : 19.6122054036458); (12 : 20.6266092005208); (11.5 : 20.6266092005208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/List_TaskType/List_TaskType_User_Task2" />
+      <nodes>
+        <classShapeMoniker Id="9ea52668-08d5-4288-b628-0d1e6f45abee" />
+        <classShapeMoniker Id="a21a80c7-da23-44e3-9729-e5a3bf8a916d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="696b9758-c50c-434c-9d8d-c3a057c447c5" absoluteBounds="0.5, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_FileType_Permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bd0a30e4-ece2-495b-a103-62ad4f242136" absoluteBounds="0.515, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(30.75 : 17.375); (30.75 : 16.5929996744792); (29.6875 : 16.5929996744792); (29.6875 : 13.0160953776042); (28.6875 : 13.0160953776042); (28.6875 : 10.0160953776042); (27.6875 : 10.0160953776042); (27.6875 : 0.4375); (2.59375 : 0.4375); (2.59375 : 1.19314697265625); (2.5 : 1.19314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/List_Claim_Document_Type/List_Claim_Document_Type_User_FileType_Permission" />
+      <nodes>
+        <classShapeMoniker Id="6ce5f1b4-9f69-4615-a134-2cf44c1d18a3" />
+        <classShapeMoniker Id="696b9758-c50c-434c-9d8d-c3a057c447c5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.75 : 5.31814697265625); (8.625 : 5.31814697265625); (8.625 : 4.25); (5.75 : 4.25); (5.75 : 3.5); (2.73958333333333 : 3.5 : JumpStart); (2.57291666666667 : 3.5 : JumpEnd); (1.5 : 3.5); (1.5 : 1.8862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Role/Role_User_FileType_Permission" />
+      <nodes>
+        <classShapeMoniker Id="7c11c0bb-c303-4227-a187-78e23db23cd9" />
+        <classShapeMoniker Id="696b9758-c50c-434c-9d8d-c3a057c447c5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d201c047-2e99-45d0-b7cf-732c8a7637e2" absoluteBounds="7.5, 84, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Document" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66e29033-6a5d-4fb6-9a74-b37f2165b485" absoluteBounds="7.515, 84.46, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6bfa8c2d-469b-4c75-9860-f0c43ff255c0" absoluteBounds="41.375, 17.5, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Library_Resource_Type" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a56075a-7912-46f5-8caf-d6cdf44f719b" absoluteBounds="41.39, 17.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="57e294a7-8a84-4a96-91e4-bd8f2a408108" absoluteBounds="44.125, 17, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Library_Resource" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca0010ce-2f20-4cea-a3dc-26e2603c114d" absoluteBounds="44.14, 17.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(43.375 : 18.0969962565104); (44.125 : 18.0969962565104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Library_Resource_Type/Library_Resource_Type_Library_Resource" />
+      <nodes>
+        <classShapeMoniker Id="6bfa8c2d-469b-4c75-9860-f0c43ff255c0" />
+        <classShapeMoniker Id="57e294a7-8a84-4a96-91e4-bd8f2a408108" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="10c40c8e-6978-47d1-a868-6cf78f37c8d2" absoluteBounds="17.375, 49.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/User_Service_Permission" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3c93ee3-705f-46c8-8b70-1975a9eedd9c" absoluteBounds="17.39, 49.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="db8f2507-39d0-4086-8d5e-20811affad88" absoluteBounds="20.5, 48, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/OrgSys2017DataContext/List_Insurance_Coverage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2b5046a-e78d-4755-bf1f-aca5561da4ca" absoluteBounds="20.515, 48.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4fa52737-70fd-4cbf-9b84-4930ca5e9396" absoluteBounds="18.375, 0.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Session" />
+      <nestedChildShapes>
+        <elementListCompartment Id="53afbb85-8f3f-4fa1-bad2-6c3bf286b256" absoluteBounds="18.39, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f2fe5f52-f193-4472-b280-f1eb2fd4e991" absoluteBounds="9.5, 7.125, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Session_Archive" />
+      <nestedChildShapes>
+        <elementListCompartment Id="add519ec-42e1-4ab4-bdbe-0ffb468ff1c1" absoluteBounds="9.515, 7.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.59375 : 9.125); (8.59375 : 8.30610220182292); (8.91666666666667 : 8.30610220182292 : JumpStart); (9.08333333333333 : 8.30610220182292 : JumpEnd); (9.5 : 8.30610220182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/User/User_Session_Archive" />
+      <nodes>
+        <classShapeMoniker Id="3e65ea3a-c3d2-4246-8353-e79a5ed32d2a" />
+        <classShapeMoniker Id="f2fe5f52-f193-4472-b280-f1eb2fd4e991" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="af0a1c41-4921-4a4f-a054-8e20445b6265" absoluteBounds="4.125, 8.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OrgSys2017DataContext/Claim_Rehabilitation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8cd2aefd-d03f-40c8-ad38-a0bb080a24cc" absoluteBounds="4.14, 8.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 84.9335034179688); (5.875 : 84.9335034179688); (5.875 : 10.5304996744792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OrgSys2017DataContext/Claim/Claim_Claim_Rehabilitation" />
+      <nodes>
+        <classShapeMoniker Id="a8e558a7-f3e8-46cd-a5ca-818aa16806a7" />
+        <classShapeMoniker Id="af0a1c41-4921-4a4f-a054-8e20445b6265" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f6336390-96d1-4668-ada7-7df61d5c453c" absoluteBounds="6.375, 91.75, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/OrgSys2017DataContext/BillingDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0de19bbe-6729-4a6a-a603-8808e5f405b3" absoluteBounds="6.39, 92.21, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,647 @@
+﻿
+<script type="text/javascript">
+
+    var absenceCount = 0; //default; this is updated on api call for absences /abovtenko
+    var few_Abs;
+
+    $(document).ready(function () {
+        PopulateAbsences();
+        if (window.ClaimID) {
+            GetDataGeneric('DataBind', 'GetAbsFewFields', window.ClaimID).then(function (data) {
+                if (data.length > 0) {
+                    //part of absences swal, but not table
+                    window.absDayOff = data[0]['DateFirstOff'] || '';
+                    window.absLastWorked = data[0]["DateLastWorked"] || '';
+                    window.absLTDStartDate = data[0]["OccurenceDate"] || '';
+                }
+                else {
+                    window.absDayOff = '';
+                    window.absLastWorked = '';
+                    window.absLTDStartDate = '';
+                }
+            })
+        }
+    });
+
+    function CreateAbsences() {
+        var table = $('#tblAbsences').DataTable();
+        var firstAbsence = table.rows()[0].length === 0;
+
+        PopulateGenericList("AbsenceApproved", "populateAbsApproved", "ListText_EN", "ListValue");
+        GetList("GetList_CloseReasons", "populateCloseReasons", "Desc_EN");
+        PopulateGenericList("YesNo", "adjudicate-select", "ListText_EN", "ListValue");
+        GetDataGeneric("Client", "GetClientProfiles", token).then((data) => {
+            var client = data.filter((c) => c.ClientID === window.ClientID)[0];
+            $('#stdWaitPeriod').val(client.STDWaitPeriodDays);
+        });
+
+        swal({
+            title: "Add Absence",
+            text: "",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Add Absence',
+            width: '850px',
+            html: absenceSwalTemplate,
+            onOpen: function () {                                
+                $('#adjudicate-container').html(adjudicateClaimTemplate);                
+                InitializeSwalDatepicker();
+               
+                
+                var closeClaim = $('.adjudicate-select')
+                var AbsApprv = $(".populateAbsApproved");
+                var openTaskCount = $('#claimTaskTable').DataTable().data().length;
+                if (openTaskCount > 0) {
+                    closeClaim.prop('disabled', true);
+                    $('#closeClaimMessage').show();
+                }
+                else {
+                    $('#closeClaimMessage').hide();
+                }
+
+                AbsApprv.val('Unknown');
+
+                AbsApprv.on('change', function () {
+                    var Approved = this.value == 'Yes' || this.value == 'No';
+                    if (Approved) {
+                        $('#Abs_ApprovalDate').addClass('required');
+                    }
+                    else {
+                        $('#Abs_ApprovalDate').removeClass('required');
+                    }
+                });
+
+
+                closeClaim.on('change', function () {
+                    var adjudicate = this.value == 1;
+                    if (adjudicate) {
+                        $('#claim-adjudication-section').removeClass('hidden');
+                        $('#reasonClosed, #reasonClosedDesc, #Abs_RTFDate').addClass('required');
+                    }
+                    else {
+                        $('#claim-adjudication-section').addClass('hidden');
+                        $('#reasonClosed, #reasonClosedDesc, #Abs_RTFDate').removeClass('required');
+                    }
+                });
+
+                $('#reasonClosed').on('change', function () {
+                    var isClaimCancelled = this.value === 'Closed - Claim Cancelled';
+                    (isClaimCancelled) ? $('#Abs_RTFDate').removeClass('required error') : $('#Abs_RTFDate').addClass('required');
+                })
+
+                if (firstAbsence) {
+                    SetIsoDateFormat('#Abs_DayOff', absDayOff || '');
+                    SetIsoDateFormat('#Abs_LastWorked', absLastWorked);
+                    SetIsoDateFormat('#Abs_LTDStartDate', absLTDStartDate);
+                }
+                else {
+                    $('#lblLastDay').text('Relapse Date');
+                    $('#Abs_DayOff, #Abs_LTDStartDate').closest('.col-sm-4').addClass('hidden'); //hide after first absence
+                }                
+
+                MaskInputs(this)
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(
+            function () {
+                UnMaskInputs(this);
+                var absence = GetAbsenceSwalObject(); //abs_ltdstartdate not saved yet    
+                var adjudicate = $('.adjudicate-select').val() == 1;
+                var reason = $('#reasonClosed option:selected').text();
+                var isClaimCancelled = reason === 'Closed = Claim Cancelled'
+                var comment = $('#reasonClosedDesc').val();
+
+                
+
+                var isClaimClosed;
+                GetDataGeneric('Claim', 'GetIsClaimClosed', window.ClaimID, false).then((data) => {
+                    isClaimClosed = data[0]['IsClaimClosed'];
+                });
+
+                if (isClaimClosed) {
+                    swal('', 'This claim is closed.', 'error');
+                    return;
+                }
+
+                if (!validate.validateSubmission()) {
+                    var sectionsWithErrorFields = getSectionNamesWithErrorFields(); //Gets a unique list of comma delimited section names with error fields
+                    swal('Error!', 'Oops! You missed required field(s) from the following section(s): <br/><br/>' + sectionsWithErrorFields + '', 'error');
+                    return;
+                }
+
+                if (!firstAbsence)
+                    absence.DayOff = $('#Abs_LastWorked').data('iso-date'); //appears as [Relapse Date], is [First Off] of new absence
+
+                if (!isClaimCancelled)
+                    table.row.add(absence).draw();
+
+                //ensure record was added and is first
+                if (table.rows()[0].length === 1 && firstAbsence) {
+                    //reflect in mirrored field if first absence
+                    SetIsoDateFormat('#DateFirstOff', $('#Abs_DayOff').data('iso-date'));
+                    SetIsoDateFormat('#DateLastWorked', $('#Abs_LastWorked').data('iso-date'));
+                    SetIsoDateFormat('#LTDDate', $('#Abs_LTDStartDate').data('iso-date'));
+                }
+
+                UnMaskInputs();
+                var claim = CreateClaimObjects();
+                MaskInputs();
+
+                $.ajax({
+                    url: getApi + "/api/SaveClaim",
+                    beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+                    type: "POST",
+                    data: "=" + encodeURIComponent(JSON.stringify({ claimData: claim }))
+                }).then(
+                    (res) => {
+                        if (res != 0)
+                            if (adjudicate)
+                                AdjudicateClaim(reason, window.ClaimID, window.ClaimRefNu, window.UserID, comment);
+                        else
+                            swal('', 'Your request could not be completed at this time. Please contact support@orgsoln.com', 'error')
+                    }
+                );
+            },
+            function () {
+                swal("Cancelled", "Not Added", "error");
+            }
+        );
+    }
+
+    //Edit an Absence
+    $(document).on('click', '.editAbsence', function () {
+        var table = $('#tblAbsences').DataTable();
+        var index = table.row($(this).closest('tr')).index()
+        var data = table.row(index).data();
+
+        DEBUG('editing row index : ' + index)
+        GetList("GetList_CloseReasons", "populateCloseReasons", "Desc_EN");
+        PopulateGenericList("YesNo", "adjudicate-select", "ListText_EN", "ListValue");
+
+        swal({
+            title: 'Edit  Absences',
+            text: 'Are you sure, you want to Edit Absences',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Edit',
+            html: absenceSwalTemplate,
+            width: '750px',
+            onOpen: function () {
+                $('#adjudicate-container').html(adjudicateClaimTemplate);     
+                InitializeSwalDatepicker();
+                SetAbsenceSwalObject(data);
+                PopulateGenericList("AbsenceApproved", "populateAbsApproved", "ListText_EN", "ListValue").then(function () {
+                    $('#Abs_AbsenceApproved').val(data.AbsenceApproved);
+                });
+
+                var closeClaim = $('.adjudicate-select')
+                var openTaskCount = $('#claimTaskTable').DataTable().data().length;
+                if (openTaskCount > 0) {
+                    closeClaim.prop('disabled', true);
+                    $('#closeClaimMessage').show();
+                }
+                else {
+                    $('#closeClaimMessage').hide();
+                }
+
+                closeClaim.on('change', function () {
+                    var adjudicate = this.value == 1;
+                    if (adjudicate) {
+                        $('#claim-adjudication-section').removeClass('hidden');
+                        $('#reasonClosed, #reasonClosedDesc, #Abs_RTFDate').addClass('required');
+                    }
+                    else {
+                        $('#claim-adjudication-section').addClass('hidden');
+                        $('#reasonClosed, #reasonClosedDesc, #Abs_RTFDate').removeClass('required');
+                    }
+                });
+
+                $('#reasonClosed').on('change', function () {
+                    var isClaimCancelled = this.value === 'Closed - Claim Cancelled';
+                    (isClaimCancelled) ? $('#Abs_RTFDate').removeClass('required error') : $('#Abs_RTFDate').addClass('required');
+                })
+
+                if (index > 0) {
+                    $('#lblLastDay').text('Relapse Date');
+                    $('#Abs_DayOff, #Abs_LTDStartDate').closest('.col-sm-4').addClass('hidden');
+                    //this field is now labeled 'Relapse Date', set to value of [First Off] column
+                    SetIsoDateFormat('#Abs_LastWorked', data.DayOff);
+                }
+                else {
+                    SetIsoDateFormat('#Abs_LastWorked', absLastWorked);
+                    SetIsoDateFormat('#Abs_LTDStartDate', absLTDStartDate);
+                }
+
+                MaskInputs(this);                
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                UnMaskInputs(this);
+                var absence = GetAbsenceSwalObject(); //abs_ltdstartdate not saved yet    
+                var adjudicate = $('.adjudicate-select').val() == 1;
+                var reason = $('#reasonClosed option:selected').text();
+                var comment = $('#reasonClosedDesc').val();
+
+                if (adjudicate)
+                    AdjudicateClaim(reason, window.ClaimID, window.ClaimRefNu, window.UserID, comment);
+            
+                //abs ltdstartdate, abs lastworked not saved yet
+                table.row(index).data(absence).draw();
+
+                if (index === 0) {
+                    //reflect in mirrored field if first absence
+                    SetIsoDateFormat('#DateFirstOff', absence.DayOff);
+                    SetIsoDateFormat('#DateLastWorked', $('#Abs_LastWorked').data('iso-date'));
+                    SetIsoDateFormat('#LTDDate', $('#Abs_LTDStartDate').data('iso-date')); //may save into #ltdStart
+                }
+            }
+        });
+
+    });
+
+    $(document).on('click', '.deleteAbsence', function () {
+        DeleteRecordSwalDT('#tblAbsences', 'Absence', $(this));
+    });
+    
+    /**
+     * Gets the values of absence swal field and returns an absence object
+     */
+    function GetAbsenceSwalObject() {
+        return {
+            WaitWaived: $('#Abs_WaitWaived').prop("checked") ? true : false,
+            DayOff: $('#Abs_DayOff').data('iso-date'),
+            AbsenceApproved: $('#Abs_AbsenceApproved').val(),
+            ApprovalDate: $('#Abs_ApprovalDate').data('iso-date') || '',
+            AbsAuthFrom: $('#Abs_AuthFrom').data('iso-date'),
+            AbsAuthTo: $('#Abs_AuthTo').data('iso-date'),
+            RTWAuthDate: $('#Abs_RTWAuthDate').data('iso-date'),
+            RTMDate: $('#Abs_RTMDate').data('iso-date'),
+            RTFDate: $('#Abs_RTFDate').data('iso-date'),
+            TransRTW: $('#Abs_TransRTW').prop("checked"),
+            TransRTWDis: $('#Abs_TransRTWDis').prop("checked"),
+            AbsComments: $('#Abs_Comments').val()
+        } 
+    }
+
+    /**
+     * Sets the absence swal fields from an absence object
+     * @param absence
+     */
+    function SetAbsenceSwalObject(absence) {
+        $('#Abs_WaitWaived').prop('checked', ((absence.WaitWaived) ? true : false));
+        SetIsoDateFormat('#Abs_DayOff', absence.DayOff);
+        SetIsoDateFormat('#Abs_AbsenceApproved', absence.AbsenceApproved);
+        SetIsoDateFormat('#Abs_ApprovalDate', absence.ApprovalDate);
+        SetIsoDateFormat('#Abs_AuthFrom', absence.AbsAuthFrom);
+        SetIsoDateFormat('#Abs_AuthTo', absence.AbsAuthTo);
+        SetIsoDateFormat('#Abs_RTWAuthDate', absence.RTWAuthDate);
+        SetIsoDateFormat('#Abs_RTMDate', absence.RTMDate);
+        SetIsoDateFormat('#Abs_RTFDate', absence.RTFDate);
+        $('#Abs_TransRTW').prop('checked', ((absence.TransRTW) ? true : false));
+        $('#Abs_TransRTWDis').prop('checked', ((absence.TransRTWDis) ? true : false));
+        $('#Abs_Comments').val(absence.AbsComments);
+    }
+
+    function PopulateAbsences() {
+        var absences;
+        if (ClaimID) {
+            $.ajax({
+                url: getApi + "/api/Claim/GetAbsencesDetails/" + ClaimID,
+                beforeSend: function (request) {
+                    request.setRequestHeader("Authentication", window.token);
+                },
+                async: false,
+                success: function (data) {
+                    absences = ReplaceDFValues(JSON.parse(data));
+                    absenceCount = absences.length;
+                }
+            });
+
+            $('#tblAbsences').DataTable({
+                select: true,
+                data: absences,
+                "columns": [
+                    {
+                        "data": "WaitWaived",
+                        "visible": false
+                    },
+                    {
+                        "data": "DayOff",
+                        render: ConvertDateIsoToCustom
+                    },
+                    { "data": "AbsenceApproved" },
+                    {
+                        "data": "ApprovalDate",
+                        render: ConvertDateIsoToCustom
+                    },
+                    {
+                        "data": "AbsAuthFrom",
+                        render: ConvertDateIsoToCustom
+                    },
+                    {
+                        "data": "AbsAuthTo",
+                        render: ConvertDateIsoToCustom
+                    },
+                    {
+                        "data": "RTWAuthDate",
+                        render: ConvertDateIsoToCustom
+                    },
+                    {
+                        "data": "RTMDate",
+                        render: ConvertDateIsoToCustom
+                    },
+                    {
+                        "data": "RTFDate",
+                        render: ConvertDateIsoToCustom
+                    },
+                    {
+                        "data": "TransRTW",
+                        render: function (data) {
+                            return data ? 'Yes' : 'No'
+                        }
+                    },
+                    {
+                        "data": "TransRTWDis",
+                        render: function (data) {
+                            return data ? 'Yes' : 'No'
+                        }
+                    },
+                    { "data": "AbsComments" },
+                    {
+                        data: null, render: function (data, type, row) {
+                            return "<a href='#' class='editAbsence btn btn-default edit_button' > <i class='icon icon-pencil'></i></a>";
+                        }
+                    },
+                    {
+                        data: null, render: function (data, type, row) {
+                            return "<a href='#' class='deleteAbsence btn btn-default btn-danger' > <i class='icon icon-bin'></i></a>";
+                        }
+                    }
+                ]
+            });
+        }
+    }
+
+    var adjudicateClaimTemplate = `
+    <div class ="row margin_bottom dialogbox_container">
+        <div class="col-sm-6 dialogbox_form">
+            <label class="dialogbox_form_label">Close Claim</label>
+            <select class="form-control adjudicate-select"></select>
+        </div>        
+    </div>
+    <p id="closeClaimMessage">Please complete all open claim tasks before closing.</p>
+    <div id="claim-adjudication-section" class="hidden">
+        <div class="panel-body remove-top-border">
+            <div class="row margin_bottom" style="margin-left: 2px">
+                <label id="lbl_Decision">Choose a Closing Decision:</label>
+                <select id="reasonClosed" name="reasonClosed" class="form-control populateCloseReasons"></select><br />
+                <label id="lbl_finalComments">Final Comments / Reasons for decision:</label>
+                <textarea class="form-control" type="text" id="reasonClosedDesc"></textarea><br />
+            </div>
+            <div class="row margin_bottom" style="margin-left: 2px">
+                All tasks and items assigned to this claim must be completed prior to closing this claim.
+            </div>
+            <div class="row margin_bottom" style="margin-left: 2px">
+                Note: If this claim needs to be opened again, please follow the Re-Open Claim Process. This claim will be closed after this absence is added.
+            </div>
+        </div>
+    </div>`
+
+    var absenceSwalTemplate =         
+        '<div>' +
+            '<div class ="row margin_bottom dialogbox_container">' +
+                '<div class ="col-sm-3 dialogbox_form">' +
+                    '<label class ="checkbox_inline">' +
+                        '<input class ="form-check-input" type="checkbox" name="Abs_WaitWaived" id="Abs_WaitWaived">Wait period waived' +
+                    '</label>' +
+                '</div>' +
+            '</div>' +
+            '<div class ="row margin_bottom dialogbox_container">' +
+                '<div class="col-sm-4 dialogbox_form" >' +
+                    '<label class="dialogbox_form_label">First Off</label>' +
+                    '<input type="date" class="form-control"  name="dayOff" id="Abs_DayOff" />' +
+                '</div>' +
+                '<div class="col-sm-4 dialogbox_form" >' +
+                    '<label class="dialogbox_form_label">LTD Start Date</label>' +
+                    '<input type="date" class="form-control"  name="LTDStartDate" id="Abs_LTDStartDate" />' +
+                '</div>' +
+
+                '<div class ="col-sm-4 dialogbox_form">' +
+                    '<label class="dialogbox_form_label">Absence Decision</label>' +
+                    '<select class ="form-control populateAbsApproved" name="absenceApproved" id="Abs_AbsenceApproved" > </select>' +
+                '</div>' +
+                '<div class ="col-sm-4 dialogbox_form">' +
+                    '<label class="dialogbox_form_label">Decision Date</label>' +
+                    '<input type="date" class="form-control" name="absApprovalDate" id="Abs_ApprovalDate" />' +
+                '</div>' +
+                '<div class="col-md-4 dialogbox_form">' +
+                    '<label class="dialogbox_form_label">Abs Auth From</label>' +
+                    '<input type="date" class="form-control" name="absAuthFrom" id="Abs_AuthFrom" />' +
+                '</div>' +
+                '<div class ="col-sm-4 dialogbox_form">' +
+                    '<label class="dialogbox_form_label">Abs Auth To</label>' +
+                    '<input type="date" class="form-control" name="absAuthTo" id="Abs_AuthTo" />' +
+                '</div>' +
+                '<div class="col-sm-4 dialogbox_form">' +
+                    '<label class="dialogbox_form_label">RTW Auth</label>' +
+                    '<input type="date" class="form-control" name="RTWAuthDate" id="Abs_RTWAuthDate" />' +
+                '</div>' +
+                '<div class="col-sm-4 dialogbox_form">' +
+                    '<label class="dialogbox_form_label">RTM Date</label>' +
+                    '<input type="date" class="form-control" name="RTMDate" id="Abs_RTMDate" />' +
+                '</div>' +
+                '<div class="col-sm-4 dialogbox_form">' +
+                    '<label class="dialogbox_form_label">RTF</label>' +
+                    '<input type="date" class="form-control" name="RTFDate" id="Abs_RTFDate" />' +
+                '</div>' +
+                '<div class="col-sm-4 dialogbox_form">' +
+                    '<label class="dialogbox_form_label" id="lblLastDay">Date Last worked</label>' +
+                    '<input type="date" class ="form-control" name="lastWorked"  id="Abs_LastWorked" />' +
+                '</div>' +
+                '<div class="col-sm-4 dialogbox_form">' +
+                    '<label class="dialogbox_form_label" for="stdWaitPeriod">STD Wait Period</label>' +
+                    '<input type="text" class="form-control" id="stdWaitPeriod" readonly="readonly" />' +
+                '</div>' +
+            '</div>' +
+            '<div class ="row margin_bottom dialogbox_container">' +
+                '<label class ="checkbox_inline dialogbox_form">' +
+                    '<input class ="form-check-input" type="checkbox" name="transRTW" id="Abs_TransRTW">RTM includes tradional /gradual RTW' +
+                '</label>' +
+                '<label class ="checkbox_inline dialogbox_form">' +
+                    '<input class ="form-check-input" type="checkbox" name="transRTWDis" id="Abs_TransRTWDis">Tradional RTW disconnected or absence recurred' +
+                '</label>' +
+            '</div>' +
+            '<div class ="row margin_bottom dialogbox_container">' +
+                '<div class="form-group col-md-12 dialogbox_form">' +
+                    '<label class="dialogbox_form_label">Absence Comments</label>' +
+                    ' <textarea class="form-control" name="absComments" id="Abs_Comments" rows="3"></textarea>' +
+                '</div>' +
+            '</div>' +             
+            '<div id="adjudicate-container"></div>' + 
+        '</div>'
+
+    
+
+</script>
+<div class="panel panel-default container">
+    <div id="banner-container" class="osp-heading panel-heading narrow-container">
+        <div id="welcome-container" class="osp-heading panel-heading">
+            <h4 id="welcome-header" class="osp-heading panel-heading">Claim Additional Details</h4>
+        </div>
+        <div id="logo-container" class="osp-heading panel-heading"></div>
+    </div>
+    <!--<div class="panel-heading">Claim Additional Details<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>-->
+    <div class="panel-body remove-top-border">
+        <!--Claim Details-->
+        <div class="row margin_bottom">
+            <div class="col-sm-2">
+                <label for="trackingNu">WSIB Number</label>
+                <input type="text" class="form-control col-md-3" id="AccTracNu" name="accTracNu" />
+            </div>
+            <div class="col-sm-3">
+                <label for="claimNu">Claim Reference Number</label>
+                <input type="text" class="form-control col-md-3" id="ClaimRefNu" name="ClaimRefNu" readonly="readonly" />
+            </div>
+            <div class="col-sm-2">
+                <label for="reportLate">Is the Report Late?</label>
+                <select class="form-control col-md-3" id="ReportLate" name="reportLate"></select>
+            </div>
+            <div class="col-sm-2">
+                <label for="reasonLate">Reason Late</label>
+                <input type="text" class="form-control col-md-3" id="ReasonLate" name="reasonLate" />
+            </div>
+            <div class="col-sm-2">
+                <label for="claimType">Claim Type</label>
+                <select class="form-control col-md-3" id="ClaimType" name="claimType"></select>
+            </div>
+        </div>
+        <div class="row margin_bottom">
+            <div class="col-sm-2">
+                <label for=")rgsysClaimType">Orgsys Claim Type</label>
+                <input type="text" class="form-control col-md-3" id="OrgsysClaimType" name="OrgsysClaimType" readonly disabled />
+            </div>
+            <div class="col-sm-2">
+                <label for="claimStatus">Claim Status</label>
+                <select type="text" class="form-control col-md-3" id="ClaimStatus" name="claimStatus"></select>
+            </div>
+            <div class="col-sm-2">
+                <label for="adjucator">Closing User</label>
+                <input type="text" class="form-control" id="Adjudicator" name="adjucator" />
+            </div>
+            <div class="col-sm-2">
+                <label for="classification">Classification</label>
+                <input type="text" class="form-control" id="Classification" name="classification" />
+            </div>
+            <div class="col-sm-2">
+                <label>Medical attention</label>
+                <select class="form-control" id="MedicalAttention" name="medicalAttention"></select>
+            </div>
+        </div>
+        <!--Claim Additional Info HTML-->
+        <div class="row margin_bottom">
+            <div class="col-sm-3">
+                <label>Modified Work Available</label>
+                <select class="form-control" id="ModifiedWork" name="modifiedWork"></select>
+            </div>
+        </div>
+        <div class="row margin_bottom padding_15">
+            <label class="checkbox_inline">
+                <input class="form-check-input" type="checkbox" name="attorney" id="Attorney">Attorney
+            </label>
+            <label class="checkbox_inline">
+                <input class="form-check-input" type="checkbox" name="EAP" id="EAP">EAP
+            </label>
+            <label class="checkbox_inline">
+                <input class="form-check-input" type="checkbox" name="criticalInjury" id="CriticalInjury">Critical Injury
+            </label>
+            <label class="checkbox_inline">
+                <input class="form-check-input" type="checkbox" name="fileAppeal" id="FileAppeal"> File Appeal
+            </label>
+            <label class="checkbox_inline">
+                <input type="checkbox" name="fileAudit" id="FileAudit"> File Audit
+            </label>
+            <label class="checkbox_inline">
+                <input class="form-check-input" type="checkbox" name="safetySensitiveJob" id="SafetySensitiveJob" />Safety Sensitive Job
+            </label>
+        </div>
+        <div class="row margin_bottom">
+            <div class="col-sm-2">
+                <label for="auditDate">Audit Date</label>
+                <input type="date" name="auditDate" id="AuditDate" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <label>Appeal Status</label>
+                <select class="form-control" name="appealStatus" id="AppealStatus"></select>
+            </div>
+            <div class="col-sm-2">
+                <label>OHSA Category</label>
+                <select class="form-control" name="OSHACategory" id="OSHACategory"></select>
+            </div>
+            <div class="col-sm-2">
+                <label>Org Code</label>
+                <input type="text" name="orgCode" id="OrgCode" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <label>STD %</label>
+                <input type="text" name="STD" id="STD" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <label>Cost Center</label>
+                <input type="text" name="costCenter" id="CostCenter" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <label>Case Load</label>
+                <input type="text" name="payCycle" id="PayCycle" class="form-control" />
+            </div>
+            <div class="col-sm-2">
+                <label>Assignment number</label>
+                <input type="text" name="assignmentNo" id="AssignmentNo" class="form-control" />
+            </div>
+        </div>
+        <div class="margin_bottom padding_15">
+            <label class="checkbox_inline">
+                <input class="form-check-input" type="checkbox" name="complex" id="Complex">Complex
+            </label>
+            <label class="checkbox_inline">
+                <input class="form-check-input" type="checkbox" name="workIssues" id="WorkIssues">Work Issues
+            </label>
+            <label class="checkbox_inline WC_Form">
+                <input class="form-check-input" type="checkbox" name="fileArchieved" id="FileArchieved" />File Archived
+            </label>
+            <label class="checkbox_inline">
+                <input class="form-check-input" type="checkbox" name="preExisConditions" id="PreExisCondition" />Pre Existing Conditions
+            </label>
+        </div>
+        <div class="row margin_bottom" style="margin-left: 2px">
+            <div class="alert alert-danger">
+                <label id="absMsg" style="color:red;">You cannot add an absence - claim needs to be saved first</label>
+            </div>
+        </div>
+        <div id="divAbsences">
+            <div class="row margin_bottom">
+                <button type="button" id="btnAddAbsences" class="btn btn-default add-client" onclick="CreateAbsences('tblAbsences')"><i class="icon-plus"></i></button>
+            </div>
+            <table style="width:100%;" id="tblAbsences" class='table table-bordered table-striped table-hover dataTable no-footer'>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th style="width:20px">First Off</th>
+                        <th style="width:20px">Absences Approved</th>
+                        <th style="width:20px">Decision Date</th>
+                        <th style="width:20px">Auth From</th>
+                        <th style="width:20px">Auth To</th>
+                        <th style="width:40px">RTW Auth</th>
+                        <th style="width:40px">RTM</th> 
+                        <th style="width:40px">RTF</th>
+                        <th style="width:40px">Gradual RTW</th>
+                        <th style="width:40px">RTW Discontinued</th>
+                        <th style="width:40px">Abs Comments</th>
+                        <th style="width:20px"></th>
+                        <th style="width:20px"></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1258 @@
+﻿
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        //PopulateEarnings();
+        //PopulateOffsets();
+        PopulateInsurance();
+        PopulateEmployerContacts(0, 'tblEmployer');
+        
+
+        $('#jobDescDocument').change(function () {
+            var Rawfile = document.querySelector('#jobDescDocument').files[0]
+            var file = {
+                id: 1,
+                file: Rawfile,
+                ext: Rawfile.name.match(/\.[a-zA-Z]+$/)[0].replace('.', ''),
+                documentTypeId: 86
+            };
+            SaveClaimDocuments([file], window.ClaimID);
+            setTimeout(function () { PopulateJobDescriptionDocs() }, 1000);
+        });
+    });
+
+    /**
+     * Initializes datatables, retrieves data and sets to tables
+     */
+    function LoadEmployeeInformation() {
+
+        InitializeEmployeeInformationDT();
+
+
+        GetDataGeneric('Claim', 'GetPayrollEarnings', ClaimID).then(function (payroll) {
+            SetDataDT('#tblPayRollEar', ReplaceDFValues(payroll));
+        });
+
+        GetDataGeneric('Claim', 'GetPayrollOffsets', ClaimID).then(function (payroll) {
+            SetDataDT('#tblOffset', ReplaceDFValues(payroll));
+        });
+    }
+
+    /**
+     * Initializes all datatables in employee information section
+     */
+    function InitializeEmployeeInformationDT() {
+        InitializeDT('#tblPayRollEar', PayrollEarningsDTC);
+        InitializeDT('#tblOffset', OffsetDTC);
+
+
+    }
+
+    //It populates insurances
+    function PopulateInsurance() {
+        var insurances;
+        var Ins = [];
+        if (ClaimID) {
+            $.ajax({
+                url: getApi + "/api/Claim/GetPayrollInsurance/" + ClaimID,
+                beforeSend: function (request) {
+                    request.setRequestHeader("Authentication", window.token);
+                },
+                async: false,
+                success: function (data) {
+                    insurances = JSON.parse(data);
+                    DEBUG("insurance", null, null);
+                    DEBUG(insurances, null, null);
+                    for (i = 0; i < insurances.length; i++) {
+                        Ins.push("<li class='list-group-item' data-value='" + insurances[i]["InsuranceType"] + "'>" + insurances[i]["InsuranceType"] + "</li>");
+                    }
+                }
+            });
+            $('#insuranceOption').append(Ins);
+        }
+    }
+
+
+    function PopulateJobDescriptionDocs() {
+        if ($.fn.DataTable.isDataTable("#tblJobDecDocs")) {
+            $('#tblJobDecDocs').DataTable().clear().destroy();
+        }
+        var jobDocs;
+        if (ClaimID) {
+            $.ajax({
+                url: getApi + "/api/Claim/GetDocumentsByType/" + window.ClaimRefNu + "/" + 86,
+                async: false,
+                success: function (data) {
+                    jobDocs = JSON.parse(data);
+                }
+            });
+        }
+        $('#tblJobDecDocs').DataTable({
+            select: true,
+            data: jobDocs,
+            "columns": [
+                {
+                    data: null,
+                    render: function () {
+                        return `<a id='btnOpenClaimFile' data-toggle='tooltip' title='View update' class='btn btn-default view_description'><i class='glyphicon glyphicon-eye-open'></i>
+                        `;
+                    }
+                },
+                { "data": "DocName" },
+                { "data": "UploadedBy" },
+                { "data": "Timestamp" }
+                
+            ]
+        });
+    }
+
+
+
+    //It Populates Employer Contacts
+    function PopulateEmployerContacts(Type, tableName) {
+        var contacts_Employer = [];
+        var employer;
+        if (ClaimID) {
+            $.ajax({
+                url: getApi + "/api/DataBind/GetContactsByType/" + ClaimID + "/" + Type,
+                beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+                async: false,
+                success: function (data) {
+                    employer = JSON.parse(data);
+                }
+            });
+        }
+        $('#' + tableName).DataTable({
+            select: true,
+            data: employer,
+            "columns": [
+                {
+                    data: null,
+                    render: function () {
+                        return `
+                        <a class="btn btn-default editEmployer edit_button" data-toggle="tooltip" title="Edit Employer Contact"><i class="icon icon-pencil"></i></a>
+                        <a class="btn btn-default deleteEmployerContact btn-danger" title="Delete Employer Contact" data-toggle="tooltip"><i class="icon icon-bin"></i></a>`;
+                    }
+                },
+                { "data": "ContactType" },
+                { "data": "Con_LastName" },
+                { "data": "Con_FirstName" },
+                { "data": "Con_Title" },
+                {
+                    data: "Con_WorkPhone",
+                    render: function (data, type, row) {
+                        return '<span class="vld-phone">' + data + '</span>';
+                    }
+                },
+                { "data": "Con_Ext" },
+                { "data": "Con_Email" }
+            ]
+        });
+
+        MaskInputs();
+
+    }
+    //It Creates Insurance
+    function CreateInsurance() {
+        var insurance = [];
+        $("#InsOption :selected").each(function () {
+            insurance.push("<li class='list-group-item' data-value='" + $(this).val() + "'>" + $(this).val() + "</li>");
+        });
+        $('#insuranceOption').append(insurance);
+    }
+
+
+    //PAYROLL EARNINGS ----------
+
+    //It creates Payroll
+    function CreatePayroll(tblName) {
+        var table = $('#tblPayRollEar').DataTable();
+
+        GetList("GetList_Frequency", "populatePredisability", "Frequency_EN");
+        GetList("GetList_Frequency", "populateGrossEarnings", "Frequency_EN");
+
+        swal({
+            title: "Add Payroll",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Add Payroll',
+            html: payrollEarTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker()
+                MaskInputs(this)
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                UnMaskInputs(this);
+                var payroll = GetPayrollEarningsSwalObject();
+
+                table.row.add(payroll).draw();
+                swal("", "Payroll has been added!", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not Added", "error");
+        });
+
+    }
+
+    $(document).on('click', '.editPayrollEarnings', function () {
+
+        var table = $('#tblPayRollEar').DataTable();
+        var index = table.row($(this).closest('tr')).index();
+        var payrollData = table.row(index).data();
+
+        swal({
+            title: "Edit Payroll",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Update Payroll',
+            html: payrollEarTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker();
+
+                $.when(
+                    GetList("GetList_Frequency", "populatePredisability", "Frequency_EN"),
+                    GetList("GetList_Frequency", "populateGrossEarnings", "Frequency_EN")
+                ).done(function () {
+                    SetPayrollEarningsSwalObject(payrollData);
+                });
+
+                MaskInputs(this);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                UnMaskInputs(this);
+                var payroll = GetPayrollEarningsSwalObject();
+
+                table.row(index).data(payroll).draw();
+                swal("", "Payroll has been updated!", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not Added", "error");
+        });
+
+    });
+
+    $(document).on('click', '.deletePayrollEarnings', function () {
+        DeleteRecordSwalDT('#tblPayRollEar', 'Payroll Earnings', $(this));
+    });
+
+    /**
+     * Return payroll earnings data from swal
+     */
+    function GetPayrollEarningsSwalObject() {
+        return {
+            EarningsType: $("#EarningsType").val(),
+            ValidFrom: $("#ValidFrom").data('iso-date'),
+            ValidTo: $("#ValidTo").data('iso-date'),
+            GrossEarnings: $('#GrossEarnings').val(),
+            GrossEarningsType: $('#GrossEarningsType').val(),
+            FederalTaxes: $('#FederalTaxes').val(),
+            ProvincialTaxes: $('#ProvincialTaxes').val(),
+            CPPContributions: $('#CPPContributions').val(),
+            EIContributions: $("#Contributions_EI").val(),
+            WorkHours: $('#WorkHours').val()
+        }
+    }
+
+    /**
+     * Set payroll earnings data into swal
+     * @param payroll
+     */
+    function SetPayrollEarningsSwalObject(payroll) {
+
+        $("#EarningsType").val(payroll.EarningsType);
+        SetIsoDateFormat("#ValidFrom", payroll.ValidFrom);
+        SetIsoDateFormat("#ValidTo", payroll.ValidTo);
+        $('#GrossEarnings').val(payroll.GrossEarnings);
+        $('#GrossEarningsType').val(payroll.GrossEarningsType);
+        $('#FederalTaxes').val(payroll.FederalTaxes);
+        $('#ProvincialTaxes').val(payroll.ProvincialTaxes);
+        $('#CPPContributions').val(payroll.CPPContributions);
+        $("#Contributions_EI").val(payroll.EIContributions)
+        $('#WorkHours').val(payroll.WorkHours)
+
+    }
+
+
+
+    //PAYROLL OFFSETS ----------
+
+    function CreateOffset(tblName) {
+        var table = $('#tblOffset').DataTable();
+
+        GetList("GetList_Frequency", "populateOffsetPeriod", "Frequency_EN");
+        GetList("GetList_OffsetType", "populateOffsetType", "Offset_Type_EN");
+
+        swal({
+            title: "Add Offset",
+            text: "",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Add Offset',
+            html: offsetTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker()
+                MaskInputs(this);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                UnMaskInputs(this);
+                var offset = GetOffsetSwalObject();
+
+                table.row.add(offset).draw();
+                swal("", "Offset has been added!", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not Added", "error");
+        });
+    }
+
+    $(document).on('click', '.editOffset', function () {
+
+        var table = $('#tblOffset').DataTable();
+        var index = table.row($(this).closest('tr')).index();
+        var offset = table.row(index).data();
+
+        swal({
+            title: "Edit Offset",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Update Offset',
+            html: offsetTemplate,
+            width: '850px',
+            onOpen: function () {
+                InitializeSwalDatepicker()
+
+                $.when(
+                    GetList("GetList_Frequency", "populateOffsetPeriod", "Frequency_EN"),
+                    GetList("GetList_OffsetType", "populateOffsetType", "Offset_Type_EN")
+                ).done(function () {
+                    SetOffsetSwalObject(offset);
+                });
+
+                MaskInputs(this);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (results) {
+                UnMaskInputs(this);
+                var offset = GetOffsetSwalObject();
+
+                table.row(index).data(offset).draw();
+                swal("", "Offset has been updated!", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not updated!", "error");
+        });
+
+    });
+
+    $(document).on('click', '.deleteOffset', function () {
+        DeleteRecordSwalDT('#tblOffset', 'Payroll Offset', $(this));
+    });
+
+    /**
+     * Return payroll offset data from swal
+     */
+    function GetOffsetSwalObject() {
+        return {
+            OffsetType: $('#OffsetType').val(),
+            OffsetFrom: $("#OffsetFrom").data('iso-date'),
+            OffsetTo: $('#OffsetTo').data('iso-date'),
+            Period: $('#Period').val(),
+            GrossAmount: $('#GrossAmount').val(),
+            NetAmount: $('#NetAmount').val()
+        }
+    }
+
+    /**
+     * Set payroll offsets data into swal
+     * @param offset
+     */
+    function SetOffsetSwalObject(offset) {
+
+        $('#OffsetType').val(offset.OffsetType);
+        SetIsoDateFormat('#OffsetFrom', offset.OffsetFrom);
+        SetIsoDateFormat('#OffsetTo', offset.OffsetTo);
+        $('#Period').val(offset.Period);
+        $('#GrossAmount').val(offset.GrossAmount);
+        $('#NetAmount').val(offset.NetAmount);
+
+    }
+
+
+    ///
+
+    function CreateEmployerContact(tblName) {
+        var table = $('#' + tblName).DataTable();
+
+        GetList('GetList_RoleType', 'populateContactType', 'Role_EN');
+
+        var contactTemplate = `<div>
+    <div class="row margin_bottom dialogbox_container">
+        <div class="col-sm-3 dialogbox_form">
+            <label class="dialogbox_form_label">Contact Type</label>
+            <select class ="form-control populateContactType dialogbox_form_input" name="con_contactType"  id="ContactType"></select>
+        </div>
+        <div class ="col-sm-3 dialogbox_form">
+            <label class="dialogbox_form_label">Last Name</label>
+            <input type="text" class ="form-control dialogbox_form_input" name="con_LastName"  id="Con_LastName" />
+        </div>
+        <div class ="col-sm-3 dialogbox_form">
+            <label class="dialogbox_form_label">First Name</label>
+            <input type="text" class ="form-control dialogbox_form_input" name="con_FirstName" id="Con_FirstName" />
+        </div>
+            <div class="col-sm-3 dialogbox_form">
+            <label class="dialogbox_form_label">Title</label>
+            <input type="text" class ="form-control dialogbox_form_input" name="con_Title"  id="Con_Title" />
+        </div>
+    </div>
+    <div class ="row margin_bottom dialogbox_container">
+        <div class="col-sm-3 dialogbox_form">
+            <label class="dialogbox_form_label">Work Phone</label>
+            <input type="text" class ="form-control vld-phone dialogbox_form_input" name="con_WorkPhone"  id="Con_WorkPhone" />
+        </div>
+        <div class="col-sm-3 dialogbox_form">
+            <label class="dialogbox_form_label">Ext</label>
+            <input type="text" class ="form-control vld-number dialogbox_form_input" name="con_Ext"  id="Con_Ext" />
+        </div>
+         <div class ="col-sm-3 dialogbox_form">
+            <label class="dialogbox_form_label">Email</label>
+            <input type="text" class ="form-control vld-email dialogbox_form_input" name="con_Email"  id="Con_Email" />
+        </div>
+   </div>
+</div>`
+        swal({
+            title: "Add Contact",
+            text: "",
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Add Contact',
+            width: '850px',
+            html: contactTemplate,
+            onOpen: function () {
+                MaskInputs(this);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                UnMaskInputs(this);
+
+                var employerContact = GetEmployerContactSwalObject();
+                console.log(employerContact)
+                table.row.add(employerContact).draw();
+
+                SetDataDT('#tblConEmployer', table.data());
+                swal("", "Contact has been added", "success");
+            }
+        }, function (dismiss) {
+            swal("Cancelled", "Not Added", "error");
+        });
+    }
+
+    /**
+     * Returns employer contact data from swal
+     */
+    function GetEmployerContactSwalObject() {
+        return {
+            ContactType: $('#ContactType').val(),
+            Con_LastName: $('#Con_LastName').val(),
+            Con_FirstName: $('#Con_FirstName').val(),
+            Con_Title: $('#Con_Title').val(),
+            Con_WorkPhone: $('#Con_WorkPhone').val(),
+            Con_Ext: $('#Con_Ext').val(),
+            Con_Email: $('#Con_Email').val()
+        }
+    }
+
+    //Edit an employer
+    $(document).on('click', '.editEmployer', function () {
+        var table = $('#tblEmployer').DataTable();
+        var index = table.row($(this).closest('tr')).index()
+        var data = table.row(index).data();
+
+        GetList('GetList_RoleType', 'populateEmployerType_Edit', 'Role_EN').done(function () {
+            $('.populateEmployerType_Edit').val(data['ContactType']);
+        })
+        var editEmployerTemplate = '<div>' +
+            '<div class="row margin_bottom dialogbox_container">' +
+            '<div class="col-sm-3 dialogbox_form">' +
+            '<label class="dialogbox_form_label">Contact Type:</label>' +
+            '<select type="text" class ="form-control populateEmployerType_Edit dialogbox_form_input"  name="con_contactType"  id="ContactType">' +
+            '</select>' +
+            '</div>' +
+            '<div class ="col-sm-3 dialogbox_form">' +
+            '<label class="dialogbox_form_label">Last Name</label>' +
+            '<input type="text" class ="form-control dialogbox_form_input" name="con_LastName" value="' + data["Con_LastName"] + '" id="Con_LastName" />' +
+            '</div>' +
+            '<div class ="col-sm-3 dialogbox_form">' +
+            '<label class="dialogbox_form_label">First Name</label>' +
+            '<input type="text" class ="form-control dialogbox_form_input" name="con_FirstName"  value="' + data["Con_FirstName"] + '" id="Con_FirstName" />' +
+            '</div>' +
+            '<div class="col-sm-3 dialogbox_form">' +
+            '<label class="dialogbox_form_label">Title</label>' +
+            '<input type="text" class ="form-control dialogbox_form_input" name="con_Title" id="Con_Title" value="' + data["Con_Title"] + '" />' +
+            '</div>' +
+            '</div>' +
+            '<div class ="row margin_bottom dialogbox_container">' +
+            '<div class="col-md-3 dialogbox_form">' +
+            '<label class="dialogbox_form_label">Work Phone</label>' +
+            '<input type="text" class ="form-control vld-phone dialogbox_form_input" name="con_WorkPhone"  id="Con_WorkPhone" value="' + data["Con_WorkPhone"] + '" />' +
+            '</div>' +
+            '<div class="col-sm-3 dialogbox_form">' +
+            '<label class="dialogbox_form_label">Ext</label>' +
+            '<input type="text" class ="form-control vld-number dialogbox_form_input" name="con_Ext"  id="Con_Ext" value="' + data["Con_Ext"] + '" />' +
+            '</div>' +
+            '<div class ="col-sm-3 dialogbox_form">' +
+            '<label class="dialogbox_form_label">Email</label>' +
+            '<input type="text" class ="form-control vld-email dialogbox_form_input" name="con_Email"  id="Con_Email" value="' + data["Con_Email"] + '" />' +
+            '</div>' +
+            '</div>' +
+            '</div>'
+
+        swal({
+            title: 'Edit Employer Contact',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Edit',
+            html: editEmployerTemplate,
+            width: '750px',
+            onOpen: function () {
+                MaskInputs(this);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                UnMaskInputs(this);
+
+                var employerContact = GetEmployerContactSwalObject();
+                table.row(index).data(employerContact).draw();
+
+                SetDataDT('#tblConEmployer', table.data());
+                swal('', 'This contact information has been updated.', 'success');
+            }
+            else {
+                swal("Cancelled", "Not Edited", "error");
+            }
+        });
+
+    });
+
+    $(document).on('click', '.deleteEmployerContact', function () {
+        DeleteRecordSwalDT('#tblEmployer', 'Employer Contact', $(this)).then(function (table) {
+            if (table) SetDataDT('#tblConEmployer', table.data());
+        });
+    });
+
+    // DATATABLE CONFIGURATIONS
+
+    var PayrollEarningsDTC = {
+        select: true,
+        "columns": [
+            {
+                data: null,
+                render: function () {
+                    return `
+                    <a class="btn btn-default editPayrollEarnings edit_button" title="Edit Payroll Earnings" data-toggle="tooltip"><i class="icon icon-pencil"></i></a>
+                    <a class="btn btn-default deletePayrollEarnings btn-danger" title="Delete Payroll Earnings" data-toggle="tooltip"><i class="icon icon-bin"></i></a>`;
+                }
+            },
+            { "data": "EarningsType" },
+            {
+                "data": "ValidFrom",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": "ValidTo",
+                render: ConvertDateIsoToCustom
+            },
+            { "data": "GrossEarnings" }, { "data": "GrossEarningsType" },
+            { "data": "FederalTaxes" }, { "data": "ProvincialTaxes" },
+            { "data": "CPPContributions" }, { "data": "EIContributions" },
+            { "data": "WorkHours" }
+        ]
+    }
+
+    var OffsetDTC = {
+        select: true,
+        "columns": [
+            {
+                data: null,
+                render: function () {
+                    return `
+                    <a class="editUser edit_button btn btn-default" title="Edit Offset" data-toggle="tooltip"><i class="icon icon-pencil"></i></a>
+                    <a class="deletetask btn btn-default btn-danger" title="Delete Offset" data-toggle="tooltip"><i class="icon icon-bin"></i></a>`;
+                }
+            },
+            { "data": "OffsetType" },
+            {
+                "data": "OffsetFrom",
+                render: ConvertDateIsoToCustom
+            },
+            {
+                "data": "OffsetTo",
+                render: ConvertDateIsoToCustom
+            },
+            { "data": "Period" }, { "data": "GrossAmount" }, { "data": "NetAmount" }
+        ]
+    }
+
+
+
+    //SWAL TEMPLATES
+
+    var payrollEarTemplate = `
+    <div>
+        <div class="row margin_bottom dialogbox_container">
+            <div class="col-sm-4 dialogbox_form">
+                <label class="dialogbox_form_label">Earnings Type</label>
+                <select class ="form-control populatePredisability dialogbox_form_input" name="earningsType" id="EarningsType"></select>
+            </div>
+            <div class="col-sm-3 dialogbox_form">
+                <label class="dialogbox_form_label">Valid From</label>
+                <input type="date" class="form-control dialogbox_form_input" name="validFrom"  id="ValidFrom" />
+            </div>
+            <div class="col-sm-3 dialogbox_form">
+                <label for="ValidTo" class="dialogbox_form_label">Valid To</label>
+                <input type="date" class="form-control dialogbox_form_input" name="validTo" id="ValidTo"></select>
+            </div>
+        </div>
+        <div class ="row margin_bottom dialogbox_container">
+            <div class ="col-sm-3 dialogbox_form">
+                <label for="grossEarnings" class="dialogbox_form_label">Gross Earnings</label>
+                <input type="text" class ="form-control vld-currency dialogbox_form_input" name="grossEarnings"  id="GrossEarnings"></select>
+            </div>
+            <div class="col-sm-3 dialogbox_form">
+                <label class="dialogbox_form_label">Gross Earnings Type</label>
+                <select class ="form-control populateGrossEarnings dialogbox_form_input" name="grossEarnings_Type"  id="GrossEarningsType"></select>
+            </div>
+            <div class="col-sm-3 dialogbox_form">
+                <label class="dialogbox_form_label">Federal Taxes</label>
+                <input type="text" class="form-control col-md-3 vld-currency dialogbox_form_input" name="federalTaxes" id="FederalTaxes" />
+            </div>
+            <div class="col-sm-3 dialogbox_form">
+                <label class="dialogbox_form_label">Provincial Taxes</label>
+                <input type="text" class="form-control col-md-3 vld-currency dialogbox_form_input" name="commisionGross" id="ProvincialTaxes" />
+            </div>
+        </div>
+        <div class="row margin_bottom dialogbox_container">
+            <div class="col-sm-3 dialogbox_form">
+                <label class="dialogbox_form_label">CPP Contributions</label>
+                <input type="text" class="form-control col-md-3 vld-currency dialogbox_form_input" name="cppContributions"  id="CPPContributions" />
+            </div>
+            <div class="col-sm-3 dialogbox_form">
+                <label for="contributions_EI" class="dialogbox_form_label">EI Contributions</label>
+                <input type="text" class="form-control col-md-3 vld-currency dialogbox_form_input" name="contributions_EI" id="Contributions_EI"  />
+            </div>
+            <div class="col-sm-3 dialogbox_form">
+                <label class="dialogbox_form_label">Work Hours</label>
+                <input type="text" class="form-control col-md-3 vld-decimal dialogbox_form_input" name="from" id="WorkHours" />
+            </div>
+        </div>
+    </div>`
+
+    var offsetTemplate = `
+    <div>
+        <div class="row margin_bottom dialogbox_container">
+            <div class ="col-md-4 dialogbox_form">
+                <label for="offsetType" class="dialogbox_form_label">Offset Type</label>
+                <select class ="form-control populateOffsetType dialogbox_form_input" name="offsetType" id="OffsetType"></select>
+            </div>
+            <div class ="col-md-4 dialogbox_form">
+                <label class="dialogbox_form_label">Valid From</label>
+                <input type="date" class="form-control dialogbox_form_input" name="offsetFrom" id="OffsetFrom" />
+            </div>
+            <div class="col-md-4 dialogbox_form">
+                <label class="dialogbox_form_label">To Date</label>
+                <input type="date" class="form-control dialogbox_form_input" name="offsetTo"  id="OffsetTo" />
+            </div>
+        </div>
+        <div class="row margin_bottom dialogbox_container">
+            <div class ="col-md-4 dialogbox_form">
+                <label class="dialogbox_form_label">Offset Apply Period</label>
+                <select class ="form-control populateOffsetPeriod dialogbox_form_input" name="offsetPeriod"  id="Period"> </select>
+            </div>
+            <div class="col-md-4 dialogbox_form">
+                <label for="empNu" class="dialogbox_form_label">Gross Amount</label>
+                <input type="text" class="form-control vld-currency dialogbox_form_input" name="commisionType"  id="GrossAmount" />
+            </div>
+            <div class="col-md-4 dialogbox_form">
+                <label for="friday" class="dialogbox_form_label">Net Amount (After Taxes)</label>
+                <input type="text" class ="form-control vld-currency dialogbox_form_input" name="NetAmount" id="NetAmount" />
+            </div>
+        </div>
+    </div>`
+
+</script>
+
+<ul class="tabCheck nav nav-tabs">
+    <li class="nav-item active">
+        <a href="#employeeDetTab" data-toggle="tab" role="tab">Employee Details </a>
+    </li>
+    <li class="nav-item">
+        <a href="#contactTab" data-toggle="tab" role="tab">Employer Contacts</a>
+    </li>
+    <li>
+        <a href="#jobDetTab" data-toggle="tab" role="tab">Job Details</a>
+    </li>
+    <li>
+        <a href="#scheduleTab" data-toggle="tab" role="tab">Work Schedule</a>
+    </li>
+    <li>
+        <a href="#benefitsTab" data-toggle="tab" role="tab">Payroll, Benefits & CPP</a>
+    </li>
+    <li>
+        <a href="#offsetTab" data-toggle="tab" role="tab">Offsets & Insurance</a>
+    </li>
+</ul>
+<!--Main Employee Info HTML-->
+<div class="tab-content faq-cat-content">
+    <div class="tab-pane active" id="employeeDetTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <div class="panel-body">
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label for="empLastName">Legal Last Name:</label>
+                            <input type="text" class="form-control col-md-3 " name="empLastName" id="EmpLastName" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="empFirstName">Legal First Name:</label>
+                            <input type="text" class="form-control col-md-3" name="empFirstName" id="EmpFirstName" />
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="prefFirstName">Preferred First Name:</label>
+                            <input type="text" class="form-control col-md-3 " name="prefFirstName" id="PrefFirstName" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="DOB">Date of Birth:</label>
+                            <input type="date" class="form-control col-md-3" id="DOB" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="gender">Gender:</label>
+                            <select class="form-control col-md-3" name="gender" id="Gender"></select>
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label for="language">Language:</label>
+                            <select class="form-control col-md-3" name="language" id="Language"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="empNu">EE ID Num:</label>
+                            <input type="text" class="form-control col-md-3" name="empNu" id="EmpNu" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="AccountNum">EE Accnt/Payroll#:</label>
+                            <input type="text" class="form-control col-md-3" name="accountNum" id="AccountNum" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="SIN">SIN:</label>
+                            <input type="text" class="form-control col-md-3" name="SIN" id="SIN" />
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label for="addressline1">Address Line 1:</label>
+                            <input type="text" class="form-control col-md-3" name="addressLine1" id="AddressLine1" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="addressline2">Address Line 2:</label>
+                            <input type="text" class="form-control col-md-3" name="addressLine2" id="AddressLine2" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="addressVerified">Address Verified:</label>
+                            <select class="form-control col-md-3" name="addressVerified" id="AddressVerified"></select>
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label for="country">Country:</label>
+                            <select class="form-control col-md-3 populateCountries" name="country" id="Country"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="province">Province/State:</label>
+                            <select class="form-control" name="province" id="Province">
+                                <option selected label="Select" value=""></option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="City">City:</label>
+                            <select class="form-control" name="city" id="City"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="postal">Postal/Zip Code:</label>
+                            <input type="text" class="form-control col-md-3" name="postal" id="Zip" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="addressUpdated">Address Last Updated</label>
+                            <input type="date" class="form-control col-md-3" name="addressUpdated" id="AddressUpdated" />
+                        </div>
+                    </div>
+                    <!--<hr />-->
+                    <div id="appContactType">
+                        <div class="row margin_bottom">
+                            <button type="button" id="AddContactType" class="btn btn-default add_contact" onclick="CreateEmployeeContact('tblEmployee')"><i class="icon-plus"></i></button>
+                        </div>
+                        <table id="tblEmployee" class='table table-bordered table-striped table-hover dataTable no-footer' style='width: 100% !important'>
+                            <thead>
+                                <tr>
+                                    <th>Actions</th>
+                                    <th>Contact Type:</th>
+                                    <th>Contact Detail:</th>
+                                    <th>Ext(if apply):</th>
+                                    <th>Priority Order:</th>
+                                    <th>Preferred TOD:</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Employer Contacts Info HTML-->
+    <div class="tab-pane" id="contactTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Employer Contact</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body remove-top-border">
+                    <div class="row margin_bottom">
+                        <button type="button" id="btnAddEmployer" class="btn btn-default add_contact" onclick="CreateEmployerContact('tblEmployer')"><i class="icon-plus"></i></button>
+                    </div>
+                    <table style="width:100%;" id="tblEmployer" class="table table-bordered table-striped table-hover dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th>Actions</th>
+                                <th>Contact Type</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Title</th>
+                                <th>Work Phone</th>
+                                <th>Ext</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="absencesTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Absences Details</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body remove-top-border">
+                    <div id="abs">
+                        <absences api="<%= get_api %>"></absences>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Main Claim Info HTML-->
+    <div class="tab-pane" id="claimDetTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Claim Details</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row margin_bottom">
+                        <div class="col-md-3">
+                            <label for="trackingNu">WSIB Number</label>
+                            <input type="text" class="form-control col-md-3" id="AccTracNu" name="accTracNu" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="claimNu">Claim Reference Number</label>
+                            <input type="text" class="form-control col-md-3" id="ClaimRefNu2" name="ClaimRefNu" readonly="readonly" disabled="disabled" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="reportLate">Is the Report Late?</label>
+                            <select class="form-control col-md-3" id="ReportLate" name="reportLate"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="reasonLate">Reason Late</label>
+                            <input type="text" class="form-control col-md-3" id="ReasonLate" name="reasonLate" />
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-md-3">
+                            <label for="claimType">Claim Type</label>
+                            <select class="form-control col-md-3" id="Type" name="claimType"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="claimStatus">Claim Status</label>
+                            <select type="text" class="form-control col-md-3" id="ClaimStatus_Old" name="claimStatus">
+                                <option value="New">New</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="adjucator">Adjudicator</label>
+                            <input type="text" class="form-control col-md-3" id="Adjudicator" name="adjucator" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="classification">Classification</label>
+                            <input type="text" class="form-control col-md-3" id="Classification" name="classification" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Employee Schedule Details-->
+    <div class="tab-pane" id="scheduleTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Employee Schedule</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body" id="sch">
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label>Work Schedule Type</label>
+                            <select class="form-control" name="scheduleType" id="Type_Schedule"></select>
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <button type="button" id="AddSchedule" class="btn btn-default add_contact" onclick="CreateSchedule('tblSchedule')"><i class="icon-plus"></i></button>
+                    </div>
+                    <table style="width:100%;" class="table table-bordered table-striped table-hover dataTable no-footer" id="tblSchedule">
+                        <thead>
+                            <tr>
+                                <th>Actions</th>
+                                <th>Work Days On:</th>
+                                <th>Work Days Off:</th>
+                                <th>Work Scheduled Day Off:</th>
+                                <th>Work Hrs Per Shift:</th>
+                                <th>Work Weeks in Cycle:</th>
+                                <th>Sunday</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Employee Job Details HTML-->
+    <div class="tab-pane" id="jobDetTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Job Details</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body">
+                    <div class="row margin_bottom">
+                        <div class="col-md-3">
+                            <label for="JobTitle">Job Title:</label>
+                            <input type="text" class="form-control col-md-3" name="jobTitle" id="JobTitle">
+                        </div>
+                        <div class="col-md-3 WC_Form">
+                            <label for="emplOrgCode">Job Status(Full/Part):</label>
+                            <select class="form-control col-md-3" name="jobStatus" id="JobStatus"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="JobRole">Job Role (Mgr/Spvsr):</label>
+                            <select class="form-control col-md-3" name="jobRole" id="JobRole"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Job Activity Level(Sed):</label>
+                            <select class="form-control" name="jobActivity" id="JobActivityLevel"></select>
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2 WC-Form">
+                            <label>Date of Hire:</label>
+                            <input type="date" class="form-control" name="DOH" id="HiringDate" />
+                        </div>
+                        <div class="col-sm-2 WC-Form">
+                            <label>Seniority Date:</label>
+                            <input type="date" class="form-control" name="senDate" id="SeniorityDate" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Job Entry Date:</label>
+                            <input type="date" class="form-control" name="entDate" id="JobEntryDate" />
+                        </div>
+                        <!--<div class="col-sm-2"></div>-->
+                        <div class="col-md-2">
+                            <label>Unionized?:</label>
+                            <select class="form-control" name="unionized" id="Unionized"></select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Union Name/Additional:</label>
+                            <select class="form-control populateUnions" name="unionName" id="UnionName" ></select>
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <!--<div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>-->
+                        <div class="col-sm-2">
+                            <label>Job Partnership:</label>
+                            <select class="form-control" name="jobPartnership" id="JobPartnership"></select>
+                        </div>
+                    </div>
+                    <div class="row client-division-section">
+                        <label class="subsection-label">Client Division</label>
+                        <div class="col-sm-6">
+                            <label for="BusUnit">Business Site</label>
+                            <select id="BusUnit" class="form-control populateDivision"></select>
+                        </div>
+                        <div class="division-display col-sm-6"></div>
+                    </div>
+                    <!--<hr />-->
+                    <div class="row margin_bottom">
+                        <div class="col-sm-3">
+                            <label for="locAddress">Job/Office Location Code:</label>
+                            <input type="text" class="form-control col-md-3" name="code_Work" id="Code_Work" />
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="locAddress">Job/Office Address1:</label>
+                            <input type="text" class="form-control col-md-3" name="address_Work" id="Address1_Work" />
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="locAddress">Job/Office Address2:</label>
+                            <input type="text" class="form-control col-md-3" name="address_Work" id="Address2_Work" />
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label>Loc.Country:</label>
+                            <select class="form-control col-md-3 populateWorkCountries" name="country_Work" id="Country_Work"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="LocProvince">Loc.Province/State:</label>
+                            <select class="form-control" name="province_Work" id="Province_Work"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Loc.City:</label>
+                            <select class="form-control" name="city_Work" id="City_Work"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="LocProvince">Loc.Post/ZipCode:</label>
+                            <input type="text" class="form-control col-md-3" name="postal_Work" id="Postal_Work" />
+                        </div>
+                    </div>
+
+                    <hr />
+                
+                    <div id="welcome-container" class="osp-heading panel-heading">
+                        <h4 id="welcome-header" class="osp-heading panel-heading">Job Description Attatchment</h4>
+                    </div>
+
+                    <div class="row margin_bottom">
+                        <div class="form-group col-md-12 well">
+                            <label for="jobDescDocument">Upload a job description document</label>
+                            <input id="jobDescDocument" name="Upload" type="file" />
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class=" col-md-12">
+                            <table id="tblJobDecDocs" class="table table-bordered table-striped table-hover dataTable no-footer" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th style="width:20px;">Actions</th>
+                                        <th>Document Name</th>
+                                        <th>Uploaded By</th>
+                                        <th>Upload Date</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Employee Benefits HTML-->
+    <div class="tab-pane" id="benefitsTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Benefits Details</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div id="payRoll" class="panel-body">
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label for="dateLastPaid">Date Last Paid</label>
+                            <input type="date" class="form-control" name="dateLastPaid" id="DateLastPaid" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="empClass">Employee Class</label>
+                            <select class="form-control" name="empClass" id="EmpClass"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="ltdCode">LTD Benefit Code</label>
+                            <select class="form-control" name="ltdCode" id="LTDCode"></select>
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label for="contractDate">"Term" Contract Date</label>
+                            <input type="date" class="form-control" name="contractDate" id="ContractDate" />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="payFreq">Payroll Frequency</label>
+                            <select class="form-control" name="payFreq" id="PayFreq"></select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="cppStatus">CPP status</label>
+                            <select class="form-control" name="cppStatus" id="CPPStatus"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="incomeContStatus">Income Continuity Status:</label>
+                            <select class="form-control" name="incomeContStatus" id="IncomeContStatus"></select>
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="incomeContDate">Income Continuity Date:</label>
+                            <input type="date" class="form-control" name="incomeContDate" id="IncomeContDate" />
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-sm-2">
+                            <label for="emplJobCode">Job/NIC Code:</label>
+                            <input type="text" class="form-control" name="jobCode" id="JobCode" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="RegRatePay">Rate of Pay:</label>
+                            <input type="text" class="form-control" name="regRatePay" id="RegRatePay" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label for="payGroup">Pay Group(hrly):</label>
+                            <input type="text" class="form-control" name="payGroup" id="PayGroup" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Vacation Pay%:</label>
+                            <input type="text" class="form-control" name="vacPayPercentage" id="VacPayPercentage" />
+                        </div>
+                        <div class="col-sm-2">
+                            <label>Vacation Pay on Pay?:</label>
+                            <select class="form-control" id="VacationPay" name="vacationPay"></select>
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <button type="button" id="btnPayroll" class="btn btn-default add_contact" onclick="CreatePayroll('tblPayRollEar')"><i class="icon-plus"></i></button>
+                    </div>
+                    <!--<hr />-->
+                    <table style="width:100%;" id="tblPayRollEar" class="table table-bordered table-striped table-hover dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th class="col-sm-2">Actions</th>
+                                <th class="col-sm-2">Earnings Type</th>
+                                <th class="col-sm-2">Valid From</th>
+                                <th class="col-sm-2">Valid To</th>
+                                <th class="col-sm-2">Gross Earnings</th>
+                                <th class="col-sm-2">Gross Earnings Type</th>
+                                <th class="col-sm-2">Federal Taxes</th>
+                                <th class="col-sm-2">Provincial Taxes</th>
+                                <th class="col-sm-2">CPP Contributions</th>
+                                <th class="col-sm-2">EI Contributions</th>
+                                <th class="col-sm-2">Work Hours</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Employee Offsets HTML-->
+    <div class="tab-pane" id="offsetTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Offsets & Insurance</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div id="offSets" class="panel-body remove-top-border">
+                    <div class="row margin_bottom">
+                        <button type="button" id="btnOffset" class="btn btn-default add_contact" onclick="CreateOffset('tblOffset')"><i class="icon-plus"></i></button>
+                    </div>
+                    <table style="width:100%;" id="tblOffset" class="table table-bordered table-striped table-hover dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th>Actions</th>
+                                <th>Offset Type</th>
+                                <th>Valid From</th>
+                                <th>Valid To</th>
+                                <th>Offset Apply Period</th>
+                                <th>Gross Amount</th>
+                                <th>Net Amount(after Taxes)</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="row margin_bottom">
+                        <button type="button" id="btnInsurance" class="btn btn-default add_contact" onclick="CreateInsurance()"><i class="icon-plus"></i></button>
+                    </div>
+                    <!--<hr />-->
+                    <div class="row margin_bottom">
+                        <div class="col-md-3">
+                            <label>Insurance Option:</label>
+                            <select class="form-control col-md-3" name="insOption" id="InsOption">
+                                <!--<option value="Insurance1">Insurance1</option>
+                                <option value="Insurance2">Insurance2</option>
+                                <option value="Insurance3">Insurance3</option>
+                                <option value="Insurance4">Insurance4</option>-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row margin_bottom">
+                        <div class="col-md-3">
+                            <label>Insurance Options on File:</label>
+                            <ul id="insuranceOption" class="list-group"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

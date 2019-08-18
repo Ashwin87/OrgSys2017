@@ -1,0 +1,46 @@
+﻿<div id=billAction class=billing_manager_container>
+    <div class="row margin_bottom">
+        <div class="col-md-12 form-group" style="margin-top:3px;">
+            <label class="billing_form_label">Client: </label>
+            <select class="form-control populateBillClient validRequired" name="billClient" id="billClient">  </select>
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-4 form-group">
+            <label>Date</label>
+            <input type="text" class="form-control validRequired" name="billDate" id="billDate" />
+        </div>
+        <div class="col-md-4 form-group">
+            <label>Date Closed</label>
+            <input type="text" class="form-control validRequired" name="billDate" id="billDateClosed" />
+        </div>
+        <div class="col-md-4 form-group">
+            <label class="billing_form_label">Duration (Minutes)</label>
+            <input type="text" class="form-control validRequired" name="billDuration" id="billDuration" />
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-6 form-group">
+            <label>Method</label>
+            <select class="form-control populateMethod validRequired" name="billMethod" id="billMethod">  </select>
+        </div>
+        <div class="col-md-6 form-group">
+            <label>Reason</label>
+            <select class="form-control populateReason validRequired" name="billReason" id="billReason" disabled>  </select>
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="form_field_setter col-sm-12 billing_form_checkbox_container" style="padding:10px;">
+            <label class="billing_form_label billing_checkbox_label">Billable</label><input class="float_none" type="checkbox" id="billable" style="margin:5px;" name="Billable" text="Billable" value="Billable">
+            <label class="billing_form_label billing_checkbox_label">Direct Contact</label><input class="float_none" type="checkbox" id="directcontact" style="margin:5px;" name="Direct Contact" value="Direct Contact">
+            <label class="billing_form_label billing_checkbox_label">Postage</label><input class="float_none" type="checkbox" id="postage" style="margin:5px;" name="Postage" value="Postage">
+            <label class="billing_form_label billing_checkbox_label">Courier</label><input class="float_none" type="checkbox" id="courier" style="margin:5px;" name="Courier" value="Courier">
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-sm-12 form_field_setter billing_form_comment form-group">
+            <label class="billing_form_label">Comments (500 char Max)</label>
+            <textarea type="textarea" class="form-control populateComment billing_form_input validRequired" name="billComment" id="billComment">  </textarea>
+        </div>
+    </div>
+</div>

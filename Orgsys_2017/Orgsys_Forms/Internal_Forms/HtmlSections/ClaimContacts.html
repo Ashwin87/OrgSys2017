@@ -1,0 +1,593 @@
+﻿
+<script type="text/javascript">
+
+    /**
+     * Gets and populates all tables in Claim Contacts section.
+     */
+    function LoadClaimContacts() { 
+        InitializeClaimContactsDT();
+
+        GetDataGeneric('DataBind', 'GetEmployeeContacts', [token, ClaimID]).then(function (contacts) {
+            SetDataDT('#tblConEmployee', contacts);
+        });
+
+        GetDataGeneric('DataBind', 'GetContactsByType', [ClaimID, 0]).then(function (contacts) {
+            SetDataDT('#tblConEmployer', contacts);
+        });
+
+        GetDataGeneric('DataBind', 'GetContactsByType', [ClaimID, 1]).then(function (contacts) {
+            SetDataDT('#tblPhysicians', contacts);
+        });
+
+        GetDataGeneric('DataBind', 'GetContactsByType', [ClaimID, 2]).then(function (contacts) {
+            SetDataDT('#tblOther', contacts);
+        });
+
+        GetDataGeneric('DataBind', 'GetWitnessContacts', [token, ClaimID]).then(function (contacts) {
+            SetDataDT('#tblWitnesses', contacts);
+        });
+
+        GetDataGeneric('DataBind', 'GetOSIContacts', ClaimRefNu).then(function (contacts) {
+            SetDataDT('#tblOSI', contacts);
+        });
+
+        $(document).on('click', '.claim-user-add', function () {
+            var claim = {
+                claimRefNu: window.ClaimRefNu,
+                claimID: window.ClaimID,
+                clientID: window.ClientID
+            }
+
+            AddClaimUserSwal(claim, "#tblOSI");
+        })
+
+        $(document).on('click', '.claim-user-remove', function () {
+            var data = {
+                userAssignedToClaim: $(this).attr("data-userassigned"),
+                UserAssignedID: $(this).attr("data-userassignedid"),
+                tableRow: $(this).closest('tr')
+            }
+
+            RemoveClaimUserSwal(data, "#tblOSI")
+        })
+    }
+
+    /**
+     * Initializes all datatables in claim contacts section.
+     */
+    function InitializeClaimContactsDT() {
+        InitializeDT('#tblConEmployee', EmployeeContactDTC);
+        InitializeDT('#tblConEmployer', EmployerContactDTC);
+        InitializeDT('#tblPhysicians', ContactDTC);
+        InitializeDT('#tblOther', ContactDTC);
+        InitializeDT('#tblWitnesses', WitnessContactDTC);
+        InitializeDT('#tblOSI', OSIContactDTC);
+    }
+    
+    //Sening email
+    function SendEmail(recipientEmail) {
+        var emailTemplate = '<div>' +
+    '<div class ="form-group row">' +
+    '<label for="emailTo" class ="col-sm-3 col-form-label">To</label>' +
+    '<div class ="col-sm-9">' +
+        '<input type="text" class ="form-control" id="emailTo" placeholder="To" value=" ' + recipientEmail + '">' +
+    '</div>' +
+'</div>' +
+'<div class ="form-group row">' +
+    '<label for="emailFrom" class ="col-sm-3 col-form-label">From</label>' +
+    '<div class ="col-sm-9">' +
+        '<input type="text" class ="form-control" id="emailFrom" placeholder="From">' +
+    '</div>' +
+'</div>' +
+'<div class ="form-group row">' +
+    '<label for="emailSubject" class ="col-sm-3 col-form-label">Subject</label>' +
+    '<div class ="col-sm-9">' +
+        '<input type="text" class ="form-control" id="emailSubject" placeholder="Subject">' +
+    '</div>' +
+'</div>' +
+'<div class ="form-group row">' +
+    '<label for="emailBody" class ="col-sm-3 col-form-label">Email</label>' +
+    '<div class ="col-sm-9">' +
+        '<input type="text" size="5" class ="form-control" id="emailBody" placeholder="Email">' +
+    '</div>' +
+'</div>'
+
+        swal({
+            title: 'Send Email',
+            text: '',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Send',
+            html: emailTemplate,
+        }).then(function (isSend) {
+            if (isSend) {
+
+                var emailData = {
+                    ClientID: ClientId,
+                    ClaimID: ClaimID,
+                    To: recipientEmail,
+                    From: 'skhan@gmail.com',
+                    Subject: $('#emailSubject').val(),
+                    Body: $('#emailBody').val(),
+                }
+                SendEmaiData(emailData);
+                swal("", recipientEmail + ' has been sent', "success");
+            }
+            else {
+                swal("Cancelled", "Not sent", "error");
+            }
+        });
+
+    }
+
+    function SendEmaiData(postedEmail) {
+        $.ajax({
+            url: "<%= get_api %>/api/Email",
+            type: "POST",
+            async: false,
+            data: '=' + JSON.stringify({ emailData: postedEmail })
+        });
+    }
+    
+
+    $(document).on('click', '#btnAddPhyContact', function () {
+        CreateContact('#tblPhysicians', 'Physician');
+    });
+
+    $(document).on('click', '#tblPhysicians .editContact', function () {
+        EditContact('#tblPhysicians', 'Physician', $(this));
+    });
+
+    $(document).on('click', '#tblPhysicians .deleteContact', function () {
+        DeleteRecordSwalDT('#tblPhysicians', 'Physician', $(this));
+    });
+
+    $(document).on('click', '#btnAddContact', function () {
+        CreateContact('#tblOther', 'Other');
+    });
+
+    $(document).on('click', '#tblOther .editContact', function () {
+        EditContact('#tblOther', 'Other', $(this));
+    });
+
+    $(document).on('click', '#tblOther .deleteContact', function () {
+        DeleteRecordSwalDT('#tblOther', 'Other', $(this));
+    });
+
+    //using functions CreateContact, EditContact to alter both tblOther, tblPhysicians since they save to same db table
+
+    function CreateContact(tableName, itemName) {
+        var table = $(tableName).DataTable();
+  
+        if(tableName == "tblPhysicians")
+        {
+            GetList("GetList_PhysicianType", "populatePhysicianContact", "DESC_EN");
+        }      
+        
+        swal({
+            title: 'Add ' + itemName,
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Add ' + itemName,
+            html: contactTemplate,
+            width: '850px',
+            onOpen: function () {
+                MaskInputs(this);
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function () {
+            var contact = GetContactSwalObject();
+            table.row.add(contact).draw();
+            swal("", "Contact has been added", "success");
+            MaskInputs();
+        }, function () {
+            swal("Cancelled", "Not Added", "error");
+        });
+    }
+
+    function EditContact(tableName, itemName, caller) {
+        var table = $(tableName).DataTable();
+        var index = table.row(caller.closest('tr')).index();
+        var data = table.row(index).data();
+
+        swal({
+            title: 'Edit ' + itemName,
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Update ' + itemName,
+            html: contactTemplate,
+            width: '850px',
+            onOpen: function () {
+                if (tableName == "#tblPhysicians") {
+                    GetList("GetList_PhysicianType", "populatePhysicianContact", "DESC_EN").then(function () {
+                        SetContactSwalObject(data);
+                        MaskInputs(this);
+                    });
+                }
+                else {
+                    SetContactSwalObject(data);
+                    MaskInputs(this);
+                }                
+            },
+            preConfirm: validate.validateSwalContentPM
+        }).then(function () {
+            UnMaskInputs(this);
+            var contact = GetContactSwalObject();
+            table.row(index).data(contact).draw();
+            swal("", "Contact has been updated!", "success");
+            MaskInputs();
+        }, function (dismiss) {
+            swal("Cancelled", "Not updated.", "error");
+        });
+    }
+
+    function GetContactSwalObject() {
+        return {
+            ContactType: $('#ContactType').val(),
+            Con_FirstName: $('#Con_FirstName').val(),
+            Con_LastName: $('#Con_LastName').val(),
+            Con_Title: $('#Con_Position').val(),
+            Con_WorkPhone: $('#Con_Phone').val(),
+            Con_Ext: $('#Con_Ext').val(),
+            Con_Email: $('#Con_Email').val(),
+            Con_Fax: $('#Con_Fax').val()
+        }
+    }
+
+    function SetContactSwalObject(contact) {
+        $('#ContactType').val(contact.ContactType);
+        $('#Con_FirstName').val(contact.Con_FirstName);
+        $('#Con_LastName').val(contact.Con_LastName);
+        $('#Con_Position').val(contact.Con_Title);
+        $('#Con_Phone').val(contact.Con_WorkPhone);
+        $('#Con_Ext').val(contact.Con_Ext);
+        $('#Con_Email').val(contact.Con_Email);
+        $('#Con_Fax').val(contact.Con_Fax);
+    }
+
+
+    //DATATABLE CONFIGURATIONS
+
+    var ContactDTC = {
+        select: true,
+        "columns": [
+            {
+                data: null,
+                render: function () {
+                    return `
+                    <a class="btn btn-default editContact edit_button" title="Edit Contact" data-toggle="tooltip"><i class="icon icon-pencil"></i></a>
+                    <a class="btn btn-default deleteContact btn-danger" title="Delete Contact" data-toggle="tooltip"><i class="icon icon-bin"></i></a>`;
+                }
+            },
+            { "data": "ContactType" },
+            { "data": "Con_LastName" },
+            { "data": "Con_FirstName" },
+            { "data": "Con_Title" },
+            {
+                "data": "Con_WorkPhone",
+                "render": (data) => '<span class="vld-phone">' + data + '</span>'
+            },
+            { "data": "Con_Ext" },
+            {
+                "data": "Con_Fax",
+                "render": (data) => '<span class="vld-phone">' + data + '</span>'
+            },
+            { "data": "Con_Email" }
+        ]
+    }
+
+    var EmployeeContactDTC = {
+        select: true,
+        "columns": [
+            { "data": "ContactType" },
+            {
+                "data": null,
+                render: function (data) {
+                    var classes = /Phone/g.test(data.ContactType) ? 'vld-phone' : '';
+                    return '<span class="' + classes + '">' + data.ContactDetail + '</span>';
+                }
+            }
+        ]
+    }
+
+    var EmployerContactDTC = {
+        select: true,
+        "columns": [
+            { "data": "Con_LastName" },
+            { "data": "Con_FirstName" },
+            { "data": "Con_Title" },
+            {
+                "data": "Con_WorkPhone",
+                render: function (data) {
+                    return '<span class="vld-phone">' + data + '</span>';
+                }
+            },
+            { "data": "Con_Ext" },
+            { "data": "Con_Email" }
+        ]
+    }
+
+    var WitnessContactDTC = {
+        select: true,
+        "columns": [
+            { "data": "WitnessName" },
+            {
+                "data": "WitnessPhone",
+                render: function (data) {
+                    return '<span class="vld-phone">' + data + '</span>';
+                }
+            },
+            { "data": "WitnessEmail" }
+
+        ]
+    }
+
+    var OSIContactDTC = {
+        select: true,
+        "columns": [
+            {
+                "data": null,
+                "render": function (data) {
+                    return `<a  class="claim-user-remove btn-danger btn"
+                                data-UserAssignedID="${data.UserAssignedID}" 
+                                data-UserAssigned="${data.Username}">
+                                    <i class='icon icon-bin'></i>
+                            </a>`
+                }
+            },
+            { "data": "Name" },
+            {
+                "data": "WorkPhone",
+                render: function (data) {
+                    var phone = (data.length < 10) ? '' : data;
+                    return '<span class="vld-phone">' + phone + '</span>';
+                }
+            },
+            { "data": "Email" }
+        ]
+    }
+
+
+    //TEMPLATES
+
+    var contactTemplate = `
+    <div>
+        <div class ="row margin_bottom dialogbox_container">
+            <div class ="col-sm-2 dialogbox_form">
+                <label class="dialogbox_form_label">Contact Type</label>
+                <select class ="form-control populatePhysicianContact" name="contactType" id="ContactType"></select>
+            </div>
+            <div class ="col-sm-2 dialogbox_form">
+                <label class="dialogbox_form_label">Last Name</label>
+                <input type="text" class ="form-control" name="con_LastName" id="Con_LastName" />
+            </div>
+            <div class ="col-sm-2 dialogbox_form">
+                <label class="dialogbox_form_label">First Name</label>
+                <input type="text" class ="form-control" name="con_FirstName"  id="Con_FirstName" />
+            </div>
+            <div class="col-sm-2 dialogbox_form">
+                <label class="dialogbox_form_label">Work Phone</label>
+                <input type="text" class="form-control vld-phone" name="con_Phone" id="Con_Phone" />
+            </div>
+            <div class ="col-sm-2 dialogbox_form">
+                <label class="dialogbox_form_label">Ext</label>
+                <input type="text" class ="form-control vld-number" name="con_Ext"  id="Con_Ext" />
+            </div>
+            <div class="col-sm-2 dialogbox_form">
+                <label class="dialogbox_form_label">Email</label>
+                <input type="text" class="form-control vld-email" name="con_Email"  id="Con_Email" />
+            </div>
+            <div class ="col-sm-2 dialogbox_form">      
+                <label class="dialogbox_form_label">Fax</label>
+                <input type="text" class ="form-control vld-phone" name="con_Fax"  id="Con_Fax" />
+            </div>            
+            <div class="col-sm-2 dialogbox_form">
+                <label class="dialogbox_form_label">Title</label>
+                <input type="text" class ="form-control" name="con_Position" id="Con_Position" />
+            </div>
+        </div>
+    </div>`
+
+</script>
+
+<ul class="nav nav-tabs faq-cat-tabs">
+    <li class="nav-item">
+        <a href="#employeeTab" data-toggle="tab" role="tab">Employee </a>
+    </li>
+    <li class="nav-item">
+        <a href="#employerTab" data-toggle="tab" role="tab">Employer</a>
+    </li>
+    <li class="nav-item">
+        <a href="#physiciansTab" data-toggle="tab" role="tab">Physicians</a>
+    </li>
+    <li class="nav-item">
+        <a href="#witnessesTab" data-toggle="tab" role="tab">Witnesses</a>
+    </li>
+    <li>
+        <a href="#OSITab" data-toggle="tab" role="tab">OSI</a>
+    </li>
+    <li>
+        <a href="#OthersTab" data-toggle="tab" role="tab">Others</a>
+    </li>
+</ul>
+
+<div class="tab-content faq-cat-content">
+    <div class="tab-pane active" id="employeeTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+        <div class="row">
+            <div class="col col-xs-6">
+                <h3 class="panel-title">Employee Contacts</h3>
+            </div>
+        </div>
+    </div>-->
+                <div class="panel-body">
+                    <table style="width:100%;" id="tblConEmployee" class="table table-bordered table-striped table-hover dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th style="width:20px">Contact Type</th>
+                                <th style="width:20px">Contact Detail</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="employerTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Employer Contacts</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body">
+                    <table style="width:100%;" id="tblConEmployer" class="table table-bordered table-striped table-hover dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th style="width:20px">Last Name</th>
+                                <th style="width:20px">First Name</th>
+                                <th style="width:20px">Title</th>
+                                <th style="width:20px">Work Phone</th>
+                                <th style="width:20px">Ext</th>
+                                <th style="width:20px">Email</th>
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="physiciansTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Physicians Contacts</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body">
+                    <div class="row margin_bottom">
+                        <button type="button" id="btnAddPhyContact" class="btn btn-default add-client" onclick="CreateContact('tblPhysicians')"><i class="icon-plus"></i></button>
+                    </div>
+
+                    <table style="width:100%;" id="tblPhysicians" class="table table-bordered table-striped table-hover dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Contact Type</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Title</th>
+                                <th>Work Phone</th>
+                                <th>Ext</th>
+                                <th>Fax</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="witnessesTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Witness Contacts</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body">
+                    <table style="width:100%;" id="tblWitnesses" class="table table-bordered table-striped table-hover dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th style="width:20px">Name</th>
+                                <th style="width:20px">Work Phone</th>
+                                <th style="width:20px">Email</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="OSITab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">OSI Contacts</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body">
+                    <div>
+                        <a class="claim-user-add btn btn-default edit_button"
+                           width="5px"
+                           data-toggle="tooltip" 
+                           title="Edit users assigned to this claim">
+                            <i class='icon icon-pencil'></i>
+                        </a>
+                    </div>
+                    <table style="width:100%;" id="tblOSI" class="table table-bordered table-striped table-hover dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th style="width:20px">Action</th>
+                                <th style="width:20px">Name</th>
+                                <th style="width:20px">Work Phone</th>
+                                <th style="width:20px">Email</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="OthersTab">
+        <div class="tableContainer">
+            <div class="panel panel-default panel-table remove-top-border">
+                <!--<div class="panel-heading">
+                    <div class="row">
+                        <div class="col col-xs-6">
+                            <h3 class="panel-title">Others Contacts</h3>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="panel-body">
+                    <div class="row margin_bottom">
+                        <button type="button" id="btnAddContact" class="btn btn-default add-client" onclick="CreateContact('tblOther')"><i class="icon-plus"></i></button>
+                    </div>
+                    <table style="width:100%;" id="tblOther" class="table table-bordered table-striped table-hover dataTable no-footer">
+                        <thead>
+                            <tr>
+                                <th>Actions</th>
+                                <th>Contact Type</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Title</th>
+                                <th>Work Phone</th>
+                                <th>Ext</th>
+                                <th>Fax</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,43 @@
+﻿<!--Pre Injury Cause Details HTML-->
+<div>
+    <label>What was the employee doing just before the Injury occured? (select ALL that apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="preInjuryDesc" id="preInjuryDesc">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="Test Pre Injury Description "></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-3">
+        <input type="text" class="form-control" name="preInjuryOther"/>
+           </div>
+    <input type="button" value="Add" id="addPreInjury"/>
+</div>
+<div>
+    <table id="preInjList" name="preInjList" class="table table-bordered"></table>
+    <input type="text" name="preInjCounter" id="preInjCounter" hidden="hidden" />
+</div>
+<div>
+    <label>Which of the following locations best describe the place of Accident (select ALL that apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="placeOfAccDes" id="placeOfAccDes">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="Test Place of Accident Description"></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-3">
+        <input type="text" class="form-control" name="placeOfAccOther" />
+            </div>
+    <input type="button" value="Add" id="addPlaceOfAcc" >
+    </div>
+<div>
+    <table id="placeOfAccList" name="placeOfAccList" class="table table-bordered"></table>
+    <input type="text" name="placeofAccCounter" id="placeofAccCounter" hidden="hidden" />
+</div>

@@ -1,0 +1,480 @@
+﻿﻿
+<script type="text/javascript">
+    //Added by : Sam Khan
+    //Date : 07/31/2018
+    //It  gets a list of Insurance Options
+    //Updated:  Marie - 10/12/2018
+
+    $(document).ready(function () {
+
+        window.fileArray = [];
+
+        $('#UpdatesBilling').hide();
+        $('#AddUpdates').click(function (e) {
+            $('#Updates').show();
+            $('#UpdatesBilling').show();
+            //in FileInput.JS - attatches a file handler to add what file types they are
+            AttachFileUploadHandler(
+                "#claimUpdateDocument",
+                false);
+        });
+
+
+    });
+    var claimBillingTable;
+
+    //Populate datatable
+    function PopulateUpdates(RefNu) {
+        var updates;
+        if (ClaimID) {
+            $.ajax({
+                url: getApi + "/api/ClaimUpdates/GetClaimUpdates/" + token + '/' + RefNu,
+                beforeSend: function (request) {
+                    request.setRequestHeader("Authentication", window.token);
+                },
+                async: false,
+                success: function (data) {
+                    updates = ReplaceDFValues(JSON.parse(data));
+                }
+            });
+        }
+        //destroy so it can be reinitialized
+        if ($.fn.DataTable.isDataTable("#tblUpdates")) {
+            $('#tblUpdates').DataTable().clear().destroy();
+        }
+        claimBillingTable = $('#tblUpdates').DataTable({
+            select: true,
+            data: updates,
+            "sPaginationType": "full_numbers",
+            "rowId": "BillID",
+            "order": [[3, 'des']],
+            "columns": [
+                { "data": "" },
+                { "data": "ActionType" },
+                {
+                    "data": "UpdatesDate",
+                    render: function (data, type, row, meta) {
+                        if (type === 'display') {
+                            return ConvertDateIsoToCustom(data)
+                        }
+                        return data;
+                    }
+                },
+                {
+                    "data": "DateTimeSubmitted",
+                    render: function (data, type, row, meta) {
+                        if (type === 'display') {
+                            return ConvertDateTimeIsoToCustom(data)
+                        }
+                        return data;
+                    }
+                },
+                { "data": "Billable" }, { "data": "BilledBy" }, { "data": "BillMethod" },
+                { "data": "ReportedComments" }],
+            "columnDefs": [{
+                "targets": -8, "data": null, "searchable": false, "orderable": false, "defaultContent": "<a id='internalComments' data-toggle='tooltip' title='internalComments' class='internalComments btn btn-default view_description'><i class='icon icon-edit1'></i></a><a id='CommentBilling' data-toggle='tooltip' title='CommentBilling' class='CommentBill btn btn-default view_description'><i class='icon icon-bubble'></i></a><a id='employeeComments' data-toggle='tooltip' title='Employee Comments' class='employeeComments btn btn-default view_description'><i class='icon icon-bubble'></i></a><a id='ArchiveUpdate' data-toggle='tooltip' title='ArchiveUpdate' class='ArchiveUpdate btn btn-default btn-danger'><i class='icon icon-bin'></i></a>      <a id='ClaimDocs' data-toggle='tooltip' title='ClaimDocuments' class='internalComments btn btn-default view_description'><i class='glyphicon glyphicon-folder-open'></i></a>"
+            }]
+        })
+    };
+</script>
+<div class="panel panel-default container">
+    <div id="banner-container" class="osp-heading panel-heading narrow-container">
+        <div id="welcome-container" class="osp-heading panel-heading">
+            <h4 id="welcome-header" class="osp-heading panel-heading">Claim Updates and Billing</h4>
+        </div>
+        <div id="logo-container" class="osp-heading panel-heading"></div>
+    </div>
+    <div class="panel-body remove-top-border" id="AllUpdates">
+        <!--Claim Details-->
+        <div class="row margin_bottom">
+            <button type="button" id="AddUpdates" class="btn btn-default add-client" style="display:none">
+                <i class="icon-plus"></i> Add Claim Update
+            </button>
+            <div class="row margin_bottom" style="margin-left: 2px">
+                <label id="updatesMsg" style="color:red;">You cannot update this claim - claim needs to be saved and assigned to a recovery facilitator first</label>
+            </div>
+        </div>
+        <div id="UpdatesForm">
+            <div id="Updates" class="div-left">
+                <div class="row margin_bottom">
+                    <div class="col-md-6 form-group">
+                        <label>Action Type</label>
+                        <select data-toggle="tooltip" title="Select an action you would like to perform on this claim. Remember to save this change at the bottom of this window." class="form-control validRequired" name="actionType" id="ActionType" @change="CreateSubSections('AddMedical')" required></select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Date</label>
+                        <input data-toggle="tooltip" title="Select a date not in the future or more than 2 days prior." class="form-control col-md-3" name="updatesDate" id="UpdatesDate" readonly="readonly" required />
+                    </div>
+                </div>
+                <div class="row margin_bottom">
+                    <div class="form-group col-md-12">
+                        <label for="claimUpdateDocument" class="btn btn-primary">
+                            <i class="icon-plus"></i> Add Files
+                        </label>
+                        <input id="claimUpdateDocument" value name="Upload" type="file" class="hidden-file" multiple="multiple" />
+                        <div class="row showFilesList"></div>
+                    </div>
+                </div>
+                <div class="row margin_bottom">
+                    <div class="form-group col-md-12">
+                        <label>Internal Comments</label>
+                        <textarea  class="form-control" name="Comments" id="InternalComments" rows="4" required=""></textarea>
+                    </div>
+                </div>
+                <div class="row margin_bottom">
+                    <div class="form-group col-md-12">
+                        <label>Reported Comments</label>
+                        <textarea  class="form-control" name="Comments" id="ReportedComments" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="row margin_bottom">
+                    <div class="form-group col-md-12">
+                        <label>Comments to Employee </label>
+                        <textarea class="form-control" name="Comments" id="EmployeeComments" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="row margin_bottom">
+                    <button type="button" id="btnSaveUpdates" class="btn btn-success">Save Updates</button>
+                </div>
+            </div>
+            <!--Billing Details-->
+            <div id="UpdatesBilling" class="div-right pull-right">
+                <div class="row margin_bottom">
+                    <div class="form-group col-md-6">
+                        <label>Duration (minutes)</label>
+                        <input data-toggle="tooltip" title="How long did the update take?" type="text" class="form-control col-md-3 validRequired" name="ClientBillDuration" id="ClientBillDuration" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-md-12">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="inlineRadioOptions" id="billable" value="Billable">Billable
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="inlineRadioOptions" id="directcontact" value="Direct Contact">Direct Contact
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="inlineRadioOptions" id="postage" value="Postage">Postage
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="inlineRadioOptions" id="courier" value="Courier">Courier
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="inlineRadioOptions" id="SeniorConsulting" value="Senior Consulting">Senior Consulting
+                        </label>                        
+                    </div>
+                </div>
+                <div class="row margin_bottom">
+                    <div class="col-md-12 form-group">
+                        <label>Method</label>
+                        <select data-toggle="tooltip" title="Billing Method" class="populateBillingMethodwithID form-control validRequired" name="BillingMethod" id="BillingMethod"></select>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <label>Reason</label>
+                        <select data-toggle="tooltip" title="Billing Reason" class="populateBillingReason form-control validRequired" name="BillingReason" id="BillingReason"></select>
+                    </div>
+                </div>
+                <div class="row margin_bottom">
+                    <div class="form-group col-md-12">
+                        <label>Billable Comments</label>
+                        <textarea  class="form-control validRequired" name="Comments" id="ClientBillComments" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" id="CMR">
+        <div class="row">
+            <button type="button" id="btnCloseCMR" class="btn btn-danger">Back to claim updates</button>
+        </div>
+        <div id="CMRINJECT">
+            <!--Template gets injected here from saveupdates.js-->
+        </div>
+        <div class="row">
+            <button type="button" id="btnSendCMR" class="btn btn-success">Send CMR</button>
+        </div>
+    </div>
+    <!--Datatable Columns Details-->
+    <div class="panel-body">
+        <table style="width:100%;" id="tblUpdates" class="table table-bordered table-striped table-hover dataTable no-footer">
+            <thead>
+                <tr>
+                    <th style="width:20px">Actions and Comments</th>
+                    <th style="width:20px">Action Type</th>
+                    <th style="width:20px">Updates Date</th>
+                    <th style="width:20px">Date / Time Submitted</th>
+                    <th style="width:10px">Billable</th>
+                    <th style="width:10px">Billed By</th>
+                    <th style="width:20px">Method</th>
+                    <th style="width:20px">Reported Comments</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<script>
+    //Billing Comments window
+    var BillingCommentsHTML = '<div class="row margin_bottom">' +
+        '<div class="center-div" style="margin-top:3px;">' +
+        '<div class="taskComment" style="margin-top:3px;">' +
+        '<label class="task_comment_dilog_date" id="BillingCommentDate"></label>' +
+        '<label class="task_comment_test" id="BillingComment" style="font: normal 20px calibri !important;"></label>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+
+    //Billing Comments window
+    var InternalCommentsHTML = '<div class="row margin_bottom">' +
+        '<div class="center-div" style="margin-top:3px;">' +
+        '<div class="taskComment" style="margin-top:3px;">' +
+        '<label class="task_comment_dilog_date" id="InternalCommentDate"></label>' +
+        '<label class="task_comment_test" id="InternalComment" style="font: normal 20px calibri !important;"></label>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+
+    //Employee Comments window
+    var EmployeeCommentsHTML = '<div class="row margin_bottom">' +
+        '<div class="center-div" style="margin-top:3px;">' +
+        '<div class="taskComment" style="margin-top:3px;">' +
+        '<label class="task_comment_test" id="EmployeeComment" style="font: normal 20px calibri !important;"></label>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+
+    var UpdateDocsHTML =
+        `<table style="width:100%;" id="tblClaimUpdateFiles" class="table table-bordered table-striped table-hover dataTable no-footer">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>FileName</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>`;
+
+    var FilesTable;
+    function GetClaimUpdateFiles(updateID) {
+        $.ajax({
+            url: getApi + "/api/ClaimUpdates/GetUpdateDocsInfo/" + updateID + "/" + window.token,
+            beforeSend: function (request) {
+                request.setRequestHeader("Authentication", window.token);
+            },
+            async: false
+        }).then(
+            function (data) {
+                var files = JSON.parse(data);
+                if (files.length > 0) {
+                    $('#filesTab').css('display', 'inline-block');
+                    FilesTable = $('#tblClaimUpdateFiles').DataTable({
+                        data: files,
+                        select: false,
+                        "sPaginationType": "full_numbers",
+                        "rowId": "DocumentID",
+                        "columns": [
+                            { "data": "" }, { "data": "FileName" }
+                        ],
+                        "columnDefs": [
+                            {
+                                "targets": 0,
+                                "data": null,
+                                "searchable": false,
+                                "orderable": false,
+                                "defaultContent":
+                                    "<a id='btnOpenFile' data-toggle='tooltip' title='View update' class='btn btn-default view_description'><i class='glyphicon glyphicon-eye-open'></i>"
+                            }
+                        ]
+                    });
+                }
+            }, function () {
+                alert("$.get failed!");
+            }
+        );
+    }
+
+
+    $(document).delegate("#ClaimDocs","click",function(event) {
+        var UpdateID = claimBillingTable.row($(this).parents("tr")).data().UpdateID;
+
+        swal({
+            title: "Updates Documents",
+            html: UpdateDocsHTML,
+            showCancelButton: true,
+            showConfirmButton: false,
+            defaultStyling: false,
+            width: '600px',
+            height: '1000px',
+            cancelButtonText: 'Close',
+            onOpen: function () {
+                GetClaimUpdateFiles(UpdateID);
+            }
+        });
+    });
+
+    $(document).delegate("#btnOpenFile","click",function(event) {
+        var DocID = FilesTable.row($(this).parents("tr")).data().DocumentID;
+        var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = getApi + "/api/Files/DownloadClaimFile/" + window.token + "/" + DocID;
+        link.click();
+    });
+   
+
+    //View Billing Comments
+    $(document).delegate("#CommentBilling", "click", function (event) {
+        var BillID = claimBillingTable.row($(this).parents("tr")).data().BillID;
+
+        swal({
+            title: "Billing Comment",
+            html: BillingCommentsHTML,
+            showCancelButton: true,
+            showConfirmButton: false,
+            defaultStyling: false,
+            width: '600px',
+            height: '1000px',
+            cancelButtonText: 'Close',
+            onOpen: function () {
+                $.ajax({
+                    type: 'GET',
+                    beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+                    url: getApi + "/api/DataBind/GetClaimUpdateBillingComments/" + BillID,
+                    success: function (data) {
+                        results = JSON.parse(data);
+                        if (results.length == 0) {
+                            $('#BillingComment').append("There are no comments for this Billing Item");
+                        }
+                        var returndate = ConvertDateIsoToCustom(results[0].UpdatesDate);//formatDate_NoTime(results[0]["CommentDate"]);
+                        $('#BillingCommentDate').append(returndate);
+                        $('#BillingComment').append(results[0]["Comments"]);
+                    }
+                });
+            }
+        });
+    });
+
+    //View Internal Comments
+    $(document).delegate("#internalComments", "click", function (event) {
+        var updateId = claimBillingTable.row($(this).parents("tr")).data().UpdateID;
+
+        swal({
+            title: "Internal Comment",
+            html: InternalCommentsHTML,
+            showCancelButton: true,
+            showConfirmButton: false,
+            defaultStyling: false,
+            width: '600px',
+            height: '1000px',
+            cancelButtonText: 'Close',
+            onOpen: function () {
+                $.ajax({
+                    type: 'GET',
+                    beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+                    url: getApi + "/api/DataBind/GetClaimUpdateComments/" + updateId,
+                    success: function (data) {
+                        results = ReplaceDFValues(JSON.parse(data));
+                        if (results.length == 0) {
+                            $('#InternalComment').append("There are no comments for this Billing Item");
+                        }
+                        var returndate = ConvertDateIsoToCustom(results[0].UpdatesDate);// formatDate_NoTime(results[0]["UpdatesDate"]);
+                        $('#InternalCommentDate').append(returndate);
+                        $('#InternalComment').append(results[0]["InternalComments"]);
+                    }
+                });
+            }
+        });
+    });
+
+    //View Employee Comments
+    $(document).delegate("#employeeComments", "click", function (event) {
+        var employeeComments = claimBillingTable.row($(this).parents("tr")).data().EmployeeComments;
+
+        swal({
+            title: "Employee Comment",
+            html: EmployeeCommentsHTML,
+            showCancelButton: true,
+            showConfirmButton: false,
+            defaultStyling: false,
+            width: '600px',
+            height: '1000px',
+            cancelButtonText: 'Close',
+            onOpen: function () {
+                if (employeeComments == "") {
+                    $('#EmployeeComment').append("There are no employee comments");
+                } else {
+                    $('#EmployeeComment').append(employeeComments);
+                }              
+            }
+        });
+    });
+
+    
+    $(document).delegate("#ArchiveUpdate", "click", function (event) {
+        var updateId = claimBillingTable.row($(this).parents("tr")).data().UpdateID;
+        swal({
+            title: 'Please confirm',
+            text:
+                "Are you sure you wish to archive this update?",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: "No",
+            confirmButtonText: 'Yes'
+        }).then(function () {
+                $.ajax({
+                    url: getApi + "/api/ClaimUpdates/ArchiveUpdate/" + window.token + "/" + updateId,
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authentication", window.token);
+                    },
+                    method: "DELETE",
+                    async: false
+                }).then(
+                    function (message) {
+                        swal('success', message, 'success');
+                        PopulateUpdates(window.ClaimRefNu);
+                    }, function (xhr) {
+                        console.log(xhr);
+                        swal('error', xhr.responseText, 'error');
+                    }
+                );
+            },
+            function (dismiss) {
+                if (dismiss === 'cancel' || dismiss === 'close' || dismiss === 'overlay') {
+                    swal('Not archived', '', 'error').catch(swal.noop);
+                }
+            });
+
+    });
+
+
+</script>
+<!--resolves conflict with jquery and bootstrap datepicker-->
+<script src="../../../Assets/js/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //hide cmr
+        $("#CMR").hide();
+
+        //set the UpdatesDate to current date
+        var updatesDate = $('#UpdatesDate');
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var today = (month) + "/" + (day) + "/" + now.getFullYear();
+
+        updatesDate.val(today);
+
+        var todayDate = new Date().getDate();
+        updatesDate.datepicker({
+            minDate: new Date(new Date().setDate(todayDate - 5)),
+            maxDate: new Date(new Date().setDate(todayDate)),
+            viewMode: 'days',
+            format: 'YYYY MMMM DD',
+            dayViewHeaderFormat: 'MMMM YYYY',
+        });
+
+        $('#btnSaveUpdates').click(function (event) {
+            SaveUpdates();
+        });
+    });
+</script>
+

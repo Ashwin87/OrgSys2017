@@ -1,0 +1,279 @@
+﻿
+input[type=text], 
+input[type=date], 
+input[type=textarea], 
+select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin-bottom : 5px;
+}
+input[type=text]:focus:not(:disabled), input[type=date]:focus:not(:disabled), input[type=textarea]:focus:not(:disabled), select:focus:not(:disabled),
+input[type=text]:hover:not(:disabled), input[type=date]:hover:not(:disabled), input[type=textarea]:hover:not(:disabled), select:hover:not(:disabled) {
+    border-bottom: 2px solid #337ab7;
+}
+.subsection-col-md-6,
+.subsection-col-md-3,
+.subsection-col-md-2 {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.hidden {
+    display : none !important;
+}
+
+.print-view {
+    background-color : white !important;
+}
+
+label {
+    font-weight : inherit;
+}
+
+#footer {
+    position : static !important;
+}
+
+.subsection-label {
+    font-size: 15px;
+    padding-left: 0px;
+    /* border: 1px solid #cccccc; */
+    /* border-top: none; */
+    /* border-bottom: solid black 2px; */
+    padding: 5px 20px;
+    margin-left: -10px;
+    background-color: #94b1c7;
+    border-radius: 3px;
+    color: white;
+    width: 100%;
+}
+
+
+.AddWitness,
+.AddWeek {
+    margin : 5px 0px 10px 0px;
+}
+
+#Witness input {
+    overflow : hidden;
+}
+
+#Witness > div > .row ~ .row {
+    border-top: 1px solid #ccc;
+    padding : 5px 0px 5px 0px;
+}
+
+div.col-md-3 > label,
+div.col-md-6 > label {
+    font-weight : bold;
+}
+
+input[type=checkbox] {
+    float : right;
+}
+
+div.checkbox {
+    margin : 0px !important;
+    padding-bottom : 15px;
+}
+
+#notifications_panel > ul,
+#openClaimsPanel > ul,
+#DraftClaimsPanel > ul
+{
+    list-style : none;
+}
+
+/* FORM TABS STYLING */
+.highlight-tab {
+    box-shadow: 0px 0px 5px 1px #337ab7;
+}
+#MainContent_list_tabs > li {
+    margin: 0px !important;
+}
+#MainContent_list_tabs > li > a {
+    border-radius: initial !important;
+}
+/* FORM TABS STYLING END */
+
+
+    /*
+.row {
+    padding : 0px 30px 0px 30px;
+}
+*/
+
+.date:not(:disabled),
+.timepicker input:not(:disabled) {
+    background-color: white !important;
+}
+
+/* TABLE STYLING */
+.table-heading {
+    text-align: center;
+}
+
+.schedule-input {
+    min-width: 110px;
+}
+
+.remove-week {
+    margin-bottom : 5px;
+}
+/* END TABLE STYLING */
+
+
+
+/* NAV BAR STYLING */
+.btn-Logout {
+    padding-top: 15px !important;
+    color: #777 !important;
+    width : 100%;
+    text-align : left;
+}
+.navbar {
+    padding-right: 25px !important;
+}
+.dropdown {
+    padding-right: 0px !important;
+}
+.dropdown-menu > li {
+    cursor : pointer;
+}
+.navbar a:hover {
+    text-decoration: none !important;
+}
+/* END NAV BAR STYLING */
+
+/* CLAIM MANAGER STYLING */
+#pcm-content > * {
+    padding-left : 20px;
+    padding-right : 20px;
+    padding-top : 10px;
+}
+.dt-preferences {
+    padding-bottom : 20px;
+}
+.dt-preferences li.active a,
+.dt-preferences .tab-content,
+.dt-pref-btns {
+    /* not final color */
+    background-color: #e6e9ea !important;
+}
+.dt-preferences .tab-content {
+    padding-left : 10px;
+    padding-top : 10px;
+}
+.dt-pref-tabs {
+    display : none;
+}
+.dt-pref-btns {
+    display : none;
+    padding : 10px;
+}
+.column-tile-selected {
+    background-color : lightskyblue !important;
+}
+.column-tile {
+    margin-right : 5px;
+}
+/* END CLAIM MANAGER STYLING */
+
+
+.user-image {
+    height : 64px !important;
+    display : inline !important;
+}
+
+.labelLarge {
+    width: 250px;
+}
+
+.labelXLarge {
+    width: 350px;
+}
+
+.labelMax {
+    font-weight: bold;
+    width: 100%;
+}
+
+label.labelXXLarge {
+    width: 1000px;
+}
+
+label.labelMedium {
+    width: 650px;
+}
+
+input[type=text].textSmall {
+    width: 100px;
+    font-family: Calibri;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type=textarea] {
+    width: 100%;
+    height: 50px;
+}
+
+input.error {
+    border: 1px double red;
+}
+
+.padding
+{
+    margin-bottom:20px;
+}
+.hidden-file {
+    opacity : 0 !important;
+    overflow : hidden !important;
+    z-index : -1 !important;
+    position : absolute !important;
+    width : 0px !important;
+    height : 0px !important;
+    padding : 0px !important;
+    margin : 0px !important;
+}
+.navbar-default {
+    position : relative !important;
+}
+
+/*
+    Print View Styling
+    Kamil Salagan
+    2018-08-27
+*/
+
+input[type="text"].print-view {
+    border: 0px;
+    border-bottom: solid 1px #ccc;
+    border-radius: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+select.print-view {
+    border: 0px;
+    border-bottom: solid 1px #ccc;
+    border-radius: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type="textarea"].print-view {
+    border: solid 1px #ccc;
+    border-radius: 0px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    height:100px;
+}
+
+

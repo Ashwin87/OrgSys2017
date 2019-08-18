@@ -1,0 +1,16 @@
+<packages>
+
+  <!-- The contents of a package gets packed into 1 CSS file
+    If it contains LESS files, they will first be converted into CSS files -->
+  <package name="global" type="css">
+    <add path="/Content/Base.less" />
+  </package>
+
+  <package name="specific" type="css">
+    <!-- You can also include another package -->
+    <include name="global" />
+    <add path="/Content/Specific.less" />
+    <add path="/Content/Another.css" />
+  </package>
+
+</packages>

@@ -1,0 +1,29 @@
+﻿<!--Dates Details HTML-->
+
+
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Date Occured</label>
+    <div class="col-md-3">
+        <input type="date" class="form-control" name="dateOccured" id="dates1">
+    </div>
+    <label class="col-md-2 col-form-label">Date Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="dateDesc" id="dates2">
+            <option selected label="Select"></option>
+            <option label="Medical " value="Medical"></option>
+            <option label="CMR" value="CMR"></option>
+            <option label="FAF" value="FAF"></option>
+            <option label="EE" value="EE"></option>
+        </select>
+    </div>
+    <input type="button" value="Add" id="addDate" />
+</div>
+<div>
+    <table id="dateList" name="dateList" class="table table-bordered"></table>
+    <input type="text" name="dateCounter" id="dateCounter" value="0" hidden="hidden" />
+</div>
+
+<div class="pull-right">
+    <button type="button" class="btn btn-primary">Previous</button>
+    <button type="button" class="btn btn-primary">Next</button>
+</div>

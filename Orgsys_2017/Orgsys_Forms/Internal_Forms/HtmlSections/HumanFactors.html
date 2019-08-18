@@ -1,0 +1,49 @@
+﻿<!--Human Factors Details HTML-->
+    <div>
+        <label>Human Factors (Select ALL that apply):</label>
+    </div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="humanFactDesc" id="HumanFactDesc">
+            <option selected label="Select"></option>
+            <option label="Test Human Factors Description" value="Test Human Factors Description"></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-3">
+        <select class="form-control" id="HumanFactOther" name="humanFactOtherDes">
+            <option selected label="Select"></option>
+            <option label="Test Other Description"></option>
+        </select>
+    </div>
+    <input type="button" value="Add" id="addFactors" />
+</div>
+<div class="row margin_bottom col-md-10">
+           <table id="facList" name="facList" class="table table-bordered"></table>
+        <input type="text" name="facCounter" id="facCounter"  hidden="hidden" />
+    </div>
+     <div class="form-group">
+        <label for="humanFactorsAction">Based on human factor(s) above, management has determined the employee's action to be?</label>
+        <select class="form-control" id="FacAction" name="factorsAction">
+            <option selected label="Select"></option>
+            <option label="Test Human Factors Description"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="actionReason">Reason for safe/unsafe determination? (max 1500 char)</label>
+        <textarea class="form-control" maxlength="500" name="actionReason" id="FacReason" rows="4" placeholder="Reason for safe/unsafe determination? (max 1500 char)"></textarea>
+    </div>
+    <div class="margin_bottom">
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" name="otherFactors" id="OtherFactors">Are there any other factors?
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="otherFactorsChkDes">If 'yes', please specify (max 1500 char)</label>
+        <textarea class="form-control" id="OtherFactorsReason" rows="4" placeholder="If 'yes', please specify (max 500 char)"></textarea>
+    </div>
+    <div class="pull-right">
+        <button type="button" class="btn btn-primary">Previous</button>
+        <button type="button" class="btn btn-primary">Next</button>
+    </div>

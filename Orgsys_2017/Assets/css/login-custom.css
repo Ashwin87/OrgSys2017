@@ -1,0 +1,309 @@
+﻿html {
+    background-color: #e0e0e0;
+    /*url("../img/login-bkn.jpg") no-repeat center center fixed;*/
+    background-image: url("../img/loginbackground.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+body{
+    background-color:transparent!important;
+}
+html, body, .container-table {
+    height: 100%;
+}
+
+.container-table {
+    display: table;
+}
+
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+.form-signin
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 12px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+
+.g-recaptcha {
+    margin-top:10px;
+}
+
+.input-control {
+    width: 200px;
+    height: 30px;
+    padding: 4px 4px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-signin input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"]
+{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.account-wall {
+    width: 500px;
+    height: 550px;
+    border-radius: 10px;
+    padding: 10px 40px 10px 40px;
+    background-color: rgba(245, 245, 245, 0.65);
+    -moz-box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+}
+.headerstyle{
+    padding: 10px 40px 10px 40px;
+}
+
+.password-wall {
+    position: fixed;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+    width: 600px;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    margin-top: 15px;
+    background-color: whitesmoke;
+    -moz-box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+}
+
+.forgot-wall {
+  position: fixed;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+    width: 600px;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    background-color: whitesmoke;
+    -moz-box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+}
+.registration-wall {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    background-color: whitesmoke;
+    -moz-box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: -1px 7px 7px rgba(0, 0, 0, 0.3);
+}
+.login-title
+{
+    color: #555;
+    font-size: 20px;
+    font-weight: 400;
+    display: block;
+}
+.login-title2
+{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+    text-align: center;
+}
+.login-undertitle
+{
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img
+{
+    position:relative;
+    margin: 10px 10px 10px 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 2%;
+}
+
+.password-img
+{
+    display: block; /*for the img inside your div */  
+    margin-left: auto;
+    margin-right: auto;
+    width:80px;
+    height:auto;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 2%;
+}
+
+.container img{
+    position: relative; right:inherit; bottom: inherit; left:inherit;
+    overflow: hidden;
+}
+.need-help
+{
+    margin-top: 10px;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+}
+/*=== 9. Misc ===*/
+.logo {
+  padding: 15px 0;
+  font-size: 25px;
+  color: #aaaaaa;
+  font-weight: bold;
+  font-size:large;
+
+}
+.navbar-left {
+    position: relative;
+    width: 700px;
+    background: #161F40;
+    color:white;
+    margin: 2px 2px 2px 2px;
+    border-color: #080808;
+}
+
+.footer-style{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: 5px;
+  font-size:medium;
+  background-color: transparent;
+  text-align: center;
+  opacity:0.5;
+}
+.text-center{
+  border-color:darkgray;
+  border-radius:2px;
+}
+.text-center2{
+  border-radius:2px;
+  text-align: center;
+
+}
+.text-center3{
+ color:white;
+  border-radius:2px;
+  text-align: center;
+  margin-top:15%;
+}
+.text-center4{
+ color:white;
+  border-radius:2px;
+  text-align: center;
+  margin-top:2%;
+}
+.title-bck{
+    background-color:whitesmoke;
+    /*border:solid 0.2px lightgray;*/
+    padding:2px 5px 2px 5px;
+    border-radius:4px;
+    -moz-box-shadow: -01px 0px 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: -01px 0px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: -1px 0px 3px rgba(0, 0, 0, 0.3);
+    
+}
+
+/*toast and snackbar*/
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

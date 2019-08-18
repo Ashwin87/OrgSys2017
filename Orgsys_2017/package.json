@@ -1,0 +1,56 @@
+{
+  "name": "Orgsys_2017",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "watch": {
+    "build": "Assets/js/es6/external/**/*.js"
+  },
+  "scripts": {
+    "watch": "npm-watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "npm-watch": "^0.4.0",
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "datatables.net": "^1.10.19",
+    "datatables.net-autofill": "^2.3.2",
+    "datatables.net-autofill-bs": "^2.0.0",
+    "datatables.net-bs": "^1.10.19",
+    "datatables.net-buttons": "^1.5.4",
+    "datatables.net-buttons-bs": "^1.5.4",
+    "datatables.net-colreorder": "^1.5.1",
+    "datatables.net-colreorder-bs": "^1.5.1",
+    "datatables.net-fixedcolumns": "^3.2.6",
+    "datatables.net-fixedcolumns-bs": "^3.2.6",
+    "datatables.net-fixedheader": "^3.1.5",
+    "datatables.net-fixedheader-bs": "^3.1.5",
+    "datatables.net-keytable": "^2.5.0",
+    "datatables.net-keytable-bs": "^2.5.0",
+    "datatables.net-responsive": "^2.2.3",
+    "datatables.net-responsive-bs": "^2.2.3",
+    "datatables.net-rowgroup": "^1.1.0",
+    "datatables.net-rowgroup-bs": "^1.1.0",
+    "datatables.net-scroller": "^1.5.1",
+    "datatables.net-scroller-bs": "^1.5.1",
+    "datatables.net-select": "^1.2.7",
+    "datatables.net-select-bs": "^1.2.7",
+    "jquery": "^3.3.1"
+  }
+}

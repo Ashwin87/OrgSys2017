@@ -1,0 +1,94 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DataLayer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Test_DataBaseConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=Test_DataBase;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=Test_DataBase;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="orgsys2017ConnectionString3" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42</Value>
+    </Setting>
+    <Setting Name="orgsys2017ConnectionString4" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42</Value>
+    </Setting>
+    <Setting Name="orgsys2017ConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=osi-svr104\dev;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=osi-svr104\dev;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42</Value>
+    </Setting>
+    <Setting Name="orgsys2017ConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=OSI-SQLPROD;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=OSI-SQLPROD;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42</Value>
+    </Setting>
+    <Setting Name="orgsys2017ConnectionString2" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42</Value>
+    </Setting>
+    <Setting Name="OrgSysConnectionString_dev" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42</Value>
+    </Setting>
+    <Setting Name="orgsys2017ConnectionString6" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=OSI-SQLPROD;Initial Catalog=umbrella;Persist Security Info=True;User ID=sa;Password=!Saturn42;MultipleActiveResultSets=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=OSI-SQLPROD;Initial Catalog=umbrella;Persist Security Info=True;User ID=sa;Password=!Saturn42;MultipleActiveResultSets=True</Value>
+    </Setting>
+    <Setting Name="umbrellaConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42;MultipleActiveResultSets=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42;MultipleActiveResultSets=True</Value>
+    </Setting>
+    <Setting Name="DEVDB" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=OSI-SQLDEV\DEVDBSQL;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=!Saturn42</Value>
+    </Setting>
+    <Setting Name="PRODDB" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=OSI-SQLPROD;Initial Catalog=umbrella;Persist Security Info=True;User ID=sa;Password=!Saturn42&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=OSI-SQLPROD;Initial Catalog=umbrella;Persist Security Info=True;User ID=sa;Password=!Saturn42</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,27 @@
+﻿<!--Corrective measures Html Form-->
+<div class="panel-heading">Corrective Actions<span class="pull-right removeable"><i class="glyphicon glyphicon-remove-circle"></i></span><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+<div class="panel-body">
+    <div class="form-group">
+        <label for="commitieMember">Joint Health & Safety Commmittie Member</label>
+        <input type="text" class="form-control" id="JHSCM" name="JHSCM" placeholder="Joint Health & Safety Commmittie Member" />
+    </div>
+    <label>Corrective Measures (Select All that Apply):</label>
+    <div class="row margin_bottom">
+        <div class="col-md-3">
+            <label for="corrMeasure">Description</label>
+            <select class="form-control" name="CorrDescription" id="CorrDescription">
+                <option selected label="Select"></option>
+                <option label="Test Description" value="Test Description"></option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="dateCorrectiveMeas">Date of implementing corrective measures</label>
+            <input type="date" class="form-control" id="CorrDateTime" name="CorrDateTime" placeholder="Date of implementing corrective measures" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ifnotCorrectiveMeas">If not taking corrective measures, why</label>
+        <textarea class="form-control" id="CorrReason" name="CorrReason" rows="4" placeholder="If not taking corrective measures, why"></textarea>
+    </div>
+</div>

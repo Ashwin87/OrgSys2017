@@ -1,0 +1,12 @@
+﻿.page-top{
+    padding-left:20px;
+    padding-right:20px;
+}
+.top-left{
+   float:left;
+    width:50%;
+}
+.top-right{
+    float:right;
+    width:50%;
+}

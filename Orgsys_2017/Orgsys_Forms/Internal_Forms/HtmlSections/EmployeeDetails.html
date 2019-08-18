@@ -1,0 +1,107 @@
+﻿<!--Main Employee Info HTML-->
+<div class="row margin_bottom">
+    <div class="col-md-6">
+        <label for="empFullName">Select Employee</label>
+        <input type="text" class="form-control" name="empFullName" placeholder="Select" id="EmpFullName" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-3">
+        <label for="empLastName">Employee Last Name</label>
+        <input type="text" class="form-control col-md-3 " name="empLastName" placeholder="Employee Last Name" id="EmpLastName" />
+    </div>
+    <div class="col-md-3">
+        <label for="empFirstName">Employee First Name</label>
+        <input type="text" class="form-control col-md-3" name="empFirstName" placeholder="Employee First Name" id="EmpFirstName" />
+    </div>
+    <div class="col-md-3">
+        <label for="empNu">Employee Number</label>
+        <input type="text" class="form-control col-md-3" name="empNu" placeholder="Employee Number" id="EmpNu" />
+    </div>
+    <div class="col-md-3">
+        <label for="DOB">Date of Birth</label>
+        <input type="date" class="form-control col-md-3" name="DOB" id="DOB" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-3">
+        <label for="gender">Gender</label>
+        <select class="form-control col-md-3" name="gender" placeholder="Gender" id="Gender"></select>
+    </div>
+    <div class="col-md-3">
+        <label for="language">Language</label>
+        <select class="form-control col-md-3" name="language" placeholder="Language" id="Language"></select>
+    </div>
+    <div class="col-md-3">
+        <label for="addressline1">Address Line 1</label>
+        <input type="text" class="form-control col-md-3" name="addressLine1" placeholder="Address Line 1" id="AddressLine1" />
+    </div>
+    <div class="col-md-3">
+        <label for="addressline2">Address Line 2</label>
+        <input type="text" class="form-control col-md-3" name="addressLine2" placeholder="Address Line 2" id="AddressLine2" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    
+    <div class="col-md-3">
+        <label for="country">Country</label>
+        <select class="form-control col-md-3 populateCountries" name="country" id="Country"></select>
+    </div>
+    <div class="col-md-3">
+        <label for="province">Province</label>
+        <select class="form-control col-md-3" name="province" id="Province">
+            <option selected label="Select" value=""></option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label for="postal">Postal</label>
+        <input type="text" class="form-control col-md-3" name="postal" placeholder="Postal" id="Zip" />
+    </div>
+    <div class="col-md-3">
+        <label for="City">City</label>
+        <input type="text" class="form-control col-md-3" name="city" placeholder="City" id="City" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-3">
+        <label for="homePhone">Home Phone</label>
+        <input type="text" class="form-control col-md-3" name="homePhone" placeholder="Home Phone" id="HomePhone" />
+    </div>
+    <div class="col-md-3">
+        <label for="fax">Fax</label>
+        <input type="text" class="form-control col-md-3" name="fax" placeholder="Fax" id="Fax" />
+    </div>
+    <div class="col-md-3">
+        <label for="workPhone">Work Phone</label>
+        <input type="text" class="form-control col-md-3" name="workPhone" placeholder="Work Phone" id="WorkPhone" />
+    </div>
+    <div class="col-md-3">
+        <label for="ext">Ext</label>
+        <input type="text" class="form-control col-md-3" name="ext" placeholder="Ext" id="Ext" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-3">
+        <label for="email">Email</label>
+        <input type="text" class="form-control col-md-3" name="email" placeholder="Email" id="Email" />
+    </div>
+    <div class="col-md-3">
+        <label for="DOH">Date of Hire</label>
+        <input type="date" class="form-control col-md-3" name="DOH" placeholder="Date of Hire" id="HiringDate" />
+    </div>
+    <div class="col-md-3">
+        <label for="addressVerified">Address Verified</label>
+        <select class="form-control col-md-3" name="addressVerified" id="AddressVerified"></select>
+    </div>
+    <div class="col-md-3">
+        <label for="addressUpdated">Address Updated</label>
+        <input type="date" class="form-control col-md-3" name="addressUpdated" placeholder="Address Updated" id="AddressUpdated" />
+    </div>
+</div>
+<div id="appPhone">
+    <div class="row margin_bottom" style="margin-left: 2px">
+        <button type="button" id="AddPhone" class="btn btn-default" v-on:click="addPhone()">Add Phone</button>
+    </div>
+    <Phone v-for="counter in phoneCounter" :id="counter"></Phone>
+</div>
+

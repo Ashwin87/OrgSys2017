@@ -1,0 +1,195 @@
+﻿#print-logo {
+    height: 97px !important;
+}
+#print-logo > img {
+    max-height: 97px;
+    width: auto;
+}
+.osi_logo{
+    float:right;
+    margin: 5px;
+    height:97px!important;
+}
+.osi_logo .img_setter{
+    max-width:100%;
+    max-height:100%;
+}
+.important_info{
+    margin:10px auto;
+    text-align:justify;
+    color:black;
+    border:1px solid black;
+    padding:10px;
+}
+.important_info .info{
+    font-size:17px;
+    display:block;
+    width:100%;
+}
+.view-claim {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.view-claim .section-label {
+    font-size: 20px;
+    margin: 18px 0px;
+    padding-left: 5px;
+    display: block;
+    background-color: #195388;
+    color: white;
+    padding: 10px;
+    font-weight:bold;
+}
+.view-claim .section-label .line_setter {
+    padding: 5px;
+}
+.view-claim .row {
+    position: relative;
+    text-align: center;
+    margin: 0px auto;
+    display:block;
+    width:100%;
+    min-height:41px;
+}
+.view-claim .col-md-3 {
+    /*width: 24%;
+    display: table-cell;*/
+    margin: 0px;
+    border:1px solid #195388;
+    margin-right:-4px;
+    /*border-radius:1px;*/
+    /*float:left;*/
+}
+.view-claim .col-md-4 {
+    /*width: 33.26%;
+    display: table-cell;*/
+    text-align:left;
+    margin: 0px;
+    border: 1px solid #195388;
+}
+.view-claim .col-md-6 {
+    /*width: 49.9%;
+    display: table-cell;*/
+    text-align: left;
+    margin: 0px;
+    border: 1px solid #195388;
+}
+.view-claim .col-md-12 {
+    /*width: 99.7%;*/
+    /*border-radius: 1px;*/
+    /*display: table-cell;*/
+    text-align:left;
+    border: 1px solid #195388;
+}
+.view-claim .inside_header{
+    /*border-radius:1px;*/
+    /*width: 97.6%;*/
+    padding:10px;
+    color:#195388;
+    font-weight:bold;
+    font-size:16px;
+    text-align:left;
+    /*border:1px solid #195388;*/
+    /*display:table-cell;*/
+}
+.view-claim .lblHead {
+    padding: 0px 0px 0px 10px;
+    color: black;
+    font-size: 14px;
+    /*min-height: 20px;*/
+    display: inline-block;
+    vertical-align: middle;
+    text-align:left;
+}
+.view-claim .lblHead::after{
+    content:" :";
+}
+.view-claim .lblVal {
+    display: inline-block;
+    color: #666666;
+    font-size: 14px;
+    padding: 10px;
+    /*height: 20px;*/
+    float: none;
+    text-align: left;
+    vertical-align: middle;
+}
+.view-claim .inline {
+    display: inline-block !important;
+}
+.view-claim .print-li {
+    /*width: 33%;*/
+    display: inline-block;
+    font-size:14px;
+    margin-right:5px;
+}
+.view-claim .radio-div {
+    padding-left: 25px;
+}
+.view-claim .margin-bottom-10{
+    margin-bottom:10px;
+}
+.view-claim .padding_left_10{
+    padding-left:10px;
+    font-size:14px;
+}
+.view-claim .temp_accommodate{
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding-inline-start:0px;
+    padding-left:10px;
+}
+.view-claim .checkbox_setter{
+    min-height:65px;
+    font-size:14px;
+    padding-top:10px;
+}
+.view-claim .week_setter{
+    width:7%;
+}
+.view-claim .width_10{
+    width:15%;
+}
+.view-claim .no_border{
+    border:0px;
+}
+.view-claim .no_border_left{
+    border-left:0px;
+}
+.view-claim .no_border_right{
+    border-right:0px;
+}
+.view-claim .no_border_top{
+    border-top:0px;
+}
+.view-claim .no_border_bottom{
+    border-bottom:0px;
+}
+.view-claim table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size:14px;
+}
+.view-claim table, th, td {
+    border: 1px solid #195388;
+}
+.view-claim table tr td {
+    text-align: center;
+    padding:15px;
+    height:25px;
+    line-height:25px;
+    /*height:40px;*/
+}
+.view-claim table tr td label{
+    text-align: center;
+    /*padding:15px;*/
+    height:25px;
+    line-height:25px;
+}
+.view-claim table tr th{
+    text-align: center;
+    padding:15px;
+    font-weight:100;
+    height:25px;
+    line-height:25px;
+    /*height:50px;*/
+}

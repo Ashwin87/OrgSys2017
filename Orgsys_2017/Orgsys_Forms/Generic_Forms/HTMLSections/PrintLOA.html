@@ -1,0 +1,564 @@
+﻿<link rel="stylesheet" type="text/css" href="../../../Assets/css/PrintTemplate_V2.css" />
+<div id="print-logo"></div>
+<div class="view-claim">
+    <div class="osi_logo">
+        <img class="img_setter" src="../../../Assets/img/Logo2017.png" />
+    </div>
+    <!--------------------------------Section 1------------------------------>
+    <div id="secion1">
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-12" colspan="6">
+                        <label class="lblHead">Leave of Absence</label>
+                        <label class="lblVal" id="ClaimType" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="secion2">
+        <div class="section-label">Employee Details</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Employee Last Name</label>
+                        <label class="lblVal" id="EmpLastName"></label>
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Employee First Name</label>
+                        <label class="lblVal" id="EmpFirstName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Employee Number</label>
+                        <label class="lblVal" id="EmpNumber" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Date of Birth</label>
+                        <label class="lblVal" id="EmpDOB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Gender</label>
+                        <label class="lblVal" id="EmpGender" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Language</label>
+                        <label class="lblVal" id="EmpLanguage" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Address Line 1</label>
+                        <label class="lblVal" id="EmpAddressLine1" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Address Line 2</label>
+                        <label class="lblVal" id="EmpAddressLine2" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Country</label>
+                        <label class="lblVal" id="EmpCountry" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Province</label>
+                        <label class="lblVal" id="EmpProvince" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">City</label>
+                        <label class="lblVal" id="EmpCity" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Postal Code</label>
+                        <label class="lblVal" id="EmpPostal" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<div class="row margin_bottom">
+        <div class="col-md-3 input">
+            <label class="lblHead">Employee Last Name</label>
+            <label class="lblVal" id="EmpLastName"></label>
+        </div>
+        <div class="col-md-3 input">
+            <label class="lblHead">Employee First Name</label>
+            <label class="lblVal" id="EmpFirstName" />
+        </div>
+        <div class="col-md-3 input">
+            <label class="lblHead">Employee Number</label>
+            <label class="lblVal" id="EmpNumber" />
+        </div>
+        <div class="col-md-3 input">
+            <label class="lblHead">Date of Birth</label>
+            <label class="lblVal" id="EmpDOB" />
+        </div>
+    </div>-->
+        <!--<div class="row">
+        <div class="col-md-3 input">
+            <label class="lblHead">Gender</label>
+            <label class="lblVal" id="EmpGender" />
+        </div>
+        <div class="col-md-3 input">
+            <label class="lblHead">Language</label>
+            <label class="lblVal" id="EmpLanguage" />
+        </div>
+        <div class="col-md-3 input">
+            <label class="lblHead">Address Line 1</label>
+            <label class="lblVal" id="EmpAddressLine1" />
+        </div>
+        <div class="col-md-3 input">
+            <label class="lblHead">Address Line 2</label>
+            <label class="lblVal" id="EmpAddressLine2" />
+        </div>
+    </div>-->
+        <!--<div class="row">
+        <div class="col-md-3 input">
+            <label class="lblHead">Country</label>
+            <label class="lblVal" id="EmpCountry" />
+        </div>
+        <div class="col-md-3 input">
+            <label class="lblHead">Province</label>
+            <label class="lblVal" id="EmpProvince" />
+        </div>
+        <div class="col-md-3 input">
+            <label class="lblHead">City</label>
+            <label class="lblVal" id="EmpCity" />
+        </div>
+        <div class="col-md-3 input">
+            <label class="lblHead">Postal Code</label>
+            <label class="lblVal" id="EmpPostal" />
+        </div>
+    </div>-->
+        <div class="section-label">Work Contact Details</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Work Phone</label>
+                        <label class="lblVal" id="EmpPhone-Work" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Ext</label>
+                        <label class="lblVal" id="EmpPhone-WorkExt" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Fax</label>
+                        <label class="lblVal" id="EmpFax-Work" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Email</label>
+                        <label class="lblVal" id="EmpEmail-Work" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        <!--<div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Work Phone</label>
+                <label class="lblVal" id="EmpPhone-Work" />
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Ext</label>
+                <label class="lblVal" id="EmpPhone-WorkExt" />
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Fax</label>
+                <label class="lblVal" id="EmpFax-Work" />
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Email</label>
+                <label class="lblVal" id="EmpEmail-Work" />
+            </div>
+        </div>-->
+        <div class="section-label">Personal Contact Details</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Home Phone</label>
+                        <label class="lblVal" id="EmpPhone-Home" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Mobile Phone</label>
+                        <label class="lblVal" id="EmpPhone-Mobile" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Email</label>
+                        <label class="lblVal" id="EmpEmail-Personal" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<div class="row">
+            <div class="col-md-3 input">
+                <label class="lblHead">Home Phone</label>
+                <label class="lblVal" id="EmpPhone-Home" />
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Mobile Phone</label>
+                <label class="lblVal" id="EmpPhone-Mobile" />
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Email</label>
+                <label class="lblVal" id="EmpEmail-Personal" />
+            </div>
+        </div>-->
+        <label class="section-label">Job Details</label>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Job Title</label>
+                        <label class="lblVal" id="JobTitle"></label>
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Date of Hire</label>
+                        <label class="lblVal" id="EmpDOH" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Pay Frequency</label>
+                        <label class="lblVal" id="EmpPayRate"></label>
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Employee Status</label>
+                        <label class="lblVal" id="JobStatus"></label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<div class="row margin_bottom ">
+            <div class="col-md-3 input">
+                <label class="lblHead">Job Title</label>
+                <label class="lblVal" id="JobTitle"></label>
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Date of Hire</label>
+                <label class="lblVal" id="EmpDOH" />
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Pay Frequency</label>
+                <label class="lblVal" id="EmpPayRate"></label>
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Employee Status</label>
+                <label class="lblVal" id="JobStatus"></label>
+            </div>
+        </div>-->
+        <label class="section-label">Employer Contact Details</label>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Last Name</label>
+                        <label class="lblVal" id="EmployerLastName"></label>
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">First Name</label>
+                        <label class="lblVal" id="EmployerFirstName" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Position</label>
+                        <label class="lblVal" id="EmployerPosition"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Email</label>
+                        <label class="lblVal" id="EmployerEmail"></label>
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Work Phone</label>
+                        <label class="lblVal" id="EmployerPhone"></label>
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Extension</label>
+                        <label class="lblVal" id="EmployerExt"></label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<div class="row">
+            <div class="col-md-3 input">
+                <label class="lblHead">Last Name</label>
+                <label class="lblVal" id="EmployerLastName"></label>
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">First Name</label>
+                <label class="lblVal" id="EmployerFirstName" />
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Position</label>
+                <label class="lblVal" id="EmployerPosition"></label>
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Email</label>
+                <label class="lblVal" id="EmployerEmail"></label>
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Work Phone</label>
+                <label class="lblVal" id="EmployerPhone"></label>
+            </div>
+            <div class="col-md-3 input">
+                <label class="lblHead">Extension</label>
+                <label class="lblVal" id="EmployerExt"></label>
+            </div>
+        </div>-->
+    <div id="section3">
+        <div id="MaternityLeaveDetails">
+            <div class="section-label">Maternity Leave</div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Anticipated Start Date</label>
+                            <label class="lblVal" id="AbsenceStartDate"></label>
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Anticipated End Date</label>
+                            <label class="lblVal" id="AbsenceEndDate" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Expected or Actual Date of Birth</label>
+                            <label class="lblVal" id="ExpectedActualDOB" />
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Comments</label>
+                            <label class="lblVal" id="AbsenceComments" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<div class="row margin_bottom">
+                <div class="col-md-3 input">
+                    <label class="lblHead">Anticipated Start Date</label>
+                    <label class="lblVal" id="AbsenceStartDate"></label>
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">Anticipated End Date</label>
+                    <label class="lblVal" id="AbsenceEndDate" />
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">Expected or Actual Date of Birth</label>
+                    <label class="lblVal" id="ExpectedActualDOB" />
+                </div>
+                <div class="col-12 input">
+                    <label class="lblHead">Comments</label>
+                    <label class="lblVal" id="AbsenceComments" />
+                </div>
+            </div>-->
+        </div>
+        <div id="ParentalLeaveDetails">
+            <div class="section-label">Parental Leave</div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Anticipated Start Date</label>
+                            <label class="lblVal" id="AbsenceStartDate"></label>
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Anticipated End Date</label>
+                            <label class="lblVal" id="AbsenceEndDate" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Expected or Actual Date of Birth</label>
+                            <label class="lblVal" id="ExpectedActualDOB" />
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Comments</label>
+                            <label class="lblVal" id="AbsenceComments" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<div class="row margin_bottom">
+                <div class="col-md-3 input">
+                    <label class="lblHead">Anticipated Start Date</label>
+                    <label class="lblVal" id="AbsenceStartDate"></label>
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">Anticipated End Date</label>
+                    <label class="lblVal" id="AbsenceEndDate" />
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">Expected or Actual Date of Birth</label>
+                    <label class="lblVal" id="ExpectedActualDOB" />
+                </div>
+                <div class="col-12 input">
+                    <label class="lblHead">Comments</label>
+                    <label class="lblVal" id="AbsenceComments" />
+                </div>
+            </div>-->
+        </div>
+        <div id="PaternityLeaveDetails">
+            <div class="section-label">Paternity Leave (Quebec)</div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Anticipated Start Date</label>
+                            <label class="lblVal" id="AbsenceStartDate"></label>
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Anticipated End Date</label>
+                            <label class="lblVal" id="AbsenceEndDate" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Expected or Actual Date of Birth</label>
+                            <label class="lblVal" id="ExpectedActualDOB" />
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Comments</label>
+                            <label class="lblVal" id="AbsenceComments" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<div class="row margin_bottom">
+                <div class="col-md-3 input">
+                    <label class="lblHead">Anticipated Start Date</label>
+                    <label class="lblVal" id="AbsenceStartDate"></label>
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">Anticipated End Date</label>
+                    <label class="lblVal" id="AbsenceEndDate" />
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">Expected or Actual Date of Birth</label>
+                    <label class="lblVal" id="ExpectedActualDOB" />
+                </div>
+                <div class="col-12 input">
+                    <label class="lblHead">Comments</label>
+                    <label class="lblVal" id="AbsenceComments" />
+                </div>
+            </div>-->
+        </div>
+        <div id="STDLeaveDetails">
+            <div class="section-label">Short-Term Disability</div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">First Day Absent</label>
+                            <label class="lblVal" id="DateFirstOff"></label>
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Have you returned to work?</label>
+                            <label class="lblVal" id="HasReturnedToWork" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-12" colspan="6">
+                            <label class="lblHead">If yes, on what date did you return?</label>
+                            <label class="lblVal" id="DateRTW" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Expected return to work date</label>
+                            <label class="lblVal" id="ExpectedRTWDate" />
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Did the injury/illness occur while on vacation?</label>
+                            <label class="lblVal" id="IsVacationInjury" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-12" colspan="6">
+                            <label class="lblHead">Additional Information</label>
+                            <label class="lblVal" id="STDAdditionalInformation" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<div class="row margin_bottom">
+                <div class="col-md-3 input">
+                    <label class="lblHead">First Day Absent</label>
+                    <label class="lblVal" id="DateFirstOff"></label>
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">Have you returned to work?</label>
+                    <label class="lblVal" id="HasReturnedToWork" />
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">If yes, on what date did you return?</label>
+                    <label class="lblVal" id="DateRTW" />
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">Expected return to work date</label>
+                    <label class="lblVal" id="ExpectedRTWDate" />
+                </div>
+                <div class="col-md-3 input">
+                    <label class="lblHead">Did the injury/illness occur while on vacation?</label>
+                    <label class="lblVal" id="IsVacationInjury" />
+                </div>
+                <div class="col-12">
+                    <label class="lblHead">Additional Information</label>
+                    <label class="lblVal" id="STDAdditionalInformation" />
+                </div>
+            </div>-->
+        </div>
+        <div id="FamilyCareLeaveDetails">
+            <div class="section-label">Family Care</div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="col-md-4" colspan="2">
+                            <label class="lblHead">Anticipated Start Date</label>
+                            <label class="lblVal" id="AbsenceStartDate"></label>
+                        </td>
+                        <td class="col-md-4" colspan="2">
+                            <label class="lblHead">Anticipated End Date</label>
+                            <label class="lblVal" id="AbsenceEndDate" />
+                        </td>
+                        <td class="col-md-4" colspan="2">
+                            <label class="lblHead">Relationship of Relative being cared for?</label>
+                            <label class="lblVal" id="RelativeRelationship" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-12" colspan="6">
+                            <label class="lblHead">Comments</label>
+                            <label class="lblVal" id="AbsenceComments" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+                    <!--<div class="row margin_bottom">
+                        <div class="col-md-3 input">
+                            <label class="lblHead">Anticipated Start Date</label>
+                            <label class="lblVal" id="AbsenceStartDate"></label>
+                        </div>
+                        <div class="col-md-3 input">
+                            <label class="lblHead">Anticipated End Date</label>
+                            <label class="lblVal" id="AbsenceEndDate" />
+                        </div>
+                        <div class="col-md-3 input">
+                            <label class="lblHead">Relationship of Relative being cared for?</label>
+                            <label class="lblVal" id="RelativeRelationship" />
+                        </div>
+                        <div class="col-12 input">
+                            <label class="lblHead">Comments</label>
+                            <label class="lblVal" id="AbsenceComments" />
+                        </div>
+                    </div>-->
+        </div>
+    </div>
+    </div>

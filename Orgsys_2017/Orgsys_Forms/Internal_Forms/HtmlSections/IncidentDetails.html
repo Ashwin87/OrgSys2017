@@ -1,0 +1,17 @@
+﻿<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+<div class="panel-heading">Add the following to the claim - ICDCM items, Witness Details, Treatments & Medications, Corrective Actions & Conditions, Collateral Damage, Contributing factors & Limitations.<span class="pull-right removeable"></span></div>
+<!--ICDCM Section-->   
+<div id="mainIncident">
+    <div class="row margin_bottom" style="margin-left:2px">
+        <button type="button" data-toggle="tooltip" title="You can create as many Incident Details as needed for the claim. Just click on this button to add a new Incident below." id="AddIncident" class="btn btn-default">Add Incident Details</button>
+    </div>
+    <!--Counters-->
+    <div>
+        <input type="text" class="form-control col-sm-3 hidden" name="ICD10Counter" id="ICD10Counter" value=0 hidden="hidden" />
+        <input type="text" class="form-control col-sm-3 hidden" name="ICD10SubCounter" id="ICD10SubCounter" hidden="hidden" />
+    </div>
+</div>

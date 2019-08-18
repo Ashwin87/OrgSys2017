@@ -1,0 +1,95 @@
+﻿<div class="CMRTemplate">
+    <div class="row margin_bottom" style="margin-bottom: 30px;">
+        <div class="col-md-12">
+            <h3>Current Claim Status</h3>
+            <select class="form-control" id="ClaimStatus">
+                <option value="">--Select--</option>
+            </select>
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="DateOfReport">Date of Report</label>
+                <input type="date" class="form-control validRequired" id="DateOfReport" placeholder="Date of Report">
+            </div>
+            <div class="form-group">
+                <label for="EmployeeName">Employee Name</label>
+                <input type="text" class="form-control validRequired" id="EmployeeName" placeholder="Employee name">
+            </div>
+            <div class="form-group">
+                <label for="EmployeeContactID">Employee Email</label>
+                <select class="form-control validRequired" id="ddlEmployeeContact">
+                    <option value="">--Select--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="EmployeeID">Employee ID #</label>
+                <input type="text" class="form-control" id="EmployeeID" placeholder="Employee ID #">
+            </div>
+            <div class="form-group">
+                <label for="DateOfReferral">Date of Referral</label>
+                <input type="date" class="form-control validRequired" id="DateOfReferral" placeholder="Date off referral">
+            </div>
+
+        </div>
+        <div class="col-md-6 ">
+            <div class="form-group">
+                <label for="Location">Location</label>
+                <input type="text" class="form-control validRequired" id="Location" placeholder="Location">
+            </div>
+            <div class="form-group">
+                <label for="DateofAbsence">Date of Absence</label>
+                <input type="Date" class="form-control validRequired" id="DateofAbsence" placeholder="Date of Absence">
+            </div>
+            <div class="form-group">
+                <label for="EmployerContact">Employer Contact</label>
+                <select class="form-control validRequired" id="EmployerContact">
+                    <option value="">--Select--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="OSIContact">OSI Contact</label>
+                <select class="form-control validRequired" id="OSIContact">
+                    <option value="">--Select--</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-12">
+            <div class="form-group margin_bottom">
+                <label for="ClaimHistoryInformation">Claim History Information</label>
+                <textarea maxlength="500" class="form-control" name="ClaimHistoryInformation" id="ClaimHistoryInformation" rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-6">
+            <div class="form-group margin_bottom">
+                <label for="AbsenceAuthorization">Absence Authorization</label>
+                <textarea maxlength="500" class="form-control" name="AbsenceAuthorization" id="AbsenceAuthorization" rows="4"></textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group margin_bottom">
+                <label for="TreatmentPlan">Treatment Plan</label>
+                <textarea maxlength="500" class="form-control" name="TreatmentPlan" id="TreatmentPlan" rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-6">
+            <div class="form-group margin_bottom">
+                <label for="ReturntoWorkRecommendations">Return to Work Recommendations</label>
+                <textarea maxlength="500" class="form-control" name="ReturntoWorkRecommendations" id="ReturntoWorkRecommendations" rows="4"></textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group margin_bottom">
+                <label for="NextSteps">Next Steps</label>
+                <textarea maxlength="500" class="form-control" name="NextSteps" id="NextSteps" rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

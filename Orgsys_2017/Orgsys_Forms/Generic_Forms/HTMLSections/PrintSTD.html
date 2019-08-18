@@ -1,0 +1,920 @@
+﻿<link rel="stylesheet" type="text/css" href="../../../Assets/css/PrintTemplate_V2.css" />
+<div class="osi_logo">
+    <img class="img_setter" src="../../../Assets/img/Logo2017.png" />
+</div>
+<div id="print-logo"></div>
+<div class="view-claim">
+    <div class="important_info">
+        <div class="first_para">
+            <span class="info">
+                In order for an absence to qualify under the Employer's Short Term Disability plan, the medical
+                documentation must contain objective clinical findings and detailed medical information which establishes
+                the presence of a medical condition and treatment including objective evidence of an impairment severe
+                enough to prevent your patient / client from participating in work.
+            </span>
+            <span class="info">
+                This employee is applying for Short Term Disability under the Employer's Short Term Disability / Sick Leave
+                plan.
+            </span>
+            <span class="info">
+                <ul style="list-style-type:disc;">
+                    <li>
+                        It is the employee's responsibility to provide medical information to support an absence. The cost
+                        incurred in obtaining this information is the responsibility of the employee.
+                    </li>
+                    <li>
+                        Failure to submit this information promptly may result in the suspension of income for your patient /
+                        client.
+                    </li>
+                    <li>This is not a request for examination, but for information taken from your clinical assessment.</li>
+                </ul>
+            </span>
+            <span class="info">
+                If absence is related to surgery, this form is to be completed after the surgery has been done.
+            </span>
+        </div>
+    </div>
+    <!--------------------------------Section 1------------------------------>
+    <div id="secion1">
+        <div class="section-label">Employee Details</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Employee Last Name</label>
+                        <label class="lblVal" id="EmpLastName"></label>
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Employee First Name</label>
+                        <label class="lblVal" id="EmpFirstName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Employee Last Name</label>
+                        <label class="lblVal" id="EmpNu"></label>
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Employee First Name</label>
+                        <label class="lblVal" id="Language" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Gender</label>
+                        <label class="lblVal" id="Gender" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">SIN</label>
+                        <label class="lblVal" id="SIN" value=" " />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">DOB</label>
+                        <label class="lblVal" id="DOB" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Address Line 1</label>
+                        <label class="lblVal" id="AddressLine1" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Address Line 2</label>
+                        <label class="lblVal" id="AddressLine2" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Country</label>
+                        <label class="lblVal" id="Country" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Province</label>
+                        <label class="lblVal" id="Province" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">City</label>
+                        <label class="lblVal" id="City" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Postal Code</label>
+                        <label class="lblVal" id="Zip" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Date of Hire</label>
+                        <label class="lblVal" id="HiringDate" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="section-label">Work Contact Details</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Work Phone</label>
+                        <label class="lblVal" id="EmpPhone-Work" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Ext</label>
+                        <label class="lblVal" id="EmpPhone-WorkExt" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Fax</label>
+                        <label class="lblVal" id="EmpFax-Work" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Email</label>
+                        <label class="lblVal" id="EmpEmail-Work" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="section-label">Personal Contact Details</div>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Home Phone</label>
+                        <label class="lblVal" id="EmpPhone-Home" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Mobile Phone</label>
+                        <label class="lblVal" id="EmpPhone-Mobile" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Email</label>
+                        <label class="lblVal" id="EmpEmail-Personal" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="Section3">
+            <label class="section-label">Schedule</label>
+            <table class="margin-bottom-10">
+                <tbody>
+                    <tr>
+                        <td class="col-md-12" colspan="1">
+                            <label class="lblHead">Home Phone</label>
+                            <label class="lblVal" id="EmpPhone-Home" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row margin_bottom ">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="week_setter">Week</th>
+                            <th class="width_10">From Date</th>
+                            <th class="width_10">To Date</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                            <th>Saturday</th>
+                            <th>Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="week_setter">1</td>
+                            <td class="width_10">
+                                <label id="WeekStart1" class="width_10"></label>
+                            </td>
+                            <td class="width_10">
+                                <label id="WeekEnd1" class="width_10"></label>
+                            </td>
+                            <td>
+                                <label id="Monday1"></label>
+                            </td>
+                            <td>
+                                <label id="Tuesday1"></label>
+                            </td>
+                            <td>
+                                <label id="Wednesday1"></label>
+                            </td>
+                            <td>
+                                <label id="Thursday1"></label>
+                            </td>
+                            <td>
+                                <label id="Friday1"></label>
+                            </td>
+                            <td>
+                                <label id="Saturday1"></label>
+                            </td>
+                            <td>
+                                <label id="Sunday1"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="week_setter">2</td>
+                            <td class="width_10">
+                                <label id="WeekStart2"></label>
+                            </td>
+                            <td class="width_10">
+                                <label id="WeekEnd2"></label>
+                            </td>
+                            <td>
+                                <label id="Monday2"></label>
+                            </td>
+                            <td>
+                                <label id="Tuesday2"></label>
+                            </td>
+                            <td>
+                                <label id="Wednesday2"></label>
+                            </td>
+                            <td>
+                                <label id="Thursday2"></label>
+                            </td>
+                            <td>
+                                <label id="Friday2"></label>
+                            </td>
+                            <td>
+                                <label id="Saturday2"></label>
+                            </td>
+                            <td>
+                                <label id="Sunday2"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="week_setter">3</td>
+                            <td class="width_10">
+                                <label id="WeekStart3"></label>
+                            </td>
+                            <td class="width_10">
+                                <label id="WeekEnd3"></label>
+                            </td>
+                            <td>
+                                <label id="Monday3"></label>
+                            </td>
+                            <td>
+                                <label id="Tuesday3"></label>
+                            </td>
+                            <td>
+                                <label id="Wednesday3"></label>
+                            </td>
+                            <td>
+                                <label id="Thursday3"></label>
+                            </td>
+                            <td>
+                                <label id="Friday3"></label>
+                            </td>
+                            <td>
+                                <label id="Saturday3"></label>
+                            </td>
+                            <td>
+                                <label id="Sunday3"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="week_setter">4</td>
+                            <td class="width_10">
+                                <label id="WeekStart4"></label>
+                            </td>
+                            <td class="width_10">
+                                <label id="WeekEnd4"></label>
+                            </td>
+                            <td>
+                                <label id="Monday4"></label>
+                            </td>
+                            <td>
+                                <label id="Tuesday4"></label>
+                            </td>
+                            <td>
+                                <label id="Wednesday4"></label>
+                            </td>
+                            <td>
+                                <label id="Thursday4"></label>
+                            </td>
+                            <td>
+                                <label id="Friday4"></label>
+                            </td>
+                            <td>
+                                <label id="Saturday4"></label>
+                            </td>
+                            <td>
+                                <label id="Sunday4"></label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <label class="section-label">Job Details</label>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Union Affiliation</label>
+                        <label class="lblVal" id="UnionAffiliation"></label>
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Job Title</label>
+                        <label class="lblVal" id="JobTitle"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Job Type</label>
+                        <label class="lblVal" id="JobStatus"></label>
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Rate</label>
+                        <label class="lblVal" id="RegRatePay"></label>
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Pay Frequency</label>
+                        <label class="lblVal" id="PayFreq"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Provider Name </label>
+                        <label class="lblVal" id="LTDProviderName" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead no_border_top">Contract Number</label>
+                        <label class="lblVal" id="ContractNumber" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Job Type</label>
+                        <label class="lblVal" id="JobStatus"></label>
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Rate</label>
+                        <label class="lblVal" id="RegRatePay"></label>
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Pay Frequency</label>
+                        <label class="lblVal" id="PayFreq"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-12" colspan="6">
+                        <div class="inside_header no_border_top">Manager Details</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Manager First Name</label>
+                        <label class="lblVal" id="ManagerFirstName" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Manager Last Name</label>
+                        <label class="lblVal" id="ManagerLastName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Work Phone</label>
+                        <label class="lblVal" id="ManagerPhone-Work" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Email</label>
+                        <label class="lblVal" id="ManagerEmail-Work" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Fax</label>
+                        <label class="lblVal" id="ManagerFax" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-12" colspan="6">
+                        <div class="inside_header no_border_top">Supervisor Details</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Supervisor First Name</label>
+                        <label class="lblVal" id="SupervisorFirstName" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Supervisor Last Name</label>
+                        <label class="lblVal" id="SupervisorLastName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Work Phone</label>
+                        <label class="lblVal" id="SupervisorPhone-Work" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Email</label>
+                        <label class="lblVal" id="SupervisorEmail-Work" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Fax</label>
+                        <label class="lblVal" id="SupervisorFax" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--------------------------------Section 4------------------------------>
+    <div id="Section4">
+        <label class="section-label">Absence & Return Details</label>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Incident Date</label>
+                        <label class="lblVal" id="IncidentDate" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Last Day Worked</label>
+                        <label class="lblVal" id="LastDateWorked" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Last Day Paid</label>
+                        <label class="lblVal" id="DateLastPaid" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">First Day Absent</label>
+                        <label class="lblVal" id="DayOff" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Type of Work Returned To</label>
+                        <label class="lblVal" id="ReturnWorkType" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Expected Date of Return</label>
+                        <label class="lblVal" id="AbsAuthTo" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Date Employee Returned to Work</label>
+                        <label class="lblVal" id="DateReturnedToWork" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-12" colspan="6">
+                        <label class="lblHead">Has the Employee Returned to Work?</label>
+                        <label class="lblVal" id="HasReturnedToWork" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-12" colspan="6">
+                        <div class="inside_header">To the best of your knowledge, are there any : </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Performance Issues</label>
+                        <label class="lblVal" id="PerformanceIssues" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Attendance Issues</label>
+                        <label class="lblVal" id="AttendanceIssues" />
+                    </td>
+                    <td class="col-md-4" colspan="2">
+                        <label class="lblHead">Change in Duties</label>
+                        <label class="lblVal" id="ChangeInDuties" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Workplace Conflicts</label>
+                        <label class="lblVal" id="WorkplaceConflicts" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Other Issues</label>
+                        <label class="lblVal" id="OtherIssues" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-12" colspan="6">
+                        <label class="lblHead">If you answered yes to any of the above, please provide additional details below</label>
+                        <label class="lblVal" id="IssueDescription" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Modified Duties Avalable</label>
+                        <label class="lblVal" id="ModifiedWork" />
+                    </td>
+                    <td class="col-md-6" colspan="3">
+                        <label class="lblHead">Modified Hours Available</label>
+                        <label class="lblVal" id="ModHoursAvailable" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-12" colspan="6">
+                        <div class="padding_left_10">Which of the following can be temporarily accommodated?</div>
+                        <ul class="temp_accommodate">
+                            <li class="print-li col-md-3 no_border">
+                                <input type="checkbox" id="GradRTW" />
+                                <label class="check-inline">Gradual Return to Work</label>
+                            </li>
+                            <li class="print-li col-md-3 no_border">
+                                <input type="checkbox" id="AltJob" />
+                                <label class="check-inline">Alternate Job</label>
+                            </li>
+                            <li class="print-li col-md-3 no_border">
+                                <input type="checkbox" id="AltCognitiveDuties" />
+                                <label class="check-inline">Alternate Cognitive Duties</label>
+                            </li>
+                            <li class="print-li col-md-3 no_border">
+                                <input type="checkbox" id="AltPhysicalDuties" />
+                                <label class="check-inline">Alternate Physical Duties</label>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--Section 7-->
+        <div id="Section7">
+            <label class="section-label">Submitter Details</label>
+            <!-- <div>Form Submitted By :</div>-->
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">First Name</label>
+                            <label class="lblVal" id="SubByFirstName"></label>
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Last Name</label>
+                            <label class="lblVal" id="SubByLastName"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4" colspan="2">
+                            <label class="lblHead">Official Title</label>
+                            <label class="lblVal" id="SubByPosition"></label>
+                        </td>
+                        <td class="col-md-4" colspan="2">
+                            <label class="lblHead">Telephone</label>
+                            <label class="lblVal" id="SubByPhone-Work"></label>
+                        </td>
+                        <td class="col-md-4" colspan="2">
+                            <label class="lblHead">Ext</label>
+                            <label class="lblVal" id="SubByPhone-WorkExt"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Email</label>
+                            <label class="lblVal" id="SubByEmail-Work"></label>
+                        </td>
+                        <td class="col-md-6" colspan="3">
+                            <label class="lblHead">Date</label>
+                            <label class="lblVal" id="DateCreation"></label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="row">
+    <div class="col-md-6 no_border_right">
+        <label class="lblHead">Employee Last Name</label>
+        <label class="lblVal" id="EmpLastName"></label>
+    </div><div class="col-md-6">
+        <label class="lblHead">Employee First Name</label>
+        <label class="lblVal" id="EmpFirstName" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 no_border_right no_border_top">
+        <label class="lblHead">Employee Number</label>
+        <label class="lblVal" id="EmpNu" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Preferered Language</label>
+        <label class="lblVal" id="Language" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 no_border_right no_border_top">
+        <label class="lblHead">Gender</label>
+        <label class="lblVal" id="Gender" />
+    </div><div class="col-md-4 no_border_right no_border_top">
+        <label class="lblHead">SIN</label>
+        <label class="lblVal" id="SIN" value=" " />
+    </div><div class="col-md-4 no_border_top">
+        <label class="lblHead">DOB</label>
+        <label class="lblVal" id="DOB" />
+    </div>
+</div>-->
+<!--<div class="row">
+    <div class="col-md-6 no_border_top no_border_right">
+        <label class="lblHead">Address Line 1</label>
+        <label class="lblVal" id="AddressLine1" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Address Line 2</label>
+        <label class="lblVal" id="AddressLine2" />
+    </div>
+</div>-->
+<!--<div class="row">
+    <div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Country</label>
+        <label class="lblVal" id="Country" />
+    </div><div class="col-md-4 no_border_right no_border_top">
+        <label class="lblHead">Province</label>
+        <label class="lblVal" id="Province" />
+    </div><div class="col-md-4 no_border_top">
+        <label class="lblHead">City</label>
+        <label class="lblVal" id="City" />
+    </div>
+</div>-->
+<!--<div class="row">
+    <div class="col-md-6 no_border_top no_border_right">
+        <label class="lblHead">Postal Code</label>
+        <label class="lblVal" id="Zip" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Date of Hire</label>
+        <label class="lblVal" id="HiringDate" />
+    </div>
+</div>-->
+<!--<div class="row margin_bottom no_border_right">
+    <div class="col-md-6 no_border_right">
+        <label class="lblHead">Work Phone</label>
+        <label class="lblVal" id="EmpPhone-Work" />
+    </div><div class="col-md-6">
+        <label class="lblHead">Ext</label>
+        <label class="lblVal" id="EmpPhone-WorkExt" />
+    </div>
+</div>-->
+<!--<div class="row margin-bottom">
+    <div class="col-md-6 no_border_top no_border_right">
+        <label class="lblHead">Fax</label>
+        <label class="lblVal" id="EmpFax-Work" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Email</label>
+        <label class="lblVal" id="EmpEmail-Work" />
+    </div>
+</div>-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-4 no_border_right">
+        <label class="lblHead">Home Phone</label>
+        <label class="lblVal" id="EmpPhone-Home" />
+    </div><div class="col-md-4 no_border_right">
+        <label class="lblHead">Mobile Phone</label>
+        <label class="lblVal" id="EmpPhone-Mobile" />
+    </div><div class="col-md-4">
+        <label class="lblHead">Email</label>
+        <label class="lblVal" id="EmpEmail-Personal" />
+    </div>
+</div>-->
+<!--------------------------------Section 3------------------------------>
+<!--<div class="row margin-bottom-10">
+         <div class="col-md-12">
+              <label class="lblHead">Schedule Type</label>
+              <label class="lblVal" id="ScheduleType" />
+         </div>
+</div>-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-6 no_border_right">
+        <label class="lblHead">Union Affiliation</label>
+        <label class="lblVal" id="UnionAffiliation"></label>
+    </div><div class="col-md-6">
+        <label class="lblHead">Job Title</label>
+        <label class="lblVal" id="JobTitle"></label>
+    </div>
+</div>
+<div class="row margin-bottom">
+    <div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Job Type</label>
+        <label class="lblVal" id="JobStatus"></label>
+    </div><div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Rate</label>
+        <label class="lblVal" id="RegRatePay"></label>
+    </div><div class="col-md-4 no_border_top">
+        <label class="lblHead">Pay Frequency</label>
+        <label class="lblVal" id="PayFreq"></label>
+    </div>
+</div>-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-6 no_border_right no_border_top">
+        <label class="lblHead">Provider Name </label>
+        <label class="lblVal" id="LTDProviderName" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead no_border_top">Contract Number</label>
+        <label class="lblVal" id="ContractNumber" />
+    </div>
+</div>-->
+<!--
+<div class="row margin_bottom">
+    <div>Employer Details</div>
+    <div class="col-md-3 input">
+        <label class="lblHead">Employer First Name</label>
+        <label class="lblVal" id="EmployerFirstName" />
+    </div>
+    <div class="col-md-3 input">
+        <label class="lblHead">Employer Last Name</label>
+        <label class="lblVal" id="EmployerLastName" />
+    </div>
+    <div class="col-md-3 input">
+        <label class="lblHead">Email</label>
+        <label class="lblVal" id="EmployerEmail" />
+    </div>
+    <div class="col-md-3 input">
+        <label class="lblHead">Phone</label>
+        <label class="lblVal" id="EmployerPhone" />
+    </div>
+    <div class="col-md-3 input">
+        <label class="lblHead">Ext</label>
+        <label class="lblVal" id="EmployerExt" />
+    </div>
+</div>
+-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-6 no_border_top no_border_right">
+        <label class="lblHead">Manager First Name</label>
+        <label class="lblVal" id="ManagerFirstName" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Manager Last Name</label>
+        <label class="lblVal" id="ManagerLastName" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Work Phone</label>
+        <label class="lblVal" id="ManagerPhone-Work" />
+    </div><div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Email</label>
+        <label class="lblVal" id="ManagerEmail-Work" />
+    </div><div class="col-md-4 no_border_top">
+        <label class="lblHead">Fax</label>
+        <label class="lblVal" id="ManagerFax" />
+    </div>
+</div>-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-6 no_border_top no_border_right">
+        <label class="lblHead">Supervisor First Name</label>
+        <label class="lblVal" id="SupervisorFirstName" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Supervisor Last Name</label>
+        <label class="lblVal" id="SupervisorLastName" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Work Phone</label>
+        <label class="lblVal" id="SupervisorPhone-Work" />
+    </div><div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Email</label>
+        <label class="lblVal" id="SupervisorEmail-Work" />
+    </div><div class="col-md-4 no_border_top">
+        <label class="lblHead">Fax</label>
+        <label class="lblVal" id="SupervisorFax" />
+    </div>
+</div>-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-4 no_border_right">
+        <label class="lblHead">Incident Date</label>
+        <label class="lblVal" id="IncidentDate" />
+    </div><div class="col-md-4 no_border_right">
+        <label class="lblHead">Last Day Worked</label>
+        <label class="lblVal" id="LastDateWorked" />
+    </div><div class="col-md-4">
+        <label class="lblHead">Last Day Paid</label>
+        <label class="lblVal" id="DateLastPaid" />
+    </div>
+</div>-->
+<!--<div class="row margin-bottom">
+    <div class="col-md-6 no_border_top no_border_right">
+        <label class="lblHead">First Day Absent</label>
+        <label class="lblVal" id="DayOff" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Type of Work Returned To</label>
+        <label class="lblVal" id="ReturnWorkType" />
+    </div>
+</div>-->
+<!--
+<div class="col-md-3 input">
+    <label class="lblHead">LTD Qualifying Date</label>
+    <label class="lblVal" id="LTDDate" />
+</div>
+-->
+<!--<div class="row margin-bottom">
+    <div class="col-md-6 no_border_top no_border_right">
+        <label class="lblHead">Expected Date of Return</label>
+        <label class="lblVal" id="AbsAuthTo" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Date Employee Returned to Work</label>
+        <label class="lblVal" id="DateReturnedToWork" />
+    </div>
+</div>-->
+<!--
+<div class="col-md-3 input">
+    <label class="lblHead">Date APS Provided</label>
+    <label class="lblVal" id="DateAPSProvided" />
+</div>
+-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-12 no_border_top">
+        <label class="lblHead">Has the Employee Returned to Work?</label>
+        <label class="lblVal" id="HasReturnedToWork" />
+    </div>
+</div>-->
+<!--------------------------------Section 5------------------------------>
+<!--<div id="Section5">-->
+<!-- <div class="inside_header  no_border_top">To the best of your knowledge, are there any : </div>-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Performance Issues</label>
+        <label class="lblVal" id="PerformanceIssues" />
+    </div><div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Attendance Issues</label>
+        <label class="lblVal" id="AttendanceIssues" />
+    </div><div class="col-md-4 no_border_top">
+        <label class="lblHead">Change in Duties</label>
+        <label class="lblVal" id="ChangeInDuties" />
+    </div>
+</div>-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-6 no_border_top no_border_right">
+        <label class="lblHead">Workplace Conflicts</label>
+        <label class="lblVal" id="WorkplaceConflicts" />
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Other Issues</label>
+        <label class="lblVal" id="OtherIssues" />
+    </div>
+</div>-->
+<!--<div class="row margin_bottom">
+        <div class="col-md-12 no_border_top">
+            <label class="lblHead">If you answered yes to any of the above, please provide additional details below :</label>
+            <label class="lblVal" id="IssueDescription" />
+        </div>
+    </div>
+</div>-->
+<!--Section 6-->
+<!--<div id="Section6">
+    <div class="row margin_bottom">
+        <div class="col-md-6 no_border_top no_border_right">
+            <label class="lblHead">Modified Duties Avalable</label>
+            <label class="lblVal" id="ModifiedWork" />
+        </div><div class="col-md-6 no_border_top">
+            <label class="lblHead">Modified Hours Available</label>
+            <label class="lblVal" id="ModHoursAvailable" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 no_border_top checkbox_setter">
+            <div class="padding_left_10">Which of the following can be temporarily accommodated?</div>
+            <ul>
+                <li class="print-li col-md-3 no_border">
+                    <input type="checkbox" id="GradRTW" />
+                    <label class="check-inline">Gradual Return to Work</label>
+                </li>
+                <li class="print-li col-md-3 no_border">
+                    <input type="checkbox" id="AltJob" />
+                    <label class="check-inline">Alternate Job</label>
+                </li>
+                <li class="print-li col-md-3 no_border">
+                    <input type="checkbox" id="AltCognitiveDuties" />
+                    <label class="check-inline">Alternate Cognitive Duties</label>
+                </li>
+                <li class="print-li col-md-3 no_border">
+                    <input type="checkbox" id="AltPhysicalDuties" />
+                    <label class="check-inline">Alternate Physical Duties</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-6 no_border_right">
+        <label class="lblHead">First Name</label>
+        <label class="lblVal" id="SubByFirstName"></label>
+    </div><div class="col-md-6">
+        <label class="lblHead">Last Name</label>
+        <label class="lblVal" id="SubByLastName"></label>
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Official Title</label>
+        <label class="lblVal" id="SubByPosition"></label>
+    </div><div class="col-md-4 no_border_top no_border_right">
+        <label class="lblHead">Telephone</label>
+        <label class="lblVal" id="SubByPhone-Work"></label>
+    </div><div class="col-md-4 no_border_top">
+        <label class="lblHead">Ext</label>
+        <label class="lblVal" id="SubByPhone-WorkExt"></label>
+    </div>
+</div>-->
+<!--<div class="row margin_bottom">
+    <div class="col-md-6 no_border_top no_border_right">
+        <label class="lblHead">Email</label>
+        <label class="lblVal" id="SubByEmail-Work"></label>
+    </div><div class="col-md-6 no_border_top">
+        <label class="lblHead">Date</label>
+        <label class="lblVal" id="DateCreation"></label>
+    </div>
+</div>-->

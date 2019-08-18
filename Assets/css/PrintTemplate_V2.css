@@ -1,0 +1,102 @@
+﻿
+
+#print-logo {
+    height: 97px !important;
+}
+
+#print-logo > img {
+    max-height: 97px;
+    width: auto;
+}
+.view-claim .col-md-3 {
+    width: 24%;
+    display: inline-block;
+    margin : 20px 0px 0px 0px;
+}
+
+.view-claim .lblHead {
+    display: block;
+    width: auto;
+    margin-top: -20px;
+    padding: 0px 0px 0px 10px;
+    color: #666666;
+    font-size: 16px;
+    min-height: 25px;
+}
+
+.view-claim .input {
+    border-radius: 3px;
+    border: 1px solid #DEDEDE;
+}
+
+.view-claim .inline {
+    display: inline-block !important;
+}
+
+.view-claim .lblVal {
+    /*
+    border: 1px solid red;
+    width: 100%;
+    display: block;
+    height: 25px;
+    padding: 10px;
+    margin-bottom: 0px;
+    margin-top: -10px;
+    color: #333333;
+    float : left;
+    font-size: 16px;
+    */
+    display: block;
+    width: 100%;
+    margin-top: -10px;
+    color: #666666;
+    font-size: 16px;
+    padding: 10px;
+    height: 25px;
+    float: left;
+}
+
+.view-claim .section-label {
+    font-size: 18px;
+    margin: 20px 0px 10px 0px;
+    padding-left: 5px;
+    display: block;
+    background-color: rgba(51,122,183, .3);
+}
+
+.view-claim .col-md-6 {
+    width: 48.5%;
+    border-radius: 3px;
+    border: 1px solid #DEDEDE;
+    display: inline-block;
+}
+
+.view-claim .col-12 {
+    width: 96%;
+    border-radius: 3px;
+    border: 1px solid #DEDEDE;
+    display: inline-block;
+}
+.view-claim .print-li {
+    width: 33%;
+    display: inline-block;
+}
+.view-claim .radio-div {
+    padding-left: 25px;
+}
+
+.view-claim table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.view-claim table, th, td {
+    border: 1px solid black;
+}
+.view-claim td {
+    text-align: center;
+}
+
+.view-claim .row {
+    margin-top: 20px;
+}

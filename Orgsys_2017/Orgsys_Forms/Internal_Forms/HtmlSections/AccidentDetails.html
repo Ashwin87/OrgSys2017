@@ -1,0 +1,80 @@
+﻿<!--Accident Details HTML-->
+
+<div class="row margin_bottom">
+    <label class="col-md-3 col-form-label">Injury/illness due to:</label>
+    <div class="col-md-5">
+        <select class="form-control col-md-5" name="injuryCause">
+            <option selected label="Select"></option>
+            <option label="Test Injury Cause"></option>
+        </select>
+    </div>
+</div>
+<div>
+    <label>Accident/Illness Type (select ALL that apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-2">
+        <select class="form-control" name="accidentDesc" id="accidentDesc">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="Test Description"></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-2">
+        <input type="text" class="form-control" name="accOtherDes" id="accidentOther" />
+    </div>
+    <label class="checkbox-inline">
+        <input class="form-check-input" type="checkbox" name="accIsPrimChk">Is Primary?
+    </label>
+    <input type="button" value="Add" id="addIllness" />
+</div>
+<div>
+    <table id="accList" name="accList" class="table table-bordered"></table>
+    <input type="text" name="accCounter" id="accCounter" hidden="hidden" />
+</div>
+<div>
+    <label>Nature of Injury (select ALL that apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-2">
+        <select class="form-control" name="natureOfInjDes" id="natureOfInjDes">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="Test Description"></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-2">
+        <input type="text" class="form-control" name="natureOfInjOtherDes" id="natureOfInjOtherDes" />
+    </div>
+    <label class="checkbox-inline">
+        <input class="form-check-input" type="checkbox" name="injuryIsPrimChk">Is Primary?
+    </label>
+    <input type="button" value="Add" id="addNatOfInj" />
+</div>
+<div>
+    <table id="natInjList" name="natInjList" class="table table-bordered"></table>
+    <input type="text" name="natInjCounter" id="natInjCounter" hidden="hidden" />
+</div>
+<div>
+    <label>Area of Injury (select ALL that apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="areaInjury" id="areaInjuryDes">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="test Description"></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-3">
+        <input type="text" name="areaInjuryOtherDes" id="areaInjuryOtherDes"/>
+    </div>
+    <input type="button" value="Add" id="addAreaInj" />
+</div>
+<div>
+    <table id="areaInjList" name="areaInjList" class="table table-bordered"></table>
+    <input type="text" name="areaInjCounter" id="areaInjCounter" hidden="hidden" />
+</div>

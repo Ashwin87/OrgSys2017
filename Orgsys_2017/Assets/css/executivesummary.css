@@ -1,0 +1,20 @@
+﻿body {
+}
+
+.slideContainer{
+    border:solid; 
+    display:inline; 
+    height:600px; 
+    margin-bottom:80px;
+}
+
+.custom-class input, button {
+    margin-right: 10px;
+}
+
+.custom-class input {
+    padding-top:10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width:300px;
+}

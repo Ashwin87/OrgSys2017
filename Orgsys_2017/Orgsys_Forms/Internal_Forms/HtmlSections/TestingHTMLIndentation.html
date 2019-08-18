@@ -1,0 +1,63 @@
+﻿<div>
+    <div class="row margin_bottom" v-show="ShowFirst">
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" name="completed" id="Completed">Wait period waived
+        </label>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-sm-3">
+            <label id="lblDayOff">First Off</label>
+            <input type="date" class="form-control" name="dayOff" id="DayOff" />
+        </div>
+        <div class="col-md-3">
+            <label>Last Day Worked</label>
+            <input type="date" class="form-control" name="lastWorked" id="LastWorked" />
+        </div>
+        <div class="col-md-3" v-show="ShowFirst">
+            <label>LTD Start Date</label>
+            <input type="date" class="form-control" name="LTDStartDate" id="LTDStartDate" />
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-3">
+            <label>Absence Decision</label>
+            <input type="text" class="form-control" name="absenceApproved" id="AbsenceApproved" />
+        </div>
+        <div class="col-md-3">
+            <label>Approve Date</label>
+            <input type="date" class="form-control" name="approvalDate" id="ApprovalDate" />
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-3">
+            <label>Abs Auth From</label>
+            <input type="date" class="form-control" name="absAuthFrom" id="AbsAuthFrom" />
+        </div>
+        <div class="col-md-3">
+            <label>Abs Auth To</label>
+            <input type="date" class="form-control" name="absAuthTo" id="AbsAuthTo" />
+        </div>
+        <div class="col-md-3">
+            <label>RTW Auth</label>
+            <input type="date" class="form-control" name="RTWAuthDate" id="RTWAuthDate" />
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <div class="col-md-3">
+            <label>RTM</label>
+            <input type="date" class="form-control" name="RTMDate" id="RTMDate" />
+        </div>
+        <div class="col-md-3">
+            <label>RTF</label>
+            <input type="date" class="form-control" name="RTFDate" id="RTFDate" />
+        </div>
+    </div>
+    <div class="row margin_bottom">
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" name="transRTW" id="TransRTW">RTM includes tradional /gradual RTW
+        </label>
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" name="transRTWDis" id="TransRTWDis">Tradional RTW disconnected or absence recurred
+        </label>
+    </div>
+</div>

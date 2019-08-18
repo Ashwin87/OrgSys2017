@@ -1,0 +1,52 @@
+﻿<!--Injury Cause Details HTML-->
+<div>
+    <label>Cause of Injury (select ALL that apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="injCauseDesc" id="injCauseDesc">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="Test"></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-3">
+        <input type="text" class="form-control" name="injCauseOther" id="injCauseOther"/>
+    </div>
+    <input type="button" value="Add" id="addInjCause" />
+</div>
+<div>
+    <table id="injCauseList" name="injCauseList" class="table table-bordered"></table>
+    <input type="text" name="injCauseCounter" id="injCauseCounter" hidden="hidden" />
+</div>
+<div>
+    <label>Cause of Accident (select ALL that apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="accCauseDes" id="accCauseDesc">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="test"></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-3">
+        <input type="text" class="form-control" name="accCauseOther" id="accCauseOther" />
+    </div>
+    <input type="button" value="Add" id="addAccCause" />
+</div>
+<div>
+    <table id="accCauseList" name="accCauseList" class="table table-bordered"></table>
+    <input type="text" name="accCauseCounter" id="accCauseCounter" hidden="hidden" />
+</div>
+<div class="margin_bottom">
+    <label class="checkbox-inline">
+        <input class="form-check-input" id="SimInjury" type="checkbox" name="simInjury" placeholder="Was there property Damage">Employee had a similar injury (work-related OR non work-related
+    </label>
+</div>
+<div class="form-group">
+    <label for="simInjuryDes">If 'yes', please elobrate (max 500 char)</label>
+    <textarea class="form-control" name="simInjuryReason" id="SimInjuryReason" rows="4" placeholder="If 'yes', please elobrate (max 500 char)"></textarea>
+</div>

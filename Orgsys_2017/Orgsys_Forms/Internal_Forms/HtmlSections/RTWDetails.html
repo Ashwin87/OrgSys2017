@@ -1,0 +1,71 @@
+﻿<!--Incident Details HTML-->
+<div class="row margin_bottom">
+    <div class="col-md-5">
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" id="RTW" name="regDuties">Returned to Regular Duties
+        </label>
+    </div>
+    <label class="col-md-2 col-form" for="RTWDate">Initial RTW Date</label>
+    <div class="col-md-3">
+        <input type="date" class="form-control" name="RTWDate" id="RTWDate" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-5">
+        <label class="checkbox-inline">
+            <input class="form-check-input" type="checkbox" id="RTM" name="modDuties">Returned to Modified Work
+        </label>
+    </div>
+    <label class="col-md-2 col-form-label" for="RTMDate">Initial RTM Date</label>
+    <div class="col-md-3">
+        <input type="date" class="form-control" id="RTMDate" name="RTMDate" />
+    </div>
+</div>
+<div class="margin_bottom">
+    <label class="checkbox-inline">
+        <input class="form-check-input" type="checkbox" id="LostEarnings" name="lostEarning">Has lost time/earnings beyond the date of injury?
+    </label>
+</div>
+<div>
+    <label>If yes, date/time last worked</label>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-5">
+        <label class="col-md-2 col-form-label" for="dateLastWorked">Date</label>
+        <input type="text" class="form-control" name="dateLastWorked" id="DateLastWorked" />
+    </div>
+    <div class="col-md-5">
+        <label class="col-md-2 col-form-label" for="timeLastWorked">Time</label>
+        <input type="datetime" class="form-control" name="timeLastWorked" id="TimeLastWorked" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="mgrComments">Manager Comments (max 1500 char)</label>
+    <textarea class="form-control" id="MgrComments" rows="4" placeholder="If yes, please elobrate (max 500 char)"></textarea>
+</div>
+<label class="checkbox-inline">
+    <input class="form-check-input" type="checkbox" id="RTWPackage" name="RTWPackage">Has the Safe and Timely return to work package been discussed with and provided to this worker?
+</label>
+<div class="form-group">
+    <label for="PackageReas">If no, please elobrate (max 500 char)</label>
+    <textarea class="form-control" id="PackageReason" rows="4" placeholder="If no, please elobrate (max 500 char)"></textarea>
+</div>
+<label class="checkbox-inline">
+    <input class="form-check-input" type="checkbox" id="ModWorkOffered" name="modifiedWork">Has modified work been offered to this worker in writing?
+</label>
+<div class="row">
+    <label class="col-md-4 col-form" for="MWDate">If yes, date provided to employee</label>
+    <div class="col-md-4">
+        <input type="text" class="form-control" name="MWDate" id="ModWorkDate" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="causeOfInjury">If no, please elobrate (max 500 char)</label>
+    <textarea class="form-control" id="ModWorkReason" rows="4" placeholder="If 'no', please elobrate (max 500 char)"></textarea>
+</div>
+<label class="checkbox-inline">
+    <input class="form-check-input" type="checkbox" id="ManagerResponsible" name="mgrResponsible">Is the worker's manager responsible for arranging return to work?
+</label>
+<label class="checkbox-inline">
+    <input class="form-check-input" type="checkbox" id="ModDutiesAcc" name="MWAcceptance">Did the worker accept the modified duties?
+</label>

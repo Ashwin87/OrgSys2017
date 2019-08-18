@@ -1,0 +1,84 @@
+﻿<!--Weather Details HTML-->
+<label class="checkbox-inline">
+    <input class="form-check-input" type="checkbox" name="trainingProvided" id="SafetyTrainingProvided">Was related safety training provided to employee prior to accident
+</label>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">If 'yes', why</label>
+    <div class="col-md-3">
+        <select class="form-control" name="trainingDesc" id="SafetyTrainingDes">
+            <option selected label="Select"></option>
+            <option label="Test Training Description" value="Test Training Description"></option>
+        </select>
+    </div>
+ </div>
+<div class="form-group">
+    <label for="trainingReason">If no, why (max 1500char)</label>
+    <textarea class="form-control" name="trainingReason" id="SafetyTrainingReason" rows="4"></textarea>
+</div>
+<div>
+    <label>Weather Conditions (Select All that Apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="weatherDesc" id="weatherDesc">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="Test Weather Description "></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-3">
+        <input type="text" class="form-control" name="weatherOther" id="weatherOther" />
+    </div>
+    <input type="button" value="Add" id="addWeather" />
+</div>
+<div>
+    <table id="weatherList" name="weatherList" class="table table-bordered"></table>
+    <input type="text" name="weatherCounter" id="weatherCounter" hidden="hidden" />
+</div>
+<div>
+    <label>Equipment Involved (select ALL that apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="equipDes" id="equipDesc">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="Test Place of Accident Description"></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-3">
+        <input type="text" class="form-control" name="equipOther" id="equipOther" />
+    </div>
+    <input type="button" value="Add" id="addEquip">
+</div>
+<div>
+    <table id="equipList" name="equipList" class="table table-bordered"></table>
+    <input type="text" name="equipCounter" id="equipCounter" hidden="hidden" />
+</div>
+<div>
+    <label>Environmental Factors (select ALL that apply):</label>
+</div>
+<div class="row margin_bottom">
+    <label class="col-md-2 col-form-label">Description</label>
+    <div class="col-md-3">
+        <select class="form-control" name="envirDesc" id="envirDesc">
+            <option selected label="Select"></option>
+            <option label="Test Description" value="Test Environmental Factors Description"></option>
+        </select>
+    </div>
+    <label class="col-md-2 col-form-label">Other Description</label>
+    <div class="col-md-3">
+        <input type="text" class="form-control" name="envirOther" id="envirOther" />
+    </div>
+    <input type="button" value="Add" id="addEnv">
+</div>
+<div>
+    <table id="envList" name="envList" class="table table-bordered"></table>
+    <input type="text" name="envCounter" id="envCounter" hidden="hidden" />
+</div>
+<div class="pull-right">
+    <button type="button" class="btn btn-primary">Previous</button>
+    <button type="button" class="btn btn-primary">Next</button>
+</div>

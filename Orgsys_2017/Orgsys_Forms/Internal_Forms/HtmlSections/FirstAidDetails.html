@@ -1,0 +1,69 @@
+﻿<!--First Aid Details info HTML-->
+<div class="row">
+    <div class="col-md-5">
+        <label for="empProperty">Did the injury/illness occur on employer property?</label>
+        <select class="form-control " name="empProperty" id="EmployerProp">
+            <option selected label="Select"></option>
+            <option label="Yes" value=1></option>
+            <option label="No" value=0></option>
+        </select>
+    </div>
+    <div class="col-md-7">
+        <label for="location">If yes location where the emloyee was working at that time</label>
+        <input type="text" class="form-control" name="empLocation" id="EmployerLocation" placeholder="If yes location where the emloyee was working at that time" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="otherLocation">If no, the address of the location where the employee was working at that time</label>
+    <textarea class="form-control col-md-5" name="injuryOther" id="InjuryOther" rows="4" placeholder="If no, the address of the location where the employee was working at that time"></textarea>
+</div>
+<div class="margin_bottom">
+    <label class="checkbox-inline">
+        <input class="form-check-input" type="checkbox" name="firstAidProvided" id="AidProvided" value="First aid provided to employee">First aid provided to employee
+    </label>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-5">
+        <label for="firstAidProvider">Who provided first aid?</label>
+        <input type="text" class="form-control" name="providerName" id="ProviderType" placeholder="Who provided first aid" />
+    </div>
+    <div class="col-md-6">
+        <label for="firstAidTreat">What was the first aid treatment</label>
+        <input type="text" class="form-control" name="firstAidTreat" id="FirstAidTreatment" placeholder="What was the first aid treatment" />
+    </div>
+</div>
+<div class="margin_bottom">
+    <label class="checkbox-inline">
+        <input class="form-check-input" type="checkbox" id="MedInfoRecieved" name="medicalAtt">Employee did or will receive medical information
+    </label>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-5">
+        <label for="dateMedicalAtt">When did or will employee receive medical attention?</label>
+        <input type="text" class="form-control" id="MedAttDate" name="dateMedicalAtt" placeholder="When did or will employee receive medical attention?" />
+    </div>
+    <div class="col-md-6">
+        <label for="dateEmpMedicalAtt">When was the employer informed?</label>
+        <input type="text" class="form-control" id="MedAttNoti" name="medicalAttNoti" placeholder="When was the employer informeds" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-5">
+        <label for="locInjuryTreat">Location of Injury treatment</label>
+        <input type="text" class="form-control " name="locInjuryTreat" id="LocationInjuryTreat" placeholder="Location of Injury treatment" />
+    </div>
+    <div class="col-md-6">
+        <label for="otherLocationDes">Other Location Description</label>
+        <input type="text" class="form-control " name="otherLocationDes" id="LocationInjuryOther" placeholder="Other Location Description" />
+    </div>
+</div>
+<div class="row margin_bottom">
+    <div class="col-md-5">
+        <label for="providerName">Health Care Provider Name?</label>
+        <input type="text" class="form-control" name="providerType" id="ProviderName" placeholder="Health Care Provider Name" />
+    </div>
+    <div class="col-md-6">
+        <label for="providerNo">Health Care Provider Phone</label>
+        <input type="text" class="form-control " name="providerNo" id="ProviderPhone" placeholder="Health Care Provider Phone" />
+    </div>
+</div>

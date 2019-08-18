@@ -1,0 +1,71 @@
+﻿
+<script type="text/javascript">
+
+    function LoadClaimDocuments() {
+        InitializeClaimDocumentsDT();
+
+        GetDataGeneric('DataBind', 'GetDocuments', [ClaimRefNu]).then(function (documents) {
+            console.log(documents)
+            window.claimdocs = documents
+            SetDataDT('#claimDocumentsTable', documents);
+        });
+    }
+    var DocumentDatatable;
+    function InitializeClaimDocumentsDT() {
+        DocumentDatatable = InitializeDT('#claimDocumentsTable', ClaimDocumentsDTC)
+    }
+
+    var ClaimDocumentsDTC = {
+        select: true,
+        "columns": [
+            { "data": "" },
+            { "data": "DocName" },
+            { "data": "Type" },
+            { "data": "UploadedBy" },
+            {
+                "data": "Timestamp",
+                render: ConvertDateIsoToCustom
+            }
+        ],
+        "columnDefs": [
+            {
+                "targets": 0,
+                "data": null,
+                "searchable": false,
+                "orderable": false,
+                "defaultContent":
+                    "<a id='btnOpenClaimFile' data-toggle='tooltip' title='View update' class='btn btn-default view_description'><i class='glyphicon glyphicon-eye-open'></i>"
+            }
+        ]
+    }
+    $(document).delegate("#btnOpenClaimFile", "click", function (event) {
+        var DocID = DocumentDatatable.row($(this).parents("tr")).data().DocID;
+        var link = document.createElement('a');
+        document.body.appendChild(link);
+        link.href = getApi + "/api/Files/DownloadClaimFile/" + window.token + "/" + DocID;
+        link.click();
+    });
+
+</script>
+<div class="panel panel-default container">
+    <div id="banner-container" class="osp-heading panel-heading narrow-container">
+        <div id="welcome-container" class="osp-heading panel-heading">
+            <h4 id="welcome-header" class="osp-heading panel-heading">Documents Details</h4>
+        </div>
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+    </div>
+    <!--<div class="panel-heading">Documents Details<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>-->
+    <div class="panel-body remove-top-border">
+        <table id="claimDocumentsTable" class="table table-bordered table-striped table-hover dataTable no-footer">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Document Name</th>
+                    <th>Document Type</th>
+                    <th>Uploaded By</th>
+                    <th>Upload Date</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
