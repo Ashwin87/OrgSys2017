@@ -1,2 +1,12 @@
 
+
+Master_Project/APILayer/bin/*
+Master_Project/.vs/*
+.vs/Orgsys_2017/v15/*
+Master_Project/APILayer/bin/*
+Master_Project/APILayer/obj/*
 .vs/*
+Master_Project/DataLayer/bin/*
+Master_Project/DataLayer/obj/*
+Master_Project/Orgsys_2017/bin/*
+Master_Project/Orgsys_2017/obj/Debug/*
