@@ -22,7 +22,11 @@ var clientModel = {
     BusDiv: '',
     BusDept: '',
     STDWaitPeriodDays: '',
-    LTDDurationWeeks:''
+    LTDDurationWeeks: '',
+    OfferedService: '',
+    MainEmail: '',
+    MainWebsite: ''
+
 }
 
 var clientContactModel = {
@@ -50,8 +54,8 @@ var clientContactModel = {
 function GetTableJSON(tableSelector, row) {
 
     var selector = (row === undefined) ? 'tr' : row;
-    return $(tableSelector).DataTable().rows(selector).data().toArray();  
-    
+    return $(tableSelector).DataTable().rows(selector).data().toArray();
+
 }
 
 //OPENS SWAL FORM WITH EDITABLE DATA, SAVES EDITS TO TABLES
@@ -74,27 +78,27 @@ function EditClient(rowIndex) {
             AttachCountryEventHandler('BusCountry');
             AttachProvinceEventHandler('BusCity');
             $('[name="BusCity"]').select2();
-            
+
             MaskInputs(this)
         },
         preConfirm: validate.validateSwalContentPM
     })
-    .then(function () {
-        UnMaskInputs(this);
+        .then(function () {
+            UnMaskInputs(this);
 
-        var client = GetClientSwalData()   
-        UpdateClient(client).then(
-            function () {
-                ClientDetailsDT.row(rowIndex).data(client).draw();
-                AttachClientActionHandlers($('#ClientDetailsTable tBody > tr').eq(rowIndex));
-                $('[data-toggle="tooltip"]').tooltip()
-                swal('Client has been updated!', '', 'success')
-            },
-            function () {
-                swal('', 'An unknown error occured. Please try again at another time.', 'error')
-            }
-        );
-    });
+            var client = GetClientSwalData()
+            UpdateClient(client).then(
+                function () {
+                    ClientDetailsDT.row(rowIndex).data(client).draw();
+                    AttachClientActionHandlers($('#ClientDetailsTable tBody > tr').eq(rowIndex));
+                    $('[data-toggle="tooltip"]').tooltip()
+                    swal('Client has been updated!', '', 'success')
+                },
+                function () {
+                    swal('', 'An unknown error occured. Please try again at another time.', 'error')
+                }
+            );
+        });
 
 }
 
@@ -121,23 +125,23 @@ function EditClientContact(rowIndex) {
         },
         preConfirm: validate.validateSwalContentPM
     })
-    .then(function () {
-        UnMaskInputs(this);
+        .then(function () {
+            UnMaskInputs(this);
 
-        var clientContact = GetClientContactSwalData();
-        UpdateClientContact(clientContact).then(
-            function () {
-                ClientContactsDT.row(rowIndex).data(clientContact).draw();
-                AttachClientContactActionHandlers($('#ClientContactDetailsTable tBody > tr').eq(rowIndex));
-                $('[data-toggle="tooltip"]').tooltip()
-                MaskInputs();
-                swal('Client Contact has been updated!', '', 'success');
-            },
-            function () {
-                swal('', 'An unknown error occured. Please try again at another time.', 'error')
-            }
-        );
-    });    
+            var clientContact = GetClientContactSwalData();
+            UpdateClientContact(clientContact).then(
+                function () {
+                    ClientContactsDT.row(rowIndex).data(clientContact).draw();
+                    AttachClientContactActionHandlers($('#ClientContactDetailsTable tBody > tr').eq(rowIndex));
+                    $('[data-toggle="tooltip"]').tooltip()
+                    MaskInputs();
+                    swal('Client Contact has been updated!', '', 'success');
+                },
+                function () {
+                    swal('', 'An unknown error occured. Please try again at another time.', 'error')
+                }
+            );
+        });
 
 }
 
@@ -155,7 +159,7 @@ function RemoveClientSwal(rowIndex) {
     }).then(function () {
         var client = GetTableJSON('#ClientDetailsTable', rowIndex)[0];
         RemoveClient(client).then(
-            function () {                
+            function () {
                 ClientDetailsDT.rows(rowIndex).remove().draw();
                 swal('Client has been removed!', '', 'success')
             },
@@ -170,7 +174,7 @@ function RemoveClientSwal(rowIndex) {
 function RemoveClientContactSwal(rowIndex) {
 
     var client = GetTableJSON('#ClientContactDetailsTable', rowIndex)[0]
-    var clientName = client.FirstName + ' ' +  client.LastName
+    var clientName = client.FirstName + ' ' + client.LastName
 
     swal({
         title: 'Are you sure you want to remove this contact?',
@@ -196,6 +200,31 @@ function RemoveClientContactSwal(rowIndex) {
 
 //OPENS SWAL FORM, ADDS NEW RECORD TO TABLE
 
+function ClientAdded() {
+    debugger;
+    swal({
+        html: "Do You Want to Save The Changes?"
+        //preConfirm: validate.validateSwalContentPM
+    })
+        .then(function () {
+            UnMaskInputs(this);
+            var client = GetClientSwalData();
+            SaveClient(client).then(
+                function () {
+                    ClientDetailsDT.row.add(client).draw();
+                    var rowIndex = ClientDetailsDT.rows().indexes().length - 1
+                    AttachClientActionHandlers($('#ClientDetailsTable tBody > tr').eq(rowIndex));
+                    $('[data-toggle="tooltip"]').tooltip()
+                    swal('Client has been added!', '', 'success')
+                },
+                function () {
+                    swal('', 'An unknown error occured. Please try again at another time.', 'error')
+                }
+            );
+        });
+}
+
+
 function AddClient() {
 
     swal({
@@ -217,24 +246,24 @@ function AddClient() {
         },
         preConfirm: validate.validateSwalContentPM
     })
-    .then(function () {
-        UnMaskInputs(this);
+        .then(function () {
+            UnMaskInputs(this);
 
-        var client = GetClientSwalData();
-        SaveClient(client).then(
-            function () {
-                ClientDetailsDT.row.add(client).draw();
-                var rowIndex = ClientDetailsDT.rows().indexes().length - 1
-                AttachClientActionHandlers($('#ClientDetailsTable tBody > tr').eq(rowIndex));
-                $('[data-toggle="tooltip"]').tooltip()
-                swal('Client has been added!', '', 'success')
-            },
-            function () {
-                swal('', 'An unknown error occured. Please try again at another time.', 'error')
-            }
-        );
-    });
-    
+            var client = GetClientSwalData();
+            SaveClient(client).then(
+                function () {
+                    ClientDetailsDT.row.add(client).draw();
+                    var rowIndex = ClientDetailsDT.rows().indexes().length - 1
+                    AttachClientActionHandlers($('#ClientDetailsTable tBody > tr').eq(rowIndex));
+                    $('[data-toggle="tooltip"]').tooltip()
+                    swal('Client has been added!', '', 'success')
+                },
+                function () {
+                    swal('', 'An unknown error occured. Please try again at another time.', 'error')
+                }
+            );
+        });
+
 }
 
 function AddClientContact() {
@@ -257,25 +286,25 @@ function AddClientContact() {
         },
         preConfirm: validate.validateSwalContentPM
     })
-    .then(function () {
-        UnMaskInputs(this);
+        .then(function () {
+            UnMaskInputs(this);
 
-        var clientContact = GetClientContactSwalData()
-        SaveClientContact(clientContact).then(
-            function () {
-                ClientContactsDT.row.add(clientContact).draw();
-                var rowIndex = ClientContactsDT.rows().indexes().length - 1
-                AttachClientContactActionHandlers($('#ClientContactDetailsTable tBody > tr').eq(rowIndex));
-                $('[data-toggle="tooltip"]').tooltip()
-                MaskInputs();
-                swal('Client Contact has been added!', '', 'success')
+            var clientContact = GetClientContactSwalData()
+            SaveClientContact(clientContact).then(
+                function () {
+                    ClientContactsDT.row.add(clientContact).draw();
+                    var rowIndex = ClientContactsDT.rows().indexes().length - 1
+                    AttachClientContactActionHandlers($('#ClientContactDetailsTable tBody > tr').eq(rowIndex));
+                    $('[data-toggle="tooltip"]').tooltip()
+                    MaskInputs();
+                    swal('Client Contact has been added!', '', 'success')
 
-            },
-            function () {
-                swal('', 'An unknown error occured. Please try again at another time.', 'error')
-            }
-        );
-    });
+                },
+                function () {
+                    swal('', 'An unknown error occured. Please try again at another time.', 'error')
+                }
+            );
+        });
 
 }
 
@@ -309,7 +338,7 @@ function UpdateClient(clientJson) {
 
 }
 
-function RemoveClient(clientJson) {   
+function RemoveClient(clientJson) {
 
     return $.ajax({
         type: 'POST',
@@ -349,7 +378,7 @@ function UpdateClientContact(clientContactJson) {
 
 }
 
-function RemoveClientContact(clientContactJson) {    
+function RemoveClientContact(clientContactJson) {
 
     return $.ajax({
         type: 'POST',
@@ -449,11 +478,11 @@ function AttachClientActionHandlers(scope) {
                 //
                 $('.add-clientcontact').data('clientId', clientId);
                 MaskInputs();
-            });  
+            });
         }
 
 
-           
+
     });
 
     scope.find('.remove-client').on('click', function () {
@@ -480,11 +509,11 @@ function AttachClientContactActionHandlers(scope) {
 $(document).delegate(".Library-Resources", "click", function (event) {
     var ClientID = ClientDetailsDT.row($(this).parents("tr")).data().ClientID;
     ShowCLientLibraryResourcesSwal(ClientID);
-}); 
+});
 $(document).delegate(".UploadLibraryResource", "click", function (event) {
     if (document.querySelector('#LibraryResourceFiles').files.length === 0 || $("#ddlResourceType").val() === 0 || isNaN($("#txtVersionNumber").val())) {
         $('#fileValidation').css('visibility', 'visible');
-    } else {    
+    } else {
         var file = document.querySelector('#LibraryResourceFiles').files[0];
         UploadLibraryResource(file);
     }
@@ -509,7 +538,7 @@ $(document).delegate("#ArchiveResource", "click", function (event) {
         cancelButtonText: "No",
         confirmButtonText: 'Yes'
     }).then(function () {
-        
+
         ArchiveLibraryResource(DocID);
     },
         function (dismiss) {
@@ -517,7 +546,7 @@ $(document).delegate("#ArchiveResource", "click", function (event) {
                 swal('Not Archived', 'Library resource has not been archived', 'error');
             }
         });
-   
+
 });
 
 
@@ -574,7 +603,7 @@ function UploadLibraryResource(file) {
             DocExt: docExt,
             MIMEType: mimetype
         };
-      
+
         $.ajax({
             url: api + '/api/LibraryResources/UploadLibraryResource/' + token,
             beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
@@ -598,7 +627,7 @@ function UploadLibraryResource(file) {
 
 //GETTING AND SETTING SWAL DATA
 
-function SetSwalData(model) {   
+function SetSwalData(model) {
 
     Object.keys(model)
         .forEach(function (key) {
@@ -633,7 +662,7 @@ function GetClientSwalData() {
         });
 
     model._20MoreWorkers = (parseInt(model._20MoreWorkers)) ? true : false;
-    
+
     return model;
 
 }
@@ -753,7 +782,7 @@ function InitializeClientContactsDT() {
     $('.add-clientcontact').on('click', function () {
         AddClientContact();
     });
-    
+
 }
 
 function ShowCLientLibraryResourcesSwal(ClientID) {
@@ -823,7 +852,7 @@ function GetLibraryResourceTypes() {
                 $("#ddlResourceType").append('<option value=' + Types[i].ResourceTypeId + '>' + Types[i].TypeName + '</option>');
             }
 
-          
+
         }, function () {
             alert("$.get failed!");
         }
@@ -896,13 +925,13 @@ function format(d) {
         <tbody>
         </tbody>
     </table>
-</div>`;  
+</div>`;
 }
 
 
 //SWAL TEMPLATES
 
-var clientTemplate = 
+var clientTemplate =
     `<div id="ClientSwal" class="container client_profile_container">
         <hidden name="ClientID"></hidden>
         <div class="row">
