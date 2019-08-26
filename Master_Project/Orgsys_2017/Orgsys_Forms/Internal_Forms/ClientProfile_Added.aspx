@@ -83,12 +83,7 @@
 
                     });
                     MaskInputs();
-                    //ATTACH BUTTON EVENT HANDLERS  
-                    $('.add-client').on('click', function () {
-                        AddClient();
-                    });
-                    AttachClientActionHandlers();
-                    $('[data-toggle="tooltip"]').tooltip()
+
                 });
         });
     </script>
@@ -98,17 +93,17 @@
             // Select types of Services
             $('#services').select2({
                 placeholder: 'Select Services',
-                ajax: {
-                    url: `<%= get_api %>/api/servicecontroller/services`,
-                    beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
-                    processResults: function (data) {
-                        var mappedJson = mapJsonForSelect2DataSource(JSON.parse(data), "ServiceID", ["ServiceDescription"]);
-                        return {
-                            results: mappedJson
-                        };
-                    }
-                }
-
+                 ajax: {
+                     url: `<%= get_api %>/api/servicecontroller/services`,
+                     beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+                     processResults: function (data) {
+                         var mappedJson = mapJsonForSelect2DataSource(JSON.parse(data), "ServiceID", ["ServiceDescription"]);
+                         return {
+                             results: mappedJson
+                         };
+                     }
+                 }
+               
             });
             //Date Picker 
             $("#StartDateClientProfile").click(function () {
@@ -127,15 +122,20 @@
 
             //Populate the 20 or more workers dropdown
             PopulateGenericList("yesno", "populateYesNo", "ListText" + LangGen, "ListValue");
-
-            //Populate the [Country] drop down when the form is populated 
+        
+           //Populate the [Country] drop down when the form is populated 
             PopulateCountries("populateCountries");
 
-            //Attach Event to populate [Province and City drop down]
+           //Attach Event to populate [Province and City drop down]
             AttachCountryEventHandler("BusProvince");
             AttachProvinceEventHandler("BusCity");
 
             MaskInputs();
+
+            //ATTACH BUTTON EVENT HANDLERS  
+            $('#saveclient').on('click' ,function () {
+                ClientAdded();
+            });
 
             $('.add-clientcontact').on('click', function () {
                 AddClientContact();
@@ -172,9 +172,9 @@
         }
 
 
-
-
-
+       
+        
+       
     </script>
     <style>
         .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
@@ -212,16 +212,15 @@
                         <div class="tab-content  faq-cat-content">
                             <!--General Info Tab-->
                             <div class="tab-pane fade in active" id="tab1primary">
-
                               <div id="swal2-content">
                                     <div class="row margin_bottom">
                                         <div class="col-md-5">
-                                            <label for="Company">Company</label>
-                                            <input type="text" class="form-control" name="ClientName" id="CompanyName" placeholder="Company Name" />
+                                            <label for="Company">Company Name</label>
+                                            <input type="text" class="form-control required" name="ClientName" id="CompanyName" placeholder="Company Name" data-original-title="Required" />
                                         </div>
                                         <div class="col-md-5 form_field_setter">
                                             <label class="form_label_setter">Trade / Legal Name</label>
-                                            <input type="text" class="form-control required client_profile_textarea" name="TradeLegalName" placeholder="Trade Legal Name" />
+                                            <input type="text" class="form-control required client_profile_textarea" name="TradeLegalName" placeholder="Trade Legal Name" data-original-title="Required" />
                                         </div>
                                     </div>
 
@@ -241,37 +240,36 @@
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter">
                                             <label class="form_label_setter">Mailing Address1</label>
-                                            <input type="text" class="form-control" id="BusMailingAddress" name="BusMailingAddress" placeholder="Address1" />
+                                            <input type="text" class="form-control required" id="BusMailingAddress" name="BusMailingAddress" placeholder="Address1" />
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter">
+                                            <label class="form_label_setter">Mailing Address2</label>
+                                            <input type="text" class="form-control" id="BusMailingAddress2" name="BusMailingAddress2" placeholder="Address2" data-original-title="Required" />
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter">
                                             <label for="country">Country</label>
-                                            <select class="form-control populateCountries required client_profile_textarea" id="BusCountry" name="BusCountry"></select>
+                                            <select class="form-control populateCountries required client_profile_textarea" id="BusCountry" name="BusCountry" data-original-title="Required"></select>
                                         </div>
-
+                                    </div>
+                                    <div class="row margin_bottom">
+                                        <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter">
+                                            <label for="province">Province/State:</label>
+                                            <select class="form-control required  populateProvinces  required client_profile_textarea" name="BusProvince" id="BusProvince" data-original-title="Required"></select>
+                                        </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12">
                                             <label for="City">City:</label>
                                             <select class="form-control populateCities  required client_profile_textarea" id="BusCity" name="BusCity">
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="row margin_bottom">
-                                        <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter">
-                                            <label class="form_label_setter">Mailing Address2</label>
-                                            <input type="text" class="form-control" id="BusMailingAddress2" name="BusMailingAddress2" placeholder="Address2" />
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter">
-                                            <label for="province">Province/State:</label>
-                                            <select class="form-control required  populateProvinces  required client_profile_textarea" name="BusProvince" id="BusProvince"></select>
-                                        </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter">
                                             <label for="postalcode">Postal Code</label>
-                                            <input type="text" class="form-control vld-postal vlda-BusCountry required client_profile_textarea" name="BusPostal" />
+                                            <input type="text" class="form-control vld-postal vlda-BusCountry required client_profile_textarea" name="BusPostal" data-original-title="Required"/>
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
                                         <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter margin-bottom">
                                             <label for="phonenumber">Main Phone</label>
-                                            <input type="text" class="form-control vld-phone required client_profile_textarea" name="BusTelephone" maxlength="15" autocomplete="off" />
+                                            <input type="text" class="form-control vld-phone required client_profile_textarea" name="BusTelephone" maxlength="15" autocomplete="off" data-original-title="Required"/>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter margin-bottom">
                                             <label for="fax">Fax</label>
@@ -281,7 +279,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter">
                                             <label class="form_label_setter">Activity Description</label>
-                                            <input type="text" class="form-control required client_profile_textarea" name="BusActivityDescr" />
+                                            <input type="text" class="form-control required client_profile_textarea" name="BusActivityDescr" data-original-title="Required"/>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-12 form_field_setter margin-bottom">
                                             <label class="form_label_setter">Has 20 Or More Workers?</label>
@@ -303,12 +301,7 @@
                                             <input type="text" class="form-control col-md-3" name="MainWebsite" id="mainWebsite" placeholder="Website" />
                                         </div>
                                     </div>
-                                    <div>
-                                        <a class="view-contacts view_description" title="View Client Contacts"><i class="icon icon-eye"></i></a>
-                                    </div>
-
                                 </div>
-
                                 <%--<div class="row margin_bottom">
                                      <div class="row margin_bottom">
                                         <h5 runat="server"><b>Point of Contact</b></></h5>
@@ -316,7 +309,7 @@
                                     <div class="row margin_bottom">
                                         <div id="ClientContactDetails">
                                             <div>
-                                                <button type="button" class="btn btn-default add-clientcontact add-client">
+                                                <button type="button" class="btn btn-default add-clientcontact">
                                                     <i class="icon-plus"></i>
                                                 </button>
                                             </div>
@@ -732,7 +725,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--LTDTab-->
+                            <!--LTD Tab-->
                             <div class="tab-pane fade" id="tab5primary">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
@@ -742,8 +735,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <label for="policynum">Policy Num:</label>
-                                        <select class="form-control" id="policynum" name="ltdprovider">
-                                        </select>
+                                         <input type="text" class="form-control col-md-3" name="ltdprovider" id="policynum" />
                                     </div>
                                 </div>
                                 <div class="row margin_bottom">
@@ -973,8 +965,7 @@
             </div>
         <div class="row margin_bottom text-right">
             <div class="swal2-buttonswrapper" style="display: inline-block;">
-                <button type="button" class="swal2-confirm swal2-styled" aria-label="" style="background-color: rgb(48, 133, 214); border-left-color: rgb(48, 133, 214); border-right-color: rgb(48, 133, 214);" onclick="ClientAdded();">Save Client</button>
-                <button type="button" class="swal2-cancel swal2-styled" aria-label="" style="display: inline-block; background-color: rgb(170, 170, 170);">Cancel</button>
+                <button type="button" class="swal2-confirm swal2-styled" aria-label="" style="background-color: rgb(48, 133, 214); border-left-color: rgb(48, 133, 214); border-right-color: rgb(48, 133, 214);" id="saveclient">Save Client</button>
             </div>
         </div>
     </div>
