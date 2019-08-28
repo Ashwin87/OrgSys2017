@@ -201,28 +201,58 @@ function RemoveClientContactSwal(rowIndex) {
 //OPENS SWAL FORM, ADDS NEW RECORD TO TABLE
 
 function ClientAdded() {
-    debugger;
-    swal({
-        html: "Do You Want to Save The Changes?"
-        //preConfirm: validate.validateSwalContentPM
-    })
-        .then(function () {
-            UnMaskInputs(this);
-            var client = GetClientSwalData();
-            SaveClient(client).then(
-                function () {
-                    ClientDetailsDT.row.add(client).draw();
-                    var rowIndex = ClientDetailsDT.rows().indexes().length - 1
-                    AttachClientActionHandlers($('#ClientDetailsTable tBody > tr').eq(rowIndex));
-                    $('[data-toggle="tooltip"]').tooltip()
-                    swal('Client has been added!', '', 'success')
-                },
-                function () {
-                    swal('', 'An unknown error occured. Please try again at another time.', 'error')
-                }
-            );
-        });
+
+    if (validate.validateSubmission()) {
+        var client = GetClientAddedSwalData();
+        SaveClient(client).then(
+            function () {
+                ClientDetailsDT.row.add(client).draw();
+                var rowIndex = ClientDetailsDT.rows().indexes().length - 1;
+                AttachClientActionHandlers($('#ClientDetailsTable tBody > tr').eq(rowIndex));
+                $('[data-toggle="tooltip"]').tooltip();
+                swal('Client has been added!', '', 'success');
+            },
+            function () {
+                swal('', 'An unknown error occured. Please try again at another time.', 'error');
+            }
+        );           //Form is valid the Client is saved in to database
+    }
+    else {
+        var sectionsWithErrorFields = getSectionNamesWithErrorFields(); //Gets a unique list of comma delimited section names with error fields
+        swal('Error!', 'Oops! You missed required field(s) from the following section(s): <br/><br/>' + sectionsWithErrorFields + '', 'error');
+    }
 }
+
+//SWAL message for required Error Fields 
+function getSectionNamesWithErrorFields() {
+    var sectionsWithErrorFields = {
+        sections: []
+    };
+    $(".error").each(function () {//Loops through fields with errors and adds their tab section name to an array. This will be added to a SWAL to let the user know what sections are missing required values.
+        var sectionID = $(this).parents(".tab-pane").attr('id');
+
+        var curSectionId = $("a[href='#" + sectionID + "']").first().text();
+
+        var result = sectionsWithErrorFields.sections.filter(function (obj) { return obj.sectionName == curSectionId; })[0];
+        if (result == null) {
+            sectionsWithErrorFields.sections.push({
+                "sectionName": curSectionId,
+                "errCount": 1
+            });
+        } else {
+            result.errCount += 1;
+        }
+    });
+
+    var listItemString = "";
+    for (var i = 0; i < sectionsWithErrorFields.sections.length; i++) {
+        listItemString += "<li class='list-group-item' style='text-align: left;'>" + sectionsWithErrorFields.sections[i].sectionName + "<span class='badge badge-error'>" + sectionsWithErrorFields.sections[i].errCount + "</span></li>";
+    }
+
+    return "<ul class='list-group'>" + listItemString + "</ul>";
+}
+
+
 
 
 function AddClient() {
@@ -660,6 +690,31 @@ function GetClientSwalData() {
             var val = $('#swal2-content [name="' + key + '"]').val();
             model[key] = (val === undefined) ? "" : val;
         });
+
+    model._20MoreWorkers = (parseInt(model._20MoreWorkers)) ? true : false;
+
+    return model;
+
+}
+// Saves Multiple Offered Services into the DB
+function GetClientAddedSwalData() {
+
+    let Services = '';
+    var model = {};
+    Object.keys(clientModel)
+        .forEach(function (key) {
+            var val = $('#swal2-content [name="' + key + '"]').val();
+            model[key] = (val === undefined) ? "" : val;
+        });
+
+    var listObject = model.OfferedService;
+    if (listObject != null && listObject != undefined) {
+        for (var i = 0; i < listObject.length; i++) {
+            Services += listObject[i] + ',';
+        }
+        Services = Services.substring(0, Services.length - 1);
+        model.OfferedService = Services;
+    }
 
     model._20MoreWorkers = (parseInt(model._20MoreWorkers)) ? true : false;
 
