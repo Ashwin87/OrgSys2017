@@ -123,6 +123,9 @@
             //Populate the 20 or more workers dropdown
             PopulateGenericList("yesno", "populateYesNo", "ListText" + LangGen, "ListValue");
 
+            //Populate the Length Field
+            PopulateGenericList("DaysType", "populateWaitPeriodType", "ListText" + LangGen, "ListValue");
+
             //Populate the [Country] drop down when the form is populated 
             PopulateCountries("populateCountries");
 
@@ -142,13 +145,13 @@
             });
 
 
-            $('#evaluationtype').select2({
-                placeholder: 'Select Services'
-            });
+            //$('#evaluationtype').select2({
+            //    placeholder: 'Select Services'
+            //});
 
-            $('#approvedby').select2({
-                placeholder: 'Select Services'
-            });
+            //$('#approvedby').select2({
+            //    placeholder: 'Select Services'
+            //});
 
 
         });
@@ -183,16 +186,16 @@
             padding: 0 !important;
         }
 
-        .group-input {
-            padding-left: 25px;
-        }
-
+        .group-custom-input {
+                padding-left: 25px;
+            }
+        
             .group-input input {
-                max-width: 150px;
+                max-width: 75px;
             }
 
             .group-input select {
-                max-width: 75px;
+                max-width: 130px;
             }
 
         .group input {
@@ -393,6 +396,25 @@
                         </div>
                         <!--General Info Tab 2-->
                         <div class="tab-pane fade" id="tab2primary">
+                             <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <h5 runat="server"><b>Claim Submission Process</b></></h5>
+
+                                    <div class="row margin_bottom">
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            <label for="claimsubmissionprocess">Process:</label>
+                                            <select class="form-control" id="claimsubmissionprocess" name="claimsubmissionprocess">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row margin_bottom">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <label for="claimsubmissionother">Other:</label>
+                                            <input type="text" class="form-control col-md-3" name="claimsubmissionother" id="claimsubmissionother" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="row margin_bottom">
                                     <h5 runat="server"><b>EAP Provider Information</b></></h5>
@@ -510,8 +532,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label for="approvedby">Approved By</label>
-                                        <select class="form-control" id="approvedby" name="approvedby">
-                                        </select>
+                                        <input type="text" class="form-control client_profile_textarea" id="approvedby" name="approvedby" maxlength="15" />
                                     </div>
                                 </div>
                             </div>
@@ -534,9 +555,9 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <h5 runat="server"><b>STD Program Length</b></></h5>
-                                   <div class="input-group group-input">
+                                   <div class="input-group group-input group-custom-input">
                                         <input type="text" class="form-control" aria-label="Text input with dropdown button"/>
-                                        <select class="form-control pull-left" id="inputGroup" name="inputGroup">
+                                        <select class="form-control pull-left populateWaitPeriodType" id="stdprogramlength" name="stdprogramlength">
                                     </select>
                                     </div>
                                     <div class="row margin_bottom">
@@ -615,7 +636,7 @@
                                         <label for="stdappealslength">Length:</label>
                                         <div class="input-group group-input">
                                             <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                                            <select class="form-control pull-left" id="stdappealslength" name="stdappealslength">
+                                            <select class="form-control pull-left populateWaitPeriodType" id="stdappealslength" name="stdappealslength">
                                             </select>
                                         </div>
                                     </div>
@@ -624,7 +645,7 @@
                                         <label for="stdappealsmedicallength">Length:</label>
                                         <div class="input-group group-input">
                                             <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                                            <select class="form-control pull-left" id="stdappealsmedicallength" name="stdappealsmedicallength">
+                                            <select class="form-control pull-left populateWaitPeriodType" id="stdappealsmedicallength" name="stdappealsmedicallength">
                                             </select>
                                         </div>
                                     </div>
@@ -675,7 +696,7 @@
                                             <label for="stdfirstcall">Length:</label>
                                             <div class="input-group group">
                                                 <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                                                <select class="form-control pull-left" id="stdfirstcall" name="stdfirstcall">
+                                                <select class="form-control pull-left populateWaitPeriodType" id="stdfirstcall" name="stdfirstcall">
                                                 </select>
                                             </div>
                                         </div>
@@ -694,7 +715,7 @@
                                             <label for="stdturnaroundmedical">Length:</label>
                                             <div class="input-group group">
                                                 <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                                                <select class="form-control pull-left" id="stdturnaroundmedical" name="stdturnaroundmedical">
+                                                <select class="form-control pull-left populateWaitPeriodType" id="stdturnaroundmedical" name="stdturnaroundmedical">
                                                 </select>
                                             </div>
                                         </div>
