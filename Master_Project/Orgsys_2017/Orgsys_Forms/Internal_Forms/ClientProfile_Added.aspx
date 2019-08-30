@@ -129,6 +129,8 @@
             //Populate the [Country] drop down when the form is populated 
             PopulateCountries("populateCountries");
 
+            PopulateProvinces("BusProvince");
+
             //Attach Event to populate [Province and City drop down]
             AttachCountryEventHandler("BusProvince");
             AttachProvinceEventHandler("BusCity");
@@ -187,16 +189,16 @@
         }
 
         .group-custom-input {
-                padding-left: 25px;
-            }
-        
-            .group-input input {
-                max-width: 75px;
-            }
+            padding-left: 25px;
+        }
 
-            .group-input select {
-                max-width: 130px;
-            }
+        .group-input input {
+            max-width: 75px;
+        }
+
+        .group-input select {
+            max-width: 130px;
+        }
 
         .group input {
             max-width: 50px;
@@ -396,7 +398,7 @@
                         </div>
                         <!--General Info Tab 2-->
                         <div class="tab-pane fade" id="tab2primary">
-                             <div class="row">
+                            <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <h5 runat="server"><b>Claim Submission Process</b></></h5>
 
@@ -451,83 +453,84 @@
                                     <input type="text" class="form-control vld-phone  client_profile_textarea" id="epaExtension" name="epaExtension" maxlength="15" />
                                 </div>
                             </div>
-                            <div class="row margin_bottom">
+                            <div class="container">
                                 <div class="row">
                                     <h5 runat="server"><b>Surveys</b></></h5>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12">
-                                    <div class="row margin_bottom">
-                                        <div class="col-lg-10 col-md-10 col-sm-12">
-                                            <label class="form-check-label" for="surveys"><b>Surveys? (check for yes)</b></label>
-                                            <input type="checkbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="row">
+                                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                                <label class="form-check-label" for="surveys"><b>Surveys? (check for yes)</b></label>
+                                                <input type="checkbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-4">
+                                                <label for="eapName">Specify:</label>
+                                                <textarea class="swal2-textarea" placeholder="" id="specify" style="display: block;"></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row margin_bottom">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <label for="eapName">Specify:</label>
-                                            <textarea class="swal2-textarea" placeholder="" id="specify" style="display: block;"></textarea>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="row">
+                                            <h5 runat="server"><b>Select Survey Types (all that apply)</b></></h5>
+                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                <label class="form-check-label" for="surveytype">STD:</label>
+                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                <label class="form-check-label" for="surveytype">WCB:</label>
+                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                <label class="form-check-label" for="surveytype">Other:</label>
+                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12 margin_top_10">
+                                                <label for="surveytypetext">Specify:</label>
+                                                <textarea class="swal2-textarea" placeholder="" id="surveytypetext" style="display: block;"></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12">
-                                    <div class="row">
-                                        <h5 runat="server"><b>Select Survey Types (all that apply)</b></></h5>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-12">
-                                            <label class="form-check-label" for="surveytype">STD:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="row">
+                                            <h5 runat="server"><b>Send Survey To? (all that apply)</b></></h5>
+                                             <div class="col-lg-4 col-md-4 col-sm-12">
+                                                <label class="form-check-label" for="sendsurvey">Employee:</label>
+                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                <label class="form-check-label" for="sendsurvey">WCB:</label>
+                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                                <label class="form-check-label" for="sendsurvey">Other:</label>
+                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-12">
-                                            <label class="form-check-label" for="surveytype">WCB:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-12">
-                                            <label class="form-check-label" for="surveytype">Other:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 col-lg-12 margin_top_10">
-                                            <label for="surveytypetext">Specify:</label>
-                                            <textarea class="swal2-textarea" placeholder="" id="surveytypetext" style="display: block;"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12">
-                                    <div class="row">
-                                        <h5 runat="server"><b>Send Survey To? (all that apply)</b></></h5>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-12">
-                                            <label class="form-check-label" for="sendsurvey">Employee:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-12">
-                                            <label class="form-check-label" for="sendsurvey">WCB:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-12">
-                                            <label class="form-check-label" for="sendsurvey">Other:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 col-lg-12 margin_top_10">
-                                            <label for="sendsurveytext">Specify:</label>
-                                            <textarea class="swal2-textarea" placeholder="" id="sendsurveytext" style="display: block;"></textarea>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12 margin_top_10">
+                                                <label for="sendsurveytext">Specify:</label>
+                                                <textarea class="swal2-textarea" placeholder="" id="sendsurveytext" style="display: block;"></textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row margin_bottom">
                                 <h5 runat="server"><b>Who Approves Evaluation?</b></></h5>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="col-md-12">
-                                    <label for="evaluationtype">Evaluation Type</label>
-                                    <select class="form-control" id="evaluationtype" name="evaluationtype">
-                                    </select>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="evaluationtype">Evaluation Type</label>
+                                        <select class="form-control" id="evaluationtype" name="evaluationtype">
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -537,8 +540,8 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <h5 runat="server"><b>General Comments</b></></h5>
-                                <textarea class="swal2-textarea" cols="" placeholder="" id="generalComments" style="display: block;"></textarea>
+                                <label for="evaluationtype">General Comments</label>
+                                <textarea class="form-control" name="Comments" id="generalComments" rows="4" required=""></textarea>
                             </div>
                         </div>
                         <!--STD Tab-->
@@ -546,19 +549,19 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <h5 runat="server"><b>STD Definition of Disability</b></></h5>
-                                    <div class="row margin_bottom">
+                                    <div class="row margin_bottom incident_description_container">
                                         <label for="definition">Definition:</label>
-                                        <textarea class="swal2-textarea" cols="" placeholder="" id="definition" style="display: block;"></textarea>
+                                        <textarea class="form-control" name="definition" id="definition" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <h5 runat="server"><b>STD Program Length</b></></h5>
-                                   <div class="input-group group-input group-custom-input">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button"/>
+                                    <div class="input-group group-input group-custom-input">
+                                        <input type="text" class="form-control" aria-label="Text input with dropdown button" />
                                         <select class="form-control pull-left populateWaitPeriodType" id="stdprogramlength" name="stdprogramlength">
-                                    </select>
+                                        </select>
                                     </div>
                                     <div class="row margin_bottom">
                                         <div class="col-lg-8 col-md-6 col-sm-6">
@@ -575,7 +578,7 @@
                                     </div>
                                     <div class="col-sm-5 col-md-9 col-lg-9">
                                         <label for="stdtrigger">Specify:</label>
-                                        <textarea class="swal2-textarea" placeholder="" id="stdtrigger" style="display: block;"></textarea>
+                                        <textarea class="form-control" name="stdtrigger" id="stdtrigger" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -613,19 +616,19 @@
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
-                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <div class="col-sm-12 col-md-12 col-lg-12 incident_description_container">
                                             <label for="stdappeals">Specify:</label>
-                                            <textarea class="swal2-textarea" placeholder="" id="stdappeals" style="display: block;"></textarea>
+                                            <textarea class="form-control" name="stdappeals" id="stdappeals" rows="3" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <h5 runat="server"><b>STD Relapse / Recurrence Definition</b></></h5>
                                     <div class="row margin_bottom">
                                         <label for="relapseorrecurrencedefinition">Definition:</label>
-                                        <textarea class="swal2-textarea" cols="" placeholder="" id="rrdefinition" style="display: block;"></textarea>
+                                        <textarea class="form-control" name="rrdefinition" id="rrdefinition" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -661,9 +664,9 @@
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
-                                        <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
                                             <label for="stdpolicy">Specify:</label>
-                                            <textarea class="swal2-textarea" placeholder="" id="stdpolicy" style="display: block;"></textarea>
+                                            <textarea class="form-control" name="stdpolicy" id="stdpolicy" rows="4" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -678,9 +681,9 @@
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
-                                        <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
                                             <label for="mvaprocess">Specify:</label>
-                                            <textarea class="swal2-textarea" placeholder="" id="mvaprocess" style="display: block;"></textarea>
+                                            <textarea class="form-control" name="mvaprocess" id="mvaprocess" rows="4" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -748,27 +751,27 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <h5 runat="server"><b>STD APS Follow Up Instructions:</b></></h5>
-                                    <textarea class="swal2-textarea" placeholder="" id="stdapsfollowup" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="stdapsfollowup" id="stdapsfollowup" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <h5 runat="server"><b>STD Non-Support Decision Instructions:</b></></h5>
-                                    <textarea class="swal2-textarea" placeholder="" id="stdnonsupport" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="stdnonsupport" id="stdnonsupport" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <h5 runat="server"><b>STD Communication With Payroll Instructions:</b></></h5>
-                                    <textarea class="swal2-textarea" placeholder="" id="stdcommunicationpayroll" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="stdcommunicationpayroll" id="stdcommunicationpayroll" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <h5 runat="server"><b>STD Other Specific Instructions:</b></></h5>
-                                    <textarea class="swal2-textarea" placeholder="" id="stdotherspecific" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="stdotherspecific" id="stdotherspecific" rows="3" required=""></textarea>
                                 </div>
                             </div>
                         </div>
@@ -800,7 +803,7 @@
                             <div class="row margin_bottom">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label for="ltdprocess">Process:</label>
-                                    <textarea class="swal2-textarea" placeholder="" id="ltdprocess" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="ltdprocess" id="ltdprocess" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -823,7 +826,7 @@
                             <div class="row margin_bottom">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label for="ltdrelapse">Definition:</label>
-                                    <textarea class="swal2-textarea" placeholder="" id="ltdrelapse" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="ltdrelapse" id="ltdrelapse" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
@@ -834,7 +837,7 @@
                             <div class="row margin_bottom">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label for="ltdspecific">Definition:</label>
-                                    <textarea class="swal2-textarea" placeholder="" id="ltdspecific" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="ltdspecific" id="ltdspecific" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
@@ -872,7 +875,7 @@
                                 <h5 runat="server"><b>WC By Province Information</b></></h5>
                                 <div class="col-lg-4 col-md-4 col-sm-12">
                                     <label for="province">Province</label>
-                                    <select class="form-control" id="province" name="province">
+                                    <select class="form-control populateProvinces" name="BusProvince" id="province">
                                     </select>
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-12">
@@ -894,9 +897,9 @@
                                     </div>
                                 </div>
                                 <div class="row margin_bottom">
-                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                         <label for="wcspecify">Specify:</label>
-                                        <textarea class="swal2-textarea" placeholder="" id="wcspecify" style="display: block;"></textarea>
+                                        <textarea class="form-control" name="wcspecify" id="wcspecify" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -907,7 +910,7 @@
                                     <select class="form-control" id="whoprovides" name="whoprovides">
                                     </select>
                                     <label for="wcprovidesspecify">Specify:</label>
-                                    <textarea class="swal2-textarea" placeholder="" id="wcprovidesspecify" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="v" id="wcprovidesspecify" rows="3" required=""></textarea>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <h5 runat="server"><b>WC - Legal (Tribunal) Representation By</b></></h5>
@@ -915,7 +918,7 @@
                                     <select class="form-control" id="wcrepresentative" name="wcrepresentative">
                                     </select>
                                     <label for="wcrepresentativespecify">Specify:</label>
-                                    <textarea class="swal2-textarea" placeholder="" id="wcrepresentativespecify" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="wcrepresentativespecify" id="wcrepresentativespecify" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -930,7 +933,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <label for="wcworkdutiesspecify">Specify:</label>
-                                            <textarea class="swal2-textarea" placeholder="" id="wcworkdutiesspecify" style="display: block;"></textarea>
+                                            <textarea class="form-control" name="wcworkdutiesspecify" id="wcworkdutiesspecify" rows="3" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -945,16 +948,16 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <label for="wcjobdescriptionspecify">Specify:</label>
-                                            <textarea class="swal2-textarea" placeholder="" id="wcjobdescriptionspecify" style="display: block;"></textarea>
+                                            <textarea class="form-control" name="wcjobdescriptionspecify" id="wcjobdescriptionspecify" rows="3" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
                                 <h5 runat="server"><b>WC - WC Process</b></></h5>
-                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <label for="wcprocesspecify">Specify:</label>
-                                    <textarea class="swal2-textarea" placeholder="" id="wcprocesspecify" style="display: block;"></textarea>
+                                    <textarea class="form-control" name="wcprocesspecify" id="wcprocesspecify" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
@@ -966,9 +969,9 @@
                                     </div>
                                 </div>
                                 <div class="row margin_bottom">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                         <label for="wccsst">Specify:</label>
-                                        <textarea class="swal2-textarea" placeholder="" id="wccsst" style="display: block;"></textarea>
+                                        <textarea class="form-control" name="wccsst" id="wccsst" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -981,9 +984,9 @@
                                     </div>
                                 </div>
                                 <div class="row margin_bottom">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                         <label for="csst">Specify:</label>
-                                        <textarea class="swal2-textarea" placeholder="" id="csst" style="display: block;"></textarea>
+                                        <textarea class="form-control" name="csst" id="csst" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -1001,9 +1004,9 @@
                             <div class="row margin_bottom">
                                 <h5 runat="server"><b>WC - Communication With Payroll Instructions:</b></></h5>
                             </div>
-                            <div class="row margin_bottom">
+                            <div class="row margin_bottom incident_description_container">
                                 <label for="csst"></label>
-                                <textarea class="swal2-textarea" placeholder="" id="wccommunication" style="display: block;"></textarea>
+                                <textarea class="form-control" name="wccommunication" id="wccommunication" rows="4" required=""></textarea>
                             </div>
                         </div>
                     </div>
