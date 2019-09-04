@@ -29,6 +29,28 @@ var clientModel = {
 
 }
 
+
+var ClientAddedModel = {
+    ClientId: '',
+    ClaimProcess: '',
+    ClaimOther: '',
+    EAPProvider: '',
+    EAPName: '',
+    EAPPhoneNo: '',
+    EAPFax: '',
+    EAPEmail: '',
+    EAPExtention: '',
+    SurveyCheck: '',
+    SurveySpecify: '',
+    SurvesTypes: '',
+    SendSurveyTo: '',
+    SendSurveySpecify: '',
+    EvaluationType: '',
+    ApprovedBy: '',
+    Comments: ''
+}
+
+
 var clientContactModel = {
     ContactID: '',
     ClientID: '',
@@ -201,16 +223,21 @@ function RemoveClientContactSwal(rowIndex) {
 //OPENS SWAL FORM, ADDS NEW RECORD TO TABLE
 
 function ClientAdded() {
-
+    debugger;
     if (validate.validateSubmission()) {
         var client = GetClientAddedSwalData();
+        var clientAdded = GetClientAddedModelSwalData();
         SaveClient(client).then(
-            function () {
+            function (data) {
+                clientAdded.ClientId = data.ClientID;
+                SaveClientAdded(clientAdded);
+                console.log(data);
                 ClientDetailsDT.row.add(client).draw();
                 var rowIndex = ClientDetailsDT.rows().indexes().length - 1;
                 AttachClientActionHandlers($('#ClientDetailsTable tBody > tr').eq(rowIndex));
                 $('[data-toggle="tooltip"]').tooltip();
                 swal('Client has been added!', '', 'success');
+                location.reload(true);
             },
             function () {
                 swal('', 'An unknown error occured. Please try again at another time.', 'error');
@@ -355,6 +382,19 @@ function SaveClient(clientJson) {
     });
 
 }
+
+function SaveClientAdded(clientJson) {
+
+    return $.ajax({
+        type: 'POST',
+        url: api + '/api/Client/AddedClient/' + token,
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        data: clientJson,
+        dataType: 'JSON'
+    });
+
+}
+
 
 function UpdateClient(clientJson) {
 
