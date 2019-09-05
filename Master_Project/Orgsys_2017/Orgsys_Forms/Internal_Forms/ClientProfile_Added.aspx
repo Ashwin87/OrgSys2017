@@ -123,6 +123,32 @@
             //Populate the 20 or more workers dropdown
             PopulateGenericList("yesno", "populateYesNo", "ListText" + LangGen, "ListValue");
 
+            // Populate the remainining the Dropdown Lists in the Client Portal
+
+            PopulateEAPProviderList("populateEapProvider", "EAPProvider", "EAPProviderID");
+
+            PopulateClaimSubmissionList("populateClaimSubmission", "ClaimSubmissionEN", "ClaimSubmissionID");
+
+            PopulateEvaluationTypeList("populateEvaluationType", "EvaluationTypeEN", "EvaluationTypeID");
+
+            PopulateSTDProcessList("populateSTDProcess", "STDProcessEN", "ddSTDProcessID");
+
+            PopulateSendAPSToEEList("populateSendAPSToEE", "SendApsToEEEN", "SendApsToEEID");
+
+            PopulateProvidesRTWList("PopulateProvidesRTW", "ProvidesRTWEN", "ProvidesRTWID");
+
+            PopulateLTDProviderList("PopulateLTDProvider", "LTDProviderEN", "LTDProviderID");
+
+            PopulateSendLTDToEEList("PopulateSendLTDToEE", "SendLTDToEEEN", "SendLTDToEEID");
+
+            PopulateSendLTDToERList("PopulateSendLTDToER", "SendLTDToEREN", "SendLTDToERID");
+
+            PopulateProvidesWCModDutyFormList("PopulateProvidesWCModDutyForm", "ProvidesRTWEN", "ProvidesRTWID");
+
+            PopulateLegalWCRepList("PopulateLegalWCRep", "LegalWcbRepEN", "LegalWcbRepID");
+
+            PopulateFinancialModelWCBList("PopulateFinancialModelWCB", "FinancialModelWcbEN", "FinancialModelWcbID");
+
             //Populate the Length Field
             PopulateGenericList("DaysType", "populateWaitPeriodType", "ListText" + LangGen, "ListValue");
 
@@ -405,14 +431,14 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-4 col-md-4 col-sm-4">
                                             <label for="claimsubmissionprocess">Process:</label>
-                                            <select class="form-control" id="claimsubmissionprocess" name="claimsubmissionprocess">
+                                            <select class="form-control populateClaimSubmission" id="ClaimProcess" name="ClaimProcess">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <label for="claimsubmissionother">Other:</label>
-                                            <input type="text" class="form-control col-md-3" name="claimsubmissionother" id="claimsubmissionother" />
+                                            <input type="text" class="form-control col-md-3" name="ClaimOther" id="ClaimOther" />
                                         </div>
                                     </div>
                                 </div>
@@ -424,7 +450,7 @@
                                 <div class="row margin_bottom">
                                     <div class="col-md-3">
                                         <label for="EAP">EAP</label>
-                                        <select class="form-control" id="EAP" name="EAP">
+                                        <select class="form-control populateEapProvider" id="EAPProvider" name="EAPProvider">
                                         </select>
                                     </div>
                                 </div>
@@ -432,25 +458,25 @@
                             <div class="row margin_bottom">
                                 <div class="col-md-3">
                                     <label for="eapName">Name</label>
-                                    <input type="text" class="form-control col-md-3" name="eapName" id="EAPName" placeholder="Name" />
+                                    <input type="text" class="form-control col-md-3" name="EAPName" id="EAPName" placeholder="Name" />
                                 </div>
                                 <div class="col-md-2 form_field_setter">
                                     <label for="eapPhone">Phone</label>
-                                    <input type="text" class="form-control vld-phone client_profile_textarea" name="eapPhone" id="EAPPhone" maxlength="15" />
+                                    <input type="text" class="form-control vld-phone client_profile_textarea" name="EAPPhoneNo" id="EAPPhoneNo" maxlength="15" />
                                 </div>
                                 <div class="col-md-2 form_field_setter">
                                     <label for="eapFax">Fax</label>
-                                    <input type="text" class="form-control vld-phone client_profile_textarea" id="eapFax" name="eapFax" maxlength="15" />
+                                    <input type="text" class="form-control vld-phone client_profile_textarea" id="EAPFax" name="EAPFax" maxlength="15" />
                                 </div>
                             </div>
                             <div class="row margin_bottom">
                                 <div class="col-md-3">
                                     <label for="epaEmail">Email</label>
-                                    <input type="text" class="form-control col-md-3" name="epaEmail" id="epaEmail" placeholder="Email" />
+                                    <input type="text" class="form-control col-md-3" name="EAPEmail" id="EAPEmail" placeholder="Email" />
                                 </div>
                                 <div class="col-md-2 form_field_setter">
                                     <label for="epaExtension">Extension</label>
-                                    <input type="text" class="form-control vld-phone  client_profile_textarea" id="epaExtension" name="epaExtension" maxlength="15" />
+                                    <input type="text" class="form-control vld-phone  client_profile_textarea" id="EAPExtention" name="EAPExtention" maxlength="15" />
                                 </div>
                             </div>
                             <div class="container">
@@ -462,13 +488,13 @@
                                         <div class="row">
                                             <div class="col-lg-8 col-md-8 col-sm-8">
                                                 <label class="form-check-label" for="surveys"><b>Surveys? (check for yes)</b></label>
-                                                <input type="checkbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                                <input type="checkbox" data-toggle="toggle" id="SurveyCheck" name="SurveyCheck" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-3 col-md-3 col-sm-4">
                                                 <label for="eapName">Specify:</label>
-                                                <textarea class="swal2-textarea" placeholder="" id="specify" style="display: block;"></textarea>
+                                                <textarea class="swal2-textarea" placeholder="" id="SurveySpecify" name="SurveySpecify" style="display: block;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -514,7 +540,7 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-12 col-lg-12 margin_top_10">
                                                 <label for="sendsurveytext">Specify:</label>
-                                                <textarea class="swal2-textarea" placeholder="" id="sendsurveytext" style="display: block;"></textarea>
+                                                <textarea class="swal2-textarea" placeholder="" id="SendSurveySpecify" name="SendSurveySpecify" style="display: block;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -528,30 +554,31 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label for="evaluationtype">Evaluation Type</label>
-                                        <select class="form-control" id="evaluationtype" name="evaluationtype">
+                                        <select class="form-control populateEvaluationType" id="EvaluationType" name="EvaluationType">
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label for="approvedby">Approved By</label>
-                                        <input type="text" class="form-control client_profile_textarea" id="approvedby" name="approvedby" maxlength="15" />
+                                        <input type="text" class="form-control client_profile_textarea" id="ApprovedBy" name="ApprovedBy" maxlength="15" />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <label for="evaluationtype">General Comments</label>
-                                <textarea class="form-control" name="Comments" id="generalComments" rows="4" required=""></textarea>
+                                <textarea class="form-control" name="Comments" id="Comments" rows="4" required=""></textarea>
                             </div>
                         </div>
-                        <!--STD Tab-->
-                        <div class="tab-pane fade" id="tab3primary">
+                        <%--<div id="ClientStdLtd">--%>
+                         <!--STD Tab-->
+                        <div class="tab-pane fade ClientStdLtd" id="tab3primary">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <h5 runat="server"><b>STD Definition of Disability</b></></h5>
                                     <div class="row margin_bottom incident_description_container">
                                         <label for="definition">Definition:</label>
-                                        <textarea class="form-control" name="definition" id="definition" rows="3" required=""></textarea>
+                                        <textarea class="form-control" name="STD_Definition" id="STD_Definition" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -559,14 +586,14 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <h5 runat="server"><b>STD Program Length</b></></h5>
                                     <div class="input-group group-input group-custom-input">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                                        <select class="form-control pull-left populateWaitPeriodType" id="stdprogramlength" name="stdprogramlength">
+                                        <input type="text" class="form-control" id="STDLength" name="STDLength" aria-label="Text input with dropdown button" />
+                                        <select class="form-control pull-left populateWaitPeriodType" id="STDLength2" name="STDLength2">
                                         </select>
                                     </div>
                                     <div class="row margin_bottom">
                                         <div class="col-lg-8 col-md-6 col-sm-6">
                                             <label for="other">Other:</label>
-                                            <input type="text" class="form-control col-md-3" name="other" id="other" />
+                                            <input type="text" class="form-control col-md-3" name="STDProgramOther" id="STDProgramOther" />
                                         </div>
                                     </div>
                                 </div>
@@ -578,7 +605,7 @@
                                     </div>
                                     <div class="col-sm-5 col-md-9 col-lg-9">
                                         <label for="stdtrigger">Specify:</label>
-                                        <textarea class="form-control" name="stdtrigger" id="stdtrigger" rows="3" required=""></textarea>
+                                        <textarea class="form-control" name="STDTriggerSpecify" id="STDTriggerSpecify" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -588,15 +615,15 @@
 
                                     <div class="row margin_bottom">
                                         <div class="col-lg-4 col-md-4 col-sm-4">
-                                            <label for="stdprocess">Process:</label>
-                                            <select class="form-control" id="stdprocess" name="appealsprocess">
+                                            <label for="STDProcess">Process:</label>
+                                            <select class="form-control populateSTDProcess" id="STDProcess" name="STDProcess">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <label for="otherProcess">Other:</label>
-                                            <input type="text" class="form-control col-md-3" name="other" id="otherProcess" />
+                                            <label for="STDProcessOther">Other:</label>
+                                            <input type="text" class="form-control col-md-3" name="STDProcessOther" id="STDProcessOther" />
                                         </div>
                                     </div>
                                 </div>
@@ -610,15 +637,15 @@
                                             <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4">
-                                            <label for="appealsprocess">Process:</label>
-                                            <select class="form-control" id="appealsprocess" name="appealsprocess">
+                                            <label for="STDAppealsProcess">Process:</label>
+                                            <select class="form-control populateSTDProcess" id="STDAppealsProcess" name="STDAppealsProcess">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
                                         <div class="col-sm-12 col-md-12 col-lg-12 incident_description_container">
-                                            <label for="stdappeals">Specify:</label>
-                                            <textarea class="form-control" name="stdappeals" id="stdappeals" rows="3" required=""></textarea>
+                                            <label for="STDAppealsSpecify">Specify:</label>
+                                            <textarea class="form-control" name="STDAppealsSpecify" id="STDAppealsSpecify" rows="3" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -628,7 +655,7 @@
                                     <h5 runat="server"><b>STD Relapse / Recurrence Definition</b></></h5>
                                     <div class="row margin_bottom">
                                         <label for="relapseorrecurrencedefinition">Definition:</label>
-                                        <textarea class="form-control" name="rrdefinition" id="rrdefinition" rows="3" required=""></textarea>
+                                        <textarea class="form-control" name="STDRelapseDefinition" id="STDRelapseDefinition" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -638,8 +665,8 @@
                                         <h5 runat="server"><b>STD Appeals - Days to provide intent in writing:</b></></h5>
                                         <label for="stdappealslength">Length:</label>
                                         <div class="input-group group-input">
-                                            <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                                            <select class="form-control pull-left populateWaitPeriodType" id="stdappealslength" name="stdappealslength">
+                                            <input type="text" class="form-control" id="STDAppealsLength" name="STDAppealsLength" aria-label="Text input with dropdown button" />
+                                            <select class="form-control pull-left populateWaitPeriodType" id="STDAppealsLength2" name="STDAppealsLength2">
                                             </select>
                                         </div>
                                     </div>
@@ -647,8 +674,8 @@
                                         <h5 runat="server"><b>STD Appeals - Days to provide medical info:</b></></h5>
                                         <label for="stdappealsmedicallength">Length:</label>
                                         <div class="input-group group-input">
-                                            <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                                            <select class="form-control pull-left populateWaitPeriodType" id="stdappealsmedicallength" name="stdappealsmedicallength">
+                                            <input type="text" class="form-control" id="STDAppealsMedicalLength" name="STDAppealsMedicalLength" aria-label="Text input with dropdown button" />
+                                            <select class="form-control pull-left populateWaitPeriodType" id="STDAppealsMedicalLength2" name="STDAppealsMedicalLength2">
                                             </select>
                                         </div>
                                     </div>
@@ -666,13 +693,13 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <label for="stdpolicy">Specify:</label>
-                                            <textarea class="form-control" name="stdpolicy" id="stdpolicy" rows="4" required=""></textarea>
+                                            <textarea class="form-control" name="ExistingSTDSpecify" id="ExistingSTDSpecify" rows="4" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-12">
                                     <div class="row margin_bottom">
-                                        <h5 runat="server"><b>Is there an MVA Process in Place?</b></></h5>
+                                        <h5 runat="server"><b>Is there a MVA Process in Place?</b></></h5>
                                     </div>
                                     <div class="row margin_bottom">
                                         <div class="col-lg-4 col-md-4 col-sm-12">
@@ -683,14 +710,14 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <label for="mvaprocess">Specify:</label>
-                                            <textarea class="form-control" name="mvaprocess" id="mvaprocess" rows="4" required=""></textarea>
+                                            <textarea class="form-control" name="MVAProcessSpecify" id="MVAProcessSpecify" rows="4" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!--STD KPI/CMRs-->
-                        <div class="tab-pane fade" id="tab4primary">
+                        <div class="tab-pane fade ClientStdLtd" id="tab4primary">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <h5 runat="server"><b>STD turnaround for first call following notification:</b></></h5>
@@ -698,8 +725,8 @@
                                         <div class="col-lg-4 col-md-4 col-sm-4">
                                             <label for="stdfirstcall">Length:</label>
                                             <div class="input-group group">
-                                                <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                                                <select class="form-control pull-left populateWaitPeriodType" id="stdfirstcall" name="stdfirstcall">
+                                                <input type="text" class="form-control" id="STDturnaroundnotificationLength" name="STDturnaroundnotificationLength" aria-label="Text input with dropdown button" />
+                                                <select class="form-control pull-left populateWaitPeriodType" id="STDturnaroundnotificationLength2" name="STDturnaroundnotificationLength2">
                                                 </select>
                                             </div>
                                         </div>
@@ -707,7 +734,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-8 col-md-6 col-sm-6">
                                             <label for="otherstdfirstcall">Other:</label>
-                                            <input type="text" class="form-control col-md-3" name="other" id="otherstdfirstcall" />
+                                            <input type="text" class="form-control col-md-3" name="STDturnaroundnotificationOther" id="STDturnaroundnotificationOther" />
                                         </div>
                                     </div>
                                 </div>
@@ -717,8 +744,8 @@
                                         <div class="col-lg-4 col-md-4 col-sm-4">
                                             <label for="stdturnaroundmedical">Length:</label>
                                             <div class="input-group group">
-                                                <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-                                                <select class="form-control pull-left populateWaitPeriodType" id="stdturnaroundmedical" name="stdturnaroundmedical">
+                                                <input type="text" class="form-control" id="STDturnaroundMedicalLength" name="STDturnaroundMedicalLength" aria-label="Text input with dropdown button" />
+                                                <select class="form-control pull-left populateWaitPeriodType" id="STDturnaroundMedicalLength2" name="STDturnaroundMedicalLength2">
                                                 </select>
                                             </div>
                                         </div>
@@ -726,7 +753,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-8 col-md-6 col-sm-6">
                                             <label for="otherstdturnaroundmedical">Other:</label>
-                                            <input type="text" class="form-control col-md-3" name="otherstdturnaroundmedical" id="otherstdturnaroundmedical" />
+                                            <input type="text" class="form-control col-md-3" name="STDturnaroundMedicalOther" id="STDturnaroundMedicalOther" />
                                         </div>
                                     </div>
                                 </div>
@@ -737,14 +764,14 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <label for="stdtaps">Who provides employee with APS package?</label>
-                                            <select class="form-control" id="stdtaps" name="stdtaps">
+                                            <select class="form-control populateSendAPSToEE" id="APSPackageProvider" name="APSPackageProvider">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <label for="stdrtw">Who confirms ability to provide RTWs?</label>
-                                            <select class="form-control" id="stdrtw" name="stdrtw">
+                                            <select class="form-control PopulateProvidesRTW" id="ProvideRTWs" name="ProvideRTWs">
                                             </select>
                                         </div>
                                     </div>
@@ -753,39 +780,39 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <h5 runat="server"><b>STD APS Follow Up Instructions:</b></></h5>
-                                    <textarea class="form-control" name="stdapsfollowup" id="stdapsfollowup" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="STDAPSFollowUpInstructions" id="STDAPSFollowUpInstructions" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <h5 runat="server"><b>STD Non-Support Decision Instructions:</b></></h5>
-                                    <textarea class="form-control" name="stdnonsupport" id="stdnonsupport" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="STDNonSupportDecisionInstructions" id="STDNonSupportDecisionInstructions" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <h5 runat="server"><b>STD Communication With Payroll Instructions:</b></></h5>
-                                    <textarea class="form-control" name="stdcommunicationpayroll" id="stdcommunicationpayroll" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="STDCommunicationWithPayrollInstructions" id="STDCommunicationWithPayrollInstructions" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <h5 runat="server"><b>STD Other Specific Instructions:</b></></h5>
-                                    <textarea class="form-control" name="stdotherspecific" id="stdotherspecific" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="STDOtherSpecificInstructions" id="STDOtherSpecificInstructions" rows="3" required=""></textarea>
                                 </div>
                             </div>
                         </div>
                         <!--LTD Tab-->
-                        <div class="tab-pane fade" id="tab5primary">
+                        <div class="tab-pane fade ClientStdLtd" id="tab5primary">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <label for="ltdprovider">LTD Provider:</label>
-                                    <select class="form-control" id="ltdprovider" name="ltdprovider">
+                                    <select class="form-control PopulateLTDProvider" id="LTDProvider" name="LTDProvider">
                                     </select>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <label for="policynum">Policy Num:</label>
-                                    <input type="text" class="form-control col-md-3" name="ltdprovider" id="policynum" />
+                                    <input type="text" class="form-control col-md-3" name="LTDPolicyNum" id="LTDPolicyNum" />
                                 </div>
                             </div>
                             <div class="row margin_bottom">
@@ -796,25 +823,25 @@
                             <div class="row margin_bottom">
                                 <div class="col-lg-5 col-md-5 col-sm-12">
                                     <label for="initiation">Initiation before LTD Start date:</label>
-                                    <select class="form-control" id="initiation" name="initiation">
+                                    <select class="form-control" id="LTDStartdate" name="LTDStartdate">
                                     </select>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label for="ltdprocess">Process:</label>
-                                    <textarea class="form-control" name="ltdprocess" id="ltdprocess" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="LTDProcess" id="LTDProcess" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <label for="ltdformstoee">Who sends LTD forms to EE?</label>
-                                    <select class="form-control" id="ltdformstoee" name="ltdformstoee">
+                                    <select class="form-control PopulateSendLTDToEE" id="LTDformsSenderEE" name="LTDformsSenderEE">
                                     </select>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <label for="ltdformstoer">Who sends LTD forms to ER?</label>
-                                    <select class="form-control" id="ltdformstoer" name="ltdformstoer">
+                                    <select class="form-control PopulateSendLTDToER" id="LTDformsSenderER" name="LTDformsSenderER">
                                     </select>
                                 </div>
                             </div>
@@ -823,10 +850,11 @@
                                     <h5 runat="server"><b>LTD relapse / Recurrence Definition</b></></h5>
                                 </div>
                             </div>
+                            
                             <div class="row margin_bottom">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label for="ltdrelapse">Definition:</label>
-                                    <textarea class="form-control" name="ltdrelapse" id="ltdrelapse" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="LTDrelapseDefinition" id="LTDrelapseDefinition" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
@@ -837,7 +865,7 @@
                             <div class="row margin_bottom">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label for="ltdspecific">Definition:</label>
-                                    <textarea class="form-control" name="ltdspecific" id="ltdspecific" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="LTDspecificinstructions" id="LTDspecificinstructions" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
@@ -848,43 +876,46 @@
                             <div class="row margin_bottom">
                                 <div class="col-lg-6 col-md-3 col-md-12">
                                     <label for="ltdcasename">Name</label>
-                                    <input type="text" class="form-control col-md-3" name="ltdcasename" id="ltdcasename" placeholder="Name" />
+                                    <input type="text" class="form-control col-md-3" name="LTDCaseManagerName" id="LTDCaseManagerName" placeholder="Name" />
                                 </div>
                                 <div class="col-md-3 col-md-3 col-md-12 form_field_setter">
                                     <label for="ltdcasephone">Phone</label>
-                                    <input type="text" class="form-control vld-phone client_profile_textarea" id="ltdcasephone" name="ltdcasephone" maxlength="15" />
+                                    <input type="text" class="form-control vld-phone client_profile_textarea" id="LTDCaseManagerPhone" name="LTDCaseManagerPhone" maxlength="15" />
                                 </div>
                                 <div class="col-md-3 col-md-3 col-md-12 form_field_setter">
                                     <label for="ltdcaseextension">Extension</label>
-                                    <input type="text" class="form-control vld-phone client_profile_textarea" id="ltdcaseextension" name="primaryExtension" maxlength="15" />
+                                    <input type="text" class="form-control vld-phone client_profile_textarea" id="LTDCaseManagerEXT" name="LTDCaseManagerEXT" maxlength="15" />
                                 </div>
                             </div>
                             <div class="row margin_bottom">
                                 <div class="col-lg-6 col-md-3 col-md-12">
                                     <label for="ltdcaseemail">Email</label>
-                                    <input type="text" class="form-control col-md-3" name="ltdcasename" id="ltdcaseemail" placeholder="Email" />
+                                    <input type="text" class="form-control col-md-3" name="LTDCaseManagerEmail" id="LTDCaseManagerEmail" placeholder="Email" />
                                 </div>
                                 <div class="col-md-3 col-md-3 col-md-12 form_field_setter">
                                     <label for="ltdcasefax">Fax</label>
-                                    <input type="text" class="form-control vld-phone client_profile_textarea" name="ltdcasefax" id="ltdcasefax" maxlength="15" />
+                                    <input type="text" class="form-control vld-phone client_profile_textarea" name="LTDCaseManagerFax" id="LTDCaseManagerFax" maxlength="15" />
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="tab6primary">
+                        <%--</div>--%>
+
+                        <%--<div id="ClientWc">--%>
+                        <div class="tab-pane fade ClientWc" id="tab6primary">
                             <div class="row">
                                 <h5 runat="server"><b>WC By Province Information</b></></h5>
                                 <div class="col-lg-4 col-md-4 col-sm-12">
                                     <label for="province">Province</label>
-                                    <select class="form-control populateProvinces" name="BusProvince" id="province">
+                                    <select class="form-control populateProvinces" name="BusProvince" id="BusProvinceWC">
                                     </select>
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-12">
                                     <label for="wcaccount">Account:</label>
-                                    <input type="text" class="form-control col-md-3" name="wcaccount" id="wcaccount" />
+                                    <input type="text" class="form-control col-md-3" name="WCAccount" id="WCAccount" />
                                 </div>
                                 <div class="col-lg-3 col-md-5 col-sm-12">
                                     <label for="noofemployees">Number of Employees:</label>
-                                    <input type="text" class="form-control col-md-3" name="noofemployees" id="noofemployees" />
+                                    <input type="text" class="form-control col-md-3" name="WCEmployees" id="WCEmployees" />
                                 </div>
                             </div>
                             <div class="row">
@@ -892,14 +923,14 @@
                                     <h5 runat="server"><b>WC - Who Completes the Employer Report (Form 7, ADR, etc)</b></></h5>
                                     <div class="col-lg-4 col-md-4 col-sm-12">
                                         <label for="whocompletes">Who Completes:</label>
-                                        <select class="form-control" id="whocompletes" name="whocompletes">
+                                        <select class="form-control PopulateProvidesWCModDutyForm" id="EmployerReportProvider" name="EmployerReportProvider">
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row margin_bottom">
                                     <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                         <label for="wcspecify">Specify:</label>
-                                        <textarea class="form-control" name="wcspecify" id="wcspecify" rows="3" required=""></textarea>
+                                        <textarea class="form-control" name="WCReportProviderSpecify" id="WCReportProviderSpecify" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -907,18 +938,18 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <h5 runat="server"><b>WC - Who Provides modified Work Duties Form (FAF, AT, etc)</b></></h5>
                                     <label for="whoprovides">Who Provides:</label>
-                                    <select class="form-control" id="whoprovides" name="whoprovides">
+                                    <select class="form-control PopulateProvidesWCModDutyForm" id="WCWorkDutiesProvider" name="WCWorkDutiesProvider">
                                     </select>
                                     <label for="wcprovidesspecify">Specify:</label>
-                                    <textarea class="form-control" name="v" id="wcprovidesspecify" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="WCWorkDutiesProviderSpecify" id="WCWorkDutiesProviderSpecify" rows="3" required=""></textarea>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <h5 runat="server"><b>WC - Legal (Tribunal) Representation By</b></></h5>
                                     <label for="wcrepresentative">Representative:</label>
-                                    <select class="form-control" id="wcrepresentative" name="wcrepresentative">
+                                    <select class="form-control PopulateLegalWCRep" id="WCLegalRepresentative" name="WCLegalRepresentative">
                                     </select>
                                     <label for="wcrepresentativespecify">Specify:</label>
-                                    <textarea class="form-control" name="wcrepresentativespecify" id="wcrepresentativespecify" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="WCLegalRepresentativeSpecify" id="WCLegalRepresentativeSpecify" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -933,7 +964,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <label for="wcworkdutiesspecify">Specify:</label>
-                                            <textarea class="form-control" name="wcworkdutiesspecify" id="wcworkdutiesspecify" rows="3" required=""></textarea>
+                                            <textarea class="form-control" name="WCWorkDutiesModifiedSpecify" id="WCWorkDutiesModifiedSpecify" rows="3" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -948,7 +979,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <label for="wcjobdescriptionspecify">Specify:</label>
-                                            <textarea class="form-control" name="wcjobdescriptionspecify" id="wcjobdescriptionspecify" rows="3" required=""></textarea>
+                                            <textarea class="form-control" name="WCJobDescriptionsSpecify" id="WCJobDescriptionsSpecify" rows="3" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -957,7 +988,7 @@
                                 <h5 runat="server"><b>WC - WC Process</b></></h5>
                                 <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                     <label for="wcprocesspecify">Specify:</label>
-                                    <textarea class="form-control" name="wcprocesspecify" id="wcprocesspecify" rows="3" required=""></textarea>
+                                    <textarea class="form-control" name="WCProcess" id="WCProcess" rows="3" required=""></textarea>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
@@ -971,7 +1002,7 @@
                                 <div class="row margin_bottom">
                                     <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                         <label for="wccsst">Specify:</label>
-                                        <textarea class="form-control" name="wccsst" id="wccsst" rows="3" required=""></textarea>
+                                        <textarea class="form-control" name="ClaimstoSTDSpecify" id="ClaimstoSTDSpecify" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -986,29 +1017,30 @@
                                 <div class="row margin_bottom">
                                     <div class="col-lg-12 col-md-12 col-sm-12 incident_description_container">
                                         <label for="csst">Specify:</label>
-                                        <textarea class="form-control" name="csst" id="csst" rows="3" required=""></textarea>
+                                        <textarea class="form-control" name="CSSSpecificSpecify" id="CSSSpecificSpecify" rows="3" required=""></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
                                 <div class="col-lg-4 col-md-4 col-sm-12">
                                     <label for="financialmodel">Client's Financial Model at CSST:</label>
-                                    <select class="form-control" id="financialmodel" name="financialmodel">
+                                    <select class="form-control PopulateFinancialModelWCB" id="ClientFinancialModelatCSST" name="ClientFinancialModelatCSST">
                                     </select>
                                 </div>
                             </div>
                             <%-- Save Province To File  --%>
                         </div>
-                        <!--WC KPI/CMRs-->
-                        <div class="tab-pane fade" id="tab7primary">
+                       <!--WC KPI/CMRs-->
+                        <div class="tab-pane fade ClientWc" id="tab7primary">
                             <div class="row margin_bottom">
                                 <h5 runat="server"><b>WC - Communication With Payroll Instructions:</b></></h5>
                             </div>
                             <div class="row margin_bottom incident_description_container">
                                 <label for="csst"></label>
-                                <textarea class="form-control" name="wccommunication" id="wccommunication" rows="4" required=""></textarea>
+                                <textarea class="form-control" name="WCCommunicationWithPayrollInstructions" id="WCCommunicationWithPayrollInstructions" rows="4" required=""></textarea>
                             </div>
                         </div>
+                       <%-- </div>--%>
                     </div>
                 </div>
             </div>

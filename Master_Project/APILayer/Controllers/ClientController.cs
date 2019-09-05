@@ -28,7 +28,7 @@ namespace APILayer.Controllers
          ***/
         [HttpPost]
         [Route("create")]
-        public HttpResponseMessage CreateNewClient ([FromBody]ClientServiceModel clientServiceModel )
+        public HttpResponseMessage CreateNewClient([FromBody]ClientServiceModel clientServiceModel)
         {
             try
             {
@@ -107,13 +107,13 @@ namespace APILayer.Controllers
         [Route("GetClientIDBySession/{Token}")]
         public HttpResponseMessage GetClientIDBySession(string Token)
         {
-           
+
             return new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent(JsonConvert.SerializeObject(context.GetClientIDBySession(Token)))
             };
         }
-        
+
 
 
         //Gets a list of divisions for a specific client
@@ -143,9 +143,9 @@ namespace APILayer.Controllers
             try
             {
                 var clients = from client in context.Clients
-                               where client.ClientName.Contains($"{request.queryString}") &&
-                                     client.ParentID == 0
-                               select new { client.ClientID, client.ClientName, client.DivisionName};
+                              where client.ClientName.Contains($"{request.queryString}") &&
+                                    client.ParentID == 0
+                              select new { client.ClientID, client.ClientName, client.DivisionName };
 
                 return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(clients));
             }
@@ -207,7 +207,7 @@ namespace APILayer.Controllers
                 }
             }
         }
-        
+
         [HttpGet]
         [Route("GetClientServices/{Token}")]
         public string GetClientServices(string Token)
@@ -277,7 +277,7 @@ namespace APILayer.Controllers
 
         [HttpPost]
         [Route("AddClient/{Token}")]
-        public void AddClient(string token, [FromBody] Client client)
+        public Client AddClient(string token, [FromBody] Client client)
         {
             try
             {
@@ -296,11 +296,62 @@ namespace APILayer.Controllers
 
                 context.Clients.InsertOnSubmit(client);
                 context.SubmitChanges();
+
+                return client;
             }
             catch (Exception e)
             {
                 ExceptionLog.LogException(e);
             }
+            return null;
+        }
+
+        [HttpPost]
+        [Route("AddedClient/{Token}")]
+        public void AddedClient(string token, [FromBody] Client_Added client)
+        {
+            try
+            {
+                context.Client_Addeds.InsertOnSubmit(client);
+                context.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                ExceptionLog.LogException(e);
+            }
+
+        }
+
+        [HttpPost]
+        [Route("AddedClientSTDLTD/{Token}")]
+        public void AddedClientSTDLTD(string token, [FromBody] Client_STD_LTD_Preference client)
+        {
+            try
+            {
+                context.Client_STD_LTD_Preferences.InsertOnSubmit(client);
+                context.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                ExceptionLog.LogException(e);
+            }
+
+        }
+
+        [HttpPost]
+        [Route("AddedClientWC/{Token}")]
+        public void AddedClientWC(string token, [FromBody] Client_WC_Preference client)
+        {
+            try
+            {
+                context.Client_WC_Preferences.InsertOnSubmit(client);
+                context.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                ExceptionLog.LogException(e);
+            }
+
         }
 
         [HttpPost]
@@ -315,7 +366,7 @@ namespace APILayer.Controllers
                     .SingleOrDefault();
 
                 context.User_Groups.DeleteOnSubmit(userGroup);
-                context.SubmitChanges();                    
+                context.SubmitChanges();
             }
             catch (Exception e)
             {
@@ -377,7 +428,7 @@ namespace APILayer.Controllers
         public void RemoveClientContact(string token, [FromBody] Client_Contact clientContact)
         {
             try
-            {                
+            {
                 var deleteClientContact = context.Client_Contacts
                     .Where(x => x.ContactID == clientContact.ContactID)
                     .SingleOrDefault();
@@ -405,7 +456,7 @@ namespace APILayer.Controllers
                     var mimeType = Path.GetExtension(filePath) == "png" ? "image/png" : "image/jpeg";
                     var logoBytes = File.ReadAllBytes(filePath);
                     var base64Data = Convert.ToBase64String(logoBytes);
-                    
+
                     var response = new HttpResponseMessage(HttpStatusCode.OK);
                     response.Content = new StringContent(JsonConvert.SerializeObject(new { imageBase64 = $"data:{mimeType};base64,{base64Data}" }));
 
@@ -449,7 +500,7 @@ namespace APILayer.Controllers
     public class SOPData
     {
         public string ColName { get; set; }
-        public string ColVal { get; set; }        
+        public string ColVal { get; set; }
     }
 
     public class ContData

@@ -50,6 +50,79 @@ var ClientAddedModel = {
     Comments: ''
 }
 
+var ClientSTDLTDModel = {
+    ClientId: '',
+    STD_Definition: '',
+    STDLength: '',
+    STDLength2: '',
+    STDProgramOther: '',
+    STDTriggerCheck: '',
+    STDTriggerSpecify: '',
+    STDProcess: '',
+    STDProcessOther: '',
+    STDAppealsCheck: '',
+    STDAppealsSpecify: '',
+    STDAppealsProcess: '',
+    STDRelapseDefinition: '',
+    STDAppealsLength: '',
+    STDAppealsLength2: '',
+    STDAppealsMedicalLength: '',
+    STDAppealsMedicalLength2: '',
+    ExistingSTDCheck: '',
+    ExistingSTDSpecify: '',
+    MVAProcessCheck: '',
+    MVAProcessSpecify: '',
+    STDturnaroundnotificationLength: '',
+    STDturnaroundnotificationLength2: '',
+    STDturnaroundnotificationOther: '',
+    STDturnaroundMedicalLength: '',
+    STDturnaroundMedicalLength2: '',
+    STDturnaroundMedicalOther: '',
+    APSPackageProvider: '',
+    ProvideRTWs: '',
+    STDAPSFollowUpInstructions: '',
+    STDNonSupportDecisionInstructions: '',
+    STDCommunicationWithPayrollInstructions: '',
+    STDOtherSpecificInstructions: '',
+    LTDProvider: '',
+    LTDPolicyNum: '',
+    LTDStartdate: '',
+    LTDProcess: '',
+    LTDformsSenderEE: '',
+    LTDformsSenderER: '',
+    LTDrelapseDefinition: '',
+    LTDspecificinstructions: '',
+    LTDCaseManagerName: '',
+    LTDCaseManagerPhone: '',
+    LTDCaseManagerEXT: '',
+    LTDCaseManagerEmail: '',
+    LTDCaseManagerFax: ''
+
+}
+
+var ClientWcModel = {
+    ClientId: '',
+    WCProvince: '',
+    WCAccount: '',
+    WCEmployees: '',
+    EmployerReportProvider: '',
+    WCReportProviderSpecify: '',
+    WCWorkDutiesProvider: '',
+    WCWorkDutiesProviderSpecify: '',
+    WCLegalRepresentative: '',
+    WCLegalRepresentativeSpecify: '',
+    WCWorkDutiesModifiedClick: '',
+    WCWorkDutiesModifiedSpecify: '',
+    WCJobDescriptionsClick: '',
+    WCJobDescriptionsSpecify: '',
+    WCProcess: '',
+    ClaimstoSTDClick: '',
+    ClaimstoSTDSpecify: '',
+    CSSSpecificClick: '',
+    CSSSpecificSpecify: '',
+    ClientFinancialModelatCSST: '',
+    WCCommunicationWithPayrollInstructions: ''
+}
 
 var clientContactModel = {
     ContactID: '',
@@ -227,10 +300,16 @@ function ClientAdded() {
     if (validate.validateSubmission()) {
         var client = GetClientAddedSwalData();
         var clientAdded = GetClientAddedModelSwalData();
+        var ClientSTDLTD = GetClientClientSTDLTDModelSwalData();
+        var ClientWc = GetClientClientWCModelSwalData();
         SaveClient(client).then(
             function (data) {
                 clientAdded.ClientId = data.ClientID;
                 SaveClientAdded(clientAdded);
+                ClientSTDLTD.ClientId = data.ClientID;
+                SaveClientSTDLTDAdded(ClientSTDLTD);
+                ClientWc.ClientId = data.ClientID;
+                SaveClientWCAdded(ClientWc);
                 console.log(data);
                 ClientDetailsDT.row.add(client).draw();
                 var rowIndex = ClientDetailsDT.rows().indexes().length - 1;
@@ -249,6 +328,7 @@ function ClientAdded() {
         swal('Error!', 'Oops! You missed required field(s) from the following section(s): <br/><br/>' + sectionsWithErrorFields + '', 'error');
     }
 }
+
 
 //SWAL message for required Error Fields 
 function getSectionNamesWithErrorFields() {
@@ -371,11 +451,48 @@ function AddClientContact() {
  * Saves a single client table record identified by row index
  * @param {any} rowIndex
  */
+
 function SaveClient(clientJson) {
 
     return $.ajax({
         type: 'POST',
         url: api + '/api/Client/AddClient/' + token,
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        data: clientJson,
+        dataType: 'JSON'
+    });
+
+}
+
+function SaveClientAdded(clientJson) {
+
+    return $.ajax({
+        type: 'POST',
+        url: api + '/api/Client/AddedClient/' + token,
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        data: clientJson,
+        dataType: 'JSON'
+    });
+
+}
+
+function SaveClientSTDLTDAdded(clientJson) {
+
+    return $.ajax({
+        type: 'POST',
+        url: api + '/api/Client/AddedClientSTDLTD/' + token,
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        data: clientJson,
+        dataType: 'JSON'
+    });
+
+}
+
+function SaveClientWCAdded(clientJson) {
+
+    return $.ajax({
+        type: 'POST',
+        url: api + '/api/Client/AddedClientWC/' + token,
         beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
         data: clientJson,
         dataType: 'JSON'
@@ -758,6 +875,41 @@ function GetClientAddedSwalData() {
 
     model._20MoreWorkers = (parseInt(model._20MoreWorkers)) ? true : false;
 
+    return model;
+
+}
+
+function GetClientAddedModelSwalData() {
+
+    let Services = '';
+    var model = {};
+    Object.keys(ClientAddedModel)
+        .forEach(function (key) {
+            var val = $('#tab2primary [name="' + key + '"]').val();
+            model[key] = (val === undefined) ? "" : val;
+        });
+    return model;
+
+}
+
+function GetClientClientSTDLTDModelSwalData() {
+    var model = {};
+    Object.keys(ClientSTDLTDModel)
+        .forEach(function (key) {
+            var val = $('.ClientStdLtd [name="' + key + '"]').val();
+            model[key] = (val === undefined) ? "" : val;
+        });
+    return model;
+
+}
+
+function GetClientClientWCModelSwalData() {
+    var model = {};
+    Object.keys(ClientWcModel)
+        .forEach(function (key) {
+            var val = $('.ClientWc [name="' + key + '"]').val();
+            model[key] = (val === undefined) ? "" : val;
+        });
     return model;
 
 }

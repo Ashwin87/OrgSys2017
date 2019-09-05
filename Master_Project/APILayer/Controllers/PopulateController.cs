@@ -34,6 +34,86 @@ namespace APILayer.Controllers
             return JsonConvert.SerializeObject(context.GetList_Generic(ListType), Formatting.None);
 
         }
+
+        [HttpGet]
+        [Route("GetList_EAPProvider")]
+        public string GetList_EAPProvider()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_EPAProvider(), Formatting.None);
+        }
+
+
+        [HttpGet]
+        [Route("GetList_ClaimSubmission")]
+        public string GetList_ClaimSubmission()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_ClaimSubmissionMethod(), Formatting.None);
+        }
+
+        [HttpGet]
+        [Route("GetList_EvaluationType")]
+        public string GetList_EvaluationType()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_EvaluationType(), Formatting.None);
+        }
+
+        [HttpGet]
+        [Route("GetList_STDProcess")]
+        public string GetList_STDProcess()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_STDProcess(), Formatting.None);
+        }
+
+        [HttpGet]
+        [Route("GetList_SendAPSToEE")]
+        public string GetList_SendAPSToEE()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_SendAPSToEE(), Formatting.None);
+        }
+        [HttpGet]
+        [Route("GetList_ProvidesRTW")]
+        public string GetList_ProvidesRTW()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_ProvidesRTW(), Formatting.None);
+        }
+        [HttpGet]
+        [Route("GetList_LTDProvider")]
+        public string GetList_LTDProvider()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_LTDProvider(), Formatting.None);
+        }
+        [HttpGet]
+        [Route("GetList_SendLTDToEE")]
+        public string GetList_SendLTDToEE()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_SendLTDToEE(), Formatting.None);
+        }
+        [HttpGet]
+        [Route("GetList_SendLTDToER")]
+        public string GetList_SendLTDToER()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_SendLTDToER(), Formatting.None);
+        }
+        [HttpGet]
+        [Route("GetList_ProvidesWCModDutyForm")]
+        public string GetList_ProvidesWCModDutyForm()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_ProvidesWCModDutyForm(), Formatting.None);
+        }
+        [HttpGet]
+        [Route("GetList_LegalWCRep")]
+        public string GetList_LegalWCRep()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_LegalWCRep(), Formatting.None);
+        }
+        [HttpGet]
+        [Route("GetList_FinancialModelWCB")]
+        public string GetList_FinancialModelWCB()
+        {
+            return JsonConvert.SerializeObject(context.Get_Client_FinancialModelWCB(), Formatting.None);
+        }
+
+
         /// <summary>
         /// It gets the values to be populate the Appeal status
         /// </summary>
@@ -178,7 +258,7 @@ namespace APILayer.Controllers
             return JsonConvert.SerializeObject(context.GetList_Frequency(), Formatting.None);
         }
 
-        
+
         // It gets the values to be populate the Benefit Code
         [HttpGet]
         [Route("GetList_BenefitCode")]
@@ -469,7 +549,7 @@ namespace APILayer.Controllers
         {
             return JsonConvert.SerializeObject(context.GetList_DocumentType(), Formatting.None);
         }
-        
+
         [HttpGet]
         [Route("GetList_TreatmentLocation")]
         public string GetList_TreatmentLocation()
@@ -525,7 +605,7 @@ namespace APILayer.Controllers
             try
             {
                 List<List_EnvironmentalFactor> environmentFactors = (from EnvironmentalFactor in context.List_EnvironmentalFactors
-                                                                 select EnvironmentalFactor).ToList();
+                                                                     select EnvironmentalFactor).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(environmentFactors));
             }
             catch (System.Exception e)
@@ -547,7 +627,7 @@ namespace APILayer.Controllers
             try
             {
                 List<List_EquipmentInvolved> equipmentInvolved = (from EquipmentInvolved in context.List_EquipmentInvolveds
-                                                                   select EquipmentInvolved).ToList();
+                                                                  select EquipmentInvolved).ToList();
 
                 return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(equipmentInvolved));
             }
@@ -570,7 +650,7 @@ namespace APILayer.Controllers
             try
             {
                 List<List_InjuryIllnessLocation> injuryIllnessLocations = (from InjuryIllnessLocation in context.List_InjuryIllnessLocations
-                                                                            select InjuryIllnessLocation).ToList();
+                                                                           select InjuryIllnessLocation).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, JsonConvert.SerializeObject(injuryIllnessLocations));
             }
             catch (System.Exception e)

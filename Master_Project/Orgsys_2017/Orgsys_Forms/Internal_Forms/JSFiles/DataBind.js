@@ -18,13 +18,13 @@ function PopulateLists() {
         GetList("GetList_ClaimStatus", "populateStatus", "Status_EN"),
         GetList("GetList_ClaimType", "populateType", "Type_EN"),
         GetList("GetList_BillingMethod", "populateBillingMethod", "Method_EN"),
-        GetListDiffVal("GetBillingMethod", "populateBillingMethodwithID", "Method_EN", "MethodID","Billing"),
+        GetListDiffVal("GetBillingMethod", "populateBillingMethodwithID", "Method_EN", "MethodID", "Billing"),
         GetList("GetList_BillingMethod", "populateBillingMethod", "Method_EN"),
         GetList("GetList_ClaimActivity", "populateActionType", "ActivityType_EN"),
         //GetListDiffVal("GetUserProfileName_Internal", "populateInternalUserwithID", "EmpName", "UserID","DataBind"),
         //GetList("GetUserProfileName_Internal", "populateInternalUser", "EmpName"),
         GetListwithParameterandID("GetList_InsuranceCoverage", window.ClientID, "populateEmpClass", "Text_" + Lang, "Value"),
-      
+
         GetList("GetList_Frequency", "populateFrequency", "Frequency_EN"),
         GetList("GetList_BenefitCode", "populateBenefitCode", "Benefit_Code_EN"),
         GetList("GetList_EarningsType", "populateEarningsType", "Earnings_Type_EN"),
@@ -45,9 +45,10 @@ function PopulateLists() {
         PopulateGenericList("AddressVerified", "populateAddress", "ListText" + LangGen, "ListValue"),
         PopulateGenericList("CPPStatus", "populateCPPStatus", "ListText" + LangGen, "ListValue"),
         PopulateGenericList("IncomeContStatus", "populateIncomeContStatus", "ListText" + LangGen, "ListValue"),
+        PopulateGenericList("ModDaysWeeks", "populateDaysWeeks", "ListText" + LangGen, "ListValue"),
         //GetListDiffVal('employeeoptions', '.employee-options', 'FullName', 'UserID', token + '/Users')
     ];
-    
+
     PopulateCountries('populateCountries');
     PopulateCountries('populateWorkCountries');
     //AutoPopulateEmpInfo();
@@ -67,7 +68,7 @@ function PopulateLists() {
 
 function PopulateListsExternal() {
     var dfd = $.Deferred();
-    
+
     if (getCookie("Language") !== null) {
         Lang = getCookie("Language").substring(0, 2).toUpperCase();
         LangGen = "_" + getCookie("Language").substring(0, 2).toUpperCase();
@@ -95,11 +96,11 @@ function PopulateListsExternal() {
         PopulateGenericList("YesNo", "populateYesNo", "ListText" + LangGen, "ListValue"),
         PopulateGenericList("ModWorkStatus", "populateModWorkStatus", "ListText" + LangGen, "ListValue"),
         PopulateGenericList('ModRespSubmitter', 'populateModRespSubmitter', "ListText" + LangGen, "ListValue"),
-        
+
         GetListRTWJX(),
         GetGenericListWithColumnsJX('ModRespSubmitter', 'populateLNLSub'),
         //GetListDiffVal('employeeoptions', '.employee-options', 'FullName', 'UserID', token + '/Users')
-        
+
     ]
 
     //AutoPopulateEmpInfo_Demographic();
@@ -126,6 +127,195 @@ function PopulateGenericList(ListType, ClassName, Text, Value) {
         }
     });
 }
+
+function PopulateEAPProviderList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_EAPProvider",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateClaimSubmissionList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_ClaimSubmission",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateEvaluationTypeList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_EvaluationType",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateSTDProcessList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_STDProcess",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+
+function PopulateSendAPSToEEList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_SendAPSToEE",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateProvidesRTWList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_ProvidesRTW",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateLTDProviderList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_LTDProvider",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateSendLTDToEEList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_SendLTDToEE",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateSendLTDToERList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_SendLTDToER",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateProvidesWCModDutyFormList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_ProvidesWCModDutyForm",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateLegalWCRepList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_LegalWCRep",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+function PopulateFinancialModelWCBList(ClassName, Text, Value) {
+    return $.ajax({
+        type: 'GET',
+        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+        url: getApi + "/api/DataBind/GetList_FinancialModelWCB",
+        success: function (data) {
+            results = JSON.parse(data);
+            $('.' + ClassName).append($('<option>').text('--Select---').val(''));
+            for (i = 0; i < results.length; i++) {
+                $('.' + ClassName).append($('<option>').text(results[i]["" + Text + ""]).attr('value', results[i]["" + Value + ""]));
+            }
+        }
+    });
+}
+
+
+
+
+
+
+
+
 
 //Populate the drop downs when the form is populated 
 function GetListwithParameter(ProcName, ParameterValue, ClassName, ColumnName) {
@@ -273,7 +463,7 @@ function PopulateCountries(DDClass) {
 
 //re-wrote so it is not asynchronous //mgougeon
 function PopulateProvinces(CountryID, DDName) {
-    if(CountryID)
+    if (CountryID)
         return $.ajax({
             url: getApi + "/api/DataBind/PopulateProvinces/" + CountryID,
             async: false,
@@ -291,7 +481,7 @@ function PopulateProvinces(CountryID, DDName) {
 //re-wrote so it is not asynchronous //mgougeon
 //by the way, subname is apparently region name - ex. province //mgougeon
 function PopulateCities(SubName, DDName) {
-    if(SubName)
+    if (SubName)
         return $.ajax({
             url: getApi + "/api/DataBind/PopulateCities/" + SubName,
             async: false,
@@ -302,7 +492,7 @@ function PopulateCities(SubName, DDName) {
                 target.append($('<option>').text('Select').val(''));
                 for (i = 0; i < results.length; i++) {
                     target.append($('<option>').text(results[i]["City_Name"]).attr('value', results[i]["City_Name"]));
-            
+
                 }
             }
         });
@@ -343,7 +533,7 @@ function SetDivision(value, target) {
             continue;
 
         divisionPath.push(divisions[i].DivisionName)
-        division = divisions[i];        
+        division = divisions[i];
     }
 
     for (var i = divisionPath.length - 1; i >= 0; i--) {
@@ -437,7 +627,7 @@ function AutoPopulateEmpInfo_Demographic() {
                     var provinceName = $(".province").val();
                     PopulateCities(provinceName, "City");
                 }
-                
+
                 //Populate Site/Division/Department for Autocomplete
                 if ($(this).hasClass("site")) {
                     $(".site").val(ui.item[demodata]).change();
@@ -577,9 +767,9 @@ function PopulateLOAType(listOptions) {
     target.append('<option>Select</option>')
 
     listOptions.forEach(function (o) {
-        var option = $('<option value="' + o.ClaimTypeID + '">' + o["LOA_"+Lang] + '</option>')
-                .data('description', o.Description_EN)
-                .data('sectionId', o.Section);
+        var option = $('<option value="' + o.ClaimTypeID + '">' + o["LOA_" + Lang] + '</option>')
+            .data('description', o.Description_EN)
+            .data('sectionId', o.Section);
         target.append(option);
     })
 }
@@ -592,7 +782,7 @@ function PopulateLOAType(listOptions) {
  */
 function GetDataGeneric(controller, method, parameterArray, asyncBool) {
 
-    asyncBool = (asyncBool === undefined) ? true : asyncBool; 
+    asyncBool = (asyncBool === undefined) ? true : asyncBool;
     parameterArray = parameterArray || []                               //optional parameter    
     if (!$.isArray(parameterArray)) parameterArray = [parameterArray];  //allow passing single non-array value
 
@@ -633,7 +823,7 @@ window.AttachDivisionBreadcrumbs = function () {
         });
 }
 
-window.AppendDivisionBreadcrumb = function(displaySection, value) {
+window.AppendDivisionBreadcrumb = function (displaySection, value) {
     var displayIsEmpty = displaySection.get(0).innerText === "";
 
     if (displayIsEmpty)
