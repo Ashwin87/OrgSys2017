@@ -165,22 +165,16 @@
 
             //ATTACH BUTTON EVENT HANDLERS  
             $('#saveclient').on('click', function () {
+                //var val = [];
+                //$(':checkbox:checked').each(function (i) {
+                //    val[i] = $(this).val();
+                //});
                 ClientAdded();
             });
 
             $('.add-clientcontact').on('click', function () {
                 AddClientContact();
             });
-
-
-            //$('#evaluationtype').select2({
-            //    placeholder: 'Select Services'
-            //});
-
-            //$('#approvedby').select2({
-            //    placeholder: 'Select Services'
-            //});
-
 
         });
 
@@ -198,11 +192,6 @@
             });
             return mappedObject;
         }
-
-
-
-
-
     </script>
     <style>
         .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
@@ -1021,12 +1010,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row margin_bottom">
-                                <div class="col-lg-4 col-md-4 col-sm-12">
-                                    <label for="financialmodel">Client's Financial Model at CSST:</label>
-                                    <select class="form-control PopulateFinancialModelWCB" id="ClientFinancialModelatCSST" name="ClientFinancialModelatCSST">
-                                    </select>
-                                </div>
+                            <div class="row margin_bottom col-lg-4 col-md-4 col-sm-12">
+                                <h5 runat="server"><b>Client's Financial Model at CSST:</b></></h5>
+                                <select class="form-control PopulateFinancialModelWCB" id="ClientFinancialModelatCSST" name="ClientFinancialModelatCSST">
+                                </select>
                             </div>
                             <%-- Save Province To File  --%>
                         </div>
