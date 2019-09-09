@@ -43,6 +43,7 @@ var ClientAddedModel = {
     SurveyCheck: '',
     SurveySpecify: '',
     SurvesTypes: '',
+    SurvesTypesOther: '',
     SendSurveyTo: '',
     SendSurveySpecify: '',
     EvaluationType: '',
@@ -296,7 +297,6 @@ function RemoveClientContactSwal(rowIndex) {
 //OPENS SWAL FORM, ADDS NEW RECORD TO TABLE
 
 function ClientAdded() {
-    debugger;
     if (validate.validateSubmission()) {
         var client = GetClientAddedSwalData();
         var clientAdded = GetClientAddedModelSwalData();
