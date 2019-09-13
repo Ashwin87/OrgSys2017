@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="orgsys2017" ContextNamespace="DataLayer" Class="OrgSys2017DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="ConnectionString" ConnectionString="Data Source=VAIO\SQLEXPRESS;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=user217" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="umbrella_dev" ContextNamespace="DataLayer" Class="OrgSys2017DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=GAURAV;Initial Catalog=umbrella_dev;Persist Security Info=True;User ID=sa;Password=user217" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Bus_Rules" Member="Bus_Rules">
     <Type Name="Bus_Rule">
       <Column Name="RuleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -2659,6 +2659,106 @@
       <Column Name="AssignedTo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Client_Added" Member="Client_Addeds">
+    <Type Name="Client_Added">
+      <Column Name="ClientAddedId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClaimProcess" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ClaimOther" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EAPProvider" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EAPName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EAPPhoneNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EAPFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EAPEmail" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EAPExtention" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SurveyCheck" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SurveySpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SurvesTypes" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SurveyTypesOther" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SendSurveyTo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SendSurveySpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EvaluationType" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ApprovedBy" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Client_STD_LTD_Preferences" Member="Client_STD_LTD_Preferences">
+    <Type Name="Client_STD_LTD_Preference">
+      <Column Name="ClientStdId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STD_Definition" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="STDLength" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDLength2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STDProgramOther" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STDTriggerCheck" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDTriggerSpecify" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="STDProcess" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDProcessOther" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STDAppealsCheck" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDAppealsSpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STDAppealsProcess" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDRelapseDefinition" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="STDAppealsLength" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDAppealsLength2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STDAppealsMedicalLength" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDAppealsMedicalLength2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ExistingSTDCheck" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ExistingSTDSpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="MVAProcessCheck" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MVAProcessSpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STDturnaroundnotificationLength" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDturnaroundnotificationLength2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STDturnaroundnotificationOther" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STDturnaroundMedicalLength" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDturnaroundMedicalLength2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STDturnaroundMedicalOther" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="APSPackageProvider" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProvideRTWs" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="STDAPSFollowUpInstructions" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="STDNonSupportDecisionInstructions" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="STDCommunicationWithPayrollInstructions" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="STDOtherSpecificInstructions" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LTDProvider" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LTDPolicyNum" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LTDStartdate" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LTDProcess" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LTDformsSenderEE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LTDformsSenderER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LTDrelapseDefinition" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="LTDspecificinstructions" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LTDCaseManagerName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LTDCaseManagerPhone" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LTDCaseManagerEXT" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LTDCaseManagerEmail" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LTDCaseManagerFax" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Client_WC_Preferences" Member="Client_WC_Preferences">
+    <Type Name="Client_WC_Preference">
+      <Column Name="ClientWCId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ClientId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WCProvince" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WCAccount" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WCEmployees" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmployerReportProvider" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WCReportProviderSpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WCWorkDutiesProvider" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WCWorkDutiesProviderSpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WCLegalRepresentative" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WCLegalRepresentativeSpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WCWorkDutiesModifiedClick" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WCWorkDutiesModifiedSpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WCJobDescriptionsClick" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WCJobDescriptionsSpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WCProcess" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClaimstoSTDClick" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClaimstoSTDSpecify" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CSSSpecificClick" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CSSSpecificSpecify" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ClientFinancialModelatCSST" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WCCommunicationWithPayrollInstructions" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.ValidatePasswordRecoveryAttempt" Method="ValidatePasswordRecoveryAttempt">
@@ -5574,6 +5674,78 @@
     <ElementType Name="GetServiceLookupResult">
       <Column Name="ServiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="ServiceDescription" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_EPAProvider" Method="Get_Client_EPAProvider">
+    <ElementType Name="Get_Client_EPAProviderResult">
+      <Column Name="EAPProviderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EAPProvider" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_EvaluationType" Method="Get_Client_EvaluationType">
+    <ElementType Name="Get_Client_EvaluationTypeResult">
+      <Column Name="EvaluationTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EvaluationTypeEN" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_FinancialModelWCB" Method="Get_Client_FinancialModelWCB">
+    <ElementType Name="Get_Client_FinancialModelWCBResult">
+      <Column Name="FinancialModelWcbID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FinancialModelWcbEN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_LegalWCRep" Method="Get_Client_LegalWCRep">
+    <ElementType Name="Get_Client_LegalWCRepResult">
+      <Column Name="LegalWcbRepID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LegalWcbRepEN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_LTDProvider" Method="Get_Client_LTDProvider">
+    <ElementType Name="Get_Client_LTDProviderResult">
+      <Column Name="LTDProviderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LTDProviderEN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_ProvidesRTW" Method="Get_Client_ProvidesRTW">
+    <ElementType Name="Get_Client_ProvidesRTWResult">
+      <Column Name="ProvidesRTWID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProvidesRTWEN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_ProvidesWCModDutyForm" Method="Get_Client_ProvidesWCModDutyForm">
+    <ElementType Name="Get_Client_ProvidesWCModDutyFormResult">
+      <Column Name="ProvidesRTWID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProvidesRTWEN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_SendAPSToEE" Method="Get_Client_SendAPSToEE">
+    <ElementType Name="Get_Client_SendAPSToEEResult">
+      <Column Name="SendApsToEEID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SendApsToEEEN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_SendLTDToEE" Method="Get_Client_SendLTDToEE">
+    <ElementType Name="Get_Client_SendLTDToEEResult">
+      <Column Name="SendLTDToEEID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SendLTDToEEEN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_SendLTDToER" Method="Get_Client_SendLTDToER">
+    <ElementType Name="Get_Client_SendLTDToERResult">
+      <Column Name="SendLTDToERID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SendLTDToEREN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_STDProcess" Method="Get_Client_STDProcess">
+    <ElementType Name="Get_Client_STDProcessResult">
+      <Column Name="ddSTDProcessID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="STDProcessEN" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Client_ClaimSubmissionMethod" Method="Get_Client_ClaimSubmissionMethod">
+    <ElementType Name="Get_Client_ClaimSubmissionMethodResult">
+      <Column Name="ClaimSubmissionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClaimSubmissionEN" Type="System.String" DbType="NVarChar(45) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

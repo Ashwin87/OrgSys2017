@@ -22,7 +22,7 @@ namespace DataLayer
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="orgsys2017")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="umbrella_dev")]
 	public partial class OrgSys2017DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -573,10 +573,20 @@ namespace DataLayer
     partial void InsertBillingDetail(BillingDetail instance);
     partial void UpdateBillingDetail(BillingDetail instance);
     partial void DeleteBillingDetail(BillingDetail instance);
+    partial void InsertClient_Added(Client_Added instance);
+    partial void UpdateClient_Added(Client_Added instance);
+    partial void DeleteClient_Added(Client_Added instance);
+    partial void InsertClient_STD_LTD_Preference(Client_STD_LTD_Preference instance);
+    partial void UpdateClient_STD_LTD_Preference(Client_STD_LTD_Preference instance);
+    partial void DeleteClient_STD_LTD_Preference(Client_STD_LTD_Preference instance);
+    partial void InsertClient_WC_Preference(Client_WC_Preference instance);
+    partial void UpdateClient_WC_Preference(Client_WC_Preference instance);
+    partial void DeleteClient_WC_Preference(Client_WC_Preference instance);
     #endregion
 		
 		public OrgSys2017DataContext() : 
-				base("Data Source=VAIO\\SQLEXPRESS;Initial Catalog=orgsys2017;Persist Security Info=True;User ID=sa;Password=user217", mappingSource)
+				base("Data Source=GAURAV;Initial Catalog=umbrella_dev;Persist Security Info=True;User I" +
+						"D=sa;Password=user217", mappingSource)
 		{
 			OnCreated();
 		}
@@ -2146,6 +2156,30 @@ namespace DataLayer
 			get
 			{
 				return this.GetTable<BillingDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Client_Added> Client_Addeds
+		{
+			get
+			{
+				return this.GetTable<Client_Added>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Client_STD_LTD_Preference> Client_STD_LTD_Preferences
+		{
+			get
+			{
+				return this.GetTable<Client_STD_LTD_Preference>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Client_WC_Preference> Client_WC_Preferences
+		{
+			get
+			{
+				return this.GetTable<Client_WC_Preference>();
 			}
 		}
 		
@@ -4049,6 +4083,90 @@ namespace DataLayer
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), token);
 			return ((ISingleResult<GetServiceLookupResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_EPAProvider")]
+		public ISingleResult<Get_Client_EPAProviderResult> Get_Client_EPAProvider()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_EPAProviderResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_EvaluationType")]
+		public ISingleResult<Get_Client_EvaluationTypeResult> Get_Client_EvaluationType()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_EvaluationTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_FinancialModelWCB")]
+		public ISingleResult<Get_Client_FinancialModelWCBResult> Get_Client_FinancialModelWCB()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_FinancialModelWCBResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_LegalWCRep")]
+		public ISingleResult<Get_Client_LegalWCRepResult> Get_Client_LegalWCRep()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_LegalWCRepResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_LTDProvider")]
+		public ISingleResult<Get_Client_LTDProviderResult> Get_Client_LTDProvider()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_LTDProviderResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_ProvidesRTW")]
+		public ISingleResult<Get_Client_ProvidesRTWResult> Get_Client_ProvidesRTW()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_ProvidesRTWResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_ProvidesWCModDutyForm")]
+		public ISingleResult<Get_Client_ProvidesWCModDutyFormResult> Get_Client_ProvidesWCModDutyForm()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_ProvidesWCModDutyFormResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_SendAPSToEE")]
+		public ISingleResult<Get_Client_SendAPSToEEResult> Get_Client_SendAPSToEE()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_SendAPSToEEResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_SendLTDToEE")]
+		public ISingleResult<Get_Client_SendLTDToEEResult> Get_Client_SendLTDToEE()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_SendLTDToEEResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_SendLTDToER")]
+		public ISingleResult<Get_Client_SendLTDToERResult> Get_Client_SendLTDToER()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_SendLTDToERResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_STDProcess")]
+		public ISingleResult<Get_Client_STDProcessResult> Get_Client_STDProcess()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_STDProcessResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Client_ClaimSubmissionMethod")]
+		public ISingleResult<Get_Client_ClaimSubmissionMethodResult> Get_Client_ClaimSubmissionMethod()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Get_Client_ClaimSubmissionMethodResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -57641,6 +57759,2232 @@ namespace DataLayer
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Client_Added")]
+	public partial class Client_Added : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ClientAddedId;
+		
+		private System.Nullable<int> _ClientId;
+		
+		private string _ClaimProcess;
+		
+		private string _ClaimOther;
+		
+		private string _EAPProvider;
+		
+		private string _EAPName;
+		
+		private string _EAPPhoneNo;
+		
+		private string _EAPFax;
+		
+		private string _EAPEmail;
+		
+		private string _EAPExtention;
+		
+		private string _SurveyCheck;
+		
+		private string _SurveySpecify;
+		
+		private string _SurvesTypes;
+		
+		private string _SurveyTypesOther;
+		
+		private string _SendSurveyTo;
+		
+		private string _SendSurveySpecify;
+		
+		private string _EvaluationType;
+		
+		private string _ApprovedBy;
+		
+		private string _Comments;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnClientAddedIdChanging(int value);
+    partial void OnClientAddedIdChanged();
+    partial void OnClientIdChanging(System.Nullable<int> value);
+    partial void OnClientIdChanged();
+    partial void OnClaimProcessChanging(string value);
+    partial void OnClaimProcessChanged();
+    partial void OnClaimOtherChanging(string value);
+    partial void OnClaimOtherChanged();
+    partial void OnEAPProviderChanging(string value);
+    partial void OnEAPProviderChanged();
+    partial void OnEAPNameChanging(string value);
+    partial void OnEAPNameChanged();
+    partial void OnEAPPhoneNoChanging(string value);
+    partial void OnEAPPhoneNoChanged();
+    partial void OnEAPFaxChanging(string value);
+    partial void OnEAPFaxChanged();
+    partial void OnEAPEmailChanging(string value);
+    partial void OnEAPEmailChanged();
+    partial void OnEAPExtentionChanging(string value);
+    partial void OnEAPExtentionChanged();
+    partial void OnSurveyCheckChanging(string value);
+    partial void OnSurveyCheckChanged();
+    partial void OnSurveySpecifyChanging(string value);
+    partial void OnSurveySpecifyChanged();
+    partial void OnSurvesTypesChanging(string value);
+    partial void OnSurvesTypesChanged();
+    partial void OnSurveyTypesOtherChanging(string value);
+    partial void OnSurveyTypesOtherChanged();
+    partial void OnSendSurveyToChanging(string value);
+    partial void OnSendSurveyToChanged();
+    partial void OnSendSurveySpecifyChanging(string value);
+    partial void OnSendSurveySpecifyChanged();
+    partial void OnEvaluationTypeChanging(string value);
+    partial void OnEvaluationTypeChanged();
+    partial void OnApprovedByChanging(string value);
+    partial void OnApprovedByChanged();
+    partial void OnCommentsChanging(string value);
+    partial void OnCommentsChanged();
+    #endregion
+		
+		public Client_Added()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientAddedId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ClientAddedId
+		{
+			get
+			{
+				return this._ClientAddedId;
+			}
+			set
+			{
+				if ((this._ClientAddedId != value))
+				{
+					this.OnClientAddedIdChanging(value);
+					this.SendPropertyChanging();
+					this._ClientAddedId = value;
+					this.SendPropertyChanged("ClientAddedId");
+					this.OnClientAddedIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientId", DbType="Int")]
+		public System.Nullable<int> ClientId
+		{
+			get
+			{
+				return this._ClientId;
+			}
+			set
+			{
+				if ((this._ClientId != value))
+				{
+					this.OnClientIdChanging(value);
+					this.SendPropertyChanging();
+					this._ClientId = value;
+					this.SendPropertyChanged("ClientId");
+					this.OnClientIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClaimProcess", DbType="VarChar(50)")]
+		public string ClaimProcess
+		{
+			get
+			{
+				return this._ClaimProcess;
+			}
+			set
+			{
+				if ((this._ClaimProcess != value))
+				{
+					this.OnClaimProcessChanging(value);
+					this.SendPropertyChanging();
+					this._ClaimProcess = value;
+					this.SendPropertyChanged("ClaimProcess");
+					this.OnClaimProcessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClaimOther", DbType="VarChar(100)")]
+		public string ClaimOther
+		{
+			get
+			{
+				return this._ClaimOther;
+			}
+			set
+			{
+				if ((this._ClaimOther != value))
+				{
+					this.OnClaimOtherChanging(value);
+					this.SendPropertyChanging();
+					this._ClaimOther = value;
+					this.SendPropertyChanged("ClaimOther");
+					this.OnClaimOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EAPProvider", DbType="VarChar(50)")]
+		public string EAPProvider
+		{
+			get
+			{
+				return this._EAPProvider;
+			}
+			set
+			{
+				if ((this._EAPProvider != value))
+				{
+					this.OnEAPProviderChanging(value);
+					this.SendPropertyChanging();
+					this._EAPProvider = value;
+					this.SendPropertyChanged("EAPProvider");
+					this.OnEAPProviderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EAPName", DbType="VarChar(100)")]
+		public string EAPName
+		{
+			get
+			{
+				return this._EAPName;
+			}
+			set
+			{
+				if ((this._EAPName != value))
+				{
+					this.OnEAPNameChanging(value);
+					this.SendPropertyChanging();
+					this._EAPName = value;
+					this.SendPropertyChanged("EAPName");
+					this.OnEAPNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EAPPhoneNo", DbType="VarChar(50)")]
+		public string EAPPhoneNo
+		{
+			get
+			{
+				return this._EAPPhoneNo;
+			}
+			set
+			{
+				if ((this._EAPPhoneNo != value))
+				{
+					this.OnEAPPhoneNoChanging(value);
+					this.SendPropertyChanging();
+					this._EAPPhoneNo = value;
+					this.SendPropertyChanged("EAPPhoneNo");
+					this.OnEAPPhoneNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EAPFax", DbType="VarChar(50)")]
+		public string EAPFax
+		{
+			get
+			{
+				return this._EAPFax;
+			}
+			set
+			{
+				if ((this._EAPFax != value))
+				{
+					this.OnEAPFaxChanging(value);
+					this.SendPropertyChanging();
+					this._EAPFax = value;
+					this.SendPropertyChanged("EAPFax");
+					this.OnEAPFaxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EAPEmail", DbType="VarChar(100)")]
+		public string EAPEmail
+		{
+			get
+			{
+				return this._EAPEmail;
+			}
+			set
+			{
+				if ((this._EAPEmail != value))
+				{
+					this.OnEAPEmailChanging(value);
+					this.SendPropertyChanging();
+					this._EAPEmail = value;
+					this.SendPropertyChanged("EAPEmail");
+					this.OnEAPEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EAPExtention", DbType="VarChar(50)")]
+		public string EAPExtention
+		{
+			get
+			{
+				return this._EAPExtention;
+			}
+			set
+			{
+				if ((this._EAPExtention != value))
+				{
+					this.OnEAPExtentionChanging(value);
+					this.SendPropertyChanging();
+					this._EAPExtention = value;
+					this.SendPropertyChanged("EAPExtention");
+					this.OnEAPExtentionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurveyCheck", DbType="VarChar(50)")]
+		public string SurveyCheck
+		{
+			get
+			{
+				return this._SurveyCheck;
+			}
+			set
+			{
+				if ((this._SurveyCheck != value))
+				{
+					this.OnSurveyCheckChanging(value);
+					this.SendPropertyChanging();
+					this._SurveyCheck = value;
+					this.SendPropertyChanged("SurveyCheck");
+					this.OnSurveyCheckChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurveySpecify", DbType="VarChar(100)")]
+		public string SurveySpecify
+		{
+			get
+			{
+				return this._SurveySpecify;
+			}
+			set
+			{
+				if ((this._SurveySpecify != value))
+				{
+					this.OnSurveySpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._SurveySpecify = value;
+					this.SendPropertyChanged("SurveySpecify");
+					this.OnSurveySpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurvesTypes", DbType="VarChar(100)")]
+		public string SurvesTypes
+		{
+			get
+			{
+				return this._SurvesTypes;
+			}
+			set
+			{
+				if ((this._SurvesTypes != value))
+				{
+					this.OnSurvesTypesChanging(value);
+					this.SendPropertyChanging();
+					this._SurvesTypes = value;
+					this.SendPropertyChanged("SurvesTypes");
+					this.OnSurvesTypesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SurveyTypesOther", DbType="VarChar(MAX)")]
+		public string SurveyTypesOther
+		{
+			get
+			{
+				return this._SurveyTypesOther;
+			}
+			set
+			{
+				if ((this._SurveyTypesOther != value))
+				{
+					this.OnSurveyTypesOtherChanging(value);
+					this.SendPropertyChanging();
+					this._SurveyTypesOther = value;
+					this.SendPropertyChanged("SurveyTypesOther");
+					this.OnSurveyTypesOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendSurveyTo", DbType="VarChar(100)")]
+		public string SendSurveyTo
+		{
+			get
+			{
+				return this._SendSurveyTo;
+			}
+			set
+			{
+				if ((this._SendSurveyTo != value))
+				{
+					this.OnSendSurveyToChanging(value);
+					this.SendPropertyChanging();
+					this._SendSurveyTo = value;
+					this.SendPropertyChanged("SendSurveyTo");
+					this.OnSendSurveyToChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendSurveySpecify", DbType="VarChar(100)")]
+		public string SendSurveySpecify
+		{
+			get
+			{
+				return this._SendSurveySpecify;
+			}
+			set
+			{
+				if ((this._SendSurveySpecify != value))
+				{
+					this.OnSendSurveySpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._SendSurveySpecify = value;
+					this.SendPropertyChanged("SendSurveySpecify");
+					this.OnSendSurveySpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EvaluationType", DbType="VarChar(100)")]
+		public string EvaluationType
+		{
+			get
+			{
+				return this._EvaluationType;
+			}
+			set
+			{
+				if ((this._EvaluationType != value))
+				{
+					this.OnEvaluationTypeChanging(value);
+					this.SendPropertyChanging();
+					this._EvaluationType = value;
+					this.SendPropertyChanged("EvaluationType");
+					this.OnEvaluationTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApprovedBy", DbType="VarChar(100)")]
+		public string ApprovedBy
+		{
+			get
+			{
+				return this._ApprovedBy;
+			}
+			set
+			{
+				if ((this._ApprovedBy != value))
+				{
+					this.OnApprovedByChanging(value);
+					this.SendPropertyChanging();
+					this._ApprovedBy = value;
+					this.SendPropertyChanged("ApprovedBy");
+					this.OnApprovedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comments", DbType="VarChar(MAX)")]
+		public string Comments
+		{
+			get
+			{
+				return this._Comments;
+			}
+			set
+			{
+				if ((this._Comments != value))
+				{
+					this.OnCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._Comments = value;
+					this.SendPropertyChanged("Comments");
+					this.OnCommentsChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Client_STD_LTD_Preferences")]
+	public partial class Client_STD_LTD_Preference : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ClientStdId;
+		
+		private System.Nullable<int> _ClientId;
+		
+		private string _STD_Definition;
+		
+		private string _STDLength;
+		
+		private string _STDLength2;
+		
+		private string _STDProgramOther;
+		
+		private string _STDTriggerCheck;
+		
+		private string _STDTriggerSpecify;
+		
+		private string _STDProcess;
+		
+		private string _STDProcessOther;
+		
+		private string _STDAppealsCheck;
+		
+		private string _STDAppealsSpecify;
+		
+		private string _STDAppealsProcess;
+		
+		private string _STDRelapseDefinition;
+		
+		private string _STDAppealsLength;
+		
+		private string _STDAppealsLength2;
+		
+		private string _STDAppealsMedicalLength;
+		
+		private string _STDAppealsMedicalLength2;
+		
+		private string _ExistingSTDCheck;
+		
+		private string _ExistingSTDSpecify;
+		
+		private string _MVAProcessCheck;
+		
+		private string _MVAProcessSpecify;
+		
+		private string _STDturnaroundnotificationLength;
+		
+		private string _STDturnaroundnotificationLength2;
+		
+		private string _STDturnaroundnotificationOther;
+		
+		private string _STDturnaroundMedicalLength;
+		
+		private string _STDturnaroundMedicalLength2;
+		
+		private string _STDturnaroundMedicalOther;
+		
+		private string _APSPackageProvider;
+		
+		private string _ProvideRTWs;
+		
+		private string _STDAPSFollowUpInstructions;
+		
+		private string _STDNonSupportDecisionInstructions;
+		
+		private string _STDCommunicationWithPayrollInstructions;
+		
+		private string _STDOtherSpecificInstructions;
+		
+		private string _LTDProvider;
+		
+		private string _LTDPolicyNum;
+		
+		private string _LTDStartdate;
+		
+		private string _LTDProcess;
+		
+		private string _LTDformsSenderEE;
+		
+		private string _LTDformsSenderER;
+		
+		private string _LTDrelapseDefinition;
+		
+		private string _LTDspecificinstructions;
+		
+		private string _LTDCaseManagerName;
+		
+		private string _LTDCaseManagerPhone;
+		
+		private string _LTDCaseManagerEXT;
+		
+		private string _LTDCaseManagerEmail;
+		
+		private string _LTDCaseManagerFax;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnClientStdIdChanging(int value);
+    partial void OnClientStdIdChanged();
+    partial void OnClientIdChanging(System.Nullable<int> value);
+    partial void OnClientIdChanged();
+    partial void OnSTD_DefinitionChanging(string value);
+    partial void OnSTD_DefinitionChanged();
+    partial void OnSTDLengthChanging(string value);
+    partial void OnSTDLengthChanged();
+    partial void OnSTDLength2Changing(string value);
+    partial void OnSTDLength2Changed();
+    partial void OnSTDProgramOtherChanging(string value);
+    partial void OnSTDProgramOtherChanged();
+    partial void OnSTDTriggerCheckChanging(string value);
+    partial void OnSTDTriggerCheckChanged();
+    partial void OnSTDTriggerSpecifyChanging(string value);
+    partial void OnSTDTriggerSpecifyChanged();
+    partial void OnSTDProcessChanging(string value);
+    partial void OnSTDProcessChanged();
+    partial void OnSTDProcessOtherChanging(string value);
+    partial void OnSTDProcessOtherChanged();
+    partial void OnSTDAppealsCheckChanging(string value);
+    partial void OnSTDAppealsCheckChanged();
+    partial void OnSTDAppealsSpecifyChanging(string value);
+    partial void OnSTDAppealsSpecifyChanged();
+    partial void OnSTDAppealsProcessChanging(string value);
+    partial void OnSTDAppealsProcessChanged();
+    partial void OnSTDRelapseDefinitionChanging(string value);
+    partial void OnSTDRelapseDefinitionChanged();
+    partial void OnSTDAppealsLengthChanging(string value);
+    partial void OnSTDAppealsLengthChanged();
+    partial void OnSTDAppealsLength2Changing(string value);
+    partial void OnSTDAppealsLength2Changed();
+    partial void OnSTDAppealsMedicalLengthChanging(string value);
+    partial void OnSTDAppealsMedicalLengthChanged();
+    partial void OnSTDAppealsMedicalLength2Changing(string value);
+    partial void OnSTDAppealsMedicalLength2Changed();
+    partial void OnExistingSTDCheckChanging(string value);
+    partial void OnExistingSTDCheckChanged();
+    partial void OnExistingSTDSpecifyChanging(string value);
+    partial void OnExistingSTDSpecifyChanged();
+    partial void OnMVAProcessCheckChanging(string value);
+    partial void OnMVAProcessCheckChanged();
+    partial void OnMVAProcessSpecifyChanging(string value);
+    partial void OnMVAProcessSpecifyChanged();
+    partial void OnSTDturnaroundnotificationLengthChanging(string value);
+    partial void OnSTDturnaroundnotificationLengthChanged();
+    partial void OnSTDturnaroundnotificationLength2Changing(string value);
+    partial void OnSTDturnaroundnotificationLength2Changed();
+    partial void OnSTDturnaroundnotificationOtherChanging(string value);
+    partial void OnSTDturnaroundnotificationOtherChanged();
+    partial void OnSTDturnaroundMedicalLengthChanging(string value);
+    partial void OnSTDturnaroundMedicalLengthChanged();
+    partial void OnSTDturnaroundMedicalLength2Changing(string value);
+    partial void OnSTDturnaroundMedicalLength2Changed();
+    partial void OnSTDturnaroundMedicalOtherChanging(string value);
+    partial void OnSTDturnaroundMedicalOtherChanged();
+    partial void OnAPSPackageProviderChanging(string value);
+    partial void OnAPSPackageProviderChanged();
+    partial void OnProvideRTWsChanging(string value);
+    partial void OnProvideRTWsChanged();
+    partial void OnSTDAPSFollowUpInstructionsChanging(string value);
+    partial void OnSTDAPSFollowUpInstructionsChanged();
+    partial void OnSTDNonSupportDecisionInstructionsChanging(string value);
+    partial void OnSTDNonSupportDecisionInstructionsChanged();
+    partial void OnSTDCommunicationWithPayrollInstructionsChanging(string value);
+    partial void OnSTDCommunicationWithPayrollInstructionsChanged();
+    partial void OnSTDOtherSpecificInstructionsChanging(string value);
+    partial void OnSTDOtherSpecificInstructionsChanged();
+    partial void OnLTDProviderChanging(string value);
+    partial void OnLTDProviderChanged();
+    partial void OnLTDPolicyNumChanging(string value);
+    partial void OnLTDPolicyNumChanged();
+    partial void OnLTDStartdateChanging(string value);
+    partial void OnLTDStartdateChanged();
+    partial void OnLTDProcessChanging(string value);
+    partial void OnLTDProcessChanged();
+    partial void OnLTDformsSenderEEChanging(string value);
+    partial void OnLTDformsSenderEEChanged();
+    partial void OnLTDformsSenderERChanging(string value);
+    partial void OnLTDformsSenderERChanged();
+    partial void OnLTDrelapseDefinitionChanging(string value);
+    partial void OnLTDrelapseDefinitionChanged();
+    partial void OnLTDspecificinstructionsChanging(string value);
+    partial void OnLTDspecificinstructionsChanged();
+    partial void OnLTDCaseManagerNameChanging(string value);
+    partial void OnLTDCaseManagerNameChanged();
+    partial void OnLTDCaseManagerPhoneChanging(string value);
+    partial void OnLTDCaseManagerPhoneChanged();
+    partial void OnLTDCaseManagerEXTChanging(string value);
+    partial void OnLTDCaseManagerEXTChanged();
+    partial void OnLTDCaseManagerEmailChanging(string value);
+    partial void OnLTDCaseManagerEmailChanged();
+    partial void OnLTDCaseManagerFaxChanging(string value);
+    partial void OnLTDCaseManagerFaxChanged();
+    #endregion
+		
+		public Client_STD_LTD_Preference()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientStdId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ClientStdId
+		{
+			get
+			{
+				return this._ClientStdId;
+			}
+			set
+			{
+				if ((this._ClientStdId != value))
+				{
+					this.OnClientStdIdChanging(value);
+					this.SendPropertyChanging();
+					this._ClientStdId = value;
+					this.SendPropertyChanged("ClientStdId");
+					this.OnClientStdIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientId", DbType="Int")]
+		public System.Nullable<int> ClientId
+		{
+			get
+			{
+				return this._ClientId;
+			}
+			set
+			{
+				if ((this._ClientId != value))
+				{
+					this.OnClientIdChanging(value);
+					this.SendPropertyChanging();
+					this._ClientId = value;
+					this.SendPropertyChanged("ClientId");
+					this.OnClientIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STD_Definition", DbType="VarChar(MAX)")]
+		public string STD_Definition
+		{
+			get
+			{
+				return this._STD_Definition;
+			}
+			set
+			{
+				if ((this._STD_Definition != value))
+				{
+					this.OnSTD_DefinitionChanging(value);
+					this.SendPropertyChanging();
+					this._STD_Definition = value;
+					this.SendPropertyChanged("STD_Definition");
+					this.OnSTD_DefinitionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDLength", DbType="VarChar(50)")]
+		public string STDLength
+		{
+			get
+			{
+				return this._STDLength;
+			}
+			set
+			{
+				if ((this._STDLength != value))
+				{
+					this.OnSTDLengthChanging(value);
+					this.SendPropertyChanging();
+					this._STDLength = value;
+					this.SendPropertyChanged("STDLength");
+					this.OnSTDLengthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDLength2", DbType="VarChar(100)")]
+		public string STDLength2
+		{
+			get
+			{
+				return this._STDLength2;
+			}
+			set
+			{
+				if ((this._STDLength2 != value))
+				{
+					this.OnSTDLength2Changing(value);
+					this.SendPropertyChanging();
+					this._STDLength2 = value;
+					this.SendPropertyChanged("STDLength2");
+					this.OnSTDLength2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDProgramOther", DbType="VarChar(100)")]
+		public string STDProgramOther
+		{
+			get
+			{
+				return this._STDProgramOther;
+			}
+			set
+			{
+				if ((this._STDProgramOther != value))
+				{
+					this.OnSTDProgramOtherChanging(value);
+					this.SendPropertyChanging();
+					this._STDProgramOther = value;
+					this.SendPropertyChanged("STDProgramOther");
+					this.OnSTDProgramOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDTriggerCheck", DbType="VarChar(50)")]
+		public string STDTriggerCheck
+		{
+			get
+			{
+				return this._STDTriggerCheck;
+			}
+			set
+			{
+				if ((this._STDTriggerCheck != value))
+				{
+					this.OnSTDTriggerCheckChanging(value);
+					this.SendPropertyChanging();
+					this._STDTriggerCheck = value;
+					this.SendPropertyChanged("STDTriggerCheck");
+					this.OnSTDTriggerCheckChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDTriggerSpecify", DbType="VarChar(200)")]
+		public string STDTriggerSpecify
+		{
+			get
+			{
+				return this._STDTriggerSpecify;
+			}
+			set
+			{
+				if ((this._STDTriggerSpecify != value))
+				{
+					this.OnSTDTriggerSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._STDTriggerSpecify = value;
+					this.SendPropertyChanged("STDTriggerSpecify");
+					this.OnSTDTriggerSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDProcess", DbType="VarChar(50)")]
+		public string STDProcess
+		{
+			get
+			{
+				return this._STDProcess;
+			}
+			set
+			{
+				if ((this._STDProcess != value))
+				{
+					this.OnSTDProcessChanging(value);
+					this.SendPropertyChanging();
+					this._STDProcess = value;
+					this.SendPropertyChanged("STDProcess");
+					this.OnSTDProcessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDProcessOther", DbType="VarChar(100)")]
+		public string STDProcessOther
+		{
+			get
+			{
+				return this._STDProcessOther;
+			}
+			set
+			{
+				if ((this._STDProcessOther != value))
+				{
+					this.OnSTDProcessOtherChanging(value);
+					this.SendPropertyChanging();
+					this._STDProcessOther = value;
+					this.SendPropertyChanged("STDProcessOther");
+					this.OnSTDProcessOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDAppealsCheck", DbType="VarChar(50)")]
+		public string STDAppealsCheck
+		{
+			get
+			{
+				return this._STDAppealsCheck;
+			}
+			set
+			{
+				if ((this._STDAppealsCheck != value))
+				{
+					this.OnSTDAppealsCheckChanging(value);
+					this.SendPropertyChanging();
+					this._STDAppealsCheck = value;
+					this.SendPropertyChanged("STDAppealsCheck");
+					this.OnSTDAppealsCheckChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDAppealsSpecify", DbType="VarChar(100)")]
+		public string STDAppealsSpecify
+		{
+			get
+			{
+				return this._STDAppealsSpecify;
+			}
+			set
+			{
+				if ((this._STDAppealsSpecify != value))
+				{
+					this.OnSTDAppealsSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._STDAppealsSpecify = value;
+					this.SendPropertyChanged("STDAppealsSpecify");
+					this.OnSTDAppealsSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDAppealsProcess", DbType="VarChar(50)")]
+		public string STDAppealsProcess
+		{
+			get
+			{
+				return this._STDAppealsProcess;
+			}
+			set
+			{
+				if ((this._STDAppealsProcess != value))
+				{
+					this.OnSTDAppealsProcessChanging(value);
+					this.SendPropertyChanging();
+					this._STDAppealsProcess = value;
+					this.SendPropertyChanged("STDAppealsProcess");
+					this.OnSTDAppealsProcessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDRelapseDefinition", DbType="VarChar(MAX)")]
+		public string STDRelapseDefinition
+		{
+			get
+			{
+				return this._STDRelapseDefinition;
+			}
+			set
+			{
+				if ((this._STDRelapseDefinition != value))
+				{
+					this.OnSTDRelapseDefinitionChanging(value);
+					this.SendPropertyChanging();
+					this._STDRelapseDefinition = value;
+					this.SendPropertyChanged("STDRelapseDefinition");
+					this.OnSTDRelapseDefinitionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDAppealsLength", DbType="VarChar(50)")]
+		public string STDAppealsLength
+		{
+			get
+			{
+				return this._STDAppealsLength;
+			}
+			set
+			{
+				if ((this._STDAppealsLength != value))
+				{
+					this.OnSTDAppealsLengthChanging(value);
+					this.SendPropertyChanging();
+					this._STDAppealsLength = value;
+					this.SendPropertyChanged("STDAppealsLength");
+					this.OnSTDAppealsLengthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDAppealsLength2", DbType="VarChar(100)")]
+		public string STDAppealsLength2
+		{
+			get
+			{
+				return this._STDAppealsLength2;
+			}
+			set
+			{
+				if ((this._STDAppealsLength2 != value))
+				{
+					this.OnSTDAppealsLength2Changing(value);
+					this.SendPropertyChanging();
+					this._STDAppealsLength2 = value;
+					this.SendPropertyChanged("STDAppealsLength2");
+					this.OnSTDAppealsLength2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDAppealsMedicalLength", DbType="VarChar(50)")]
+		public string STDAppealsMedicalLength
+		{
+			get
+			{
+				return this._STDAppealsMedicalLength;
+			}
+			set
+			{
+				if ((this._STDAppealsMedicalLength != value))
+				{
+					this.OnSTDAppealsMedicalLengthChanging(value);
+					this.SendPropertyChanging();
+					this._STDAppealsMedicalLength = value;
+					this.SendPropertyChanged("STDAppealsMedicalLength");
+					this.OnSTDAppealsMedicalLengthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDAppealsMedicalLength2", DbType="VarChar(100)")]
+		public string STDAppealsMedicalLength2
+		{
+			get
+			{
+				return this._STDAppealsMedicalLength2;
+			}
+			set
+			{
+				if ((this._STDAppealsMedicalLength2 != value))
+				{
+					this.OnSTDAppealsMedicalLength2Changing(value);
+					this.SendPropertyChanging();
+					this._STDAppealsMedicalLength2 = value;
+					this.SendPropertyChanged("STDAppealsMedicalLength2");
+					this.OnSTDAppealsMedicalLength2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExistingSTDCheck", DbType="VarChar(50)")]
+		public string ExistingSTDCheck
+		{
+			get
+			{
+				return this._ExistingSTDCheck;
+			}
+			set
+			{
+				if ((this._ExistingSTDCheck != value))
+				{
+					this.OnExistingSTDCheckChanging(value);
+					this.SendPropertyChanging();
+					this._ExistingSTDCheck = value;
+					this.SendPropertyChanged("ExistingSTDCheck");
+					this.OnExistingSTDCheckChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExistingSTDSpecify", DbType="VarChar(100)")]
+		public string ExistingSTDSpecify
+		{
+			get
+			{
+				return this._ExistingSTDSpecify;
+			}
+			set
+			{
+				if ((this._ExistingSTDSpecify != value))
+				{
+					this.OnExistingSTDSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._ExistingSTDSpecify = value;
+					this.SendPropertyChanged("ExistingSTDSpecify");
+					this.OnExistingSTDSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MVAProcessCheck", DbType="VarChar(50)")]
+		public string MVAProcessCheck
+		{
+			get
+			{
+				return this._MVAProcessCheck;
+			}
+			set
+			{
+				if ((this._MVAProcessCheck != value))
+				{
+					this.OnMVAProcessCheckChanging(value);
+					this.SendPropertyChanging();
+					this._MVAProcessCheck = value;
+					this.SendPropertyChanged("MVAProcessCheck");
+					this.OnMVAProcessCheckChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MVAProcessSpecify", DbType="VarChar(100)")]
+		public string MVAProcessSpecify
+		{
+			get
+			{
+				return this._MVAProcessSpecify;
+			}
+			set
+			{
+				if ((this._MVAProcessSpecify != value))
+				{
+					this.OnMVAProcessSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._MVAProcessSpecify = value;
+					this.SendPropertyChanged("MVAProcessSpecify");
+					this.OnMVAProcessSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDturnaroundnotificationLength", DbType="VarChar(50)")]
+		public string STDturnaroundnotificationLength
+		{
+			get
+			{
+				return this._STDturnaroundnotificationLength;
+			}
+			set
+			{
+				if ((this._STDturnaroundnotificationLength != value))
+				{
+					this.OnSTDturnaroundnotificationLengthChanging(value);
+					this.SendPropertyChanging();
+					this._STDturnaroundnotificationLength = value;
+					this.SendPropertyChanged("STDturnaroundnotificationLength");
+					this.OnSTDturnaroundnotificationLengthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDturnaroundnotificationLength2", DbType="VarChar(100)")]
+		public string STDturnaroundnotificationLength2
+		{
+			get
+			{
+				return this._STDturnaroundnotificationLength2;
+			}
+			set
+			{
+				if ((this._STDturnaroundnotificationLength2 != value))
+				{
+					this.OnSTDturnaroundnotificationLength2Changing(value);
+					this.SendPropertyChanging();
+					this._STDturnaroundnotificationLength2 = value;
+					this.SendPropertyChanged("STDturnaroundnotificationLength2");
+					this.OnSTDturnaroundnotificationLength2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDturnaroundnotificationOther", DbType="VarChar(100)")]
+		public string STDturnaroundnotificationOther
+		{
+			get
+			{
+				return this._STDturnaroundnotificationOther;
+			}
+			set
+			{
+				if ((this._STDturnaroundnotificationOther != value))
+				{
+					this.OnSTDturnaroundnotificationOtherChanging(value);
+					this.SendPropertyChanging();
+					this._STDturnaroundnotificationOther = value;
+					this.SendPropertyChanged("STDturnaroundnotificationOther");
+					this.OnSTDturnaroundnotificationOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDturnaroundMedicalLength", DbType="VarChar(50)")]
+		public string STDturnaroundMedicalLength
+		{
+			get
+			{
+				return this._STDturnaroundMedicalLength;
+			}
+			set
+			{
+				if ((this._STDturnaroundMedicalLength != value))
+				{
+					this.OnSTDturnaroundMedicalLengthChanging(value);
+					this.SendPropertyChanging();
+					this._STDturnaroundMedicalLength = value;
+					this.SendPropertyChanged("STDturnaroundMedicalLength");
+					this.OnSTDturnaroundMedicalLengthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDturnaroundMedicalLength2", DbType="VarChar(100)")]
+		public string STDturnaroundMedicalLength2
+		{
+			get
+			{
+				return this._STDturnaroundMedicalLength2;
+			}
+			set
+			{
+				if ((this._STDturnaroundMedicalLength2 != value))
+				{
+					this.OnSTDturnaroundMedicalLength2Changing(value);
+					this.SendPropertyChanging();
+					this._STDturnaroundMedicalLength2 = value;
+					this.SendPropertyChanged("STDturnaroundMedicalLength2");
+					this.OnSTDturnaroundMedicalLength2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDturnaroundMedicalOther", DbType="VarChar(100)")]
+		public string STDturnaroundMedicalOther
+		{
+			get
+			{
+				return this._STDturnaroundMedicalOther;
+			}
+			set
+			{
+				if ((this._STDturnaroundMedicalOther != value))
+				{
+					this.OnSTDturnaroundMedicalOtherChanging(value);
+					this.SendPropertyChanging();
+					this._STDturnaroundMedicalOther = value;
+					this.SendPropertyChanged("STDturnaroundMedicalOther");
+					this.OnSTDturnaroundMedicalOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_APSPackageProvider", DbType="VarChar(50)")]
+		public string APSPackageProvider
+		{
+			get
+			{
+				return this._APSPackageProvider;
+			}
+			set
+			{
+				if ((this._APSPackageProvider != value))
+				{
+					this.OnAPSPackageProviderChanging(value);
+					this.SendPropertyChanging();
+					this._APSPackageProvider = value;
+					this.SendPropertyChanged("APSPackageProvider");
+					this.OnAPSPackageProviderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProvideRTWs", DbType="VarChar(50)")]
+		public string ProvideRTWs
+		{
+			get
+			{
+				return this._ProvideRTWs;
+			}
+			set
+			{
+				if ((this._ProvideRTWs != value))
+				{
+					this.OnProvideRTWsChanging(value);
+					this.SendPropertyChanging();
+					this._ProvideRTWs = value;
+					this.SendPropertyChanged("ProvideRTWs");
+					this.OnProvideRTWsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDAPSFollowUpInstructions", DbType="VarChar(MAX)")]
+		public string STDAPSFollowUpInstructions
+		{
+			get
+			{
+				return this._STDAPSFollowUpInstructions;
+			}
+			set
+			{
+				if ((this._STDAPSFollowUpInstructions != value))
+				{
+					this.OnSTDAPSFollowUpInstructionsChanging(value);
+					this.SendPropertyChanging();
+					this._STDAPSFollowUpInstructions = value;
+					this.SendPropertyChanged("STDAPSFollowUpInstructions");
+					this.OnSTDAPSFollowUpInstructionsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDNonSupportDecisionInstructions", DbType="VarChar(MAX)")]
+		public string STDNonSupportDecisionInstructions
+		{
+			get
+			{
+				return this._STDNonSupportDecisionInstructions;
+			}
+			set
+			{
+				if ((this._STDNonSupportDecisionInstructions != value))
+				{
+					this.OnSTDNonSupportDecisionInstructionsChanging(value);
+					this.SendPropertyChanging();
+					this._STDNonSupportDecisionInstructions = value;
+					this.SendPropertyChanged("STDNonSupportDecisionInstructions");
+					this.OnSTDNonSupportDecisionInstructionsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDCommunicationWithPayrollInstructions", DbType="VarChar(MAX)")]
+		public string STDCommunicationWithPayrollInstructions
+		{
+			get
+			{
+				return this._STDCommunicationWithPayrollInstructions;
+			}
+			set
+			{
+				if ((this._STDCommunicationWithPayrollInstructions != value))
+				{
+					this.OnSTDCommunicationWithPayrollInstructionsChanging(value);
+					this.SendPropertyChanging();
+					this._STDCommunicationWithPayrollInstructions = value;
+					this.SendPropertyChanged("STDCommunicationWithPayrollInstructions");
+					this.OnSTDCommunicationWithPayrollInstructionsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDOtherSpecificInstructions", DbType="VarChar(MAX)")]
+		public string STDOtherSpecificInstructions
+		{
+			get
+			{
+				return this._STDOtherSpecificInstructions;
+			}
+			set
+			{
+				if ((this._STDOtherSpecificInstructions != value))
+				{
+					this.OnSTDOtherSpecificInstructionsChanging(value);
+					this.SendPropertyChanging();
+					this._STDOtherSpecificInstructions = value;
+					this.SendPropertyChanged("STDOtherSpecificInstructions");
+					this.OnSTDOtherSpecificInstructionsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDProvider", DbType="VarChar(50)")]
+		public string LTDProvider
+		{
+			get
+			{
+				return this._LTDProvider;
+			}
+			set
+			{
+				if ((this._LTDProvider != value))
+				{
+					this.OnLTDProviderChanging(value);
+					this.SendPropertyChanging();
+					this._LTDProvider = value;
+					this.SendPropertyChanged("LTDProvider");
+					this.OnLTDProviderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDPolicyNum", DbType="VarChar(50)")]
+		public string LTDPolicyNum
+		{
+			get
+			{
+				return this._LTDPolicyNum;
+			}
+			set
+			{
+				if ((this._LTDPolicyNum != value))
+				{
+					this.OnLTDPolicyNumChanging(value);
+					this.SendPropertyChanging();
+					this._LTDPolicyNum = value;
+					this.SendPropertyChanged("LTDPolicyNum");
+					this.OnLTDPolicyNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDStartdate", DbType="VarChar(100)")]
+		public string LTDStartdate
+		{
+			get
+			{
+				return this._LTDStartdate;
+			}
+			set
+			{
+				if ((this._LTDStartdate != value))
+				{
+					this.OnLTDStartdateChanging(value);
+					this.SendPropertyChanging();
+					this._LTDStartdate = value;
+					this.SendPropertyChanged("LTDStartdate");
+					this.OnLTDStartdateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDProcess", DbType="VarChar(50)")]
+		public string LTDProcess
+		{
+			get
+			{
+				return this._LTDProcess;
+			}
+			set
+			{
+				if ((this._LTDProcess != value))
+				{
+					this.OnLTDProcessChanging(value);
+					this.SendPropertyChanging();
+					this._LTDProcess = value;
+					this.SendPropertyChanged("LTDProcess");
+					this.OnLTDProcessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDformsSenderEE", DbType="VarChar(50)")]
+		public string LTDformsSenderEE
+		{
+			get
+			{
+				return this._LTDformsSenderEE;
+			}
+			set
+			{
+				if ((this._LTDformsSenderEE != value))
+				{
+					this.OnLTDformsSenderEEChanging(value);
+					this.SendPropertyChanging();
+					this._LTDformsSenderEE = value;
+					this.SendPropertyChanged("LTDformsSenderEE");
+					this.OnLTDformsSenderEEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDformsSenderER", DbType="VarChar(50)")]
+		public string LTDformsSenderER
+		{
+			get
+			{
+				return this._LTDformsSenderER;
+			}
+			set
+			{
+				if ((this._LTDformsSenderER != value))
+				{
+					this.OnLTDformsSenderERChanging(value);
+					this.SendPropertyChanging();
+					this._LTDformsSenderER = value;
+					this.SendPropertyChanged("LTDformsSenderER");
+					this.OnLTDformsSenderERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDrelapseDefinition", DbType="VarChar(MAX)")]
+		public string LTDrelapseDefinition
+		{
+			get
+			{
+				return this._LTDrelapseDefinition;
+			}
+			set
+			{
+				if ((this._LTDrelapseDefinition != value))
+				{
+					this.OnLTDrelapseDefinitionChanging(value);
+					this.SendPropertyChanging();
+					this._LTDrelapseDefinition = value;
+					this.SendPropertyChanged("LTDrelapseDefinition");
+					this.OnLTDrelapseDefinitionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDspecificinstructions", DbType="VarChar(50)")]
+		public string LTDspecificinstructions
+		{
+			get
+			{
+				return this._LTDspecificinstructions;
+			}
+			set
+			{
+				if ((this._LTDspecificinstructions != value))
+				{
+					this.OnLTDspecificinstructionsChanging(value);
+					this.SendPropertyChanging();
+					this._LTDspecificinstructions = value;
+					this.SendPropertyChanged("LTDspecificinstructions");
+					this.OnLTDspecificinstructionsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDCaseManagerName", DbType="VarChar(50)")]
+		public string LTDCaseManagerName
+		{
+			get
+			{
+				return this._LTDCaseManagerName;
+			}
+			set
+			{
+				if ((this._LTDCaseManagerName != value))
+				{
+					this.OnLTDCaseManagerNameChanging(value);
+					this.SendPropertyChanging();
+					this._LTDCaseManagerName = value;
+					this.SendPropertyChanged("LTDCaseManagerName");
+					this.OnLTDCaseManagerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDCaseManagerPhone", DbType="VarChar(100)")]
+		public string LTDCaseManagerPhone
+		{
+			get
+			{
+				return this._LTDCaseManagerPhone;
+			}
+			set
+			{
+				if ((this._LTDCaseManagerPhone != value))
+				{
+					this.OnLTDCaseManagerPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._LTDCaseManagerPhone = value;
+					this.SendPropertyChanged("LTDCaseManagerPhone");
+					this.OnLTDCaseManagerPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDCaseManagerEXT", DbType="VarChar(100)")]
+		public string LTDCaseManagerEXT
+		{
+			get
+			{
+				return this._LTDCaseManagerEXT;
+			}
+			set
+			{
+				if ((this._LTDCaseManagerEXT != value))
+				{
+					this.OnLTDCaseManagerEXTChanging(value);
+					this.SendPropertyChanging();
+					this._LTDCaseManagerEXT = value;
+					this.SendPropertyChanged("LTDCaseManagerEXT");
+					this.OnLTDCaseManagerEXTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDCaseManagerEmail", DbType="VarChar(100)")]
+		public string LTDCaseManagerEmail
+		{
+			get
+			{
+				return this._LTDCaseManagerEmail;
+			}
+			set
+			{
+				if ((this._LTDCaseManagerEmail != value))
+				{
+					this.OnLTDCaseManagerEmailChanging(value);
+					this.SendPropertyChanging();
+					this._LTDCaseManagerEmail = value;
+					this.SendPropertyChanged("LTDCaseManagerEmail");
+					this.OnLTDCaseManagerEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDCaseManagerFax", DbType="VarChar(100)")]
+		public string LTDCaseManagerFax
+		{
+			get
+			{
+				return this._LTDCaseManagerFax;
+			}
+			set
+			{
+				if ((this._LTDCaseManagerFax != value))
+				{
+					this.OnLTDCaseManagerFaxChanging(value);
+					this.SendPropertyChanging();
+					this._LTDCaseManagerFax = value;
+					this.SendPropertyChanged("LTDCaseManagerFax");
+					this.OnLTDCaseManagerFaxChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Client_WC_Preferences")]
+	public partial class Client_WC_Preference : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ClientWCId;
+		
+		private System.Nullable<int> _ClientId;
+		
+		private string _WCProvince;
+		
+		private string _WCAccount;
+		
+		private string _WCEmployees;
+		
+		private string _EmployerReportProvider;
+		
+		private string _WCReportProviderSpecify;
+		
+		private string _WCWorkDutiesProvider;
+		
+		private string _WCWorkDutiesProviderSpecify;
+		
+		private string _WCLegalRepresentative;
+		
+		private string _WCLegalRepresentativeSpecify;
+		
+		private string _WCWorkDutiesModifiedClick;
+		
+		private string _WCWorkDutiesModifiedSpecify;
+		
+		private string _WCJobDescriptionsClick;
+		
+		private string _WCJobDescriptionsSpecify;
+		
+		private string _WCProcess;
+		
+		private string _ClaimstoSTDClick;
+		
+		private string _ClaimstoSTDSpecify;
+		
+		private string _CSSSpecificClick;
+		
+		private string _CSSSpecificSpecify;
+		
+		private string _ClientFinancialModelatCSST;
+		
+		private string _WCCommunicationWithPayrollInstructions;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnClientWCIdChanging(int value);
+    partial void OnClientWCIdChanged();
+    partial void OnClientIdChanging(System.Nullable<int> value);
+    partial void OnClientIdChanged();
+    partial void OnWCProvinceChanging(string value);
+    partial void OnWCProvinceChanged();
+    partial void OnWCAccountChanging(string value);
+    partial void OnWCAccountChanged();
+    partial void OnWCEmployeesChanging(string value);
+    partial void OnWCEmployeesChanged();
+    partial void OnEmployerReportProviderChanging(string value);
+    partial void OnEmployerReportProviderChanged();
+    partial void OnWCReportProviderSpecifyChanging(string value);
+    partial void OnWCReportProviderSpecifyChanged();
+    partial void OnWCWorkDutiesProviderChanging(string value);
+    partial void OnWCWorkDutiesProviderChanged();
+    partial void OnWCWorkDutiesProviderSpecifyChanging(string value);
+    partial void OnWCWorkDutiesProviderSpecifyChanged();
+    partial void OnWCLegalRepresentativeChanging(string value);
+    partial void OnWCLegalRepresentativeChanged();
+    partial void OnWCLegalRepresentativeSpecifyChanging(string value);
+    partial void OnWCLegalRepresentativeSpecifyChanged();
+    partial void OnWCWorkDutiesModifiedClickChanging(string value);
+    partial void OnWCWorkDutiesModifiedClickChanged();
+    partial void OnWCWorkDutiesModifiedSpecifyChanging(string value);
+    partial void OnWCWorkDutiesModifiedSpecifyChanged();
+    partial void OnWCJobDescriptionsClickChanging(string value);
+    partial void OnWCJobDescriptionsClickChanged();
+    partial void OnWCJobDescriptionsSpecifyChanging(string value);
+    partial void OnWCJobDescriptionsSpecifyChanged();
+    partial void OnWCProcessChanging(string value);
+    partial void OnWCProcessChanged();
+    partial void OnClaimstoSTDClickChanging(string value);
+    partial void OnClaimstoSTDClickChanged();
+    partial void OnClaimstoSTDSpecifyChanging(string value);
+    partial void OnClaimstoSTDSpecifyChanged();
+    partial void OnCSSSpecificClickChanging(string value);
+    partial void OnCSSSpecificClickChanged();
+    partial void OnCSSSpecificSpecifyChanging(string value);
+    partial void OnCSSSpecificSpecifyChanged();
+    partial void OnClientFinancialModelatCSSTChanging(string value);
+    partial void OnClientFinancialModelatCSSTChanged();
+    partial void OnWCCommunicationWithPayrollInstructionsChanging(string value);
+    partial void OnWCCommunicationWithPayrollInstructionsChanged();
+    #endregion
+		
+		public Client_WC_Preference()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientWCId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ClientWCId
+		{
+			get
+			{
+				return this._ClientWCId;
+			}
+			set
+			{
+				if ((this._ClientWCId != value))
+				{
+					this.OnClientWCIdChanging(value);
+					this.SendPropertyChanging();
+					this._ClientWCId = value;
+					this.SendPropertyChanged("ClientWCId");
+					this.OnClientWCIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientId", DbType="Int")]
+		public System.Nullable<int> ClientId
+		{
+			get
+			{
+				return this._ClientId;
+			}
+			set
+			{
+				if ((this._ClientId != value))
+				{
+					this.OnClientIdChanging(value);
+					this.SendPropertyChanging();
+					this._ClientId = value;
+					this.SendPropertyChanged("ClientId");
+					this.OnClientIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCProvince", DbType="VarChar(50)")]
+		public string WCProvince
+		{
+			get
+			{
+				return this._WCProvince;
+			}
+			set
+			{
+				if ((this._WCProvince != value))
+				{
+					this.OnWCProvinceChanging(value);
+					this.SendPropertyChanging();
+					this._WCProvince = value;
+					this.SendPropertyChanged("WCProvince");
+					this.OnWCProvinceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCAccount", DbType="VarChar(100)")]
+		public string WCAccount
+		{
+			get
+			{
+				return this._WCAccount;
+			}
+			set
+			{
+				if ((this._WCAccount != value))
+				{
+					this.OnWCAccountChanging(value);
+					this.SendPropertyChanging();
+					this._WCAccount = value;
+					this.SendPropertyChanged("WCAccount");
+					this.OnWCAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCEmployees", DbType="VarChar(50)")]
+		public string WCEmployees
+		{
+			get
+			{
+				return this._WCEmployees;
+			}
+			set
+			{
+				if ((this._WCEmployees != value))
+				{
+					this.OnWCEmployeesChanging(value);
+					this.SendPropertyChanging();
+					this._WCEmployees = value;
+					this.SendPropertyChanged("WCEmployees");
+					this.OnWCEmployeesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployerReportProvider", DbType="VarChar(100)")]
+		public string EmployerReportProvider
+		{
+			get
+			{
+				return this._EmployerReportProvider;
+			}
+			set
+			{
+				if ((this._EmployerReportProvider != value))
+				{
+					this.OnEmployerReportProviderChanging(value);
+					this.SendPropertyChanging();
+					this._EmployerReportProvider = value;
+					this.SendPropertyChanged("EmployerReportProvider");
+					this.OnEmployerReportProviderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCReportProviderSpecify", DbType="VarChar(100)")]
+		public string WCReportProviderSpecify
+		{
+			get
+			{
+				return this._WCReportProviderSpecify;
+			}
+			set
+			{
+				if ((this._WCReportProviderSpecify != value))
+				{
+					this.OnWCReportProviderSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._WCReportProviderSpecify = value;
+					this.SendPropertyChanged("WCReportProviderSpecify");
+					this.OnWCReportProviderSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCWorkDutiesProvider", DbType="VarChar(50)")]
+		public string WCWorkDutiesProvider
+		{
+			get
+			{
+				return this._WCWorkDutiesProvider;
+			}
+			set
+			{
+				if ((this._WCWorkDutiesProvider != value))
+				{
+					this.OnWCWorkDutiesProviderChanging(value);
+					this.SendPropertyChanging();
+					this._WCWorkDutiesProvider = value;
+					this.SendPropertyChanged("WCWorkDutiesProvider");
+					this.OnWCWorkDutiesProviderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCWorkDutiesProviderSpecify", DbType="VarChar(100)")]
+		public string WCWorkDutiesProviderSpecify
+		{
+			get
+			{
+				return this._WCWorkDutiesProviderSpecify;
+			}
+			set
+			{
+				if ((this._WCWorkDutiesProviderSpecify != value))
+				{
+					this.OnWCWorkDutiesProviderSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._WCWorkDutiesProviderSpecify = value;
+					this.SendPropertyChanged("WCWorkDutiesProviderSpecify");
+					this.OnWCWorkDutiesProviderSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCLegalRepresentative", DbType="VarChar(100)")]
+		public string WCLegalRepresentative
+		{
+			get
+			{
+				return this._WCLegalRepresentative;
+			}
+			set
+			{
+				if ((this._WCLegalRepresentative != value))
+				{
+					this.OnWCLegalRepresentativeChanging(value);
+					this.SendPropertyChanging();
+					this._WCLegalRepresentative = value;
+					this.SendPropertyChanged("WCLegalRepresentative");
+					this.OnWCLegalRepresentativeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCLegalRepresentativeSpecify", DbType="VarChar(100)")]
+		public string WCLegalRepresentativeSpecify
+		{
+			get
+			{
+				return this._WCLegalRepresentativeSpecify;
+			}
+			set
+			{
+				if ((this._WCLegalRepresentativeSpecify != value))
+				{
+					this.OnWCLegalRepresentativeSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._WCLegalRepresentativeSpecify = value;
+					this.SendPropertyChanged("WCLegalRepresentativeSpecify");
+					this.OnWCLegalRepresentativeSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCWorkDutiesModifiedClick", DbType="VarChar(50)")]
+		public string WCWorkDutiesModifiedClick
+		{
+			get
+			{
+				return this._WCWorkDutiesModifiedClick;
+			}
+			set
+			{
+				if ((this._WCWorkDutiesModifiedClick != value))
+				{
+					this.OnWCWorkDutiesModifiedClickChanging(value);
+					this.SendPropertyChanging();
+					this._WCWorkDutiesModifiedClick = value;
+					this.SendPropertyChanged("WCWorkDutiesModifiedClick");
+					this.OnWCWorkDutiesModifiedClickChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCWorkDutiesModifiedSpecify", DbType="VarChar(100)")]
+		public string WCWorkDutiesModifiedSpecify
+		{
+			get
+			{
+				return this._WCWorkDutiesModifiedSpecify;
+			}
+			set
+			{
+				if ((this._WCWorkDutiesModifiedSpecify != value))
+				{
+					this.OnWCWorkDutiesModifiedSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._WCWorkDutiesModifiedSpecify = value;
+					this.SendPropertyChanged("WCWorkDutiesModifiedSpecify");
+					this.OnWCWorkDutiesModifiedSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCJobDescriptionsClick", DbType="VarChar(50)")]
+		public string WCJobDescriptionsClick
+		{
+			get
+			{
+				return this._WCJobDescriptionsClick;
+			}
+			set
+			{
+				if ((this._WCJobDescriptionsClick != value))
+				{
+					this.OnWCJobDescriptionsClickChanging(value);
+					this.SendPropertyChanging();
+					this._WCJobDescriptionsClick = value;
+					this.SendPropertyChanged("WCJobDescriptionsClick");
+					this.OnWCJobDescriptionsClickChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCJobDescriptionsSpecify", DbType="VarChar(100)")]
+		public string WCJobDescriptionsSpecify
+		{
+			get
+			{
+				return this._WCJobDescriptionsSpecify;
+			}
+			set
+			{
+				if ((this._WCJobDescriptionsSpecify != value))
+				{
+					this.OnWCJobDescriptionsSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._WCJobDescriptionsSpecify = value;
+					this.SendPropertyChanged("WCJobDescriptionsSpecify");
+					this.OnWCJobDescriptionsSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCProcess", DbType="VarChar(100)")]
+		public string WCProcess
+		{
+			get
+			{
+				return this._WCProcess;
+			}
+			set
+			{
+				if ((this._WCProcess != value))
+				{
+					this.OnWCProcessChanging(value);
+					this.SendPropertyChanging();
+					this._WCProcess = value;
+					this.SendPropertyChanged("WCProcess");
+					this.OnWCProcessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClaimstoSTDClick", DbType="VarChar(100)")]
+		public string ClaimstoSTDClick
+		{
+			get
+			{
+				return this._ClaimstoSTDClick;
+			}
+			set
+			{
+				if ((this._ClaimstoSTDClick != value))
+				{
+					this.OnClaimstoSTDClickChanging(value);
+					this.SendPropertyChanging();
+					this._ClaimstoSTDClick = value;
+					this.SendPropertyChanged("ClaimstoSTDClick");
+					this.OnClaimstoSTDClickChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClaimstoSTDSpecify", DbType="VarChar(50)")]
+		public string ClaimstoSTDSpecify
+		{
+			get
+			{
+				return this._ClaimstoSTDSpecify;
+			}
+			set
+			{
+				if ((this._ClaimstoSTDSpecify != value))
+				{
+					this.OnClaimstoSTDSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._ClaimstoSTDSpecify = value;
+					this.SendPropertyChanged("ClaimstoSTDSpecify");
+					this.OnClaimstoSTDSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CSSSpecificClick", DbType="VarChar(50)")]
+		public string CSSSpecificClick
+		{
+			get
+			{
+				return this._CSSSpecificClick;
+			}
+			set
+			{
+				if ((this._CSSSpecificClick != value))
+				{
+					this.OnCSSSpecificClickChanging(value);
+					this.SendPropertyChanging();
+					this._CSSSpecificClick = value;
+					this.SendPropertyChanged("CSSSpecificClick");
+					this.OnCSSSpecificClickChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CSSSpecificSpecify", DbType="VarChar(100)")]
+		public string CSSSpecificSpecify
+		{
+			get
+			{
+				return this._CSSSpecificSpecify;
+			}
+			set
+			{
+				if ((this._CSSSpecificSpecify != value))
+				{
+					this.OnCSSSpecificSpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._CSSSpecificSpecify = value;
+					this.SendPropertyChanged("CSSSpecificSpecify");
+					this.OnCSSSpecificSpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientFinancialModelatCSST", DbType="VarChar(50)")]
+		public string ClientFinancialModelatCSST
+		{
+			get
+			{
+				return this._ClientFinancialModelatCSST;
+			}
+			set
+			{
+				if ((this._ClientFinancialModelatCSST != value))
+				{
+					this.OnClientFinancialModelatCSSTChanging(value);
+					this.SendPropertyChanging();
+					this._ClientFinancialModelatCSST = value;
+					this.SendPropertyChanged("ClientFinancialModelatCSST");
+					this.OnClientFinancialModelatCSSTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WCCommunicationWithPayrollInstructions", DbType="VarChar(MAX)")]
+		public string WCCommunicationWithPayrollInstructions
+		{
+			get
+			{
+				return this._WCCommunicationWithPayrollInstructions;
+			}
+			set
+			{
+				if ((this._WCCommunicationWithPayrollInstructions != value))
+				{
+					this.OnWCCommunicationWithPayrollInstructionsChanging(value);
+					this.SendPropertyChanging();
+					this._WCCommunicationWithPayrollInstructions = value;
+					this.SendPropertyChanged("WCCommunicationWithPayrollInstructions");
+					this.OnWCCommunicationWithPayrollInstructionsChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	public partial class AutoPopulateEmpInfoResult
 	{
 		
@@ -85852,6 +88196,534 @@ namespace DataLayer
 				if ((this._ServiceDescription != value))
 				{
 					this._ServiceDescription = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_EPAProviderResult
+	{
+		
+		private int _EAPProviderID;
+		
+		private string _EAPProvider;
+		
+		public Get_Client_EPAProviderResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EAPProviderID", DbType="Int NOT NULL")]
+		public int EAPProviderID
+		{
+			get
+			{
+				return this._EAPProviderID;
+			}
+			set
+			{
+				if ((this._EAPProviderID != value))
+				{
+					this._EAPProviderID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EAPProvider", DbType="NVarChar(45) NOT NULL", CanBeNull=false)]
+		public string EAPProvider
+		{
+			get
+			{
+				return this._EAPProvider;
+			}
+			set
+			{
+				if ((this._EAPProvider != value))
+				{
+					this._EAPProvider = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_EvaluationTypeResult
+	{
+		
+		private int _EvaluationTypeID;
+		
+		private string _EvaluationTypeEN;
+		
+		public Get_Client_EvaluationTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EvaluationTypeID", DbType="Int NOT NULL")]
+		public int EvaluationTypeID
+		{
+			get
+			{
+				return this._EvaluationTypeID;
+			}
+			set
+			{
+				if ((this._EvaluationTypeID != value))
+				{
+					this._EvaluationTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EvaluationTypeEN", DbType="NVarChar(45) NOT NULL", CanBeNull=false)]
+		public string EvaluationTypeEN
+		{
+			get
+			{
+				return this._EvaluationTypeEN;
+			}
+			set
+			{
+				if ((this._EvaluationTypeEN != value))
+				{
+					this._EvaluationTypeEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_FinancialModelWCBResult
+	{
+		
+		private int _FinancialModelWcbID;
+		
+		private string _FinancialModelWcbEN;
+		
+		public Get_Client_FinancialModelWCBResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinancialModelWcbID", DbType="Int NOT NULL")]
+		public int FinancialModelWcbID
+		{
+			get
+			{
+				return this._FinancialModelWcbID;
+			}
+			set
+			{
+				if ((this._FinancialModelWcbID != value))
+				{
+					this._FinancialModelWcbID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinancialModelWcbEN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FinancialModelWcbEN
+		{
+			get
+			{
+				return this._FinancialModelWcbEN;
+			}
+			set
+			{
+				if ((this._FinancialModelWcbEN != value))
+				{
+					this._FinancialModelWcbEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_LegalWCRepResult
+	{
+		
+		private int _LegalWcbRepID;
+		
+		private string _LegalWcbRepEN;
+		
+		public Get_Client_LegalWCRepResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalWcbRepID", DbType="Int NOT NULL")]
+		public int LegalWcbRepID
+		{
+			get
+			{
+				return this._LegalWcbRepID;
+			}
+			set
+			{
+				if ((this._LegalWcbRepID != value))
+				{
+					this._LegalWcbRepID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalWcbRepEN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LegalWcbRepEN
+		{
+			get
+			{
+				return this._LegalWcbRepEN;
+			}
+			set
+			{
+				if ((this._LegalWcbRepEN != value))
+				{
+					this._LegalWcbRepEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_LTDProviderResult
+	{
+		
+		private int _LTDProviderID;
+		
+		private string _LTDProviderEN;
+		
+		public Get_Client_LTDProviderResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDProviderID", DbType="Int NOT NULL")]
+		public int LTDProviderID
+		{
+			get
+			{
+				return this._LTDProviderID;
+			}
+			set
+			{
+				if ((this._LTDProviderID != value))
+				{
+					this._LTDProviderID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LTDProviderEN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string LTDProviderEN
+		{
+			get
+			{
+				return this._LTDProviderEN;
+			}
+			set
+			{
+				if ((this._LTDProviderEN != value))
+				{
+					this._LTDProviderEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_ProvidesRTWResult
+	{
+		
+		private int _ProvidesRTWID;
+		
+		private string _ProvidesRTWEN;
+		
+		public Get_Client_ProvidesRTWResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProvidesRTWID", DbType="Int NOT NULL")]
+		public int ProvidesRTWID
+		{
+			get
+			{
+				return this._ProvidesRTWID;
+			}
+			set
+			{
+				if ((this._ProvidesRTWID != value))
+				{
+					this._ProvidesRTWID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProvidesRTWEN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ProvidesRTWEN
+		{
+			get
+			{
+				return this._ProvidesRTWEN;
+			}
+			set
+			{
+				if ((this._ProvidesRTWEN != value))
+				{
+					this._ProvidesRTWEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_ProvidesWCModDutyFormResult
+	{
+		
+		private int _ProvidesRTWID;
+		
+		private string _ProvidesRTWEN;
+		
+		public Get_Client_ProvidesWCModDutyFormResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProvidesRTWID", DbType="Int NOT NULL")]
+		public int ProvidesRTWID
+		{
+			get
+			{
+				return this._ProvidesRTWID;
+			}
+			set
+			{
+				if ((this._ProvidesRTWID != value))
+				{
+					this._ProvidesRTWID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProvidesRTWEN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ProvidesRTWEN
+		{
+			get
+			{
+				return this._ProvidesRTWEN;
+			}
+			set
+			{
+				if ((this._ProvidesRTWEN != value))
+				{
+					this._ProvidesRTWEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_SendAPSToEEResult
+	{
+		
+		private int _SendApsToEEID;
+		
+		private string _SendApsToEEEN;
+		
+		public Get_Client_SendAPSToEEResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendApsToEEID", DbType="Int NOT NULL")]
+		public int SendApsToEEID
+		{
+			get
+			{
+				return this._SendApsToEEID;
+			}
+			set
+			{
+				if ((this._SendApsToEEID != value))
+				{
+					this._SendApsToEEID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendApsToEEEN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string SendApsToEEEN
+		{
+			get
+			{
+				return this._SendApsToEEEN;
+			}
+			set
+			{
+				if ((this._SendApsToEEEN != value))
+				{
+					this._SendApsToEEEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_SendLTDToEEResult
+	{
+		
+		private int _SendLTDToEEID;
+		
+		private string _SendLTDToEEEN;
+		
+		public Get_Client_SendLTDToEEResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendLTDToEEID", DbType="Int NOT NULL")]
+		public int SendLTDToEEID
+		{
+			get
+			{
+				return this._SendLTDToEEID;
+			}
+			set
+			{
+				if ((this._SendLTDToEEID != value))
+				{
+					this._SendLTDToEEID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendLTDToEEEN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string SendLTDToEEEN
+		{
+			get
+			{
+				return this._SendLTDToEEEN;
+			}
+			set
+			{
+				if ((this._SendLTDToEEEN != value))
+				{
+					this._SendLTDToEEEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_SendLTDToERResult
+	{
+		
+		private int _SendLTDToERID;
+		
+		private string _SendLTDToEREN;
+		
+		public Get_Client_SendLTDToERResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendLTDToERID", DbType="Int NOT NULL")]
+		public int SendLTDToERID
+		{
+			get
+			{
+				return this._SendLTDToERID;
+			}
+			set
+			{
+				if ((this._SendLTDToERID != value))
+				{
+					this._SendLTDToERID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendLTDToEREN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string SendLTDToEREN
+		{
+			get
+			{
+				return this._SendLTDToEREN;
+			}
+			set
+			{
+				if ((this._SendLTDToEREN != value))
+				{
+					this._SendLTDToEREN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_STDProcessResult
+	{
+		
+		private int _ddSTDProcessID;
+		
+		private string _STDProcessEN;
+		
+		public Get_Client_STDProcessResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ddSTDProcessID", DbType="Int NOT NULL")]
+		public int ddSTDProcessID
+		{
+			get
+			{
+				return this._ddSTDProcessID;
+			}
+			set
+			{
+				if ((this._ddSTDProcessID != value))
+				{
+					this._ddSTDProcessID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STDProcessEN", DbType="NVarChar(45) NOT NULL", CanBeNull=false)]
+		public string STDProcessEN
+		{
+			get
+			{
+				return this._STDProcessEN;
+			}
+			set
+			{
+				if ((this._STDProcessEN != value))
+				{
+					this._STDProcessEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Get_Client_ClaimSubmissionMethodResult
+	{
+		
+		private int _ClaimSubmissionID;
+		
+		private string _ClaimSubmissionEN;
+		
+		public Get_Client_ClaimSubmissionMethodResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClaimSubmissionID", DbType="Int NOT NULL")]
+		public int ClaimSubmissionID
+		{
+			get
+			{
+				return this._ClaimSubmissionID;
+			}
+			set
+			{
+				if ((this._ClaimSubmissionID != value))
+				{
+					this._ClaimSubmissionID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClaimSubmissionEN", DbType="NVarChar(45) NOT NULL", CanBeNull=false)]
+		public string ClaimSubmissionEN
+		{
+			get
+			{
+				return this._ClaimSubmissionEN;
+			}
+			set
+			{
+				if ((this._ClaimSubmissionEN != value))
+				{
+					this._ClaimSubmissionEN = value;
 				}
 			}
 		}
