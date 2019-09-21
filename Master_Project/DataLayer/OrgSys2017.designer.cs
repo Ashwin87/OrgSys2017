@@ -585,8 +585,7 @@ namespace DataLayer
     #endregion
 		
 		public OrgSys2017DataContext() : 
-				base("Data Source=GAURAV;Initial Catalog=umbrella_dev;Persist Security Info=True;User I" +
-						"D=sa;Password=user217", mappingSource)
+				base("Data Source=GAURAV;Initial Catalog=umbrella_dev;Persist Security Info=True;User I" +"D=sa;Password=user217", mappingSource)
 		{
 			OnCreated();
 		}

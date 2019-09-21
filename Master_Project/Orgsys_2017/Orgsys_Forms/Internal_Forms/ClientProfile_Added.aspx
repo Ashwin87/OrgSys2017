@@ -90,6 +90,7 @@
 
     <script>
         $(document).ready(function () {
+            var ClientContact = {};
             // Select types of Services
             $('#services').select2({
                 placeholder: 'Select Services',
@@ -158,9 +159,10 @@
             PopulateProvinces("BusProvince");
 
             //Attach Event to populate [Province and City drop down]
+
             AttachCountryEventHandler("BusProvince");
             AttachProvinceEventHandler("BusCity");
-
+           
             MaskInputs();
 
             //ATTACH BUTTON EVENT HANDLERS  
@@ -176,7 +178,116 @@
                 AddClientContact();
             });
 
+            PopulateEmployeeContacts('tblClientContactDetailsTable');
+
+
         });
+
+
+        function PopulateEmployeeContacts(tableName) {
+            debugger;
+
+            var employee;
+            //if (ClaimID) {
+            //    $.ajax({
+            //        url: getApi + "/api/DataBind/GetEmployeeContacts/" + token + "/" + ClaimID,
+            //        beforeSend: function (xhr) { xhr.setRequestHeader('Authentication', window.token); },
+            //        async: false,
+            //        success: function (data) {
+            //            employee = JSON.parse(data);
+            //        }
+            //    })
+            //}
+
+            $('#' + tableName).DataTable({
+                select: true,
+                data: employee,
+                "columns": [
+                    {
+                        data: null,
+                        render: function () {
+                            return `
+                    <a class="btn btn-default editEmployee edit_button" title="Edit Employee" data-toggle="tooltip"><i class="icon icon-pencil"></i></a>`;
+
+                        }
+                    },
+                    //{ "data": "ContactType" },
+                    //{
+                    //    data: null,
+                    //    render: function (data, type, row) {
+                    //        //add masking class for appropriate type .abovtenko
+                    //        var classAttribute = (/(Phone|Fax)/g.test(data.ContactType)) ? 'vld-phone' : '';
+                    //        return '<span class="' + classAttribute + '">' + data.ContactDetail + '</span>';
+                    //    }
+                    //},
+
+                    { "data": "firstname" },
+                    { "data": "lastname" },
+                    { "data": "title" },
+                    { "data": "country" },
+                    { "data": "province" },
+                    { "data": "city" },
+                    { "data": "address" },
+                    { "data": "zip" },
+                    { "data": "city" },
+                    { "data": "workphone" },
+                    { "data": "mobilephone" },
+                    { "data": "email" }
+                ]
+            });
+
+            MaskInputs();
+
+        }
+
+        function CreateClientContact(tblName) {
+            debugger;
+            swal({
+                title: "Add Client Contact",
+                text: "",
+                showCancelButton: true,
+                cancelButtonText: 'Cancel',
+                confirmButtonText: 'Add Client Contact',
+                html: clientContactTemplate,
+                width: '850px',
+                onOpen: function () {
+                    debugger;
+                    InitializeSwalDatepicker();
+                    PopulateClientSwalLists();
+                    AttachCountryEventHandler('province');
+                    AttachProvinceEventHandler('city');
+                    $('[name="City"]').select2();
+                    //mask phone if selected
+                    MaskContactDetail();
+                },
+                preConfirm: validate.validateContactSwalContentPM
+            }).then(function (isConfirm) {
+                debugger;
+                if (isConfirm) {
+                    var table = $('#' + tblName).DataTable();
+                    var contact = {
+                        firstname: $('#firstname').val(),
+                        lastname: $('#lastname').val(),
+                        title: $('#title').val(),
+                        country: $('#country').val(),
+                        province: $('#province').val(),
+                        city: $('#city').val(),
+                        address: $('#address').val(),
+                        zip: $('#zip').val(),
+                        workphone: $('#workphone').val(),
+                        mobilephone: $('#mobilephone').val(),
+                        email: $('#email').val()
+                    }
+                    ClientContact = GetClientAddedContactModelSwalData();
+                    table.row.add(contact).draw();
+                    SetDataDT('#tblConClientContactDetailsTable', table.data());
+                    swal("", "Client Contact has been added", "success");
+                }
+            }, function (dismiss) {
+                swal("Cancelled", "Not Added", "error");
+            });
+        }
+
 
         function mapJsonForSelect2DataSource(unmappedJson, idProperty, textPropertyArray) {
             var mappedObject = $.map(unmappedJson, function (obj) {
@@ -339,40 +450,37 @@
                                     </div>
                                 </div>
                             </div>
-                            <%--<div class="row margin_bottom">
-                                     <div class="row margin_bottom">
-                                        <h5 runat="server"><b>Point of Contact</b></></h5>
-                                     </div>
+                            <div class="row margin_bottom">
+                                <div class="row margin_bottom">
+                                    <h5 runat="server"><b>Point of Contact</b></></h5>
+                                </div>
+                                <div class="panel-body remove-top-border">
                                     <div class="row margin_bottom">
-                                        <div id="ClientContactDetails">
-                                            <div>
-                                                <button type="button" class="btn btn-default add-clientcontact">
-                                                    <i class="icon-plus"></i>
-                                                </button>
-                                            </div>
-                                            <table id="ClientContactDetailsTable" class="table table-bordered table-striped table-condensed table-hover dataTable no-footer">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Actions</th>
-                                                        <th>First Name</th>
-                                                        <th>Last Name</th>
-                                                        <th>Title</th>
-                                                        <th>Country</th>
-                                                        <th>Province / State</th>
-                                                        <th>Address</th>
-                                                        <th>City</th>
-                                                        <th>Postal Code</th>
-                                                        <th>Work Phone</th>
-                                                        <th>Mobile Phone</th>
-                                                        <th>Email</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        <button type="button" id="ClientContactDetails" class="btn btn-default add_contact" onclick="CreateClientContact('tblClientContactDetailsTable')">
+                                            <i class="icon-plus"></i>
+                                        </button>
+                                        <table id="tblClientContactDetailsTable" class="table table-bordered table-striped table-hover dataTable no-footer">
+                                            <thead>
+                                                <tr>
+                                                    <th>Actions</th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Title</th>
+                                                    <th>Country</th>
+                                                    <th>Province / State</th>
+                                                    <th>Address</th>
+                                                    <th>City</th>
+                                                    <%--<th>Postal Code</th>--%>
+                                                    <th>Work Phone</th>
+                                                    <th>Mobile Phone</th>
+                                                    <th>Email</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+
                                     </div>
-                                </div>--%>
+                                </div>
+                            </div>
                             <%-- <div class="row margin_bottom">
                                     <div class="row margin_bottom">
                                         <h5 runat="server"><b>Point of Contact</b></></h5>
@@ -477,7 +585,7 @@
                                         <div class="row">
                                             <div class="col-lg-8 col-md-8 col-sm-8">
                                                 <label class="form-check-label" for="surveys"><b>Surveys? (check for yes)</b></label>
-                                                <input type="checkbox" data-toggle="toggle" id="SurveyCheck" name="SurveyCheck" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                                <input type="checkbox" data-toggle="toggle" id="SurveyCheckId" name="SurveyCheck" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                             </div>
                                         </div>
                                         <div class="row">
@@ -490,18 +598,20 @@
                                     <div class="col-lg-4 col-md-4 col-sm-12">
                                         <div class="row">
                                             <h5 runat="server"><b>Select Survey Types (all that apply)</b></></h5>
+                                          
                                             <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <label class="form-check-label" for="surveytype">STD:</label>
-                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                                <input type="checkbox" class="Surveycustomcheckbox" value="STD" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <label class="form-check-label" for="surveytype">WCB:</label>
-                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                                <input type="checkbox" class="Surveycustomcheckbox" value="WCB" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <label class="form-check-label" for="surveytype">Other:</label>
-                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                                <input type="checkbox" class="Surveycustomcheckbox" value="OTH" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                             </div>
+                                               
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-12 col-md-12 col-lg-12 margin_top_10">
@@ -513,17 +623,17 @@
                                     <div class="col-lg-4 col-md-4 col-sm-12">
                                         <div class="row">
                                             <h5 runat="server"><b>Send Survey To? (all that apply)</b></></h5>
-                                             <div class="col-lg-4 col-md-4 col-sm-12">
+                                            <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <label class="form-check-label" for="sendsurvey">Employee:</label>
-                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                                <input type="checkbox" class="Sendcustomcheckbox" value="EMP" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <label class="form-check-label" for="sendsurvey">WCB:</label>
-                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                                <input type="checkbox" class="Sendcustomcheckbox" value="WCB" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                             </div>
                                             <div class="col-lg-4 col-md-4 col-sm-12">
                                                 <label class="form-check-label" for="sendsurvey">Other:</label>
-                                                <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                                <input type="checkbox" class="Sendcustomcheckbox" value="Oth" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                             </div>
                                         </div>
                                         <div class="row">
@@ -560,7 +670,7 @@
                             </div>
                         </div>
                         <%--<div id="ClientStdLtd">--%>
-                         <!--STD Tab-->
+                        <!--STD Tab-->
                         <div class="tab-pane fade ClientStdLtd" id="tab3primary">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -590,7 +700,7 @@
                                     <h5 runat="server"><b>STD Trigger Period</b></></h5>
                                     <div class="col-lg-3 col-md-3 col-sm-12">
                                         <label class="form-check-label" for="triggerperiod">Yes:</label>
-                                        <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                        <input type="checkbox" class="customcheckbox" id="STDTriggerCheckID" name="STDTriggerCheck" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                     </div>
                                     <div class="col-sm-5 col-md-9 col-lg-9">
                                         <label for="stdtrigger">Specify:</label>
@@ -623,7 +733,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-1 col-md-1 col-sm-12">
                                             <label class="form-check-label" for="appealsprocess">Yes:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            <input type="checkbox" class="customcheckbox" name="STDAppealsCheck" id="STDAppealsCheckId" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4">
                                             <label for="STDAppealsProcess">Process:</label>
@@ -676,7 +786,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-4 col-md-4 col-sm-12">
                                             <label class="form-check-label" for="appealsprocess">Yes:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            <input type="checkbox" class="customcheckbox" name="ExistingSTDCheck" id="ExistingSTDCheckId" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
@@ -693,7 +803,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-4 col-md-4 col-sm-12">
                                             <label class="form-check-label" for="appealsprocess">Yes:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            <input type="checkbox" class="customcheckbox" name="MVAProcessCheck" id="MVAProcessCheckId" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
@@ -839,7 +949,7 @@
                                     <h5 runat="server"><b>LTD relapse / Recurrence Definition</b></></h5>
                                 </div>
                             </div>
-                            
+
                             <div class="row margin_bottom">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label for="ltdrelapse">Definition:</label>
@@ -947,7 +1057,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <label class="form-check-label" for="wcworkduties">Yes:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            <input type="checkbox" class="customcheckbox" name="WCWorkDutiesModifiedClick" id="WCWorkDutiesModifiedClickId" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
@@ -962,7 +1072,7 @@
                                     <div class="row margin_bottom">
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <label class="form-check-label" for="wcjobdescription">Yes:</label>
-                                            <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                            <input type="checkbox" class="customcheckbox" name="WCJobDescriptionsClick" id="WCJobDescriptionsClickId" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                         </div>
                                     </div>
                                     <div class="row margin_bottom">
@@ -985,7 +1095,7 @@
                                 <div class="row margin_bottom">
                                     <div class="col-lg-1 col-md-1 col-sm-12">
                                         <label class="form-check-label" for="wcworkduties">Yes:</label>
-                                        <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                        <input type="checkbox" class="customcheckbox" name="ClaimstoSTDClick" id="ClaimstoSTDClickId" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                     </div>
                                 </div>
                                 <div class="row margin_bottom">
@@ -1000,7 +1110,7 @@
                                 <div class="row margin_bottom">
                                     <div class="col-lg-1 col-md-1 col-sm-12">
                                         <label class="form-check-label" for="wcworkduties">Yes:</label>
-                                        <input type="checkbox" class="customcheckbox" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
+                                        <input type="checkbox" class="customcheckbox" name="CSSSpecificClick" id="CSSSpecificClickId" data-toggle="toggle" data-size="small" data-on="yes" data-off="no" data-offstyle="danger" />
                                     </div>
                                 </div>
                                 <div class="row margin_bottom">
@@ -1017,7 +1127,7 @@
                             </div>
                             <%-- Save Province To File  --%>
                         </div>
-                       <!--WC KPI/CMRs-->
+                        <!--WC KPI/CMRs-->
                         <div class="tab-pane fade ClientWc" id="tab7primary">
                             <div class="row margin_bottom">
                                 <h5 runat="server"><b>WC - Communication With Payroll Instructions:</b></></h5>
@@ -1027,7 +1137,7 @@
                                 <textarea class="form-control" name="WCCommunicationWithPayrollInstructions" id="WCCommunicationWithPayrollInstructions" rows="4" required=""></textarea>
                             </div>
                         </div>
-                       <%-- </div>--%>
+                        <%-- </div>--%>
                     </div>
                 </div>
             </div>

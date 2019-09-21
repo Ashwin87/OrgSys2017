@@ -297,11 +297,16 @@ function RemoveClientContactSwal(rowIndex) {
 //OPENS SWAL FORM, ADDS NEW RECORD TO TABLE
 
 function ClientAdded() {
+    debugger;
     if (validate.validateSubmission()) {
         var client = GetClientAddedSwalData();
         var clientAdded = GetClientAddedModelSwalData();
         var ClientSTDLTD = GetClientClientSTDLTDModelSwalData();
         var ClientWc = GetClientClientWCModelSwalData();
+        //var ClientContact = ClientContact;
+        //if (ClientContact == undefined) {
+        //    ClientContact = GetClientAddedContactModelSwalData();
+        //}
         SaveClient(client).then(
             function (data) {
                 clientAdded.ClientId = data.ClientID;
@@ -310,6 +315,8 @@ function ClientAdded() {
                 SaveClientSTDLTDAdded(ClientSTDLTD);
                 ClientWc.ClientId = data.ClientID;
                 SaveClientWCAdded(ClientWc);
+                ClientContact.ClientID = data.ClientID;
+                SaveClientContact(ClientContact);
                 console.log(data);
                 ClientDetailsDT.row.add(client).draw();
                 var rowIndex = ClientDetailsDT.rows().indexes().length - 1;
@@ -880,12 +887,53 @@ function GetClientAddedSwalData() {
 }
 
 function GetClientAddedModelSwalData() {
-
-    let Services = '';
+    debugger;
+    let ServeyType = '';
     var model = {};
     Object.keys(ClientAddedModel)
         .forEach(function (key) {
             var val = $('#tab2primary [name="' + key + '"]').val();
+            model[key] = (val === undefined) ? "" : val;
+        });
+
+    var arr = [];
+
+    $('.Surveycustomcheckbox:checkbox:checked').each(function () {
+        arr[i++] = $(this).val();
+    }); 
+
+    var arrString = arr.join(", ");
+    arrString = arrString.substring(0, arrString.length - 1);
+    model.SurvesTypes = arrString;
+
+    var arr2 = [];
+
+    $('.Sendcustomcheckbox:checkbox:checked').each(function () {
+        arr2[i++] = $(this).val();
+    });
+
+    var arrString2 = arr2.join(", ");
+    arrString2 = arrString2.substring(0, arrString2.length - 1);
+    model.SendSurveyTo = arrString2;
+
+    if ($('#SurveyCheckId').is(":checked")) {
+        model.SurveyCheck = 'Yes';
+    }
+    else {
+        model.SurveyCheck = 'No';
+    }
+
+    return model;
+
+}
+
+function GetClientAddedContactModelSwalData() {
+
+    let Services = '';
+    var model = {};
+    Object.keys(clientContactModel)
+        .forEach(function (key) {
+            var val = $('#ClientContactSwal [name="' + key + '"]').val();
             model[key] = (val === undefined) ? "" : val;
         });
     return model;
@@ -899,9 +947,38 @@ function GetClientClientSTDLTDModelSwalData() {
             var val = $('.ClientStdLtd [name="' + key + '"]').val();
             model[key] = (val === undefined) ? "" : val;
         });
+
+    if ($('#STDTriggerCheckID').is(":checked")) {
+        model.STDTriggerCheck = 'Yes';
+    }
+    else {
+        model.STDTriggerCheck = 'No';
+    }
+
+    if ($('#STDAppealsCheckId').is(":checked")) {
+        model.STDAppealsCheck = 'Yes';
+    }
+    else {
+        model.STDAppealsCheck = 'No';
+    }
+
+    if ($('#ExistingSTDCheckId').is(":checked")) {
+        model.ExistingSTDCheck = 'Yes';
+    }
+    else {
+        model.ExistingSTDCheck = 'No';
+    }
+
+    if ($('#MVAProcessCheckId').is(":checked")) {
+        model.MVAProcessCheck = 'Yes';
+    }
+    else {
+        model.MVAProcessCheck = 'No';
+    }
     return model;
 
 }
+
 
 function GetClientClientWCModelSwalData() {
     var model = {};
@@ -910,8 +987,37 @@ function GetClientClientWCModelSwalData() {
             var val = $('.ClientWc [name="' + key + '"]').val();
             model[key] = (val === undefined) ? "" : val;
         });
-    return model;
+  
 
+    if ($('#WCWorkDutiesModifiedClickId').is(":checked")) {
+        model.WCWorkDutiesModifiedClick = 'Yes';
+    }
+    else {
+        model.WCWorkDutiesModifiedClick = 'No';
+    }
+
+    if ($('#WCJobDescriptionsClickId').is(":checked")) {
+        model.WCJobDescriptionsClick = 'Yes';
+    }
+    else {
+        model.WCJobDescriptionsClick = 'No';
+    }
+
+    if ($('#ClaimstoSTDClickId').is(":checked")) {
+        model.ClaimstoSTDClick = 'Yes';
+    }
+    else {
+        model.ClaimstoSTDClick = 'No';
+    }
+
+    if ($('#CSSSpecificClickId').is(":checked")) {
+        model.CSSSpecificClick = 'Yes';
+    }
+    else {
+        model.CSSSpecificClick = 'No';
+    }
+
+    return model;
 }
 
 //SWAL LIST POPULATION
@@ -945,16 +1051,35 @@ function PopulateClientContactSwalLists(clientContact) {
         if (clientContact) {
             $('.populateCountries').val(clientContact.Country)
 
-            PopulateProvinces($('.populateCountries').val(), 'Province').then(function () {
+            PopulateProvinces($('.populateCountries').val(), 'province').then(function () {
                 $('.populateProvinces').val(clientContact.Province)
 
-                PopulateCities(clientContact.Province, 'City').done(function () {
+                PopulateCities(clientContact.Province, 'city').done(function () {
                     $('.populateCities').val(clientContact.City)
                 });
             });
         }
     })
 }
+
+function PopulateClientAddedContactSwalLists(clientContact) {
+
+    //for both swals /populates countries with a value
+    PopulateCountries('populateCountries').then(function () {
+        if (clientContact) {
+            $('.populateCountries').val(clientContact.Country)
+
+            PopulateProvinces($('.populateCountries').val(), 'provincePopulate').then(function () {
+                $('.populateProvinces').val(clientContact.Province)
+
+                PopulateCities(clientContact.Province, 'cityPopulate').done(function () {
+                    $('.populateCities').val(clientContact.City)
+                });
+            });
+        }
+    })
+}
+
 
 //should be elsewhere
 function AttachCountryEventHandler(provinceFieldName) {
@@ -1247,47 +1372,47 @@ var clientContactTemplate =
         <hidden name="ContactID"></hidden>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">First Name</label>
-            <input type="text" class="form-control required" name="FirstName" />
+            <input type="text" class="form-control required" id="firstname" name="FirstName" />
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">Last Name</label>
-            <input type="text" class="form-control required" name="LastName" />
+            <input type="text" class="form-control required" id="lastname" name="LastName" />
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">Title</label>
-            <input type="text" class="form-control required" name="Title" />
+            <input type="text" class="form-control required" id="title" name="Title" />
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">Country</label>
-            <select class="form-control populateCountries required" name="Country" ></select>
+            <select class="form-control populateCountries1 required" id="country" name="Country" ></select>
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">Province / State</label>
-            <select class="form-control populateProvinces required" name="Province" ></select>
+            <select class="form-control populateProvinces required" id="provincePopulate" name="Province" ></select>
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">City</label>
-            <select class="form-control populateCities required" name="City" ></select>
+            <select class="form-control populateCities required" id=cityPopulate name="City" ></select>
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">Address</label>
-            <input type="text" class="form-control" name="Address" />
+            <input type="text" class="form-control" id="address" name="Address" />
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">Postal Code</label>
-            <input type="text" class="form-control vld-postal vlda-Country" name="ZIP" />
+            <input type="text" class="form-control vld-postal vlda-Country" id="zip" name="ZIP" />
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">Work Phone</label>
-            <input type="text" class="form-control required vld-phone" name="WorkPhone" />
+            <input type="text" class="form-control required vld-phone" id="workphone" name="WorkPhone" />
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">Cell Phone</label>
-            <input type="text" class="form-control required vld-phone" name="MobilePhone" />
+            <input type="text" class="form-control required vld-phone" id="mobilephone" name="MobilePhone" />
         </div>
         <div class="col-md-4 form_field_setter margin-bottom">
             <label class="form_label_setter">Email</label>
-            <input type="text" class="form-control vld-email required" name="Email" />
+            <input type="text" class="form-control vld-email required" id="email" name="Email" />
         </div>
     </div>`;
 
